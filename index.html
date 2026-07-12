@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Os 9 Reinos — Criação de Personagem</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --bg3:#1a1a1a;
+  --bg4:#222222;
+  --gold:#d4a843;
+  --gold2:#f0d080;
+  --gold-dim:#8a7a40;
+  --text:#e8e0d0;
+  --text2:#888080;
+  --red:#cc4444;
+  --radius:10px;
+  --serif:'Cormorant Garamond',serif;
+}
+
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100dvh}
+h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
+
+#embers{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+#steps{display:flex;justify-content:center;align-items:center;gap:6px;padding:14px 12px;position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--bg4)}
+.chronicle-link{position:absolute;left:14px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:.03em;transition:.2s;white-space:nowrap}
+.chronicle-link:hover{color:var(--gold)}
+.step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:2px solid transparent;transition:.3s;cursor:default}
+.step-dot.active{border-color:var(--gold);color:var(--gold);background:var(--bg2)}
+.step-dot.done{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+
+.screen{display:none;padding:16px 18px 24px;max-width:480px;margin:0 auto;animation:fadeIn .35s cubic-bezier(.2,.7,.2,1);position:relative;z-index:1}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media print{#steps,#embers,.chronicle-link,.btn-group,.btn,.more-btn,.info-btn{display:none!important}.screen{padding:0!important;max-width:100%!important}.result-card{border:1px solid var(--bg4)!important;break-inside:avoid}.stat-card{border:1px solid var(--bg4)!important}.tag{border:1px solid var(--bg4)!important}}
+
+.card-grid{display:grid;gap:10px;margin-top:12px}
+.card-grid.c3{grid-template-columns:repeat(3,1fr)}
+.card-grid.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid transparent;cursor:pointer;transition:.25s;text-align:center;position:relative;overflow:hidden}
+.card:hover{border-color:var(--gold-dim);background:var(--bg2);transform:translateY(-2px)}
+.card.selected{border-color:var(--gold);background:var(--bg2);box-shadow:0 0 20px rgba(212,168,67,.15)}
+.card[style*="--k"]:hover{border-color:color-mix(in srgb,var(--k) 55%,var(--gold-dim))}
+.card[style*="--k"].selected{border-color:var(--k);box-shadow:0 0 22px color-mix(in srgb,var(--k) 35%,transparent)}
+.card .icon{font-size:28px;margin-bottom:4px}.card .name{font-weight:600;font-size:14px;color:var(--text)}
+.card .sub{font-size:11px;color:var(--text2);margin-top:2px}
+.card .virtude-tag{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--k,var(--gold-dim));margin-top:3px;font-family:'Inter',sans-serif}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}
+.modal-content{background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto;border:1px solid var(--gold-dim)}
+.conv-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s;margin-bottom:8px}
+.conv-card:hover{border-color:var(--gold-dim)}
+.conv-card.selected{border-color:var(--gold);background:var(--bg2)}
+.conv-card.selected.corrupt{border-color:var(--red);background:var(--bg2);box-shadow:0 0 16px rgba(204,68,68,.15)}
+.btn{padding:11px 28px;border-radius:50px;font-weight:600;font-size:14px;border:1px solid transparent;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;justify-content:center;letter-spacing:.5px}
+.btn-primary{background:var(--gold);color:var(--bg)}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--text);border-color:var(--text2)}
+.btn-secondary:hover{background:var(--bg3)}
+.btn-group{display:flex;justify-content:space-between;margin-top:18px;gap:10px}
+.btn-group .btn{flex:1}
+
+.attr-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.attr-label{width:44px;font-weight:600;font-size:13px;color:var(--gold)}
+.attr-bar{flex:1;height:22px;background:var(--bg3);border-radius:11px;overflow:hidden}
+.attr-fill{height:100%;border-radius:11px;transition:.3s;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+.attr-val{width:24px;text-align:center;font-weight:700;font-size:15px;color:var(--gold2)}
+.attr-mod{width:26px;text-align:center;font-weight:700;font-size:15px}
+.attr-mod.pos{color:#66dd66}
+.attr-mod.neg{color:#dd6666}
+.attr-btns{display:flex;gap:3px}
+.attr-btns button{width:26px;height:26px;border-radius:50%;border:1px solid var(--text2);background:var(--bg3);color:var(--text);font-size:16px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+.attr-btns button:hover{background:var(--bg4);border-color:var(--gold)}
+.attr-btns button:disabled{opacity:.25;cursor:not-allowed}
+
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.stat-card{background:var(--bg3);border-radius:var(--radius);padding:14px;text-align:center;border:1px solid var(--bg4)}
+.stat-card .stat-val{font-size:24px;font-weight:700;color:var(--gold)}
+.stat-card .stat-label{font-size:11px;color:var(--text2);margin-top:2px}
+
+.result-card{background:var(--bg2);border-radius:var(--radius);padding:16px;margin-bottom:10px;border:1px solid var(--bg4)}
+.result-card h3{font-size:15px;color:var(--gold);margin-bottom:8px}
+.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:13px}
+.result-grid .label{color:var(--text2)}.result-grid .val{font-weight:600;text-align:right}
+
+.points{text-align:center;font-size:16px;font-weight:600;color:var(--gold);margin-bottom:12px}
+.title{text-align:center;margin-bottom:10px}
+.title h1{font-size:26px;color:var(--gold)}
+.title h2{font-size:20px;color:var(--gold)}
+.title p{color:var(--text2);font-size:13px}
+.fruit-icon{width:70px;height:70px;margin:16px auto;background:radial-gradient(circle at 30% 30%,var(--gold2),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 0 40px rgba(212,168,67,.2)}
+.input-name{width:100%;background:transparent;border:none;border-bottom:2px solid var(--text2);padding:10px 0;color:var(--text);font-size:20px;font-family:'Cinzel',serif;text-align:center;outline:none;transition:.3s}
+.input-name:focus{border-color:var(--gold)}
+.helper{color:var(--text2);font-size:12px;text-align:center;margin-top:4px}
+
+.preset-bar{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.preset-btn{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:1px solid var(--bg4);cursor:pointer;transition:.2s}
+.preset-btn.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.preset-btn:hover{background:var(--bg4)}
+
+.flex-tags{display:flex;flex-wrap:wrap;gap:4px}
+.flex-tags .tag{padding:4px 10px;border-radius:16px;font-size:11px;cursor:pointer;border:1px solid var(--bg4);background:var(--bg3);transition:.2s;color:var(--text)}
+.flex-tags .tag.selected{border-color:var(--gold);background:var(--bg2)}
+.flex-tags .tag.limit{border-color:var(--red);color:var(--red)}
+.flex-tags .tag.limit.selected{border-color:var(--red);background:rgba(204,68,68,.15)}
+
+.arch-hint{font-size:11px;color:var(--gold-dim);margin-top:4px;font-style:italic}
+
+.realm-quote{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold2);line-height:1.5}
+
+@media (prefers-reduced-motion:reduce){
+  .screen{animation:none}
+  .card,.card:hover{transition:none;transform:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="embers"></canvas>
+<div style="position:sticky;top:0;z-index:10">
+  <a class="chronicle-link" href="cronica-dos-nove-reinos.html">📖 A Crônica</a>
+  <div id="steps"></div>
+</div>
+<div id="app"></div>
+
+<script>
+// ===== DATA =====
+const REALMS = [
+  {id:'havendor',name:'Havendor',icon:'⚜️',attr:'Sabedoria',virtude:'Amor',cor:'#e0876d',
+   phrase:'"Onde a luz encontra a coragem."',
+   culture:'Uma civilização de cavaleiros e construtores que acredita na proteção dos fracos. Suas cidades flutuam sobre as nuvens, sustentadas por uma energia radiante que poucos compreendem.',
+   lore:'Dizem que o primeiro fragmento caiu aqui, incrustando-se no coração da montanha mais alta. Os havendorianos não adoram o fragmento — eles o estudam, pois acreditam que compreendê-lo é compreender a si mesmos. Sua sociedade é estratificada em ordens: os Portadores da Aurora (cavaleiros), os Forjadores de Luz (artesãos) e os Sussurradores (estudiosos).'},
+  {id:'aurivelle',name:'Aurivelle',icon:'🎭',attr:'Carisma',virtude:'Alegria',cor:'#f0c34a',
+   phrase:'"A vida é uma canção que nunca termina."',
+   culture:'Artistas, músicos e performers. Aqui a expressão é tudo — cada pessoa encontra seu próprio ritmo. As cidades são construídas em florestas vivas, com madeira encantada que reage à música.',
+   lore:'O fragmento de Aurivelle caiu em uma clareira onde, dizem, os pássaros cantavam em uníssono. Desde então, a floresta ao redor absorveu essa harmonia. Os aurivellianos não constroem com pedra — usam madeira viva que cresce conforme a música que tocam. Cada pessoa tem uma "melodia pessoal" que reflete sua alma.'},
+  {id:'selah',name:'Sélah',icon:'🌄',attr:'Sabedoria',virtude:'Paz',cor:'#a9d3df',
+   phrase:'"No silêncio, encontra-se a resposta."',
+   culture:'Monges, meditadores e eremitas. Uma cultura de introspecção e equilíbrio. Não buscam poder — buscam compreensão. Sua arquitetura é minimalista, esculpida nas montanhas.',
+   lore:'O fragmento de Sélah não brilha — ele pulsa, como uma respiração. Os selahitas acreditam que o mundo foi criado em ciclos, e que cada pessoa pode aprender a fluir com eles. Seus mosteiros nas montanhas são centros de estudo do "Fluxo da Criação", uma energia que conecta todas as coisas.'},
+  {id:'knathi',name:"K'Nahti",icon:'🌿',attr:'Inteligência',virtude:'Paciência',cor:'#7ba869',
+   phrase:'"Tudo floresce no tempo certo."',
+   culture:'Uma cultura arbórea e lenta. Grandes árvores-cidades abrigam gerações. Os K\'Nahti não têm pressa — acreditam que apressar é quebrar. Usam uma tinta viva extraída de plantas para criar arte, armas e aliados.',
+   lore:'O fragmento de K\'Nahti caiu sobre a maior árvore do mundo, Ydrosyl, e enraizou-se nela. Os K\'Nahti desenvolveram uma relação simbiótica com a árvore — sua seiva é a "Tinta Viva" que usam para criar. Cada K\'Nahti nasce com uma cor de tinta única, que define seu estilo de criar.'},
+  {id:'lumivior',name:'Lumivior',icon:'⚙️',attr:'Inteligência',virtude:'Amabilidade',cor:'#63d9c4',
+   phrase:'"A tecnologia é a chave para a alma."',
+   culture:'Engenheiros e inventores. Uma sociedade nômade que viaja em cidades-máquina. Não separam vida de máquina — para eles, o éter que move seus motores é a mesma energia que move o corpo.',
+   lore:'O fragmento de Lumivior foi encontrado por um mecânico que tentava criar um motor perpétuo. Quando tocou o fragmento, sua máquina ganhou vida. Desde então, os lumivorianos fundiram tecnologia e éter em uma única filosofia: "Energia Vital". Suas cidades são gigantescos mecanismos ambulantes.'},
+  {id:'neruviah',name:'Neruviah',icon:'🌊',attr:'Carisma',virtude:'Bondade',cor:'#3f93a8',
+   phrase:'"As marés mudam, e nós mudamos com elas."',
+   culture:'Nômades do mar e do deserto. Adaptam-se a qualquer ambiente seguindo os ciclos da natureza. Sua sociedade é fluida — não têm cidades fixas, apenas caravanas e navios.',
+   lore:'O fragmento de Neruviah caiu no oceano e foi encontrado por uma tribo nômade que seguia as baleias. Desde então, eles aprenderam a "sentir" as marés da alma — estados de espírito que trazem diferentes bênçãos. Um neruviano pode mudar sua disposição conforme a situação, como o mar muda suas ondas.'},
+  {id:'ringendah',name:'Ringendah',icon:'💍',attr:'Inteligência',virtude:'Fidelidade',cor:'#a374d1',
+   phrase:'"Toda aliança é um portal."',
+   culture:'Uma cultura de estudiosos e invocadores. Constroem portais entre lugares distantes usando anéis como chaves. Sua cidade principal, Serafur, é um entrecruzamento de círculos mágicos.',
+   lore:'O fragmento de Ringendah partiu-se em três anéis antes de cair. Cada anél foi encontrado por um estudioso diferente, e eles discordam sobre como usá-los. Até hoje, os três anéis são mantidos separados, e cada escola de pensamento em Ringendah segue um deles.'},
+  {id:'argolis',name:'Argolis',icon:'🌙',attr:'Sabedoria',virtude:'Mansidão',cor:'#7c86ba',
+   phrase:'"Sob as duas luas, a verdade se revela."',
+   culture:'Uma sociedade de estrategistas e observadores. Argolis tem duas luas no céu, e seus habitantes desenvolveram uma percepção aguçada do tempo e do espaço. São conhecidos como os melhores analistas táticos do mundo.',
+   lore:'O fragmento de Argolis caiu em um deserto de cristal que reflete a luz das duas luas infinitamente. Os argolianos aprenderam a ler padrões em tudo — no movimento das estrelas, nas ondas do deserto, nos passos de um inimigo. Sua "Disciplina Marcial" é lendária.'},
+  {id:'sphalidor',name:'Sphalidor',icon:'💎',attr:'Constituição',virtude:'Domínio Próprio',cor:'#c987ab',
+   phrase:'"O som certo quebra qualquer montanha."',
+   culture:'Mineiros e artesãos de cristal. Descobriram que tudo vibra em uma frequência específica. Usam a "Ressonância" para extrair minérios, construir armas e até curar. Suas cavernas-cidades são obras de arte acústica.',
+   lore:'O fragmento de Sphalidor foi encontrado nas profundezas de uma caverna, incrustado em um cristal que cantava. Os sphalorianos desenvolveram a "Ressonância" — a arte de vibrar objetos e seres em sua frequência ideal. Um guerreiro sphaloriano pode fazer uma armadura vibrar para torná-la mais resistente, ou uma espada vibrar para cortar melhor.'},
+];
+
+const RACES = [
+  {id:'humano',name:'Humanos',icon:'🧑',stats:'+1 em três atributos',desc:'Versáteis e adaptáveis. Encontrados em todos os reinos.'},
+  {id:'anao',name:'Anões',icon:'⛰️',stats:'+2 CON, +1 FOR',desc:'Resistentes e tradicionais. Mestres da metalurgia.'},
+  {id:'elfo',name:'Elfos',icon:'🧝',stats:'+2 DES, +1 INT',desc:'Graciosos e longevos. Conexão com a magia natural.'},
+  {id:'gnomo',name:'Gnomos',icon:'🔧',stats:'+2 INT, +1 CON',desc:'Engenhosos e curiosos. Amantes de invenções.'},
+  {id:'meio-elfo',name:'Meio-Elfos',icon:'🕊️',stats:'+2 CAR, +1 em dois',desc:'Ponte entre dois mundos. Diplomacia nata.'},
+  {id:'halfling',name:'Halflings',icon:'🍀',stats:'+2 DES, +1 CAR',desc:'Sortudos e pacatos. Aventura é exceção.'},
+  {id:'draconato',name:'Draconatos',icon:'🐉',stats:'+2 FOR, +1 CAR',desc:'Herança dracônica. Sopro elemental e orgulho.'},
+  {id:'tiefling',name:'Tieflings',icon:'🔥',stats:'+2 CAR, +1 INT',desc:'Herança infernal. Olhos que viram o outro lado.'},
+  {id:'meio-orc',name:'Meio-Orcs',icon:'💪',stats:'+2 FOR, +1 CON',desc:'Força bruta e resistência. Superação constante.'},
+  {id:'marmoreano',name:'Marmoreanos',icon:'🗿',stats:'+2 CON, +1 SAB',desc:'Pele de pedra, paciência de montanha. Nativos de Sphalidor.'},
+  {id:'aetheriano',name:'Aetherianos',icon:'✨',stats:'+2 INT, +1 CAR',desc:'Leves como luz. Nativos de Lumivior, conexão com o éter.'},
+  {id:'etherborn',name:'Etherborn',icon:'🌌',stats:'+2 CAR, +1 DES',desc:'Nascidos do éter entre mundos. Raros e enigmáticos.'},
+];
+
+const ARCHETYPES = [
+  {id:'guerreiro',name:'Guerreiro',icon:'⚔️',function:'Combate físico e dano',pv:10,pvd:'d10',pvavg:6,manaBase:3,
+   desc:'Focado em ataques poderosos, resistência e versatilidade com armas. É o coração da linha de frente.',
+   ex:[
+     {reino:'havendor',exemplo:'Cavaleiro Radiante — espada imbuída de luz'},
+     {reino:'aurivelle',exemplo:'Duelista Performático — golpes coreografados'},
+     {reino:'selah',exemplo:'Monge da Paz — combate desarmado fluido'},
+     {reino:'knathi',exemplo:'Guerreiro-Árvore — força da natureza'},
+     {reino:'lumivior',exemplo:'Cavaleiro de Éter — armadura elétrica'},
+     {reino:'neruviah',exemplo:'Marujo das Tempestades — luta nas marés'},
+     {reino:'ringendah',exemplo:'Cavaleiro Arcano — anéis que fortalecem armas'},
+     {reino:'argolis',exemplo:'Estrategista Lunar — precisão cirúrgica'},
+     {reino:'sphalidor',exemplo:'Guerreiro Ressonante — vibração que corta'},
+   ]},
+  {id:'baluarte',name:'Baluarte',icon:'🛡️',function:'Defesa e proteção',pv:12,pvd:'d12',pvavg:7,manaBase:3,
+   desc:'Mestre da defesa. Protege aliados, absorve dano e controla o campo de batalha.',
+   ex:[
+     {reino:'havendor',exemplo:'Paladino da Aurora — escudo de luz'},
+     {reino:'aurivelle',exemplo:'Guardião da Melodia — proteção rítmica'},
+     {reino:'selah',exemplo:'Muro de Sélah — defesa meditativa'},
+     {reino:'knathi',exemplo:'Tronco da Vida — enraizado e imóvel'},
+     {reino:'lumivior',exemplo:'Torre de Éter — barreira tecnomágica'},
+     {reino:'neruviah',exemplo:'Recife Coral — defesa fluida'},
+     {reino:'ringendah',exemplo:'Guardião do Portal — escudo dimensional'},
+     {reino:'argolis',exemplo:'Muralha Lunar — defesa tática'},
+     {reino:'sphalidor',exemplo:'Torre Ressonante — vibração defensiva'},
+   ]},
+  {id:'vigilante',name:'Vigilante',icon:'🗡️',function:'Mobilidade e precisão',pv:8,pvd:'d8',pvavg:5,manaBase:4,
+   desc:'Ágil e mortal. Ataques precisos, furtividade e mobilidade. Especialista em flanqueamento.',
+   ex:[
+     {reino:'havendor',exemplo:'Vigia Radiante — luz que revela inimigos'},
+     {reino:'aurivelle',exemplo:'Artista das Sombras — dança entre golpes'},
+     {reino:'selah',exemplo:'Vento de Sélah — movimento fluido'},
+     {reino:'knathi',exemplo:'Predador Silencioso — camuflagem natural'},
+     {reino:'lumivior',exemplo:'Fantasma de Éter — invisibilidade digital'},
+     {reino:'neruviah',exemplo:'Onda Silenciosa — ataque das marés'},
+     {reino:'ringendah',exemplo:'Ladrão de Portais — teletransporte tático'},
+     {reino:'argolis',exemplo:'Infiltrador Lunar — análise + furtividade'},
+     {reino:'sphalidor',exemplo:'Lâmina Ressonante — corte vibratório'},
+   ]},
+  {id:'arcanista',name:'Arcanista',icon:'🔮',function:'Conjuração e conhecimento',pv:6,pvd:'d6',pvavg:4,manaBase:5,
+   desc:'Conjurador puro. Domina magias dos mais variados tipos. Poderia de fogo, gelo, eletricidade ou luz.',
+   ex:[
+     {reino:'havendor',exemplo:'Sacerdote Radiante — luz purificadora'},
+     {reino:'aurivelle',exemplo:'Bardo da Melodia — magia musical'},
+     {reino:'selah',exemplo:'Sábio do Fluxo — magia meditativa'},
+     {reino:'knathi',exemplo:'Druida das Cores — tinta viva mágica'},
+     {reino:'lumivior',exemplo:'Tecnomago — éter e código'},
+     {reino:'neruviah',exemplo:'Xamã das Marés — magia elemental'},
+     {reino:'ringendah',exemplo:'Mago dos Anéis — portais e invocação'},
+     {reino:'argolis',exemplo:'Ilusionista Lunar — mente e percepção'},
+     {reino:'sphalidor',exemplo:'Cristalino — magia de ressonância'},
+   ]},
+  {id:'creator',name:'Creator',icon:'⚙️',function:'Invenções e utilidade',pv:8,pvd:'d8',pvavg:5,manaBase:5,
+   desc:'Inventor e invocador. Cria aliados, itens e ferramentas no momento. Versatilidade é sua marca.',
+   ex:[
+     {reino:'havendor',exemplo:'Forjador de Luz — drones radiantes'},
+     {reino:'aurivelle',exemplo:'Artesão da Melodia — instrumentos vivos'},
+     {reino:'selah',exemplo:'Escultor do Silêncio — criações meditativas'},
+     {reino:'knathi',exemplo:'Pintor de Tinta Viva — criaturas pintadas'},
+     {reino:'lumivior',exemplo:'Engenheiro do Éter — construtos mecânicos'},
+     {reino:'neruviah',exemplo:'Construtor de Marés — criações aquáticas'},
+     {reino:'ringendah',exemplo:'Invocador de Anéis — portais de criação'},
+     {reino:'argolis',exemplo:'Arquiteto Lunar — construções táticas'},
+     {reino:'sphalidor',exemplo:'Sintetizador Ressonante — cristais vivos'},
+   ]},
+];
+
+const CONVICTIONS = {
+  Justiça:{desc:'Buscar o equilíbrio e a retidão, mesmo quando é mais fácil desviar o olhar.',ex:'Defender um desconhecido injustiçado, mesmo contra um aliado.'},
+  Misericórdia:{desc:'Preferir perdoar a punir, acreditando que todos merecem uma chance.',ex:'Poupár um inimigo derrotado que implora por clemência.'},
+  Sacrifício:{desc:'Dar-se pelos outros, colocando o bem alheio acima do próprio.',ex:'Lança-se na frente de um golpe mortal para salvar um companheiro.'},
+  Verdade:{desc:'Honrar a sinceridade acima de tudo, mesmo quando a mentira seria mais cômoda.',ex:'Revelar um segredo que poderia manter escondido, pois foi questionado diretamente.'},
+  Esperança:{desc:'Nunca desistir, mesmo nas trevas mais profundas.',ex:'Inspirar os outros a continuar quando tudo parece perdido.'},
+  Humildade:{desc:'Agir sem buscar reconhecimento ou aplausos.',ex:'Realizar uma grande façanha e não contar a ninguém.'},
+  Fidelidade:{desc:'Manter-se leal aos seus juramentos e às pessoas que ama.',ex:'Cumprir uma promessa feita a um amigo falecido, mesmo com custo pessoal.'},
+  Compaixão:{desc:'Sentir a dor alheia e agir para aliviá-la.',ex:'Ajudar um estranho necessitado sem esperar recompensa.'},
+  Perseverança:{desc:'Não recuar diante dos obstáculos, por maiores que sejam.',ex:'Tentar novamente após uma derrota humilhante.'},
+  Sabedoria:{desc:'Buscar conhecimento e discernimento antes de agir.',ex:'Ouvir todas as partes envolvidas antes de tomar uma decisão.'},
+};
+const CORRUPTIONS = {
+  Orgulho:{desc:'Acreditar-se superior aos outros e não admitir erros.',ex:'Recusar ajuda mesmo estando em apuros, por vaidade.'},
+  Ganância:{desc:'Desejar mais do que o necessário, sem se importar com o custo.',ex:'Pegar um tesouro que pertence a alguém, justificando que "precisa mais".'},
+  Ira:{desc:'Deixar a raiva assumir o controle, agindo por impulso destrutivo.',ex:'Atacar alguém que o insultou sem pensar nas consequências.'},
+  Inveja:{desc:'Cobiçar o que os outros têm, seja bens, talento ou reconhecimento.',ex:'Sabotar um rival para que ele não brilhe.'},
+  Vaidade:{desc:'Viver pela aparência e pelo reconhecimento alheio.',ex:'Arriscar a missão para ser visto como herói.'},
+  Medo:{desc:'Paralisar-se diante do perigo ou da incerteza.',ex:'Fugir de uma batalha importante para salvar a própria pele.'},
+  Controle:{desc:'Precisar dominar tudo e todos ao redor.',ex:'Manipular aliados para que façam exatamente o que você quer.'},
+  Vingança:{desc:'Nunca esquecer uma ofensa e buscar retribuição.',ex:'Perseguir alguém que o traiu, mesmo que isso custe caro.'},
+  Apatia:{desc:'Não se importar com nada ao redor, isolando-se emocionalmente.',ex:'Ignorar o sofrimento alheio porque "não é seu problema".'},
+  Ambição:{desc:'Buscar poder a qualquer custo, sem limites morais.',ex:'Sacrificar princípios ou pessoas em troca de avanço pessoal.'},
+};
+const ATTR_COST = {8:0,9:1,10:2,11:3,12:4,13:5,14:7,15:9};
+
+const ATTR_PRESETS = {
+  guerreiro:{for:15,des:13,con:14,int:8,sab:12,car:10},
+  baluarte:{for:14,des:10,con:15,int:8,sab:12,car:10},
+  vigilante:{for:8,des:15,con:12,int:10,sab:14,car:10},
+  arcanista:{for:8,des:12,con:10,int:15,sab:13,car:12},
+  creator:{for:8,des:14,con:12,int:15,sab:10,car:12},
+};
+
+// ===== STATE =====
+let state = {
+  step:0,name:'',realm:null,archetype:null,race:null,
+  attrs:{},convic:[],tempt:[],attrMode:'preset',
+  loreRealm:null,
+  convModal:null,
+};
+
+// ===== STEPS =====
+const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Convicções'},{label:'Ficha'}];
+
+// ===== RENDER =====
+function render(){
+  const s=state.step;
+  document.getElementById('steps').innerHTML=STEPS.map((st,i)=>`
+    <div class="step-dot ${i==s?'active':i<s?'done':''}">${i<s?'✓':i+1}</div>
+  `).join('');
+  document.getElementById('app').innerHTML=`<div class="screen active">${screens[s]()}</div>`;
+}
+
+function go(n){state.step=n;render()}
+
+// ===== SCREENS =====
+const screens = [
+  // 0 Welcome
+  ()=>`
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:75vh;text-align:center">
+      <div class="fruit-icon">✦</div>
+      <div class="title">
+        <h1>Os 9 Reinos</h1>
+        <p>Criação de Personagem</p>
+      </div>
+      <p class="realm-quote" style="margin:16px 0;max-width:340px">
+        "O Fruto se dividiu em nove partes, e ao redor de cada uma, nasceu um reino."
+      </p>
+      <p style="color:var(--text2);font-size:13px;margin-bottom:6px;max-width:320px;line-height:1.5">
+        O Caos espreita nas frestas do mundo. Escolha seu reino, seu caminho e sua raça — e junte-se à guarda do Fruto.
+      </p>
+      <button class="btn btn-primary" onclick="go(1)" style="margin-top:14px">✦ Começar</button>
+      <button class="btn btn-secondary" onclick="generateCharacter()" style="margin-top:10px">🎲 Gerar Aleatório</button>
+      <a href="cronica-dos-nove-reinos.html" style="margin-top:18px;color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Não conhece a história ainda? Leia a Crônica →</a>
+    </div>
+  `,
+
+  // 1 Name
+  ()=>`
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh">
+      <p style="color:var(--text2);margin-bottom:16px;font-size:14px">Qual o nome do seu personagem?</p>
+      <input class="input-name" value="${state.name}" oninput="state.name=this.value" id="nameIn" placeholder="Nome do Herói" maxlength="30" autofocus>
+      <p class="helper">Pressione Enter para avançar</p>
+      <div class="btn-group" style="margin-top:36px;width:100%">
+        <button class="btn btn-secondary" onclick="go(0)">Voltar</button>
+        <button class="btn btn-primary" onclick="nextName()">Próximo →</button>
+      </div>
+    </div>
+  `,
+
+  // 2 Realm
+  ()=>{
+    const selRealm=REALMS.find(r=>r.id==state.realm);
+    return `<div class="title"><h2>De onde você vem?</h2><p>Cada lugar carrega uma história</p></div>
+      <div class="card-grid c2">
+        ${REALMS.map(r=>`
+          <div class="card ${state.realm==r.id?'selected':''}" style="--k:${r.cor}" onclick="selectRealm('${r.id}')" role="button" tabindex="0">
+            <div class="icon">${r.icon}</div>
+            <div class="name">${r.name}</div>
+            <div class="virtude-tag">${r.virtude}</div>
+            <div class="sub" style="font-style:italic;color:var(--gold-dim);font-size:10px;margin-top:4px">${r.phrase}</div>
+          </div>
+        `).join('')}
+      </div>
+      ${selRealm?`
+        <div style="margin-top:14px;background:var(--bg2);border-radius:var(--radius);padding:16px;border:1px solid var(--bg4);border-left:3px solid ${selRealm.cor};animation:fadeIn .3s">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:24px">${selRealm.icon}</span>
+            <div><span style="font-weight:600;font-size:15px">${selRealm.name}</span><span style="color:${selRealm.cor};font-size:11px;margin-left:8px;letter-spacing:.05em;text-transform:uppercase">${selRealm.virtude}</span></div>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.5">${selRealm.culture}</p>
+          <button class="more-btn" style="margin-top:8px;background:none;border:none;color:var(--gold);font-size:12px;cursor:pointer;padding:4px 0" onclick="openLore('${selRealm.id}')">📖 Ler a história completa →</button>
+        </div>
+      `:''}
+      ${state.loreRealm?loreModal(state.loreRealm):''}
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(1)">Voltar</button>
+        <button class="btn btn-primary" onclick="go(3)" ${!state.realm?'disabled':''}>Próximo →</button>
+      </div>`;
+  },
+
+  // 3 Archetype
+  ()=>{
+    const realm=REALMS.find(r=>r.id==state.realm);
+    return `<div class="title"><h2>Escolha seu Caminho</h2><p>Como você enfrenta o mundo</p></div>
+      ${ARCHETYPES.map(a=>{
+        const sel=state.archetype==a.id;
+        const ex=a.ex.find(e=>e.reino==state.realm);
+        return `<div class="card ${sel?'selected':''}" onclick="select('archetype','${a.id}')" role="button" tabindex="0" style="display:flex;align-items:center;text-align:left;padding:14px;margin-bottom:8px;gap:12px">
+          <div style="font-size:30px">${a.icon}</div>
+          <div style="flex:1">
+            <div class="name" style="font-size:15px">${a.name}</div>
+            <div class="sub" style="margin-top:2px">${a.function}</div>
+            <div style="margin:4px 0;display:flex;gap:6px">
+              <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">PV ${a.pvd}</span>
+              <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">Mana ×${a.manaBase}</span>
+            </div>
+            ${ex?`<div class="arch-hint">Ex: ${ex.exemplo}</div>`:''}
+            ${sel?`<p style="font-size:11px;color:var(--text2);margin-top:6px;line-height:1.4">${a.desc}</p>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="go(2)">Voltar</button>
+      <button class="btn btn-primary" onclick="go(4)" ${!state.archetype?'disabled':''}>Próximo →</button>
+    </div>`;
+  },
+
+  // 4 Race
+  ()=>`
+    <div class="title"><h2>Escolha sua Raça</h2><p>Sua herança e biologia</p></div>
+    <div class="card-grid c3">
+      ${RACES.map(r=>`
+        <div class="card ${state.race==r.id?'selected':''}" onclick="select('race','${r.id}')" role="button" tabindex="0">
+          <div class="icon">${r.icon}</div>
+          <div class="name">${r.name}</div>
+          <div class="sub">${r.stats}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="go(3)">Voltar</button>
+        <button class="btn btn-primary" onclick="go(5)" ${!state.race?'disabled':''}>Próximo →</button>
+    </div>
+  `,
+
+  // 5 Attributes
+  ()=>{
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const preset=ATTR_PRESETS[state.archetype];
+    const usePreset=state.attrMode=='preset';
+    const a=usePreset?{...preset}:state.attrs;
+    if(Object.keys(state.attrs).length==0&&state.attrMode=='manual')state.attrs={for:8,des:8,con:8,int:8,sab:8,car:8};
+    if(usePreset)Object.assign(state.attrs,preset);
+
+    const baseCost=v=>ATTR_COST[v]||0;
+    const spent=baseCost(a.for)+baseCost(a.des)+baseCost(a.con)+baseCost(a.int)+baseCost(a.sab)+baseCost(a.car);
+    const remaining=27-spent;
+    const canUp=v=>v<15&&remaining>0;
+    const canDown=v=>v>8;
+    const mod=v=>Math.floor((v-10)/2);
+    const names={for:'FOR',des:'DES',con:'CON',int:'INT',sab:'SAB',car:'CAR'};
+
+    return `<div class="title"><h2>Atributos</h2><p>Distribua ${remaining<0?0:remaining} pontos — ou use um padrão</p></div>
+      <div class="preset-bar">
+        <button class="preset-btn ${usePreset?'active':''}" onclick="applyPreset()">✦ ${arch.name} Padrão</button>
+        <button class="preset-btn ${!usePreset?'active':''}" onclick="editManual()">✎ Editar Manual</button>
+      </div>
+      <div class="points">${Math.max(0,remaining)} pontos restantes</div>
+      ${Object.keys(names).map(k=>`
+        <div class="attr-row">
+          <div class="attr-label">${names[k]}</div>
+          <div class="attr-bar"><div class="attr-fill" style="width:${Math.min(100,(a[k]-8)/7*100)}%"></div></div>
+          <div class="attr-val">${a[k]}</div>
+          <div class="attr-mod ${mod(a[k])>=0?'pos':'neg'}">${mod(a[k])>=0?'+':''}${mod(a[k])}</div>
+          <div class="attr-btns">
+            <button onclick="adjAttr('${k}',-1)" ${canDown(a[k])?'':'disabled'}>−</button>
+            <button onclick="adjAttr('${k}',1)" ${canUp(a[k])?'':'disabled'}>+</button>
+          </div>
+        </div>
+      `).join('')}
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(4)">Voltar</button>
+        <button class="btn btn-primary" onclick="go(6)">Convicções →</button>
+      </div>`;
+  },
+
+  // 6 Convicções e Corrupções
+  ()=>{
+    const cKeys=Object.keys(CONVICTIONS);
+    const tKeys=Object.keys(CORRUPTIONS);
+    return `<div class="title">
+      <h2>⚖️ Convicções e Corrupções</h2>
+      <p>A bússola moral do seu personagem — escolha com sabedoria</p>
+    </div>
+    <div style="margin-bottom:12px">
+      <p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Convicções (escolha 3)</p>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">São os valores que seu personagem defende acima de tudo.</p>
+      ${cKeys.map(k=>{
+        const sel=state.convic.includes(k);
+        return `<div class="conv-card ${sel?'selected':''}" onclick="toggle('convic','${k}',3)" role="button" tabindex="0">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-weight:600;font-size:14px;color:var(--gold)">${k}</span>
+            <span style="font-size:11px;color:${sel?'var(--gold)':'var(--text2)'}">${sel?'✓ Selecionado':'Clique para escolher'}</span>
+          </div>
+          <p style="font-size:12px;color:var(--text);margin:4px 0;line-height:1.4">${CONVICTIONS[k].desc}</p>
+          <p style="font-size:11px;color:var(--text2);font-style:italic">Ex: ${CONVICTIONS[k].ex}</p>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="margin-bottom:12px">
+      <p style="font-size:12px;color:var(--red);font-weight:600;margin-bottom:8px">Corrupções (escolha 2)</p>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Fraquezas ocultas que seu personagem carrega, mesmo que tente esconder.</p>
+      ${tKeys.map(k=>{
+        const sel=state.tempt.includes(k);
+        return `<div class="conv-card ${sel?'selected corrupt':''}" onclick="toggle('tempt','${k}',2)" role="button" tabindex="0">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-weight:600;font-size:14px;color:var(--red)">${k}</span>
+            <span style="font-size:11px;color:${sel?'var(--gold)':'var(--text2)'}">${sel?'✓ Selecionado':'Clique para escolher'}</span>
+          </div>
+          <p style="font-size:12px;color:var(--text);margin:4px 0;line-height:1.4">${CORRUPTIONS[k].desc}</p>
+          <p style="font-size:11px;color:var(--text2);font-style:italic">Ex: ${CORRUPTIONS[k].ex}</p>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="go(5)">← Atributos</button>
+      <button class="btn btn-primary" onclick="go(7)" ${state.convic.length<3||state.tempt.length<2?'disabled':''}>Ver Ficha →</button>
+    </div>`;
+  },
+
+  // 7 Final Sheet
+  ()=>{
+    const race=RACES.find(r=>r.id==state.race);
+    const realm=REALMS.find(r=>r.id==state.realm);
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const a=state.attrs;
+    const mod=v=>Math.floor((v-10)/2);
+    const intMod=mod(a.int),conMod=mod(a.con),dexMod=mod(a.des),sabMod=mod(a.sab),forMod=mod(a.for),carMod=mod(a.car);
+    const nv=3;
+    const base=arch.manaBase;
+    const mana=Math.max(1,nv+intMod)*base;
+    const pv=arch.pv+conMod+(nv-1)*(arch.pvavg+conMod);
+    const ca=10+dexMod;
+    const inic=dexMod;
+
+    return `<div class="title"><h2>${state.name||'Herói'}</h2><p style="font-size:12px">${race?.icon} ${race?.name||'?'} · ${realm?.icon} ${realm?.name||'?'} · ${arch?.icon} ${arch?.name||'?'}</p></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val">${pv}</div><div class="stat-label">PV</div></div>
+        <div class="stat-card"><div class="stat-val">${mana}</div><div class="stat-label">Mana</div></div>
+        <div class="stat-card"><div class="stat-val">${ca}</div><div class="stat-label">CA</div></div>
+        <div class="stat-card"><div class="stat-val">${inic>=0?'+':''}${inic}</div><div class="stat-label">Iniciativa</div></div>
+      </div>
+      <div class="result-card"><h3>Atributos</h3><div class="result-grid">
+        ${['for','des','con','int','sab','car'].map(k=>`<span class="label">${k.toUpperCase()}</span><span class="val">${a[k]} (${mod(a[k])>=0?'+':''}${mod(a[k])})</span>`).join('')}
+      </div></div>
+      <div class="result-card"><h3>Origem · Caminho · Raça</h3><div class="result-grid">
+        <span class="label">Origem</span><span class="val">${realm?.icon||''} ${realm?.name||'—'}</span>
+        <span class="label">Caminho</span><span class="val">${arch?.icon||''} ${arch?.name||'—'}</span>
+        <span class="label">Raça</span><span class="val">${race?.icon||''} ${race?.name||'—'}</span>
+      </div></div>
+      <div class="result-card"><h3>Mana</h3><div class="result-grid">
+        <span class="label">Fórmula</span><span class="val">(Nv ${nv} + ${intMod>=0?'+':''}${intMod}) × ${base}</span>
+        <span class="label">Total</span><span class="val">${mana}</span>
+      </div></div>
+      <div class="result-card">
+        <h3>⚖️ Convicções</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+          ${state.convic.map(c=>`<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--gold-dim);color:var(--gold)">${c}</span>`).join('')}
+        </div>
+      </div>
+      <div class="result-card">
+        <h3>⚠️ Corrupções</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+          ${state.tempt.map(t=>`<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--red);color:var(--red)">${t}</span>`).join('')}
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(6)">← Convicções</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Exportar PDF</button>
+        <button class="btn btn-secondary" onclick="resetAll()">🔄 Novo</button>
+      </div>
+      <div style="text-align:center;margin-top:16px">
+        <a href="cronica-dos-nove-reinos.html" style="color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Reviver a Crônica dos Nove Reinos →</a>
+      </div>
+      ${state.convModal?convModal():''}`;
+  }
+];
+
+// ===== RANDOM GENERATOR =====
+const NAMES = [
+  'Aelar','Bianca','Caelum','Dante','Elara','Finn','Gwyn','Halia','Ignis','Juno',
+  'Kael','Lyra','Mira','Nox','Ori','Pietra','Quinn','Riven','Sera','Talus',
+  'Uma','Valen','Wren','Xara','Yuki','Zephyr','Aldric','Breeze','Coral','Dusk',
+  'Echo','Flint','Gale','Haven','Ivy','Jade','Kai','Lark','Moss','Nyx',
+  'Onyx','Pike','Rain','Sol','Tide','Vale','Wisp','Zara','Aria','Bard',
+  'Cinder','Dove','Ember','Frost','Glimmer','Hollow','Iris','Jasper','Kestrel','Luna',
+  'Meridian','Nimbus','Orion','Petal','Raven','Shade','Tempest','Umbra','Vesper','Wolf',
+];
+
+function generateCharacter(){
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const name = pick(NAMES);
+  const realmId = pick(REALMS).id;
+  const archId = pick(ARCHETYPES).id;
+  const raceId = pick(RACES).id;
+  const preset = ATTR_PRESETS[archId];
+  
+  // Pick random convictions and temptations
+  const cKeys=Object.keys(CONVICTIONS);
+  const tKeys=Object.keys(CORRUPTIONS);
+  const shuffledC = [...cKeys].sort(()=>Math.random()-.5);
+  const shuffledT = [...tKeys].sort(()=>Math.random()-.5);
+  
+  state = {
+    step: 7,
+    name,
+    realm: realmId,
+    archetype: archId,
+    race: raceId,
+    attrs: {...preset},
+    convic: shuffledC.slice(0,3),
+    tempt: shuffledT.slice(0,2),
+    attrMode: 'preset',
+    loreRealm: null,
+    convModal: null,
+  };
+  render();
+}
+
+function applyPreset(){
+  state.attrMode='preset';
+  state.attrs={...ATTR_PRESETS[state.archetype]};
+  render();
+}
+function editManual(){
+  state.attrMode='manual';
+  state.attrs={for:8,des:8,con:8,int:8,sab:8,car:8};
+  render();
+}
+
+// ===== HELPERS =====
+function select(type,id){state[type]=state[type]==id?null:id;render()}
+
+function selectRealm(id){
+  state.realm=state.realm==id?null:id;
+  state.archetype=null; // reset to update examples
+  state.loreRealm=null;
+  render();
+}
+
+function loreModal(id){
+  const r=REALMS.find(x=>x.id==id);
+  if(!r)return'';
+  return `<div onclick="closeLore()" style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s">
+    <div onclick="event.stopPropagation()" style="background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto;border:1px solid ${r.cor}66">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span style="font-size:28px">${r.icon}</span>
+        <div><h3 style="color:${r.cor};font-size:18px">${r.name}</h3><span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)">${r.virtude}</span></div>
+      </div>
+      <p style="font-style:italic;color:var(--gold-dim);font-size:13px;margin-bottom:10px">${r.phrase}</p>
+      <p style="color:var(--text);font-size:13px;line-height:1.6;margin-bottom:10px">${r.culture}</p>
+      <div style="border-top:1px solid var(--bg4);padding-top:10px">
+        <p style="font-size:13px;color:var(--text);line-height:1.6">${r.lore}</p>
+      </div>
+      <button class="btn btn-secondary" onclick="closeLore()" style="margin-top:14px;width:100%">Fechar</button>
+    </div>
+  </div>`;
+}
+
+function openLore(id){state.loreRealm=id;render()}
+function closeLore(){state.loreRealm=null;render()}
+
+function openConvModal(){state.convModal=true;render()}
+function closeConvModal(){state.convModal=null;render()}
+
+function convModal(){
+  return `<div onclick="closeConvModal()" class="modal-overlay">
+    <div onclick="event.stopPropagation()" class="modal-content">
+      <h3 style="color:var(--gold);font-size:18px;margin-bottom:8px">⚖️ Convicções e Corrupções</h3>
+      <p style="font-style:italic;color:var(--gold-dim);font-size:13px;margin-bottom:10px">A bússola invisível do seu personagem.</p>
+
+      <p style="color:var(--text);font-size:13px;line-height:1.6;margin-bottom:12px">
+        <strong style="color:var(--gold)">Convicções</strong> são os princípios que guiam seu personagem — 
+        valores inegociáveis que definem quem ele é quando ninguém está olhando. 
+        Escolha <strong>3</strong> que representam o que ele mais defende.
+      </p>
+      <p style="color:var(--text);font-size:13px;line-height:1.6;margin-bottom:12px">
+        <strong style="color:var(--red)">Corrupções</strong> são fraquezas ocultas — 
+        impulsos que o personagem carrega consigo, mesmo que tente esconder. 
+        Escolha <strong>2</strong> que representam suas maiores vulnerabilidades.
+      </p>
+
+      <div style="border-top:1px solid var(--bg4);padding-top:10px;margin-bottom:10px">
+        <p style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px"><strong>📌 Como funciona no jogo?</strong></p>
+        <p style="font-size:12px;color:var(--text2);line-height:1.5">
+          Durante a campanha, o Mestre pode recompensar seu personagem quando ele age 
+          de acordo com suas Convicções, ou desafiá-lo com suas Corrupções em momentos 
+          críticos. Este é um sistema puramente narrativo — sem bônus mecânicos diretos — 
+          para incentivar roleplay profundo e escolhas significativas.
+        </p>
+        <p style="font-size:12px;color:var(--text2);line-height:1.5;margin-top:6px">
+          O Mestre acompanha secretamente o peso de cada escolha. Quando uma Corrupção 
+          se acumula demais, pode levar a consequências narrativas — ou, se resistida, 
+          a momentos de crescimento.
+        </p>
+      </div>
+
+      <button class="btn btn-secondary" onclick="closeConvModal()" style="width:100%">Entendi!</button>
+    </div>
+  </div>`;
+}
+
+function nextName(){
+  if(state.name.trim())go(2);
+  else document.getElementById('nameIn')?.focus();
+}
+
+function adjAttr(k,delta){
+  if(state.attrMode=='preset')state.attrMode='manual';
+  const v=state.attrs[k]+delta;
+  if(v<8||v>15)return;
+  const oldCost=ATTR_COST[state.attrs[k]];
+  const newCost=ATTR_COST[v];
+  if(delta>0){
+    const spent=Object.entries(state.attrs).reduce((s,[key,val])=>s+ATTR_COST[val],0);
+    if(spent+newCost-oldCost>27)return;
+  }
+  state.attrs[k]=v;
+  render();
+}
+
+function toggle(type,name,limit){
+  const arr=state[type];
+  const idx=arr.indexOf(name);
+  if(idx>=0)arr.splice(idx,1);
+  else if(arr.length<limit)arr.push(name);
+  render();
+}
+
+function resetAll(){
+  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null};
+  render();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key=='Enter'&&state.step==1){nextName();return}
+  if((e.key=='Enter'||e.key==' ')&&document.activeElement?.getAttribute('role')=='button'){
+    e.preventDefault();
+    document.activeElement.click();
+  }
+});
+
+render();
+
+// ===== AMBIENT EMBERS (matches the Chronicle page) =====
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const emberCanvas = document.getElementById('embers');
+const ectx = emberCanvas.getContext('2d');
+let EW,EH,embers=[];
+function emberResize(){EW=emberCanvas.width=innerWidth;EH=emberCanvas.height=innerHeight}
+addEventListener('resize',emberResize);emberResize();
+function mkEmber(){return{x:Math.random()*EW,y:EH+Math.random()*120,r:Math.random()*1.4+.4,spd:Math.random()*.3+.1,drift:(Math.random()-.5)*.2,alpha:Math.random()*.4+.1,flicker:Math.random()*.02+.006,phase:Math.random()*Math.PI*2}}
+const EN=reduceMotion?0:(innerWidth<700?10:20);
+for(let i=0;i<EN;i++)embers.push(mkEmber());
+function emberTick(){
+  ectx.clearRect(0,0,EW,EH);
+  embers.forEach(p=>{
+    p.y-=p.spd;p.x+=p.drift;p.phase+=p.flicker;
+    if(p.y<-10){Object.assign(p,mkEmber());p.y=EH+10}
+    const a=p.alpha*(0.6+0.4*Math.sin(p.phase));
+    ectx.beginPath();ectx.fillStyle=`rgba(212,168,67,${a})`;ectx.arc(p.x,p.y,p.r,0,Math.PI*2);ectx.fill();
+  });
+  if(!reduceMotion)requestAnimationFrame(emberTick);
+}
+emberTick();
+</script>
+</body>
+</html>
