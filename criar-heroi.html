@@ -129,6 +129,7 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
   <div id="steps"></div>
 </div>
 <div id="app"></div>
+<input type="file" id="importFileInput" accept=".json,application/json" style="display:none" onchange="handleImportFile(event)">
 
 <script src="spells-data.js"></script>
 <script>
@@ -380,6 +381,7 @@ const screens = [
       </p>
       <button class="btn btn-primary" onclick="go(1)" style="margin-top:14px">✦ Começar</button>
       <button class="btn btn-secondary" onclick="generateCharacter()" style="margin-top:10px">🎲 Gerar Aleatório</button>
+      <button class="btn btn-secondary" onclick="triggerImportFile()" style="margin-top:10px">📂 Importar Ficha</button>
       <a href="index.html" style="margin-top:18px;color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Não conhece a história ainda? Leia a Crônica →</a>
     </div>
   `,
@@ -695,7 +697,13 @@ const screens = [
       </div>`:''}
       <div class="btn-group">
         <button class="btn btn-secondary" onclick="go(7)">← Convicções</button>
-        <button class="btn btn-primary" onclick="window.print()">🖨️ Exportar PDF</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ PDF</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="exportJSON()">💾 Exportar Ficha (JSON)</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="triggerImportFile()">📂 Importar Outra Ficha</button>
         <button class="btn btn-secondary" onclick="resetAll()">🔄 Novo</button>
       </div>
       <div style="text-align:center;margin-top:16px">
@@ -945,6 +953,89 @@ function spellModal(id){
 
 function resetAll(){
   state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null,nivel:1,spellCircle:0,spells:{truques:[],magias:[]},spellModal:null};
+  render();
+}
+
+// ===== IMPORTAR / EXPORTAR FICHA (JSON) =====
+function getExportData(){
+  return {
+    _tipo:'os9reinos-personagem',
+    _versao:1,
+    name:state.name,
+    realm:state.realm,
+    archetype:state.archetype,
+    race:state.race,
+    attrs:state.attrs,
+    attrMode:state.attrMode,
+    convic:state.convic,
+    tempt:state.tempt,
+    nivel:state.nivel,
+    spells:state.spells,
+  };
+}
+
+function exportJSON(){
+  const data=getExportData();
+  const json=JSON.stringify(data,null,2);
+  const blob=new Blob([json],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const safeName=(state.name||'heroi').trim().replace(/[^a-zA-Z0-9\u00C0-\u00FF_-]+/g,'_')||'heroi';
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`${safeName}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function triggerImportFile(){
+  document.getElementById('importFileInput').click();
+}
+
+function handleImportFile(event){
+  const file=event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      importCharacter(data);
+    }catch(err){
+      alert('Não foi possível ler este arquivo. Verifique se é uma ficha exportada em JSON válida.');
+    }
+    event.target.value='';
+  };
+  reader.onerror=()=>alert('Erro ao ler o arquivo.');
+  reader.readAsText(file);
+}
+
+function importCharacter(data){
+  if(!data||typeof data!=='object'||Array.isArray(data)){
+    alert('Arquivo inválido: não contém uma ficha reconhecível.');
+    return;
+  }
+  state={
+    step:8,
+    name:data.name||'',
+    realm:data.realm||null,
+    archetype:data.archetype||null,
+    race:data.race||null,
+    attrs:(data.attrs&&typeof data.attrs==='object')?{...data.attrs}:{},
+    convic:Array.isArray(data.convic)?data.convic:[],
+    tempt:Array.isArray(data.tempt)?data.tempt:[],
+    attrMode:data.attrMode||'preset',
+    loreRealm:null,
+    convModal:null,
+    nivel:data.nivel||1,
+    spellCircle:0,
+    spells:{
+      truques:Array.isArray(data.spells?.truques)?data.spells.truques:[],
+      magias:Array.isArray(data.spells?.magias)?data.spells.magias:[],
+    },
+    spellModal:null,
+  };
+  sanitizeSpells();
   render();
 }
 
