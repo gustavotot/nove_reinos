@@ -111,6 +111,7 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 .flex-tags .tag.limit.selected{border-color:var(--red);background:rgba(204,68,68,.15)}
 
 .arch-hint{font-size:11px;color:var(--gold-dim);margin-top:4px;font-style:italic}
+.info-btn:hover{background:var(--gold)!important;color:var(--bg)!important}
 
 .realm-quote{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold2);line-height:1.5}
 
@@ -124,11 +125,12 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 
 <canvas id="embers"></canvas>
 <div style="position:sticky;top:0;z-index:10">
-  <a class="chronicle-link" href="cronica-dos-nove-reinos.html">📖 A Crônica</a>
+  <a class="chronicle-link" href="index.html">📖 A Crônica</a>
   <div id="steps"></div>
 </div>
 <div id="app"></div>
 
+<script src="spells-data.js"></script>
 <script>
 // ===== DATA =====
 const REALMS = [
@@ -287,16 +289,67 @@ const ATTR_PRESETS = {
   creator:{for:8,des:14,con:12,int:15,sab:10,car:12},
 };
 
+// ===== PROGRESSÃO DE MAGIAS (fonte: 02 - Progressão por Arquétipo.md) =====
+// arcanista/creator: [truques, tamanhoLista, circuloMax]
+// baluarte/vigilante: [truques, circuloMax] (o "limite" é calculado via modificador)
+// guerreiro: [truques, conhecidas, circuloMax]
+const SPELL_PROGRESSION = {
+  arcanista:{1:[3,6,1],2:[3,8,1],3:[3,10,2],4:[4,12,2],5:[4,14,3],6:[4,16,3],7:[4,18,4],8:[4,20,4],9:[4,22,5],10:[5,24,5],11:[5,26,6],12:[5,28,6],13:[5,30,7],14:[5,32,7],15:[5,34,8],16:[5,36,8],17:[5,38,9],18:[5,40,9],19:[5,42,9],20:[5,44,9]},
+  creator:{1:[2,4,1],2:[2,5,1],3:[2,6,2],4:[3,7,2],5:[3,8,3],6:[3,9,3],7:[3,10,4],8:[3,11,4],9:[3,12,5],10:[4,14,5],11:[4,15,6],12:[4,16,6],13:[4,17,7],14:[4,18,7],15:[4,19,8],16:[4,20,8],17:[4,21,9],18:[4,22,9],19:[4,23,9],20:[4,24,9]},
+  baluarte:{1:[2,1],2:[2,1],3:[2,2],4:[3,2],5:[3,3],6:[3,3],7:[3,4],8:[3,4],9:[3,5],10:[4,5],11:[4,5],12:[4,5],13:[4,5],14:[4,5],15:[4,5],16:[4,5],17:[4,5],18:[4,5],19:[4,5],20:[4,5]},
+  vigilante:{1:[2,1],2:[2,1],3:[2,2],4:[3,2],5:[3,3],6:[3,3],7:[3,4],8:[3,4],9:[3,5],10:[4,5],11:[4,5],12:[4,5],13:[4,5],14:[4,5],15:[4,5],16:[4,5],17:[4,5],18:[4,5],19:[4,5],20:[4,5]},
+  guerreiro:{1:[1,0,0],2:[1,0,0],3:[1,3,1],4:[2,4,1],5:[2,4,2],6:[2,4,2],7:[2,5,2],8:[2,5,2],9:[2,5,3],10:[3,6,3],11:[3,6,3],12:[3,6,3],13:[3,6,3],14:[3,6,3],15:[3,6,3],16:[3,6,3],17:[3,6,3],18:[3,6,3],19:[3,6,3],20:[3,6,3]},
+};
+const ESCOLAS = ['Abjuração','Adivinhação','Conjuração','Encantamento','Evocação','Ilusão','Necromancia','Transmutação'];
+
+function attrMod(v){return Math.floor((v-10)/2)}
+
+// Calcula os limites de magias do personagem no nível atual
+function getSpellLimits(){
+  const archId=state.archetype, nv=state.nivel||1;
+  const row=SPELL_PROGRESSION[archId]?.[nv];
+  const a=state.attrs||{};
+  if(!row)return {truques:0,limite:0,circMax:0,limiteLabel:'Conhecidas'};
+  if(archId=='arcanista'){
+    const [truques,lista,circMax]=row;
+    const prepara=Math.max(1,nv+attrMod(a.int||10));
+    return {truques,limite:lista,circMax,limiteLabel:'No Grimório',extraLabel:'Prepara por dia',extraValue:prepara};
+  }
+  if(archId=='creator'){
+    const [truques,conhecidas,circMax]=row;
+    return {truques,limite:conhecidas,circMax,limiteLabel:'Conhecidas'};
+  }
+  if(archId=='baluarte'){
+    const [truques,circMax]=row;
+    const prepara=Math.max(1,nv+attrMod(a.car||10));
+    return {truques,limite:prepara,circMax,limiteLabel:'Preparadas hoje',note:'O Baluarte, em teoria, conhece todas as magias do seu reino — aqui você escolhe quais estão preparadas hoje.'};
+  }
+  if(archId=='vigilante'){
+    const [truques,circMax]=row;
+    const conhece=Math.max(1,Math.min(8,Math.floor(nv/2)+attrMod(a.sab||10)));
+    return {truques,limite:conhece,circMax,limiteLabel:'Conhecidas'};
+  }
+  if(archId=='guerreiro'){
+    const [truques,conhecidas,circMax]=row;
+    return {truques,limite:conhecidas,circMax,limiteLabel:'Conhecidas'};
+  }
+  return {truques:0,limite:0,circMax:0,limiteLabel:'Conhecidas'};
+}
+
 // ===== STATE =====
 let state = {
   step:0,name:'',realm:null,archetype:null,race:null,
   attrs:{},convic:[],tempt:[],attrMode:'preset',
   loreRealm:null,
   convModal:null,
+  nivel:1,
+  spellCircle:0,
+  spells:{truques:[],magias:[]},
+  spellModal:null,
 };
 
 // ===== STEPS =====
-const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Convicções'},{label:'Ficha'}];
+const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Magias'},{label:'Convicções'},{label:'Ficha'}];
 
 // ===== RENDER =====
 function render(){
@@ -327,7 +380,7 @@ const screens = [
       </p>
       <button class="btn btn-primary" onclick="go(1)" style="margin-top:14px">✦ Começar</button>
       <button class="btn btn-secondary" onclick="generateCharacter()" style="margin-top:10px">🎲 Gerar Aleatório</button>
-      <a href="cronica-dos-nove-reinos.html" style="margin-top:18px;color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Não conhece a história ainda? Leia a Crônica →</a>
+      <a href="index.html" style="margin-top:18px;color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Não conhece a história ainda? Leia a Crônica →</a>
     </div>
   `,
 
@@ -337,6 +390,16 @@ const screens = [
       <p style="color:var(--text2);margin-bottom:16px;font-size:14px">Qual o nome do seu personagem?</p>
       <input class="input-name" value="${state.name}" oninput="state.name=this.value" id="nameIn" placeholder="Nome do Herói" maxlength="30" autofocus>
       <p class="helper">Pressione Enter para avançar</p>
+
+      <div style="background:var(--bg2);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--bg4);margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:280px">
+        <span style="font-size:13px;color:var(--text2)">Nível</span>
+        <div class="attr-btns">
+          <button onclick="adjNivel(-1)" ${state.nivel<=1?'disabled':''}>−</button>
+          <span style="width:30px;text-align:center;font-weight:700;font-size:16px;color:var(--gold2)">${state.nivel}</span>
+          <button onclick="adjNivel(1)" ${state.nivel>=20?'disabled':''}>+</button>
+        </div>
+      </div>
+
       <div class="btn-group" style="margin-top:36px;width:100%">
         <button class="btn btn-secondary" onclick="go(0)">Voltar</button>
         <button class="btn btn-primary" onclick="nextName()">Próximo →</button>
@@ -457,11 +520,72 @@ const screens = [
       `).join('')}
       <div class="btn-group">
         <button class="btn btn-secondary" onclick="go(4)">Voltar</button>
-        <button class="btn btn-primary" onclick="go(6)">Convicções →</button>
+        <button class="btn btn-primary" onclick="go(6)">Magias →</button>
       </div>`;
   },
 
-  // 6 Convicções e Corrupções
+  // 6 Magias
+  ()=>{
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const lim=getSpellLimits();
+    const semAcesso = lim.circMax===0 && lim.limite===0 && lim.truques===0;
+    const circles=[0];
+    for(let c=1;c<=lim.circMax;c++)circles.push(c);
+    const activeCircle=circles.includes(state.spellCircle)?state.spellCircle:0;
+    if(activeCircle!==state.spellCircle)state.spellCircle=activeCircle;
+
+    const spellsInCircle = (typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[]).filter(s=>s.circulo===activeCircle);
+    const isTruque = activeCircle===0;
+    const selectedArr = isTruque?state.spells.truques:state.spells.magias;
+    const capacity = isTruque?lim.truques:lim.limite;
+
+    return `<div class="title"><h2>✨ Magias</h2><p>${arch?.name||''} · Nível ${state.nivel} · escolha as magias do seu personagem</p></div>
+
+      ${semAcesso?`
+        <div style="text-align:center;padding:30px 10px;color:var(--text2);font-size:13px">
+          <p>${arch?.name} ainda não tem acesso a magias neste nível.</p>
+          <p style="margin-top:6px;font-size:12px">Aumente o nível acima para desbloquear.</p>
+        </div>
+      `:`
+        <div class="stats-grid" style="grid-template-columns:repeat(${lim.extraLabel?3:2},1fr);margin-bottom:8px">
+          <div class="stat-card"><div class="stat-val">${lim.circMax}º</div><div class="stat-label">Círculo Máx.</div></div>
+          <div class="stat-card"><div class="stat-val">${state.spells.truques.length}/${lim.truques}</div><div class="stat-label">Truques</div></div>
+          ${lim.extraLabel?`<div class="stat-card"><div class="stat-val">${lim.extraValue}</div><div class="stat-label">${lim.extraLabel}</div></div>`:''}
+        </div>
+        <div class="points" style="margin-bottom:10px">${lim.limiteLabel}: ${state.spells.magias.length}/${lim.limite}</div>
+        ${lim.note?`<p class="arch-hint" style="text-align:center;margin-bottom:10px">${lim.note}</p>`:''}
+
+        <div class="preset-bar">
+          ${circles.map(c=>`<button class="preset-btn ${activeCircle===c?'active':''}" onclick="setSpellCircle(${c})">${c===0?'Truques':c+'º · '+(c*5)+' Mana'}</button>`).join('')}
+        </div>
+
+        <div class="points" style="font-size:13px;margin-bottom:6px">${isTruque?'Truques':'Magias'} neste círculo: ${selectedArr.filter(id=>spellsInCircle.some(s=>s.id==id)).length} selecionadas · ${capacity - selectedArr.length >= 0 ? capacity-selectedArr.length : 0} vagas restantes no total</div>
+
+        <div class="card-grid c2" style="gap:8px">
+          ${spellsInCircle.map(s=>{
+            const sel=selectedArr.includes(s.id);
+            const disabled = !sel && selectedArr.length>=capacity;
+            return `<div class="card ${sel?'selected':''}" style="text-align:left;padding:10px;opacity:${disabled?.45:1}" onclick="${disabled?'':`toggleSpell('${isTruque?'truques':'magias'}','${s.id}',${capacity})`}" role="button" tabindex="0" title="${(s.descricao||'').replace(/"/g,'&quot;').slice(0,140)}...">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+                <div class="name" style="font-size:12.5px;line-height:1.3">${s.nome}</div>
+                <button class="info-btn" onclick="event.stopPropagation();openSpellModal('${s.id}')" style="flex-shrink:0;background:var(--bg4);border:none;color:var(--gold2);width:20px;height:20px;border-radius:50%;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center">ⓘ</button>
+              </div>
+              <div class="sub" style="margin-top:3px">${s.escola}</div>
+              <div style="margin-top:4px"><span style="font-size:10px;background:var(--bg4);padding:2px 7px;border-radius:10px;color:var(--gold-dim)">${s.mana} Mana</span></div>
+            </div>`;
+          }).join('')}
+        </div>
+      `}
+
+      ${state.spellModal?spellModal(state.spellModal):''}
+
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(5)">← Atributos</button>
+        <button class="btn btn-primary" onclick="go(7)">Convicções →</button>
+      </div>`;
+  },
+
+  // 7 Convicções e Corrupções
   ()=>{
     const cKeys=Object.keys(CONVICTIONS);
     const tKeys=Object.keys(CORRUPTIONS);
@@ -500,12 +624,12 @@ const screens = [
       }).join('')}
     </div>
     <div class="btn-group">
-      <button class="btn btn-secondary" onclick="go(5)">← Atributos</button>
-      <button class="btn btn-primary" onclick="go(7)" ${state.convic.length<3||state.tempt.length<2?'disabled':''}>Ver Ficha →</button>
+      <button class="btn btn-secondary" onclick="go(6)">← Magias</button>
+      <button class="btn btn-primary" onclick="go(8)" ${state.convic.length<3||state.tempt.length<2?'disabled':''}>Ver Ficha →</button>
     </div>`;
   },
 
-  // 7 Final Sheet
+  // 8 Final Sheet
   ()=>{
     const race=RACES.find(r=>r.id==state.race);
     const realm=REALMS.find(r=>r.id==state.realm);
@@ -513,14 +637,18 @@ const screens = [
     const a=state.attrs;
     const mod=v=>Math.floor((v-10)/2);
     const intMod=mod(a.int),conMod=mod(a.con),dexMod=mod(a.des),sabMod=mod(a.sab),forMod=mod(a.for),carMod=mod(a.car);
-    const nv=3;
+    const nv=state.nivel||1;
     const base=arch.manaBase;
     const mana=Math.max(1,nv+intMod)*base;
     const pv=arch.pv+conMod+(nv-1)*(arch.pvavg+conMod);
     const ca=10+dexMod;
     const inic=dexMod;
 
-    return `<div class="title"><h2>${state.name||'Herói'}</h2><p style="font-size:12px">${race?.icon} ${race?.name||'?'} · ${realm?.icon} ${realm?.name||'?'} · ${arch?.icon} ${arch?.name||'?'}</p></div>
+    const spellsById=id=>(typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[]).find(s=>s.id===id);
+    const truquesSel=(state.spells.truques||[]).map(spellsById).filter(Boolean);
+    const magiasSel=(state.spells.magias||[]).map(spellsById).sort((x,y)=>x.circulo-y.circulo).filter(Boolean);
+
+    return `<div class="title"><h2>${state.name||'Herói'}</h2><p style="font-size:12px">${race?.icon} ${race?.name||'?'} · ${realm?.icon} ${realm?.name||'?'} · ${arch?.icon} ${arch?.name||'?'} · Nv ${nv}</p></div>
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-val">${pv}</div><div class="stat-label">PV</div></div>
         <div class="stat-card"><div class="stat-val">${mana}</div><div class="stat-label">Mana</div></div>
@@ -551,15 +679,30 @@ const screens = [
           ${state.tempt.map(t=>`<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--red);color:var(--red)">${t}</span>`).join('')}
         </div>
       </div>
+      ${(truquesSel.length||magiasSel.length)?`
+      <div class="result-card">
+        <h3>✨ Magias</h3>
+        ${truquesSel.length?`
+          <p style="font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Truques</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+            ${truquesSel.map(s=>`<span class="tag" style="cursor:pointer" onclick="openSpellModal('${s.id}')">${s.nome}</span>`).join('')}
+          </div>`:''}
+        ${magiasSel.length?`
+          <p style="font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Magias</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${magiasSel.map(s=>`<span class="tag" style="cursor:pointer" onclick="openSpellModal('${s.id}')">${s.nome} <span style="color:var(--gold-dim)">(${s.circulo}º)</span></span>`).join('')}
+          </div>`:''}
+      </div>`:''}
       <div class="btn-group">
-        <button class="btn btn-secondary" onclick="go(6)">← Convicções</button>
+        <button class="btn btn-secondary" onclick="go(7)">← Convicções</button>
         <button class="btn btn-primary" onclick="window.print()">🖨️ Exportar PDF</button>
         <button class="btn btn-secondary" onclick="resetAll()">🔄 Novo</button>
       </div>
       <div style="text-align:center;margin-top:16px">
-        <a href="cronica-dos-nove-reinos.html" style="color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Reviver a Crônica dos Nove Reinos →</a>
+        <a href="index.html" style="color:var(--text2);font-size:12px;text-decoration:underline;text-underline-offset:3px">Reviver a Crônica dos Nove Reinos →</a>
       </div>
-      ${state.convModal?convModal():''}`;
+      ${state.convModal?convModal():''}
+      ${state.spellModal?spellModal(state.spellModal):''}`;
   }
 ];
 
@@ -581,6 +724,7 @@ function generateCharacter(){
   const archId = pick(ARCHETYPES).id;
   const raceId = pick(RACES).id;
   const preset = ATTR_PRESETS[archId];
+  const nivel = 1+Math.floor(Math.random()*5); // Nv 1-5, personagem inicial
   
   // Pick random convictions and temptations
   const cKeys=Object.keys(CONVICTIONS);
@@ -589,7 +733,7 @@ function generateCharacter(){
   const shuffledT = [...tKeys].sort(()=>Math.random()-.5);
   
   state = {
-    step: 7,
+    step: 8,
     name,
     realm: realmId,
     archetype: archId,
@@ -600,7 +744,20 @@ function generateCharacter(){
     attrMode: 'preset',
     loreRealm: null,
     convModal: null,
+    nivel,
+    spellCircle: 0,
+    spells: {truques:[], magias:[]},
+    spellModal: null,
   };
+
+  // sorteia magias válidas para o arquétipo/nível
+  const lim=getSpellLimits();
+  const all = typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[];
+  const truquesPool = [...all.filter(s=>s.circulo===0)].sort(()=>Math.random()-.5);
+  state.spells.truques = truquesPool.slice(0,lim.truques).map(s=>s.id);
+  const magiasPool = [...all.filter(s=>s.circulo>=1&&s.circulo<=lim.circMax)].sort(()=>Math.random()-.5);
+  state.spells.magias = magiasPool.slice(0,lim.limite).map(s=>s.id);
+
   render();
 }
 
@@ -616,12 +773,17 @@ function editManual(){
 }
 
 // ===== HELPERS =====
-function select(type,id){state[type]=state[type]==id?null:id;render()}
+function select(type,id){
+  state[type]=state[type]==id?null:id;
+  if(type=='archetype'){state.spellCircle=0;sanitizeSpells();}
+  render();
+}
 
 function selectRealm(id){
   state.realm=state.realm==id?null:id;
   state.archetype=null; // reset to update examples
   state.loreRealm=null;
+  sanitizeSpells();
   render();
 }
 
@@ -714,8 +876,75 @@ function toggle(type,name,limit){
   render();
 }
 
+function adjNivel(delta){
+  const v=(state.nivel||1)+delta;
+  if(v<1||v>20)return;
+  state.nivel=v;
+  sanitizeSpells();
+  render();
+}
+
+function setSpellCircle(c){state.spellCircle=c;render()}
+
+function toggleSpell(kind,id,capacity){
+  const arr=state.spells[kind];
+  const idx=arr.indexOf(id);
+  if(idx>=0)arr.splice(idx,1);
+  else if(arr.length<capacity)arr.push(id);
+  render();
+}
+
+// Remove magias que ficaram fora do limite/círculo permitido após mudar nível ou arquétipo
+function sanitizeSpells(){
+  const lim=getSpellLimits();
+  const spellsById=id=>(typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[]).find(s=>s.id===id);
+  state.spells.truques=(state.spells.truques||[]).slice(0,lim.truques);
+  state.spells.magias=(state.spells.magias||[]).filter(id=>{
+    const s=spellsById(id);
+    return s && s.circulo>=1 && s.circulo<=lim.circMax;
+  }).slice(0,lim.limite);
+}
+
+function openSpellModal(id){state.spellModal=id;render()}
+function closeSpellModal(){state.spellModal=null;render()}
+
+function spellModal(id){
+  const s=(typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[]).find(x=>x.id===id);
+  if(!s)return'';
+  const rows=[
+    ['Círculo', s.circulo===0?'Truque':s.circulo+'º'],
+    ['Escola', s.escola],
+    ['Custo de Mana', s.mana+' Mana'],
+    ['Calor', s.calor],
+    ['Tempo de Conjuração', s.tempo],
+    ['Alcance', s.alcance],
+    ['Componentes', s.componentes],
+    ['Duração', s.duracao],
+  ];
+  if(s.concentracao)rows.push(['Concentração','Sim']);
+  if(s.ritual)rows.push(['Ritual','Sim']);
+  return `<div onclick="closeSpellModal()" class="modal-overlay">
+    <div onclick="event.stopPropagation()" class="modal-content">
+      <h3 style="color:var(--gold);font-size:18px;margin-bottom:2px">${s.nome}</h3>
+      <p style="font-style:italic;color:var(--gold-dim);font-size:12px;margin-bottom:10px">${s.nome_en||''}</p>
+      <div class="result-grid" style="margin-bottom:12px">
+        ${rows.map(([k,v])=>`<span class="label">${k}</span><span class="val">${v||'—'}</span>`).join('')}
+      </div>
+      ${s.aprimoramento?`<div style="border-top:1px solid var(--bg4);padding-top:10px;margin-bottom:10px">
+        <p style="font-size:11px;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Em Círculos Superiores</p>
+        <p style="font-size:12.5px;color:var(--text);line-height:1.5">${s.aprimoramento}</p>
+      </div>`:''}
+      <div style="border-top:1px solid var(--bg4);padding-top:10px">
+        <p style="font-size:11px;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Descrição <span style="text-transform:none;font-style:italic">(original em inglês)</span></p>
+        <p style="font-size:12.5px;color:var(--text);line-height:1.6;white-space:pre-line">${s.descricao||'—'}</p>
+      </div>
+      <button class="btn btn-secondary" onclick="closeSpellModal()" style="margin-top:14px;width:100%">Fechar</button>
+    </div>
+  </div>`;
+}
+
 function resetAll(){
-  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null};
+  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null,nivel:1,spellCircle:0,spells:{truques:[],magias:[]},spellModal:null};
   render();
 }
 
