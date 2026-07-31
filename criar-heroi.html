@@ -27,17 +27,29 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 
 #embers{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
-#steps{display:flex;justify-content:center;align-items:center;gap:6px;padding:14px 12px;position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--bg4)}
-.chronicle-link{position:absolute;left:14px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:.03em;transition:.2s;white-space:nowrap}
+#stepHeader{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--bg4)}
+#steps{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;padding:14px 12px 0}
+#stepLabel{text-align:center;font-size:11px;color:var(--gold-dim);letter-spacing:.1em;text-transform:uppercase;padding:6px 0 12px;font-weight:600}
+.chronicle-link{position:absolute;left:14px;top:14px;display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:.03em;transition:.2s;white-space:nowrap}
 .chronicle-link:hover{color:var(--gold)}
-.step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:2px solid transparent;transition:.3s;cursor:default}
+.step-dot{width:32px;height:32px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:2px solid transparent;transition:.2s;cursor:pointer;font-family:'Inter',sans-serif;padding:0;-webkit-tap-highlight-color:transparent}
 .step-dot.active{border-color:var(--gold);color:var(--gold);background:var(--bg2)}
 .step-dot.done{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.step-dot:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(212,168,67,.3)}
+.step-dot:disabled{cursor:not-allowed;opacity:.32}
+.step-dot .dot-label{display:none}
+
+@media(min-width:700px){
+  #steps{gap:8px}
+  .step-dot{width:auto;height:auto;min-width:0;border-radius:20px;flex-direction:row;gap:8px;padding:9px 16px}
+  .step-dot .dot-label{display:inline;font-size:12.5px}
+  #stepLabel{display:none}
+}
 
 .screen{display:none;padding:16px 18px 24px;max-width:480px;margin:0 auto;animation:fadeIn .35s cubic-bezier(.2,.7,.2,1);position:relative;z-index:1}
 .screen.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@media print{#steps,#embers,.chronicle-link,.btn-group,.btn,.more-btn,.info-btn{display:none!important}.screen{padding:0!important;max-width:100%!important}.result-card{border:1px solid var(--bg4)!important;break-inside:avoid}.stat-card{border:1px solid var(--bg4)!important}.tag{border:1px solid var(--bg4)!important}}
+@media print{#steps,#stepHeader,#stepLabel,#embers,.chronicle-link,.btn-group,.btn,.more-btn,.info-btn{display:none!important}.screen{padding:0!important;max-width:100%!important}.result-card{border:1px solid var(--bg4)!important;break-inside:avoid}.stat-card{border:1px solid var(--bg4)!important}.tag{border:1px solid var(--bg4)!important}}
 
 .card-grid{display:grid;gap:10px;margin-top:12px}
 .card-grid.c3{grid-template-columns:repeat(3,1fr)}
@@ -124,9 +136,10 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 <body>
 
 <canvas id="embers"></canvas>
-<div style="position:sticky;top:0;z-index:10">
+<div id="stepHeader">
   <a class="chronicle-link" href="index.html">📖 A Crônica</a>
   <div id="steps"></div>
+  <div id="stepLabel"></div>
 </div>
 <div id="app"></div>
 <input type="file" id="importFileInput" accept=".json,application/json" style="display:none" onchange="handleImportFile(event)">
@@ -347,6 +360,7 @@ let state = {
   spellCircle:0,
   spells:{truques:[],magias:[]},
   spellModal:null,
+  maxStep:0,
 };
 
 // ===== STEPS =====
@@ -355,13 +369,31 @@ const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho
 // ===== RENDER =====
 function render(){
   const s=state.step;
-  document.getElementById('steps').innerHTML=STEPS.map((st,i)=>`
-    <div class="step-dot ${i==s?'active':i<s?'done':''}">${i<s?'✓':i+1}</div>
-  `).join('');
+  const maxStep=state.maxStep||0;
+  document.getElementById('steps').innerHTML=STEPS.map((st,i)=>{
+    const unlocked=i<=maxStep;
+    const cls=`step-dot ${i==s?'active':i<s?'done':''}`;
+    const tip=unlocked?st.label:'Complete as etapas anteriores primeiro';
+    return `<button type="button" class="${cls}" ${unlocked?`onclick="jumpStep(${i})"`:'disabled'} title="${tip}" aria-label="${st.label}${i==s?' — etapa atual':''}">
+      <span>${i<s?'✓':i+1}</span><span class="dot-label">${st.label}</span>
+    </button>`;
+  }).join('');
+  document.getElementById('stepLabel').textContent=STEPS[s].label;
   document.getElementById('app').innerHTML=`<div class="screen active">${screens[s]()}</div>`;
 }
 
-function go(n){state.step=n;render()}
+function go(n){
+  state.step=n;
+  state.maxStep=Math.max(state.maxStep||0,n);
+  render();
+}
+
+// Navegação direta pelas abas — só permite pular para passos já alcançados,
+// para evitar telas que dependem de escolhas ainda não feitas (ex: Magias sem Caminho definido).
+function jumpStep(n){
+  if(n>(state.maxStep||0))return;
+  go(n);
+}
 
 // ===== SCREENS =====
 const screens = [
@@ -756,6 +788,7 @@ function generateCharacter(){
     spellCircle: 0,
     spells: {truques:[], magias:[]},
     spellModal: null,
+    maxStep: 8,
   };
 
   // sorteia magias válidas para o arquétipo/nível
@@ -952,7 +985,7 @@ function spellModal(id){
 }
 
 function resetAll(){
-  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null,nivel:1,spellCircle:0,spells:{truques:[],magias:[]},spellModal:null};
+  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null,nivel:1,spellCircle:0,spells:{truques:[],magias:[]},spellModal:null,maxStep:0};
   render();
 }
 
@@ -1034,6 +1067,7 @@ function importCharacter(data){
       magias:Array.isArray(data.spells?.magias)?data.spells.magias:[],
     },
     spellModal:null,
+    maxStep:8,
   };
   sanitizeSpells();
   render();
