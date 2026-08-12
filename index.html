@@ -2,493 +2,931 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Os Nove Reinos — Uma Crônica do Fruto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ecos da Luz — Criação de Personagem</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
-
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root{
-  --bg:#0b0a08;
-  --bg2:#141210;
-  --bg3:#1c1814;
-  --ink:#ece3d2;
-  --ink-dim:#a89b84;
-  --ink-faint:#6b6355;
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --bg3:#1a1a1a;
+  --bg4:#222222;
   --gold:#d4a843;
-  --gold2:#f2d68b;
-  --gold-dim:#8a7440;
-  --chaos:#b8453f;
-  --chaos-dim:#5c211e;
-  --line:rgba(212,168,67,.16);
-  --radius:16px;
-  --display:'Cinzel',serif;
-  --body:'Cormorant Garamond',serif;
-  --sans:'Inter',sans-serif;
+  --gold2:#f0d080;
+  --gold-dim:#8a7a40;
+  --text:#e8e0d0;
+  --text2:#888080;
+  --red:#cc4444;
+  --radius:10px;
 }
 
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:20px;line-height:1.7;overflow-x:hidden}
-h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:.02em}
-::selection{background:var(--gold-dim);color:var(--bg)}
-a{color:var(--gold2)}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100dvh}
+h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 
-/* ---------- ambient canvas ---------- */
-#embers{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
+#steps{display:flex;justify-content:center;gap:6px;padding:14px 12px;position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--bg4)}
+.step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:2px solid transparent;transition:.3s;cursor:default}
+.step-dot.active{border-color:var(--gold);color:var(--gold);background:var(--bg2)}
+.step-dot.done{background:var(--gold);color:var(--bg);border-color:var(--gold)}
 
-/* ---------- progress thread ---------- */
-#progress-thread{position:fixed;top:0;left:0;width:3px;height:100%;background:rgba(255,255,255,.04);z-index:50}
-#progress-fill{width:100%;height:0%;background:linear-gradient(180deg,var(--gold2),var(--gold));box-shadow:0 0 12px var(--gold)}
+.screen{display:none;padding:16px 18px 24px;max-width:480px;margin:0 auto;animation:fadeIn .3s}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media print{#steps,.btn-group,.btn,.more-btn,.info-btn{display:none!important}.screen{padding:0!important;max-width:100%!important}.result-card{border:1px solid var(--bg4)!important;break-inside:avoid}.stat-card{border:1px solid var(--bg4)!important}.tag{border:1px solid var(--bg4)!important}}
 
-/* ---------- utility ---------- */
-.wrap{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:14px;display:block}
-.divider{display:flex;align-items:center;gap:14px;max-width:280px;margin:64px auto;opacity:.5}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent)}
-.divider span{font-size:11px;color:var(--gold-dim)}
-.big-line{font-family:var(--display);font-style:normal;font-size:clamp(22px,3.4vw,32px);color:var(--gold2);text-align:center;max-width:640px;margin:34px auto;line-height:1.5;text-shadow:0 0 30px rgba(212,168,67,.25)}
+.card-grid{display:grid;gap:10px;margin-top:12px}
+.card-grid.c3{grid-template-columns:repeat(3,1fr)}
+.card-grid.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid transparent;cursor:pointer;transition:.25s;text-align:center}
+.card:hover{border-color:var(--gold-dim);background:var(--bg2)}
+.card.selected{border-color:var(--gold);background:var(--bg2);box-shadow:0 0 20px rgba(212,168,67,.15)}
+.card .icon{font-size:28px;margin-bottom:4px}.card .name{font-weight:600;font-size:14px;color:var(--text)}
+.card .sub{font-size:11px;color:var(--text2);margin-top:2px}
 
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.reveal.in-view{opacity:1;transform:translateY(0)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}
+.modal-content{background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto;border:1px solid var(--gold-dim)}
+.conv-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s;margin-bottom:8px}
+.conv-card:hover{border-color:var(--gold-dim)}
+.conv-card.selected{border-color:var(--gold);background:var(--bg2)}
+.conv-card.selected.corrupt{border-color:var(--red);background:var(--bg2);box-shadow:0 0 16px rgba(204,68,68,.15)}
+.btn{padding:11px 28px;border-radius:50px;font-weight:600;font-size:14px;border:1px solid transparent;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;justify-content:center;letter-spacing:.5px}
+.btn-primary{background:var(--gold);color:var(--bg)}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--text);border-color:var(--text2)}
+.btn-secondary:hover{background:var(--bg3)}
+.btn-group{display:flex;justify-content:space-between;margin-top:18px;gap:10px}
+.btn-group .btn{flex:1}
 
-/* ---------- hero ---------- */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:40px 24px}
-.hero-orb{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.16),transparent 70%);filter:blur(4px);animation:breathe 6s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.15);opacity:1}}
-.hero-eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-dim);opacity:0;animation:riseIn 1s ease .2s forwards}
-.hero h1{font-size:clamp(38px,7vw,74px);color:var(--gold2);margin:18px 0;text-shadow:0 0 50px rgba(212,168,67,.3);opacity:0;animation:riseIn 1.1s ease .45s forwards}
-.hero p{font-family:var(--body);font-style:italic;font-size:clamp(17px,2.2vw,22px);color:var(--ink-dim);max-width:520px;opacity:0;animation:riseIn 1.1s ease .75s forwards}
-@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.scroll-cue{position:absolute;bottom:36px;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:riseIn 1s ease 1.3s forwards}
-.scroll-cue .chev{width:9px;height:9px;border-right:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+.attr-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.attr-label{width:44px;font-weight:600;font-size:13px;color:var(--gold)}
+.attr-bar{flex:1;height:22px;background:var(--bg3);border-radius:11px;overflow:hidden}
+.attr-fill{height:100%;border-radius:11px;transition:.3s;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+.attr-val{width:24px;text-align:center;font-weight:700;font-size:15px;color:var(--gold2)}
+.attr-mod{width:26px;text-align:center;font-weight:700;font-size:15px}
+.attr-mod.pos{color:#66dd66}
+.attr-mod.neg{color:#dd6666}
+.attr-btns{display:flex;gap:3px}
+.attr-btns button{width:26px;height:26px;border-radius:50%;border:1px solid var(--text2);background:var(--bg3);color:var(--text);font-size:16px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+.attr-btns button:hover{background:var(--bg4);border-color:var(--gold)}
+.attr-btns button:disabled{opacity:.25;cursor:not-allowed}
 
-/* ---------- chapters ---------- */
-.chapter{padding:120px 0;position:relative}
-.chapter.tint-war{background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(184,69,63,.07),transparent 70%)}
-.chapter.tint-light{background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(242,214,139,.08),transparent 70%)}
-.chapter.tint-chaos{background:radial-gradient(ellipse 70% 60% at 50% 20%,rgba(184,69,63,.1),transparent 70%)}
-.chapter-title{font-size:clamp(26px,4vw,38px);color:var(--ink);margin-bottom:30px;max-width:640px}
-.chapter-text p{font-size:clamp(18px,2vw,21px);color:var(--ink-dim);max-width:640px;margin-bottom:22px}
-.chapter-text p:last-child{margin-bottom:0}
-.chapter-text strong{color:var(--gold2);font-weight:600}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.stat-card{background:var(--bg3);border-radius:var(--radius);padding:14px;text-align:center;border:1px solid var(--bg4)}
+.stat-card .stat-val{font-size:24px;font-weight:700;color:var(--gold)}
+.stat-card .stat-label{font-size:11px;color:var(--text2);margin-top:2px}
 
-/* ---------- fruit shatter ---------- */
-.fruit-stage{position:relative;height:380px;display:flex;align-items:center;justify-content:center;margin:50px auto 10px}
-.fruit-core{width:66px;height:66px;border-radius:50%;background:radial-gradient(circle at 32% 28%,var(--gold2),var(--gold) 55%,var(--gold-dim));box-shadow:0 0 60px rgba(212,168,67,.4),0 0 140px rgba(212,168,67,.15);transition:opacity .9s ease .5s,transform .9s ease .5s;z-index:2}
-.fruit-stage.burst .fruit-core{opacity:0;transform:scale(1.7)}
-.fruit-flash{position:absolute;width:66px;height:66px;border-radius:50%;border:1px solid var(--gold2);opacity:0;transform:scale(1)}
-.fruit-stage.burst .fruit-flash{animation:flashRing 1s ease .5s forwards}
-@keyframes flashRing{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(6)}}
-.fruit-embers{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.ember{position:absolute;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--k);background:radial-gradient(circle at 32% 28%,color-mix(in srgb,var(--k) 65%,white),var(--k));box-shadow:0 0 22px color-mix(in srgb,var(--k) 55%,transparent);opacity:0;transform:translate(0,0) scale(.15);transition:transform 1s cubic-bezier(.17,.84,.29,1),opacity .5s ease}
-.fruit-stage.burst .ember{opacity:1;transform:translate(var(--dx),var(--dy)) scale(1)}
-.fruit-caption{text-align:center;font-style:italic;color:var(--ink-dim);font-size:18px;margin-top:6px}
+.result-card{background:var(--bg2);border-radius:var(--radius);padding:16px;margin-bottom:10px;border:1px solid var(--bg4)}
+.result-card h3{font-size:15px;color:var(--gold);margin-bottom:8px}
+.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:13px}
+.result-grid .label{color:var(--text2)}.result-grid .val{font-weight:600;text-align:right}
 
-/* ---------- reinos grid ---------- */
-.reinos-section .chapter-title,.reinos-section .chapter-sub{text-align:center;margin-left:auto;margin-right:auto}
-.chapter-sub{font-style:italic;color:var(--ink-dim);text-align:center;max-width:520px;margin:0 auto 48px}
-.grid-reinos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:0 auto}
-.reino-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:26px 20px;text-align:center;cursor:pointer;transition:.35s;font:inherit;color:inherit;position:relative;overflow:hidden}
-.reino-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,color-mix(in srgb,var(--k) 22%,transparent),transparent 70%);opacity:0;transition:opacity .35s}
-.reino-card:hover,.reino-card:focus-visible{border-color:color-mix(in srgb,var(--k) 60%,var(--line));transform:translateY(-4px);box-shadow:0 14px 34px -14px color-mix(in srgb,var(--k) 45%,transparent)}
-.reino-card:hover::before,.reino-card:focus-visible::before{opacity:1}
-.reino-icon{font-size:32px;display:block;margin-bottom:10px;filter:drop-shadow(0 0 14px color-mix(in srgb,var(--k) 60%,transparent))}
-.reino-card h3{font-size:19px;color:var(--ink);margin-bottom:2px;position:relative}
-.reino-virtude{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--k);margin-bottom:12px;position:relative}
-.reino-verso{font-style:italic;font-size:14px;color:var(--ink-faint);margin-bottom:14px;line-height:1.5;position:relative}
-.reino-cta{font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);position:relative}
-.reino-card:hover .reino-cta{color:var(--k)}
+.points{text-align:center;font-size:16px;font-weight:600;color:var(--gold);margin-bottom:12px}
+.title{text-align:center;margin-bottom:10px}
+.title h1{font-size:26px;color:var(--gold)}
+.title h2{font-size:20px;color:var(--gold)}
+.title p{color:var(--text2);font-size:13px}
+.fruit-icon{width:70px;height:70px;margin:16px auto;background:radial-gradient(circle at 30% 30%,var(--gold2),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 0 40px rgba(212,168,67,.2)}
+.input-name{width:100%;background:transparent;border:none;border-bottom:2px solid var(--text2);padding:10px 0;color:var(--text);font-size:20px;font-family:'Cinzel',serif;text-align:center;outline:none;transition:.3s}
+.input-name:focus{border-color:var(--gold)}
+.helper{color:var(--text2);font-size:12px;text-align:center;margin-top:4px}
 
-/* ---------- modal ---------- */
-.modal-overlay{position:fixed;inset:0;background:rgba(6,5,4,.88);backdrop-filter:blur(2px);z-:200;display:flex;align-items:center;justify-content:center;padding:24px;animation:fadeIn .25s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-box{background:var(--bg2);border:1px solid color-mix(in srgb,var(--k) 45%,var(--line));border-radius:var(--radius);max-width:560px;width:100%;max-height:82vh;overflow-y:auto;padding:34px 30px;position:relative;animation:modalIn .35s cubic-bezier(.2,.8,.2,1)}
-@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--bg3);border:1px solid var(--line);color:var(--ink-dim);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:.2s}
-.modal-close:hover{border-color:var(--k);color:var(--ink)}
-.modal-head{display:flex;align-items:center;gap:16px;margin-bottom:16px}
-.modal-icon{font-size:38px;filter:drop-shadow(0 0 16px color-mix(in srgb,var(--k) 60%,transparent))}
-.modal-eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--k)}
-.modal-head h3{font-size:26px;color:var(--ink)}
-.modal-verse{font-style:italic;color:var(--gold2);font-size:18px;border-left:2px solid var(--k);padding-left:14px;margin-bottom:16px}
-.modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.modal-tags span{font-family:var(--sans);font-size:11px;letter-spacing:.03em;background:var(--bg3);border:1px solid var(--line);color:var(--ink-dim);padding:6px 12px;border-radius:20px}
-.modal-motto{font-style:italic;color:var(--ink-faint);margin-bottom:16px}
-.modal-text{color:var(--ink-dim);font-size:17px;margin-bottom:14px;line-height:1.7}
-.modal-text:last-child{margin-bottom:0}
-body.lock{overflow:hidden}
+.preset-bar{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.preset-btn{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:1px solid var(--bg4);cursor:pointer;transition:.2s}
+.preset-btn.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.preset-btn:hover{background:var(--bg4)}
 
-/* ---------- chaos ---------- */
-.chaos-section .chapter-title{color:var(--chaos)}
-.manifest-row{display:flex;flex-wrap:wrap;gap:14px;max-width:640px;margin:8px 0 40px}
-.manifest-row span{font-family:var(--sans);font-size:12px;letter-spacing:.05em;color:var(--ink-dim);border:1px solid var(--chaos-dim);padding:8px 16px;border-radius:20px}
-.whisper-line{font-family:var(--display);font-size:clamp(20px,3vw,26px);color:var(--chaos);text-align:center;max-width:600px;margin:44px auto;line-height:1.5}
-.aspectos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:900px;margin:0 auto}
-.aspecto-card{background:var(--bg2);border:1px solid var(--chaos-dim);border-radius:12px;padding:20px 16px;position:relative;overflow:hidden;transition:.3s}
-.aspecto-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(184,69,63,.12) 100%);opacity:0;transition:.3s}
-.aspecto-card:hover{border-color:var(--chaos);transform:translateY(-3px)}
-.aspecto-card:hover::before{opacity:1}
-.aspecto-card h4{font-size:15px;color:var(--ink);margin-bottom:8px;position:relative}
-.aspecto-card p{font-size:14px;color:var(--ink-faint);line-height:1.5;position:relative}
+.flex-tags{display:flex;flex-wrap:wrap;gap:4px}
+.flex-tags .tag{padding:4px 10px;border-radius:16px;font-size:11px;cursor:pointer;border:1px solid var(--bg4);background:var(--bg3);transition:.2s;color:var(--text)}
+.flex-tags .tag.selected{border-color:var(--gold);background:var(--bg2)}
+.flex-tags .tag.limit{border-color:var(--red);color:var(--red)}
+.flex-tags .tag.limit.selected{border-color:var(--red);background:rgba(204,68,68,.15)}
 
-/* ---------- closing ---------- */
-.closing{text-align:center;padding-bottom:160px}
-.closing .big-line{font-size:clamp(24px,3.6vw,34px);margin-bottom:26px}
-.closing .sub{color:var(--ink-dim);font-style:italic;margin-bottom:44px}
-.cta-btn{font-family:var(--sans);font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:#181206;border:none;padding:16px 38px;border-radius:50px;cursor:pointer;font-weight:600;transition:.3s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
-.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(212,168,67,.5)}
-.footer-mark{margin-top:70px;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
-
-/* ---------- scroll top ---------- */
-#topBtn{position:fixed;bottom:26px;right:26px;width:44px;height:44px;border-radius:50%;background:var(--bg2);border:1px solid var(--line);color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:60;font-size:16px}
-#topBtn.show{opacity:1;pointer-events:auto}
-#topBtn:hover{border-color:var(--gold)}
-
-/* ---------- focus ---------- */
-:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
-
-/* ---------- responsive ---------- */
-@media (max-width:820px){
-  .grid-reinos{grid-template-columns:repeat(2,1fr)}
-  .aspectos-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:520px){
-  body{font-size:18px}
-  .chapter{padding:80px 0}
-  .grid-reinos{grid-template-columns:1fr}
-  .fruit-stage{height:300px}
-}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .reveal{transition:opacity .3s ease}
-  .hero-orb{animation:none}
-  .scroll-cue .chev{animation:none}
-  .fruit-core,.ember,.fruit-flash{transition-duration:.01s;animation:none}
-  .reino-card,.cta-btn{transition:none}
-}
+.arch-hint{font-size:11px;color:var(--gold-dim);margin-top:4px;font-style:italic}
+.spell-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s;margin-bottom:6px}
+.spell-card:hover{border-color:var(--gold-dim)}
+.spell-card.selected{border-color:var(--gold);background:var(--bg2)}
+.spell-card.disabled{opacity:.4;pointer-events:none}
+.calor-bar{display:flex;gap:6px;align-items:center;font-size:11px;margin:4px 0}
+ .calor-fill{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--gold-dim),var(--red));transition:.3s;min-width:0}
+ .equipment-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s;margin-bottom:6px}
+ .equipment-card:hover{border-color:var(--gold-dim)}
+ .equipment-card.selected{border-color:var(--gold);background:var(--bg2)}
+ .equipment-card.disabled{opacity:.45;pointer-events:none}
 </style>
+<script src="spells_data.js"></script>
+<script src="equipment_data.js"></script>
 </head>
 <body>
 
-<canvas id="embers"></canvas>
-<div id="progress-thread"><div id="progress-fill"></div></div>
-<button id="topBtn" aria-label="Voltar ao topo">↑</button>
-
-<header class="hero">
-  <div class="hero-orb"></div>
-  <span class="hero-eyebrow">uma crônica viva</span>
-  <h1>Os Nove Reinos</h1>
-  <p>No princípio, uma voz. No fim, nove reinos guardando a última luz contra o Caos.</p>
-  <div class="scroll-cue"><span>role para descobrir</span><span class="chev"></span></div>
-</header>
-
-<main>
-
-  <section class="chapter" id="cap1">
-    <div class="wrap chapter-text">
-      <span class="eyebrow reveal">Capítulo I — A Criação</span>
-      <p class="reveal">No princípio, o <strong>Criador</strong> falou. E tudo o que ouviu essa voz passou a existir.</p>
-      <p class="reveal">O mundo nasceu em harmonia: criaturas diversas, terras vastas, ciclos vivos e uma paz que não precisava ser defendida — apenas vivida. Cada ser ocupava seu lugar como uma nota em uma canção perfeita.</p>
-      <p class="reveal">Mas nem tudo fora feito para ser tocado.</p>
-      <p class="reveal">Havia algo guardado, selado não por medo, mas por sabedoria. O Criador advertiu que, se aquilo fosse perturbado, algo antigo e indomável despertaria. Ainda assim, a curiosidade falou mais alto.</p>
-    </div>
-    <p class="big-line reveal">O selo foi rompido. E o Caos foi libertado.</p>
-  </section>
-
-  <div class="wrap"><div class="divider"><span>◆</span></div></div>
-
-  <section class="chapter tint-war" id="cap2">
-    <div class="wrap chapter-text">
-      <span class="eyebrow reveal">Capítulo II — A Primeira Guerra</span>
-      <p class="reveal">O <strong>Caos</strong> não era apenas destruição, mas uma força viva: a vontade de possuir, dominar e consumir.</p>
-      <p class="reveal">Onde passava, o mundo se distorcia. Criaturas nasceram já marcadas. Outras foram corrompidas com o tempo.</p>
-      <p class="reveal">O mundo entrou em guerra. A Criação resistiu com bravura, mas o Caos não se cansa, não recua e não se arrepende.</p>
-    </div>
-  </section>
-
-  <section class="chapter tint-light" id="cap3">
-    <div class="wrap chapter-text">
-      <span class="eyebrow reveal">Capítulo III — A Chegada do Messias</span>
-      <p class="reveal">Nesse momento de ruína iminente, o Criador agiu por misericórdia. Ele enviou o <strong>Messias</strong>.</p>
-      <p class="reveal">Sua chegada não foi marcada por trovões, mas por silêncio. Onde ele andava, o Caos enfraquecia. Onde ele permanecia, a corrupção recuava.</p>
-      <p class="reveal">No confronto final, o Caos foi expulso do mundo — não destruído, mas lançado para além dos limites da Criação.</p>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="divider"><span>◆</span></div></div>
-
-  <section class="chapter" id="cap4">
-    <div class="wrap chapter-text">
-      <span class="eyebrow reveal">Capítulo IV — O Fruto</span>
-      <p class="reveal">Antes de partir, o Messias deixou um presente. Não uma arma. Não um exército. Mas algo vivo: <strong>o Fruto</strong>.</p>
-      <p class="reveal">Esse Fruto carregava em si essências capazes de sustentar o mundo contra o retorno do Caos. Porém, as criaturas não conseguiram concordar sobre quem deveria guardá-lo.</p>
-      <p class="reveal">Então, o Fruto fez sua própria escolha.</p>
-    </div>
-    <p class="big-line reveal">Ele se dividiu em nove partes.</p>
-    <div class="fruit-stage" id="fruitStage">
-      <div class="fruit-flash"></div>
-      <div class="fruit-core"></div>
-      <div class="fruit-embers" id="fruitEmbers"></div>
-    </div>
-    <p class="fruit-caption reveal">Cada fragmento carregava uma virtude essencial. Ao seu redor, nasceu um reino.</p>
-  </section>
-
-  <section class="chapter reinos-section" id="cap5">
-    <div class="wrap">
-      <span class="eyebrow reveal" style="text-align:center;display:block">Capítulo V — Os Reinos</span>
-      <h2 class="chapter-title reveal">Nove Fragmentos, Nove Reinos</h2>
-      <p class="chapter-sub reveal">Enquanto guardarem o Fruto, o Caos jamais dominará por completo. Toque em cada reino para conhecer sua história.</p>
-      <div class="grid-reinos" id="reinosGrid"></div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="divider"><span>◆</span></div></div>
-
-  <section class="chapter tint-chaos chaos-section" id="cap6">
-    <div class="wrap chapter-text">
-      <span class="eyebrow reveal" style="color:var(--chaos)">Capítulo VI — O Comandante</span>
-      <p class="reveal">Durante a Primeira Guerra, algo se formou no interior do Caos: uma <strong>Vontade Central</strong>. Um Comandante. Não criado, mas condensado da própria essência do Caos.</p>
-      <p class="reveal">Ele observou, aprendeu e compreendeu que o mundo não precisava ser destruído — apenas dividido por dentro.</p>
-      <p class="reveal">Quando o Caos foi expulso pelo Messias, o Comandante não desapareceu. Apenas recuou para além do mundo, aguardando o tempo certo.</p>
-    </div>
-    <p class="whisper-line reveal">O Caos não bate às portas — ele sussurra nas frestas.</p>
-    <div class="wrap">
-      <div class="manifest-row reveal">
-        <span>Criaturas Corrompidas</span>
-        <span>Áreas Amaldiçoadas</span>
-        <span>Tentações</span>
-      </div>
-      <p class="eyebrow reveal" style="color:var(--chaos)">Os Sete Aspectos do Caos</p>
-      <div class="aspectos-grid" id="aspectosGrid"></div>
-    </div>
-  </section>
-
-  <section class="chapter closing" id="cap7">
-    <div class="wrap">
-      <p class="big-line reveal">"Enquanto os Nove Reinos guardarem o Fruto, o Caos jamais dominará por completo. Mas enquanto houver falhas no coração das criaturas, o Comandante continuará esperando."</p>
-      <p class="sub reveal">A história ainda está sendo escrita. E talvez o próximo capítulo seja o seu.</p>
-      <a class="cta-btn reveal" href="criar-heroi.html">Criar seu Herói →</a>
-      <p class="footer-mark">Os 9 Reinos</p>
-    </div>
-  </section>
-
-</main>
-
-<div id="modalRoot"></div>
+<div id="steps"></div>
+<div id="app"></div>
 
 <script>
-// ===================== DATA =====================
-const REINOS = [
-  {id:'havendor',nome:'Havendor',virtude:'Amor',versiculo:'"O amor é paciente, o amor é bondoso."',atributo:'Sabedoria',icon:'⚜️',cor:'#e0876d',fragmento:'Coração do Alvor',simbolo:'A cidade flutuante de Ahavendor',frase:'Onde a luz encontra a coragem.',
-   cultura:'Uma civilização de cavaleiros e construtores que acredita na proteção dos fracos. Suas cidades flutuam sobre as nuvens, sustentadas por uma energia radiante que poucos compreendem.',
-   lore:'Dizem que o primeiro fragmento caiu aqui, incrustando-se no coração da montanha mais alta. Os havendorianos não adoram o fragmento — eles o estudam, pois acreditam que compreendê-lo é compreender a si mesmos. Sua sociedade é estratificada em ordens: os Portadores da Aurora, os Forjadores de Luz e os Sussurradores.'},
-  {id:'aurivelle',nome:'Aurivelle',virtude:'Alegria',versiculo:'"A alegria do Senhor é a vossa força."',atributo:'Carisma',icon:'🎭',cor:'#f0c34a',fragmento:'Cristal da Alegria',simbolo:'A floresta que canta',frase:'A vida é uma canção que nunca termina.',
-   cultura:'Artistas, músicos e performers. Aqui a expressão é tudo — cada pessoa encontra seu próprio ritmo. As cidades são construídas em florestas vivas, com madeira encantada que reage à música.',
+// ===== DATA =====
+const REALMS = [
+  {id:'havendor',name:'Havendor',icon:'⚜️',attr:'Sabedoria',
+   phrase:'"Onde a luz encontra a coragem."',
+   culture:'Uma civilização de cavaleiros e construtores que acredita na proteção dos fracos. Suas cidades flutuam sobre as nuvens, sustentadas por uma energia radiante que poucos compreendem.',
+   lore:'Dizem que o primeiro fragmento caiu aqui, incrustando-se no coração da montanha mais alta. Os havendorianos não adoram o fragmento — eles o estudam, pois acreditam que compreendê-lo é compreender a si mesmos. Sua sociedade é estratificada em ordens: os Portadores da Aurora (cavaleiros), os Forjadores de Luz (artesãos) e os Sussurradores (estudiosos).'},
+  {id:'aurivelle',name:'Aurivelle',icon:'🎭',attr:'Carisma',
+   phrase:'"A vida é uma canção que nunca termina."',
+   culture:'Artistas, músicos e performers. Aqui a expressão é tudo — cada pessoa encontra seu próprio ritmo. As cidades são construídas em florestas vivas, com madeira encantada que reage à música.',
    lore:'O fragmento de Aurivelle caiu em uma clareira onde, dizem, os pássaros cantavam em uníssono. Desde então, a floresta ao redor absorveu essa harmonia. Os aurivellianos não constroem com pedra — usam madeira viva que cresce conforme a música que tocam. Cada pessoa tem uma "melodia pessoal" que reflete sua alma.'},
-  {id:'selah',nome:'Sélah',virtude:'Paz',versiculo:'"Paz deixo convosco; a minha paz vos dou."',atributo:'Sabedoria',icon:'🌄',cor:'#a9d3df',fragmento:'Coração do Silêncio',simbolo:'O monge que respira em sintonia com o mundo',frase:'No silêncio, encontra-se a resposta.',
-   cultura:'Monges, meditadores e eremitas. Uma cultura de introspecção e equilíbrio. Não buscam poder — buscam compreensão. Sua arquitetura é minimalista, esculpida nas montanhas.',
+  {id:'selah',name:'Sélah',icon:'🌄',attr:'Sabedoria',
+   phrase:'"No silêncio, encontra-se a resposta."',
+   culture:'Monges, meditadores e eremitas. Uma cultura de introspecção e equilíbrio. Não buscam poder — buscam compreensão. Sua arquitetura é minimalista, esculpida nas montanhas.',
    lore:'O fragmento de Sélah não brilha — ele pulsa, como uma respiração. Os selahitas acreditam que o mundo foi criado em ciclos, e que cada pessoa pode aprender a fluir com eles. Seus mosteiros nas montanhas são centros de estudo do "Fluxo da Criação", uma energia que conecta todas as coisas.'},
-  {id:'knathi',nome:"K'Nahti",virtude:'Paciência',versiculo:'"Com paciência esperei pelo Senhor."',atributo:'Inteligência',icon:'🌿',cor:'#7ba869',fragmento:'Kalmyril — a luz serena do tempo que flui',simbolo:'A Árvore-Soberana Ydrosyl',frase:'Tudo floresce no tempo certo.',
-   cultura:"Uma cultura arbórea e lenta. Grandes árvores-cidades abrigam gerações. Os K'Nahti não têm pressa — acreditam que apressar é quebrar. Usam uma tinta viva extraída de plantas para criar arte, armas e aliados.",
-   lore:"O fragmento de K'Nahti caiu sobre a maior árvore do mundo, Ydrosyl, e enraizou-se nela. Os K'Nahti desenvolveram uma relação simbiótica com a árvore — sua seiva é a Tinta Viva que usam para criar. Cada K'Nahti nasce com uma cor de tinta única, que define seu estilo de criar."},
-  {id:'lumivior',nome:'Lumivior',virtude:'Amabilidade',versiculo:'"Sede bondosos e compassivos uns para com os outros."',atributo:'Inteligência',icon:'⚙️',cor:'#63d9c4',fragmento:'O Éter Coletivo',simbolo:'A Cidade-Forja Nômade',frase:'A tecnologia é a chave para a alma.',
-   cultura:'Engenheiros e inventores. Uma sociedade nômade que viaja em cidades-máquina. Não separam vida de máquina — para eles, o éter que move seus motores é a mesma energia que move o corpo.',
-   lore:'O fragmento de Lumivior foi encontrado por um mecânico que tentava criar um motor perpétuo. Quando tocou o fragmento, sua máquina ganhou vida. Desde então, os lumivorianos fundiram tecnologia e éter em uma única filosofia: a Energia Vital. Suas cidades são gigantescos mecanismos ambulantes.'},
-  {id:'neruviah',nome:'Neruviah',virtude:'Bondade',versiculo:'"A bondade de Deus te leva ao arrependimento."',atributo:'Carisma',icon:'🌊',cor:'#3f93a8',fragmento:'Cristal da Aliança',simbolo:'O Prisma que reflete a alma',frase:'As marés mudam, e nós mudamos com elas.',
-   cultura:'Nômades do mar e do deserto. Adaptam-se a qualquer ambiente seguindo os ciclos da natureza. Sua sociedade é fluida — não têm cidades fixas, apenas caravanas e navios.',
-   lore:'O fragmento de Neruviah caiu no oceano e foi encontrado por uma tribo nômade que seguia as baleias. Desde então, eles aprenderam a sentir as marés da alma — estados de espírito que trazem diferentes bênçãos. Um neruviano pode mudar sua disposição conforme a situação, como o mar muda suas ondas.'},
-  {id:'ringendah',nome:'Ringendah',virtude:'Fidelidade',versiculo:'"Sê fiel até a morte, e dar-te-ei a coroa da vida."',atributo:'Inteligência',icon:'💍',cor:'#a374d1',fragmento:'Os Três Anéis da Aliança',simbolo:'O Deserto dos Anéis e a cidade de Serafur',frase:'Toda aliança é um portal.',
-   cultura:'Uma cultura de estudiosos e invocadores. Constroem portais entre lugares distantes usando anéis como chaves. Sua cidade principal, Serafur, é um entrecruzamento de círculos mágicos.',
-   lore:'O fragmento de Ringendah partiu-se em três anéis antes de cair. Cada anel foi encontrado por um estudioso diferente, e eles discordam sobre como usá-los. Até hoje os três anéis são mantidos separados, e cada escola de pensamento em Ringendah segue um deles.'},
-  {id:'argolis',nome:'Argolis',virtude:'Mansidão',versiculo:'"Bem-aventurados os mansos, porque herdarão a terra."',atributo:'Destreza',icon:'🌙',cor:'#7c86ba',fragmento:'O Receptáculo Ancião da Lua',simbolo:'O equilíbrio entre o Império e os nativos espirituais',frase:'Sob as duas luas, a verdade se revela.',
-   cultura:'Uma sociedade de estrategistas e observadores. Argolis tem duas luas no céu, e seus habitantes desenvolveram uma percepção aguçada do tempo e do espaço. São conhecidos como os melhores analistas táticos do mundo.',
-   lore:'O fragmento de Argolis caiu em um deserto de cristal que reflete a luz das duas luas infinitamente. Os argolianos aprenderam a ler padrões em tudo — no movimento das estrelas, nas ondas do deserto, nos passos de um inimigo. Sua Disciplina Marcial é lendária.'},
-  {id:'sphalidor',nome:'Sphalidor',virtude:'Domínio Próprio',versiculo:'"Melhor é o paciente do que o guerreiro."',atributo:'Constituição',icon:'💎',cor:'#c987ab',fragmento:'O Aço Ressoante',simbolo:'A Cidadela nas montanhas, a Ordem da Solitude',frase:'O som certo quebra qualquer montanha.',
-   cultura:'Mineiros e artesãos de cristal. Descobriram que tudo vibra em uma frequência específica. Usam a Ressonância para extrair minérios, construir armas e até curar. Suas cavernas-cidades são obras de arte acústica.',
-   lore:'O fragmento de Sphalidor foi encontrado nas profundezas de uma caverna, incrustado em um cristal que cantava. Os sphalorianos desenvolveram a Ressonância — a arte de vibrar objetos e seres em sua frequência ideal. Um guerreiro sphaloriano pode fazer uma armadura vibrar para torná-la mais resistente, ou uma espada vibrar para cortar melhor.'},
+  {id:'knathi',name:"K'Nahti",icon:'🌿',attr:'Inteligência',
+   phrase:'"Tudo floresce no tempo certo."',
+   culture:'Uma cultura arbórea e lenta. Grandes árvores-cidades abrigam gerações. Os K\'Nahti não têm pressa — acreditam que apressar é quebrar. Usam uma tinta viva extraída de plantas para criar arte, armas e aliados.',
+   lore:'O fragmento de K\'Nahti caiu sobre a maior árvore do mundo, Ydrosyl, e enraizou-se nela. Os K\'Nahti desenvolveram uma relação simbiótica com a árvore — sua seiva é a "Tinta Viva" que usam para criar. Cada K\'Nahti nasce com uma cor de tinta única, que define seu estilo de criar.'},
+  {id:'lumivior',name:'Lumivior',icon:'⚙️',attr:'Inteligência',
+   phrase:'"A tecnologia é a chave para a alma."',
+   culture:'Engenheiros e inventores. Uma sociedade nômade que viaja em cidades-máquina. Não separam vida de máquina — para eles, o éter que move seus motores é a mesma energia que move o corpo.',
+   lore:'O fragmento de Lumivior foi encontrado por um mecânico que tentava criar um motor perpétuo. Quando tocou o fragmento, sua máquina ganhou vida. Desde então, os lumivorianos fundiram tecnologia e éter em uma única filosofia: "Energia Vital". Suas cidades são gigantescos mecanismos ambulantes.'},
+  {id:'neruviah',name:'Neruviah',icon:'🌊',attr:'Carisma',
+   phrase:'"As marés mudam, e nós mudamos com elas."',
+   culture:'Nômades do mar e do deserto. Adaptam-se a qualquer ambiente seguindo os ciclos da natureza. Sua sociedade é fluida — não têm cidades fixas, apenas caravanas e navios.',
+   lore:'O fragmento de Neruviah caiu no oceano e foi encontrado por uma tribo nômade que seguia as baleias. Desde então, eles aprenderam a "sentir" as marés da alma — estados de espírito que trazem diferentes bênçãos. Um neruviano pode mudar sua disposição conforme a situação, como o mar muda suas ondas.'},
+  {id:'ringendah',name:'Ringendah',icon:'💍',attr:'Inteligência',
+   phrase:'"Toda aliança é um portal."',
+   culture:'Uma cultura de estudiosos e invocadores. Constroem portais entre lugares distantes usando anéis como chaves. Sua cidade principal, Serafur, é um entrecruzamento de círculos mágicos.',
+   lore:'O fragmento de Ringendah partiu-se em três anéis antes de cair. Cada anél foi encontrado por um estudioso diferente, e eles discordam sobre como usá-los. Até hoje, os três anéis são mantidos separados, e cada escola de pensamento em Ringendah segue um deles.'},
+  {id:'argolis',name:'Argolis',icon:'🌙',attr:'Sabedoria',
+   phrase:'"Sob as duas luas, a verdade se revela."',
+   culture:'Uma sociedade de estrategistas e observadores. Argolis tem duas luas no céu, e seus habitantes desenvolveram uma percepção aguçada do tempo e do espaço. São conhecidos como os melhores analistas táticos do mundo.',
+   lore:'O fragmento de Argolis caiu em um deserto de cristal que reflete a luz das duas luas infinitamente. Os argolianos aprenderam a ler padrões em tudo — no movimento das estrelas, nas ondas do deserto, nos passos de um inimigo. Sua "Disciplina Marcial" é lendária.'},
+  {id:'sphalidor',name:'Sphalidor',icon:'💎',attr:'Constituição',
+   phrase:'"O som certo quebra qualquer montanha."',
+   culture:'Mineiros e artesãos de cristal. Descobriram que tudo vibra em uma frequência específica. Usam a "Ressonância" para extrair minérios, construir armas e até curar. Suas cavernas-cidades são obras de arte acústica.',
+   lore:'O fragmento de Sphalidor foi encontrado nas profundezas de uma caverna, incrustado em um cristal que cantava. Os sphalorianos desenvolveram a "Ressonância" — a arte de vibrar objetos e seres em sua frequência ideal. Um guerreiro sphaloriano pode fazer uma armadura vibrar para torná-la mais resistente, ou uma espada vibrar para cortar melhor.'},
 ];
 
-const ASPECTOS = [
-  {nome:'Ambição Desmedida',desc:'O desejo insaciável por poder.'},
-  {nome:'Inveja Silenciosa',desc:'A dor pelo que o outro possui.'},
-  {nome:'Excesso',desc:'A falta de controle nos prazeres.'},
-  {nome:'Apatia',desc:'A indiferença que paralisa.'},
-  {nome:'Orgulho',desc:'A crença de ser maior que o Criador.'},
-  {nome:'Ira',desc:'A fúria que consome tudo.'},
-  {nome:'Desejo sem Freio',desc:'A luxúria que objetifica.'},
+const RACES = [
+  {id:'humano',name:'Humanos',icon:'🧑',stats:'+1 em três atributos',desc:'Versáteis e adaptáveis. Encontrados em todos os reinos.'},
+  {id:'anao',name:'Anões',icon:'⛰️',stats:'+2 CON, +1 FOR',desc:'Resistentes e tradicionais. Mestres da metalurgia.'},
+  {id:'elfo',name:'Elfos',icon:'🧝',stats:'+2 DES, +1 INT',desc:'Graciosos e longevos. Conexão com a magia natural.'},
+  {id:'gnomo',name:'Gnomos',icon:'🔧',stats:'+2 INT, +1 CON',desc:'Engenhosos e curiosos. Amantes de invenções.'},
+  {id:'meio-elfo',name:'Meio-Elfos',icon:'🕊️',stats:'+2 CAR, +1 em dois',desc:'Ponte entre dois mundos. Diplomacia nata.'},
+  {id:'halfling',name:'Halflings',icon:'🍀',stats:'+2 DES, +1 CAR',desc:'Sortudos e pacatos. Aventura é exceção.'},
+  {id:'draconato',name:'Draconatos',icon:'🐉',stats:'+2 FOR, +1 CAR',desc:'Herança dracônica. Sopro elemental e orgulho.'},
+  {id:'tiefling',name:'Tieflings',icon:'🔥',stats:'+2 CAR, +1 INT',desc:'Herança infernal. Olhos que viram o outro lado.'},
+  {id:'meio-orc',name:'Meio-Orcs',icon:'💪',stats:'+2 FOR, +1 CON',desc:'Força bruta e resistência. Superação constante.'},
+  {id:'marmoreano',name:'Marmoreanos',icon:'🗿',stats:'+2 CON, +1 SAB',desc:'Pele de pedra, paciência de montanha. Nativos de Sphalidor.'},
+  {id:'aetheriano',name:'Aetherianos',icon:'✨',stats:'+2 INT, +1 CAR',desc:'Leves como luz. Nativos de Lumivior, conexão com o éter.'},
+  {id:'etherborn',name:'Etherborn',icon:'🌌',stats:'+2 CAR, +1 DES',desc:'Nascidos do éter entre mundos. Raros e enigmáticos.'},
 ];
 
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ARCHETYPES = [
+  {id:'guerreiro',name:'Guerreiro',icon:'⚔️',function:'Combate físico e dano',pv:10,pvd:'d10',pvavg:6,manaBase:3,
+   desc:'Focado em ataques poderosos, resistência e versatilidade com armas. É o coração da linha de frente.',
+   ex:[
+     {reino:'havendor',exemplo:'Cavaleiro Radiante — espada imbuída de luz'},
+     {reino:'aurivelle',exemplo:'Duelista Performático — golpes coreografados'},
+     {reino:'selah',exemplo:'Monge da Paz — combate desarmado fluido'},
+     {reino:'knathi',exemplo:'Guerreiro-Árvore — força da natureza'},
+     {reino:'lumivior',exemplo:'Cavaleiro de Éter — armadura elétrica'},
+     {reino:'neruviah',exemplo:'Marujo das Tempestades — luta nas marés'},
+     {reino:'ringendah',exemplo:'Cavaleiro Arcano — anéis que fortalecem armas'},
+     {reino:'argolis',exemplo:'Estrategista Lunar — precisão cirúrgica'},
+     {reino:'sphalidor',exemplo:'Guerreiro Ressonante — vibração que corta'},
+   ]},
+  {id:'baluarte',name:'Baluarte',icon:'🛡️',function:'Defesa e proteção',pv:12,pvd:'d12',pvavg:7,manaBase:3,
+   desc:'Mestre da defesa. Protege aliados, absorve dano e controla o campo de batalha.',
+   ex:[
+     {reino:'havendor',exemplo:'Paladino da Aurora — escudo de luz'},
+     {reino:'aurivelle',exemplo:'Guardião da Melodia — proteção rítmica'},
+     {reino:'selah',exemplo:'Muro de Sélah — defesa meditativa'},
+     {reino:'knathi',exemplo:'Tronco da Vida — enraizado e imóvel'},
+     {reino:'lumivior',exemplo:'Torre de Éter — barreira tecnomágica'},
+     {reino:'neruviah',exemplo:'Recife Coral — defesa fluida'},
+     {reino:'ringendah',exemplo:'Guardião do Portal — escudo dimensional'},
+     {reino:'argolis',exemplo:'Muralha Lunar — defesa tática'},
+     {reino:'sphalidor',exemplo:'Torre Ressonante — vibração defensiva'},
+   ]},
+  {id:'vigilante',name:'Vigilante',icon:'🗡️',function:'Mobilidade e precisão',pv:8,pvd:'d8',pvavg:5,manaBase:4,
+   desc:'Ágil e mortal. Ataques precisos, furtividade e mobilidade. Especialista em flanqueamento.',
+   ex:[
+     {reino:'havendor',exemplo:'Vigia Radiante — luz que revela inimigos'},
+     {reino:'aurivelle',exemplo:'Artista das Sombras — dança entre golpes'},
+     {reino:'selah',exemplo:'Vento de Sélah — movimento fluido'},
+     {reino:'knathi',exemplo:'Predador Silencioso — camuflagem natural'},
+     {reino:'lumivior',exemplo:'Fantasma de Éter — invisibilidade digital'},
+     {reino:'neruviah',exemplo:'Onda Silenciosa — ataque das marés'},
+     {reino:'ringendah',exemplo:'Ladrão de Portais — teletransporte tático'},
+     {reino:'argolis',exemplo:'Infiltrador Lunar — análise + furtividade'},
+     {reino:'sphalidor',exemplo:'Lâmina Ressonante — corte vibratório'},
+   ]},
+  {id:'arcanista',name:'Arcanista',icon:'🔮',function:'Conjuração e conhecimento',pv:6,pvd:'d6',pvavg:4,manaBase:5,
+   desc:'Conjurador puro. Domina magias dos mais variados tipos. Poderia de fogo, gelo, eletricidade ou luz.',
+   ex:[
+     {reino:'havendor',exemplo:'Sacerdote Radiante — luz purificadora'},
+     {reino:'aurivelle',exemplo:'Bardo da Melodia — magia musical'},
+     {reino:'selah',exemplo:'Sábio do Fluxo — magia meditativa'},
+     {reino:'knathi',exemplo:'Druida das Cores — tinta viva mágica'},
+     {reino:'lumivior',exemplo:'Tecnomago — éter e código'},
+     {reino:'neruviah',exemplo:'Xamã das Marés — magia elemental'},
+     {reino:'ringendah',exemplo:'Mago dos Anéis — portais e invocação'},
+     {reino:'argolis',exemplo:'Ilusionista Lunar — mente e percepção'},
+     {reino:'sphalidor',exemplo:'Cristalino — magia de ressonância'},
+   ]},
+  {id:'creator',name:'Creator',icon:'⚙️',function:'Invenções e utilidade',pv:8,pvd:'d8',pvavg:5,manaBase:5,
+   desc:'Inventor e invocador. Cria aliados, itens e ferramentas no momento. Versatilidade é sua marca.',
+   ex:[
+     {reino:'havendor',exemplo:'Forjador de Luz — drones radiantes'},
+     {reino:'aurivelle',exemplo:'Artesão da Melodia — instrumentos vivos'},
+     {reino:'selah',exemplo:'Escultor do Silêncio — criações meditativas'},
+     {reino:'knathi',exemplo:'Pintor de Tinta Viva — criaturas pintadas'},
+     {reino:'lumivior',exemplo:'Engenheiro do Éter — construtos mecânicos'},
+     {reino:'neruviah',exemplo:'Construtor de Marés — criações aquáticas'},
+     {reino:'ringendah',exemplo:'Invocador de Anéis — portais de criação'},
+     {reino:'argolis',exemplo:'Arquiteto Lunar — construções táticas'},
+     {reino:'sphalidor',exemplo:'Sintetizador Ressonante — cristais vivos'},
+   ]},
+];
 
-// ===================== BUILD: REINOS GRID =====================
-const grid = document.getElementById('reinosGrid');
-REINOS.forEach(r=>{
-  const card = document.createElement('button');
-  card.type = 'button';
-  card.className = 'reino-card reveal';
-  card.style.setProperty('--k', r.cor);
-  card.setAttribute('aria-haspopup','dialog');
-  card.innerHTML = `
-    <span class="reino-icon">${r.icon}</span>
-    <h3>${r.nome}</h3>
-    <p class="reino-virtude">${r.virtude}</p>
-    <p class="reino-verso">${r.versiculo}</p>
-    <span class="reino-cta">Explorar →</span>`;
-  card.addEventListener('click', ()=>openModal(r.id));
-  grid.appendChild(card);
-});
+const CONVICTIONS = {
+  Justiça:{desc:'Buscar o equilíbrio e a retidão, mesmo quando é mais fácil desviar o olhar.',ex:'Defender um desconhecido injustiçado, mesmo contra um aliado.'},
+  Misericórdia:{desc:'Preferir perdoar a punir, acreditando que todos merecem uma chance.',ex:'Poupár um inimigo derrotado que implora por clemência.'},
+  Sacrifício:{desc:'Dar-se pelos outros, colocando o bem alheio acima do próprio.',ex:'Lança-se na frente de um golpe mortal para salvar um companheiro.'},
+  Verdade:{desc:'Honrar a sinceridade acima de tudo, mesmo quando a mentira seria mais cômoda.',ex:'Revelar um segredo que poderia manter escondido, pois foi questionado diretamente.'},
+  Esperança:{desc:'Nunca desistir, mesmo nas trevas mais profundas.',ex:'Inspirar os outros a continuar quando tudo parece perdido.'},
+  Humildade:{desc:'Agir sem buscar reconhecimento ou aplausos.',ex:'Realizar uma grande façanha e não contar a ninguém.'},
+  Fidelidade:{desc:'Manter-se leal aos seus juramentos e às pessoas que ama.',ex:'Cumprir uma promessa feita a um amigo falecido, mesmo com custo pessoal.'},
+  Compaixão:{desc:'Sentir a dor alheia e agir para aliviá-la.',ex:'Ajudar um estranho necessitado sem esperar recompensa.'},
+  Perseverança:{desc:'Não recuar diante dos obstáculos, por maiores que sejam.',ex:'Tentar novamente após uma derrota humilhante.'},
+  Sabedoria:{desc:'Buscar conhecimento e discernimento antes de agir.',ex:'Ouvir todas as partes envolvidas antes de tomar uma decisão.'},
+};
+const CORRUPTIONS = {
+  Orgulho:{desc:'Acreditar-se superior aos outros e não admitir erros.',ex:'Recusar ajuda mesmo estando em apuros, por vaidade.'},
+  Ganância:{desc:'Desejar mais do que o necessário, sem se importar com o custo.',ex:'Pegar um tesouro que pertence a alguém, justificando que "precisa mais".'},
+  Ira:{desc:'Deixar a raiva assumir o controle, agindo por impulso destrutivo.',ex:'Atacar alguém que o insultou sem pensar nas consequências.'},
+  Inveja:{desc:'Cobiçar o que os outros têm, seja bens, talento ou reconhecimento.',ex:'Sabotar um rival para que ele não brilhe.'},
+  Vaidade:{desc:'Viver pela aparência e pelo reconhecimento alheio.',ex:'Arriscar a missão para ser visto como herói.'},
+  Medo:{desc:'Paralisar-se diante do perigo ou da incerteza.',ex:'Fugir de uma batalha importante para salvar a própria pele.'},
+  Controle:{desc:'Precisar dominar tudo e todos ao redor.',ex:'Manipular aliados para que façam exatamente o que você quer.'},
+  Vingança:{desc:'Nunca esquecer uma ofensa e buscar retribuição.',ex:'Perseguir alguém que o traiu, mesmo que isso custe caro.'},
+  Apatia:{desc:'Não se importar com nada ao redor, isolando-se emocionalmente.',ex:'Ignorar o sofrimento alheio porque "não é seu problema".'},
+  Ambição:{desc:'Buscar poder a qualquer custo, sem limites morais.',ex:'Sacrificar princípios ou pessoas em troca de avanço pessoal.'},
+};
+const ATTR_COST = {8:0,9:1,10:2,11:3,12:4,13:5,14:7,15:9};
+const ASI_LEVELS = [4,8,12,16,19];
+function totalAttrPoints(level){return 27+ASI_LEVELS.filter(l=>l<=level).length*2;}
 
-// ===================== BUILD: ASPECTOS GRID =====================
-const aGrid = document.getElementById('aspectosGrid');
-ASPECTOS.forEach(a=>{
-  const c = document.createElement('div');
-  c.className = 'aspecto-card reveal';
-  c.innerHTML = `<h4>${a.nome}</h4><p>${a.desc}</p>`;
-  aGrid.appendChild(c);
-});
+const ATTR_PRESETS = {
+  guerreiro:{for:15,des:13,con:14,int:8,sab:12,car:10},
+  baluarte:{for:14,des:10,con:15,int:8,sab:12,car:10},
+  vigilante:{for:8,des:15,con:12,int:10,sab:14,car:10},
+  arcanista:{for:8,des:12,con:10,int:15,sab:13,car:12},
+  creator:{for:8,des:14,con:12,int:15,sab:10,car:12},
+};
 
-// ===================== BUILD: FRUIT EMBERS =====================
-const embersWrap = document.getElementById('fruitEmbers');
-REINOS.forEach((r,i)=>{
-  const angle = (i / REINOS.length) * Math.PI * 2 - Math.PI/2;
-  const radius = window.innerWidth < 600 ? 100 : 155;
-  const dx = Math.cos(angle) * radius;
-  const dy = Math.sin(angle) * radius;
-  const el = document.createElement('div');
-  el.className = 'ember';
-  el.style.setProperty('--dx', dx + 'px');
-  el.style.setProperty('--dy', dy + 'px');
-  el.style.setProperty('--k', r.cor);
-  el.style.transitionDelay = (i * 55) + 'ms';
-  el.title = r.nome;
-  el.innerHTML = `<span>${r.icon}</span>`;
-  embersWrap.appendChild(el);
-});
+// ===== STATE =====
+let state = {
+  step:0,name:'',level:3,realm:null,archetype:null,race:null,
+  attrs:{},convic:[],tempt:[],attrMode:'preset',spells:{cantrip:[],leveled:[]},
+  equipment:{weapons:[],armor:'sem-armadura',shield:false},
+  loreRealm:null,
+  convModal:null,
+};
 
-const fruitStage = document.getElementById('fruitStage');
-const fruitIO = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      fruitStage.classList.add('burst');
-      fruitIO.unobserve(e.target);
-    }
-  });
-},{threshold:.5});
-fruitIO.observe(fruitStage);
+// ===== STEPS =====
+const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Magias'},{label:'Equipamento'},{label:'Convicções'},{label:'Ficha'}];
 
-// ===================== SCROLL REVEAL =====================
-const revealIO = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('in-view');
-      revealIO.unobserve(e.target);
-    }
-  });
-},{threshold:.15, rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.reveal').forEach(el=>revealIO.observe(el));
-
-// ===================== PROGRESS THREAD =====================
-const fill = document.getElementById('progress-fill');
-let ticking = false;
-function updateProgress(){
-  const el = document.documentElement;
-  const max = el.scrollHeight - el.clientHeight;
-  const pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
-  fill.style.height = pct + '%';
-  ticking = false;
+// ===== RENDER =====
+function render(){
+  state.equipment=state.equipment||{weapons:[],armor:'sem-armadura',shield:false};
+  state.equipment.weapons=state.equipment.weapons||[];
+  const s=state.step;
+  document.getElementById('steps').innerHTML=STEPS.map((st,i)=>`
+    <div class="step-dot ${i==s?'active':i<s?'done':''}">${i<s?'✓':i+1}</div>
+  `).join('');
+  document.getElementById('app').innerHTML=`<div class="screen active">${screens[s]()}</div>`;
 }
-addEventListener('scroll', ()=>{
-  if(!ticking){ requestAnimationFrame(updateProgress); ticking = true; }
-}, {passive:true});
-updateProgress();
 
-// ===================== SCROLL TOP BUTTON =====================
-const topBtn = document.getElementById('topBtn');
-addEventListener('scroll', ()=>{
-  topBtn.classList.toggle('show', scrollY > innerHeight * 1.1);
-}, {passive:true});
-topBtn.addEventListener('click', ()=>scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'}));
+function go(n){state.step=n;render()}
 
-// ===================== MODAL =====================
-const modalRoot = document.getElementById('modalRoot');
-function escClose(e){ if(e.key === 'Escape') closeModal(); }
-function openModal(id){
-  const r = REINOS.find(x=>x.id === id);
-  if(!r) return;
-  modalRoot.innerHTML = `
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal-box" style="--k:${r.cor}" role="dialog" aria-modal="true" aria-label="${r.nome}">
-        <button class="modal-close" aria-label="Fechar">✕</button>
-        <div class="modal-head">
-          <span class="modal-icon">${r.icon}</span>
-          <div>
-            <p class="modal-eyebrow">${r.virtude} · ${r.atributo}</p>
-            <h3>${r.nome}</h3>
+// ===== SCREENS =====
+const screens = [
+  // 0 Welcome
+  ()=>`
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:75vh;text-align:center">
+      <div class="fruit-icon">✦</div>
+      <div class="title">
+        <h1>Ecos da Luz</h1>
+        <p>Criação de Personagem</p>
+      </div>
+      <p style="color:var(--text2);font-size:13px;margin:16px 0;max-width:320px;line-height:1.5">
+        Um mundo de fragmentos perdidos,<br>
+        caminhos esquecidos e luz adormecida.<br>
+        Escolha quem você será.
+      </p>
+      <button class="btn btn-primary" onclick="go(1)" style="margin-top:10px">✦ Começar</button>
+      <button class="btn btn-secondary" onclick="generateCharacter()" style="margin-top:10px">🎲 Gerar Aleatório</button>
+    </div>
+  `,
+
+  // 1 Name
+  ()=>`
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh">
+      <p style="color:var(--text2);margin-bottom:6px;font-size:14px">Qual o nome do seu personagem?</p>
+      <input class="input-name" value="${state.name}" oninput="state.name=this.value" id="nameIn" placeholder="Nome do Herói" maxlength="30" autofocus>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
+        <span style="color:var(--text2);font-size:13px">Nível:</span>
+        <button class="preset-btn" onclick="if(state.level>1)state.level--;render()">−</button>
+        <span style="font-size:20px;font-weight:700;color:var(--gold);min-width:24px;text-align:center">${state.level||3}</span>
+        <button class="preset-btn" onclick="if(state.level<20)state.level++;render()">+</button>
+      </div>
+      <p class="helper">Pressione Enter para avançar</p>
+      <div class="btn-group" style="margin-top:24px;width:100%">
+        <button class="btn btn-secondary" onclick="if(state.step>0)go(0)">Voltar</button>
+        <button class="btn btn-primary" onclick="nextName()">Próximo →</button>
+      </div>
+    </div>
+  `,
+
+  // 2 Realm
+  ()=>{
+    const selRealm=REALMS.find(r=>r.id==state.realm);
+    return `<div class="title"><h2>De onde você vem?</h2><p>Cada lugar carrega uma história</p></div>
+      <div class="card-grid c2">
+        ${REALMS.map(r=>`
+          <div class="card ${state.realm==r.id?'selected':''}" onclick="selectRealm('${r.id}')">
+            <div class="icon">${r.icon}</div>
+            <div class="name">${r.name}</div>
+            <div class="sub" style="font-style:italic;color:var(--gold-dim);font-size:10px">${r.phrase}</div>
+          </div>
+        `).join('')}
+      </div>
+      ${selRealm?`
+        <div style="margin-top:14px;background:var(--bg2);border-radius:var(--radius);padding:16px;border:1px solid var(--bg4);animation:fadeIn .3s">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:24px">${selRealm.icon}</span>
+            <div><span style="font-weight:600;font-size:15px">${selRealm.name}</span></div>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.5">${selRealm.culture}</p>
+          <button class="more-btn" style="margin-top:8px;background:none;border:none;color:var(--gold);font-size:12px;cursor:pointer;padding:4px 0" onclick="openLore('${selRealm.id}')">📖 Ler a história completa →</button>
+        </div>
+      `:''}
+      ${state.loreRealm?loreModal(state.loreRealm):''}
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(1)">Voltar</button>
+        <button class="btn btn-primary" onclick="go(3)" ${!state.realm?'disabled':''}>Próximo →</button>
+      </div>`;
+  },
+
+  // 3 Archetype
+  ()=>{
+    const realm=REALMS.find(r=>r.id==state.realm);
+    return `<div class="title"><h2>Escolha seu Caminho</h2><p>Como você enfrenta o mundo</p></div>
+      ${ARCHETYPES.map(a=>{
+        const sel=state.archetype==a.id;
+        const ex=a.ex.find(e=>e.reino==state.realm);
+        return `<div class="card ${sel?'selected':''}" onclick="select('archetype','${a.id}')" style="display:flex;align-items:center;text-align:left;padding:14px;margin-bottom:8px;gap:12px">
+          <div style="font-size:30px">${a.icon}</div>
+          <div style="flex:1">
+            <div class="name" style="font-size:15px">${a.name}</div>
+            <div class="sub" style="margin-top:2px">${a.function}</div>
+            <div style="margin:4px 0;display:flex;gap:6px">
+              <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">PV ${a.pvd}</span>
+              <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">Mana ×${a.manaBase}</span>
+            </div>
+            ${ex?`<div class="arch-hint">Ex: ${ex.exemplo}</div>`:''}
+            ${sel?`<p style="font-size:11px;color:var(--text2);margin-top:6px;line-height:1.4">${a.desc}</p>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="go(2)">Voltar</button>
+      <button class="btn btn-primary" onclick="go(4)" ${!state.archetype?'disabled':''}>Próximo →</button>
+    </div>`;
+  },
+
+  // 4 Race
+  ()=>`
+    <div class="title"><h2>Escolha sua Raça</h2><p>Sua herança e biologia</p></div>
+    <div class="card-grid c3">
+      ${RACES.map(r=>`
+        <div class="card ${state.race==r.id?'selected':''}" onclick="select('race','${r.id}')">
+          <div class="icon">${r.icon}</div>
+          <div class="name">${r.name}</div>
+          <div class="sub">${r.stats}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="go(3)">Voltar</button>
+        <button class="btn btn-primary" onclick="go(5)" ${!state.race?'disabled':''}>Próximo →</button>
+    </div>
+  `,
+
+  // 5 Attributes
+  ()=>{
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const preset=ATTR_PRESETS[state.archetype];
+    const usePreset=state.attrMode=='preset';
+    const a=usePreset?{...preset}:state.attrs;
+    if(Object.keys(state.attrs).length==0&&state.attrMode=='manual')state.attrs={for:8,des:8,con:8,int:8,sab:8,car:8};
+    if(usePreset)Object.assign(state.attrs,preset);
+
+    const baseCost=v=>ATTR_COST[v]||0;
+    const spent=baseCost(a.for)+baseCost(a.des)+baseCost(a.con)+baseCost(a.int)+baseCost(a.sab)+baseCost(a.car);
+    const remaining=27-spent;
+    const canUp=v=>v<15&&remaining>0;
+    const canDown=v=>v>8;
+    const mod=v=>Math.floor((v-10)/2);
+    const names={for:'FOR',des:'DES',con:'CON',int:'INT',sab:'SAB',car:'CAR'};
+
+    return `<div class="title"><h2>Atributos</h2><p>Distribua ${remaining<0?0:remaining} pontos — ou use um padrão</p></div>
+      <div class="preset-bar">
+        <button class="preset-btn ${usePreset?'active':''}" onclick="applyPreset()">✦ ${arch.name} Padrão</button>
+        <button class="preset-btn ${!usePreset?'active':''}" onclick="editManual()">✎ Editar Manual</button>
+      </div>
+      <div class="points">${Math.max(0,remaining)} pontos restantes</div>
+      ${Object.keys(names).map(k=>`
+        <div class="attr-row">
+          <div class="attr-label">${names[k]}</div>
+          <div class="attr-bar"><div class="attr-fill" style="width:${Math.min(100,(a[k]-8)/7*100)}%"></div></div>
+          <div class="attr-val">${a[k]}</div>
+          <div class="attr-mod ${mod(a[k])>=0?'pos':'neg'}">${mod(a[k])>=0?'+':''}${mod(a[k])}</div>
+          <div class="attr-btns">
+            <button onclick="adjAttr('${k}',-1)" ${canDown(a[k])?'':'disabled'}>−</button>
+            <button onclick="adjAttr('${k}',1)" ${canUp(a[k])?'':'disabled'}>+</button>
           </div>
         </div>
-        <p class="modal-verse">${r.versiculo}</p>
-        <div class="modal-tags">
-          <span>Fragmento: ${r.fragmento}</span>
-          <span>Símbolo: ${r.simbolo}</span>
+      `).join('')}
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(4)">Voltar</button>
+        <button class="btn btn-primary" onclick="go(6)">Magias →</button>
+      </div>`;
+  },
+
+  // 6 Magias
+  ()=>{
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const realm=REALMS.find(r=>r.id==state.realm);
+    const nv=state.level||3;
+    const spellsKnown=getSpellsKnown(arch.id,nv);
+    const sk=spellsKnown;
+
+    const sc=state.spells.cantrip.length;
+    const sl=state.spells.leveled.length;
+    const totalLeveledLimit=Object.entries(sk).filter(([k])=>k!='cantrip').reduce((a,[,v])=>a+v,0);
+
+    const maxCircleArchetype={arcanista:9,creator:7,vigilante:5,baluarte:4,guerreiro:3}[arch.id]||3;
+    const maxCircleByLevel=Math.floor((nv+1)/2);
+    const maxCircle=Math.min(maxCircleArchetype,maxCircleByLevel);
+
+    const circles=[...new Set(ALL_SPELLS.map(s=>s.c))].sort((a,b)=>a-b);
+    const accessCircles=circles.filter(c=>c===0||c<=maxCircle);
+
+    const circleLabel={0:'🪄 Truques (grátis)',1:'1º Círculo (5 PM)',2:'2º Círculo (10 PM)',3:'3º Círculo (15 PM)',4:'4º Círculo (20 PM)',5:'5º Círculo (25 PM)',6:'6º Círculo (30 PM)',7:'7º Círculo (35 PM)',8:'8º Círculo (40 PM)',9:'9º Círculo (45 PM)'};
+
+    const spellCard=(s)=>{
+      const isCantrip=s.c===0;
+      const arr=isCantrip?state.spells.cantrip:state.spells.leveled;
+      const sel=arr.includes(s.id);
+      const lim=isCantrip?sk.cantrip:totalLeveledLimit;
+      const cur=isCantrip?sc:sl;
+      const disabled=!sel&&cur>=lim;
+      return `<div class="spell-card ${sel?'selected':''} ${disabled?'disabled':''}" onclick="${disabled?'':`toggleSpell('${s.id}')`}">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:600;font-size:13px;color:var(--gold2)">${s.n}</span>
+          <span style="display:flex;gap:4px;font-size:10px">
+            <span style="background:var(--bg4);padding:1px 6px;border-radius:6px;color:var(--gold)">${s.m}PM</span>
+            <span style="background:var(--bg4);padding:1px 6px;border-radius:6px;color:${s.cal>0?'var(--red)':'var(--text2)'}">🔥${s.cal}</span>
+          </span>
         </div>
-        <p class="modal-motto">"${r.frase}"</p>
-        <p class="modal-text">${r.cultura}</p>
-        <p class="modal-text">${r.lore}</p>
+        <p style="font-size:10px;color:var(--text2);margin:2px 0;line-height:1.2">${s.o} · ${s.s}</p>
+      </div>`;
+    };
+
+    const calorLimit=Math.max(3,3+Math.floor((state.attrs.con-10)/2));
+
+    return `<div class="title"><h2>🔮 Magias</h2><p>Nv ${nv} · ${arch?.name||'?'} · Círculo máx: ${maxCircle}º</p></div>
+      <div style="margin-bottom:10px;background:var(--bg2);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--bg4);font-size:11px;line-height:1.4">
+        <strong style="color:var(--gold)">📐 Calor Mágico:</strong> Cada magia de 1º+ gera Calor = círculo.<br>
+        <strong>Limite:</strong> ${calorLimit} (3 + CON) · Dissipa 1/turno · Zera em descanso curto<br>
+        <strong style="color:var(--red)">Acima do limite:</strong> crítico (+dano) → sobrecarga (+dano em si).
       </div>
+      <div style="margin-bottom:12px;background:var(--bg2);border-radius:var(--radius);padding:8px 12px;border:1px solid var(--bg4);font-size:11px">
+        <span style="color:var(--gold)">🪄 Truques:</span> ${sc}/${sk.cantrip} · 
+        <span style="color:var(--gold)">Niveladas:</span> ${sl}/${totalLeveledLimit}
+      </div>
+      ${accessCircles.map(c=>{
+        const spells=ALL_SPELLS.filter(s=>s.c===c);
+        return `
+        <p style="font-size:12px;color:var(--gold);font-weight:600;margin:14px 0 6px">${circleLabel[c]||c+'º Círculo'}</p>
+        <p style="font-size:10px;color:var(--text2);margin-bottom:6px">${spells.length} magias disponíveis</p>
+        ${spells.map(s=>spellCard(s)).join('')}`;
+      }).join('')}
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(5)">← Atributos</button>
+        <button class="btn btn-primary" onclick="go(7)">Equipamento →</button>
+      </div>`;
+  },
+
+  // 7 Equipment
+  ()=>{
+    const selectedWeapons=state.equipment.weapons;
+    const theme=EQUIPMENT_THEMES[state.realm]||EQUIPMENT_THEMES.havendor;
+    const weaponCard=w=>`<div class="equipment-card ${selectedWeapons.includes(w.id)?'selected':''}" onclick="toggleWeapon('${w.id}')">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--gold2)">${w.name}</span><span style="font-size:11px;color:var(--gold)">${w.damage}</span></div>
+      <p style="font-size:10px;color:var(--text2);margin-top:3px">${w.type} · ${w.range} · ${w.props.join(', ')||'sem propriedades'}</p>
     </div>`;
-  document.body.classList.add('lock');
-  document.getElementById('modalOverlay').addEventListener('click', e=>{
-    if(e.target.id === 'modalOverlay') closeModal();
-  });
-  modalRoot.querySelector('.modal-close').addEventListener('click', closeModal);
-  document.addEventListener('keydown', escClose);
-}
-function closeModal(){
-  modalRoot.innerHTML = '';
-  document.body.classList.remove('lock');
-  document.removeEventListener('keydown', escClose);
-}
+    return `<div class="title"><h2>⚔️ Equipamento</h2><p>Escolha até 2 armas, uma armadura e um escudo</p></div>
+      <div style="margin-bottom:12px;background:var(--bg2);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--bg4);font-size:11px;line-height:1.4"><strong style="color:var(--gold)">${theme.label}</strong> · ${theme.material}<br><span style="color:var(--text2)">O equipamento mantém as regras abaixo, mas pode assumir a aparência e a tradição de ${REALMS.find(r=>r.id===state.realm)?.name||'seu Reino'}.</span></div>
+      <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Armas (${selectedWeapons.length}/2)</p>
+      ${WEAPONS.map(weaponCard).join('')}</div>
+      <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Armadura</p>
+      ${ARMOR.map(a=>`<div class="equipment-card ${state.equipment.armor===a.id?'selected':''}" onclick="selectArmor('${a.id}')"><div style="display:flex;justify-content:space-between"><span style="font-weight:600;color:var(--gold2)">${a.name}</span><span style="font-size:11px;color:var(--gold)">${a.base?a.base+' CA':'DES total'}</span></div><p style="font-size:10px;color:var(--text2);margin-top:3px">${a.type}${a.dexCap===null?' · DES sem limite':a.dexCap===0?' · não soma DES':' · DES máx. +'+a.dexCap}</p></div>`).join('')}</div>
+      <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Escudo</p>
+        <div class="equipment-card ${state.equipment.shield?'selected':''}" onclick="state.equipment.shield=!state.equipment.shield;render()"><div style="display:flex;justify-content:space-between"><span style="font-weight:600;color:var(--gold2)">Escudo</span><span style="font-size:11px;color:var(--gold)">+2 CA</span></div><p style="font-size:10px;color:var(--text2);margin-top:3px">Requer uma mão livre</p></div>
+      </div>
+      <div class="btn-group"><button class="btn btn-secondary" onclick="go(6)">← Magias</button><button class="btn btn-primary" onclick="go(8)">Convicções →</button></div>`;
+  },
 
-// ===================== AMBIENT EMBERS CANVAS =====================
-const canvas = document.getElementById('embers');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
-addEventListener('resize', resize);
-resize();
+  // 8 Convicções e Corrupções
+  ()=>{
+    const cKeys=Object.keys(CONVICTIONS);
+    const tKeys=Object.keys(CORRUPTIONS);
+    return `<div class="title">
+      <h2>⚖️ Convicções e Corrupções</h2>
+      <p>A bússola moral do seu personagem — escolha com sabedoria</p>
+    </div>
+    <div style="margin-bottom:12px">
+      <p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Convicções (escolha 3)</p>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">São os valores que seu personagem defende acima de tudo.</p>
+      ${cKeys.map(k=>{
+        const sel=state.convic.includes(k);
+        return `<div class="conv-card ${sel?'selected':''}" onclick="toggle('convic','${k}',3)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-weight:600;font-size:14px;color:var(--gold)">${k}</span>
+            <span style="font-size:11px;color:${sel?'var(--gold)':'var(--text2)'}">${sel?'✓ Selecionado':'Clique para escolher'}</span>
+          </div>
+          <p style="font-size:12px;color:var(--text);margin:4px 0;line-height:1.4">${CONVICTIONS[k].desc}</p>
+          <p style="font-size:11px;color:var(--text2);font-style:italic">Ex: ${CONVICTIONS[k].ex}</p>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="margin-bottom:12px">
+      <p style="font-size:12px;color:var(--red);font-weight:600;margin-bottom:8px">Corrupções (escolha 2)</p>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Fraquezas ocultas que seu personagem carrega, mesmo que tente esconder.</p>
+      ${tKeys.map(k=>{
+        const sel=state.tempt.includes(k);
+        return `<div class="conv-card ${sel?'selected corrupt':''}" onclick="toggle('tempt','${k}',2)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-weight:600;font-size:14px;color:var(--red)">${k}</span>
+            <span style="font-size:11px;color:${sel?'var(--gold)':'var(--text2)'}">${sel?'✓ Selecionado':'Clique para escolher'}</span>
+          </div>
+          <p style="font-size:12px;color:var(--text);margin:4px 0;line-height:1.4">${CORRUPTIONS[k].desc}</p>
+          <p style="font-size:11px;color:var(--text2);font-style:italic">Ex: ${CORRUPTIONS[k].ex}</p>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(7)">← Equipamento</button>
+        <button class="btn btn-primary" onclick="go(9)" ${state.convic.length<3||state.tempt.length<2?'disabled':''}>Ver Ficha →</button>
+    </div>`;
+  },
 
-function mkParticle(){
-  return {
-    x: Math.random() * W,
-    y: H + Math.random() * 120,
-    r: Math.random() * 1.6 + .4,
-    spd: Math.random() * .35 + .12,
-    drift: (Math.random() - .5) * .25,
-    alpha: Math.random() * .5 + .15,
-    flicker: Math.random() * .02 + .006,
-    phase: Math.random() * Math.PI * 2,
+  // 9 Final Sheet
+  ()=>{
+    const race=RACES.find(r=>r.id==state.race);
+    const realm=REALMS.find(r=>r.id==state.realm);
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const a=state.attrs;
+    const mod=v=>Math.floor((v-10)/2);
+    const intMod=mod(a.int),conMod=mod(a.con),dexMod=mod(a.des),sabMod=mod(a.sab),forMod=mod(a.for),carMod=mod(a.car);
+    const nv=state.level||3;
+    const base=arch.manaBase;
+    const mana=Math.max(3,nv+intMod)*base;
+    const pv=arch.pv+conMod+(nv-1)*(arch.pvavg+conMod);
+     const armor=ARMOR.find(item=>item.id===state.equipment.armor)||ARMOR[0];
+     const armorDex=armor.dexCap===null?dexMod:Math.min(dexMod,armor.dexCap);
+     const ca=(armor.id==='sem-armadura'?10:armor.base)+armorDex+(state.equipment.shield?SHIELD.ac:0);
+     const prof=2+Math.floor((nv-1)/4);
+    const inic=dexMod;
+
+    const calorLimit=Math.max(3,3+Math.floor((state.attrs.con-10)/2));
+
+    return `<div class="title"><h2>${state.name||'Herói'}</h2><p style="font-size:12px">Nv ${nv} · ${race?.icon} ${race?.name||'?'} · ${realm?.icon} ${realm?.name||'?'} · ${arch?.icon} ${arch?.name||'?'}</p></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val">${nv}</div><div class="stat-label">Nível</div></div>
+        <div class="stat-card"><div class="stat-val">${pv}</div><div class="stat-label">PV</div></div>
+        <div class="stat-card"><div class="stat-val">${mana}</div><div class="stat-label">Mana</div></div>
+        <div class="stat-card"><div class="stat-val">${ca}</div><div class="stat-label">CA</div></div>
+        <div class="stat-card"><div class="stat-val">${inic>=0?'+':''}${inic}</div><div class="stat-label">Iniciativa</div></div>
+      </div>
+      <div class="result-card"><h3>Atributos</h3><div class="result-grid">
+        ${['for','des','con','int','sab','car'].map(k=>`<span class="label">${k.toUpperCase()}</span><span class="val">${a[k]} (${mod(a[k])>=0?'+':''}${mod(a[k])})</span>`).join('')}
+      </div></div>
+       <div class="result-card"><h3>Origem · Caminho · Raça</h3><div class="result-grid">
+        <span class="label">Origem</span><span class="val">${realm?.icon||''} ${realm?.name||'—'}</span>
+        <span class="label">Caminho</span><span class="val">${arch?.icon||''} ${arch?.name||'—'}</span>
+        <span class="label">Raça</span><span class="val">${race?.icon||''} ${race?.name||'—'}</span>
+       </div></div>
+       <div class="result-card"><h3>⚔️ Equipamento</h3><div class="result-grid">
+         <span class="label">Armadura</span><span class="val">${armor.name}</span>
+         <span class="label">Escudo</span><span class="val">${state.equipment.shield?'Sim (+2 CA)':'Não'}</span>
+         <span class="label">CA final</span><span class="val">${ca}</span>
+       </div>
+       <div style="margin-top:10px;display:grid;gap:6px">
+         ${state.equipment.weapons.length?state.equipment.weapons.map(id=>{const w=WEAPONS.find(item=>item.id===id);const ability=mod(a[w.ability]);return `<div style="background:var(--bg3);padding:8px;border-radius:8px;font-size:12px"><strong style="color:var(--gold2)">${w.name}</strong><br><span style="color:var(--text2)">${w.damage} ${w.type} · Ataque ${ability+prof>=0?'+':''}${ability+prof} · Dano ${w.damage}${w.damage.includes('FOR')?'':' '+(ability>=0?'+':'')+ability}</span></div>`}).join(''):'<span style="color:var(--text2);font-size:12px">Nenhuma arma selecionada</span>'}
+       </div></div>
+      <div class="result-card"><h3>Mana</h3><div class="result-grid">
+        <span class="label">Fórmula</span><span class="val">(Nv ${nv} + ${intMod>=0?'+':''}${intMod}) × ${base}</span>
+        <span class="label">Total</span><span class="val">${mana}</span>
+        <span class="label">Calor (limite)</span><span class="val" style="color:var(--red)">🔥 ${calorLimit}</span>
+      </div></div>
+      <div class="result-card">
+        <h3>⚖️ Convicções</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+          ${state.convic.map(c=>`<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--gold-dim);color:var(--gold)">${c}</span>`).join('')}
+        </div>
+      </div>
+      <div class="result-card">
+        <h3>⚠️ Corrupções</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+          ${state.tempt.map(t=>`<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--red);color:var(--red)">${t}</span>`).join('')}
+        </div>
+      </div>
+      ${state.spells.cantrip.length||state.spells.leveled.length?`
+      <div class="result-card">
+        <h3>🔮 Magias</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">
+          ${[...state.spells.cantrip,...state.spells.leveled].map(id=>{
+            const s=getSpellById(id);
+            return s?`<span style="background:var(--bg3);padding:3px 10px;border-radius:16px;font-size:11px;border:1px solid var(--gold-dim);color:var(--gold2)">${s.name} <span style="color:var(--text2);font-size:10px">${s.mana}PM</span></span>`:'';
+          }).join('')}
+        </div>
+        <div style="font-size:11px;color:var(--text2);margin-top:6px">
+          Limite de Calor: ${Math.max(3,3+Math.floor((state.attrs.con-10)/2))} (3 + CON)
+        </div>
+      </div>`:''}
+      <div class="btn-group" style="flex-wrap:wrap">
+         <button class="btn btn-secondary" onclick="go(8)" style="flex:1;min-width:80px">← Convicções</button>
+        <button class="btn btn-primary" onclick="window.print()" style="flex:1;min-width:80px">🖨️ PDF</button>
+        <button class="btn btn-secondary" onclick="exportCharacter()" style="flex:1;min-width:80px">💾 Exportar</button>
+        <button class="btn btn-secondary" onclick="importCharacter()" style="flex:1;min-width:80px">📂 Importar</button>
+        <button class="btn btn-secondary" onclick="resetAll()" style="flex:1;min-width:80px">🔄 Novo</button>
+      </div>
+      ${state.convModal?convModal():''}`;
+  }
+];
+
+// ===== RANDOM GENERATOR =====
+const NAMES = [
+  'Aelar','Bianca','Caelum','Dante','Elara','Finn','Gwyn','Halia','Ignis','Juno',
+  'Kael','Lyra','Mira','Nox','Ori','Pietra','Quinn','Riven','Sera','Talus',
+  'Uma','Valen','Wren','Xara','Yuki','Zephyr','Aldric','Breeze','Coral','Dusk',
+  'Echo','Flint','Gale','Haven','Ivy','Jade','Kai','Lark','Moss','Nyx',
+  'Onyx','Pike','Rain','Sol','Tide','Vale','Wisp','Zara','Aria','Bard',
+  'Cinder','Dove','Ember','Frost','Glimmer','Hollow','Iris','Jasper','Kestrel','Luna',
+  'Meridian','Nimbus','Orion','Petal','Raven','Shade','Tempest','Umbra','Vesper','Wolf',
+];
+
+function generateCharacter(){
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const name = pick(NAMES);
+  const realmId = pick(REALMS).id;
+  const archId = pick(ARCHETYPES).id;
+  const raceId = pick(RACES).id;
+  const preset = ATTR_PRESETS[archId];
+  
+  // Pick random convictions and temptations
+  const cKeys=Object.keys(CONVICTIONS);
+  const tKeys=Object.keys(CORRUPTIONS);
+  const shuffledC = [...cKeys].sort(()=>Math.random()-.5);
+  const shuffledT = [...tKeys].sort(()=>Math.random()-.5);
+  
+  state = {
+     step: 9,
+    name,level:3,
+    realm: realmId,
+    archetype: archId,
+    race: raceId,
+    attrs: {...preset},
+    convic: shuffledC.slice(0,3),
+    tempt: shuffledT.slice(0,2),
+     spells: {cantrip:[],leveled:[]},
+     equipment: {weapons:[pick(WEAPONS).id],armor:'sem-armadura',shield:false},
+    attrMode: 'preset',
+    loreRealm: null,
+    convModal: null,
   };
+  render();
 }
-const N = reduceMotion ? 0 : (innerWidth < 700 ? 16 : 30);
-for(let i=0;i<N;i++) particles.push(mkParticle());
 
-function tick(){
-  ctx.clearRect(0,0,W,H);
-  particles.forEach(p=>{
-    p.y -= p.spd; p.x += p.drift; p.phase += p.flicker;
-    if(p.y < -10){ Object.assign(p, mkParticle()); p.y = H + 10; }
-    const a = p.alpha * (0.6 + 0.4 * Math.sin(p.phase));
-    ctx.beginPath();
-    ctx.fillStyle = `rgba(212,168,67,${a})`;
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-    ctx.fill();
-  });
-  if(!reduceMotion) requestAnimationFrame(tick);
+function applyPreset(){
+  state.attrMode='preset';
+  state.attrs={...ATTR_PRESETS[state.archetype]};
+  render();
 }
-tick();
+function editManual(){
+  state.attrMode='manual';
+  state.attrs={for:8,des:8,con:8,int:8,sab:8,car:8};
+  render();
+}
+
+// ===== HELPERS =====
+function select(type,id){
+  state[type]=state[type]==id?null:id;
+  if(type=='archetype')state.spells={cantrip:[],leveled:[]};
+  render();
+}
+
+function selectRealm(id){
+  state.realm=state.realm==id?null:id;
+  state.archetype=null;
+  state.spells={cantrip:[],leveled:[]};
+  state.loreRealm=null;
+  render();
+}
+
+function toggleWeapon(id){
+  const weapons=state.equipment.weapons;
+  const index=weapons.indexOf(id);
+  if(index>=0)weapons.splice(index,1);
+  else if(weapons.length<2)weapons.push(id);
+  render();
+}
+
+function selectArmor(id){state.equipment.armor=id;render()}
+
+function loreModal(id){
+  const r=REALMS.find(x=>x.id==id);
+  if(!r)return'';
+  return `<div onclick="closeLore()" style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s">
+    <div onclick="event.stopPropagation()" style="background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto;border:1px solid var(--gold-dim)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span style="font-size:28px">${r.icon}</span>
+        <div><h3 style="color:var(--gold);font-size:18px">${r.name}</h3></div>
+      </div>
+      <p style="font-style:italic;color:var(--gold-dim);font-size:13px;margin-bottom:10px">${r.phrase}</p>
+      <p style="color:var(--text);font-size:13px;line-height:1.6;margin-bottom:10px">${r.culture}</p>
+      <div style="border-top:1px solid var(--bg4);padding-top:10px">
+        <p style="font-size:13px;color:var(--text);line-height:1.6">${r.lore}</p>
+      </div>
+      <button class="btn btn-secondary" onclick="closeLore()" style="margin-top:14px;width:100%">Fechar</button>
+    </div>
+  </div>`;
+}
+
+function openLore(id){state.loreRealm=id;render()}
+function closeLore(){state.loreRealm=null;render()}
+
+function openConvModal(){state.convModal=true;render()}
+function closeConvModal(){state.convModal=null;render()}
+
+function convModal(){
+  return `<div onclick="closeConvModal()" class="modal-overlay">
+    <div onclick="event.stopPropagation()" class="modal-content">
+      <h3 style="color:var(--gold);font-size:18px;margin-bottom:8px">⚖️ Convicções e Corrupções</h3>
+      <p style="font-style:italic;color:var(--gold-dim);font-size:13px;margin-bottom:10px">A bússola invisível do seu personagem.</p>
+
+      <p style="color:var(--text);font-size:13px;line-height:1.6;margin-bottom:12px">
+        <strong style="color:var(--gold)">Convicções</strong> são os princípios que guiam seu personagem — 
+        valores inegociáveis que definem quem ele é quando ninguém está olhando. 
+        Escolha <strong>3</strong> que representam o que ele mais defende.
+      </p>
+      <p style="color:var(--text);font-size:13px;line-height:1.6;margin-bottom:12px">
+        <strong style="color:var(--red)">Corrupções</strong> são fraquezas ocultas — 
+        impulsos que o personagem carrega consigo, mesmo que tente esconder. 
+        Escolha <strong>2</strong> que representam suas maiores vulnerabilidades.
+      </p>
+
+      <div style="border-top:1px solid var(--bg4);padding-top:10px;margin-bottom:10px">
+        <p style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px"><strong>📌 Como funciona no jogo?</strong></p>
+        <p style="font-size:12px;color:var(--text2);line-height:1.5">
+          Durante a campanha, o Mestre pode recompensar seu personagem quando ele age 
+          de acordo com suas Convicções, ou desafiá-lo com suas Corrupções em momentos 
+          críticos. Este é um sistema puramente narrativo — sem bônus mecânicos diretos — 
+          para incentivar roleplay profundo e escolhas significativas.
+        </p>
+        <p style="font-size:12px;color:var(--text2);line-height:1.5;margin-top:6px">
+          O Mestre acompanha secretamente o peso de cada escolha. Quando uma Corrupção 
+          se acumula demais, pode levar a consequências narrativas — ou, se resistida, 
+          a momentos de crescimento.
+        </p>
+      </div>
+
+      <button class="btn btn-secondary" onclick="closeConvModal()" style="width:100%">Entendi!</button>
+    </div>
+  </div>`;
+}
+
+function nextName(){
+  if(state.name.trim())go(2);
+  else document.getElementById('nameIn')?.focus();
+}
+
+function adjAttr(k,delta){
+  if(state.attrMode=='preset')state.attrMode='manual';
+  const v=state.attrs[k]+delta;
+  if(v<8||v>15)return;
+  const oldCost=ATTR_COST[state.attrs[k]];
+  const newCost=ATTR_COST[v];
+  if(delta>0){
+    const spent=Object.entries(state.attrs).reduce((s,[key,val])=>s+ATTR_COST[val],0);
+    if(spent+newCost-oldCost>27)return;
+  }
+  state.attrs[k]=v;
+  render();
+}
+
+function toggle(type,name,limit){
+  const arr=state[type];
+  const idx=arr.indexOf(name);
+  if(idx>=0)arr.splice(idx,1);
+  else if(arr.length<limit)arr.push(name);
+  render();
+}
+
+function getSpellById(id){
+  return ALL_SPELLS.find(s=>s.id===id)||null;
+}
+
+function getSpellsKnown(archId,level){
+  const maxCircle=Math.min(
+    {arcanista:9,creator:7,vigilante:5,baluarte:4,guerreiro:3}[archId]||3,
+    Math.floor((level+1)/2)+1
+  );
+  const cantripLimit={arcanista:3,creator:2,vigilante:2,baluarte:2,guerreiro:1}[archId]||1;
+  const totalKnown={
+    arcanista:Math.min(2+level*2,40),
+    creator:Math.min(1+level,22),
+    vigilante:Math.min(1+Math.floor(level/2),12),
+    baluarte:Math.min(1+Math.floor(level/2),13),
+    guerreiro:0
+  }[archId]||0;
+  const result={cantrip:cantripLimit};
+  let rem=totalKnown;
+  for(let c=1;c<=maxCircle&&rem>0;c++){
+    const take=Math.min(Math.ceil(rem/(maxCircle-c+1)),4);
+    result[''+c]=take;
+    rem-=take;
+  }
+  return result;
+}
+
+function isCantripSpell(id){
+  const s=ALL_SPELLS.find(s=>s.id===id);
+  return s?s.c===0:false;
+}
+
+function toggleSpell(id){
+  const isCantrip=isCantripSpell(id);
+  const sk=getSpellsKnown(state.archetype,state.level||3);
+  const arr=isCantrip?state.spells.cantrip:state.spells.leveled;
+  const limit=isCantrip?sk.cantrip:Object.entries(sk).filter(([k])=>k!='cantrip').reduce((a,[,v])=>a+v,0);
+  const idx=arr.indexOf(id);
+  if(idx>=0)arr.splice(idx,1);
+  else if(arr.length<limit)arr.push(id);
+  render();
+}
+
+function exportCharacter(){
+  const json=JSON.stringify(state,null,2);
+  const blob=new Blob([json],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(state.name||'personagem')+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function importCharacter(){
+  const input=document.createElement('input');
+  input.type='file';
+  input.accept='.json';
+  input.onchange=e=>{
+    const file=e.target.files[0];
+    if(!file)return;
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        const data=JSON.parse(ev.target.result);
+        state=data;
+        render();
+      }catch(err){
+        alert('Erro ao importar: arquivo inválido.');
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+function resetAll(){
+  state={step:0,name:'',level:3,realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],spells:{cantrip:[],leveled:[]},equipment:{weapons:[],armor:'sem-armadura',shield:false},attrMode:'preset',loreRealm:null,convModal:null};
+  render();
+}
+
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&state.step==1)nextName()});
+
+render();
 </script>
 </body>
 </html>
