@@ -25,10 +25,15 @@
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100dvh}
 h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 
-#steps{display:flex;justify-content:center;gap:6px;padding:14px 12px;position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--bg4)}
-.step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;background:var(--bg3);color:var(--text2);border:2px solid transparent;transition:.3s;cursor:default}
+#steps{display:flex;justify-content:flex-start;gap:8px;padding:10px 12px;position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--bg4);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#steps::-webkit-scrollbar{display:none}
+.step-dot{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;font-family:inherit;background:var(--bg3);color:var(--text2);border:2px solid transparent;transition:.3s;cursor:pointer;box-sizing:border-box}
 .step-dot.active{border-color:var(--gold);color:var(--gold);background:var(--bg2)}
 .step-dot.done{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.step-dot:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(212,168,67,.3)}
+.step-dot:disabled{cursor:not-allowed;opacity:.32}
+.step-dot .dot-label{display:none}
+@media(min-width:700px){#steps{gap:8px}.step-dot{width:auto;height:auto;border-radius:20px;padding:9px 16px}.step-dot .dot-label{display:inline;font-size:12.5px;margin-left:8px}}
 
 .screen{display:none;padding:16px 18px 24px;max-width:480px;margin:0 auto;animation:fadeIn .3s}
 .screen.active{display:block}
@@ -46,7 +51,7 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}
 .modal-content{background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto;border:1px solid var(--gold-dim)}
-.conv-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s;margin-bottom:8px}
+.conv-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s}
 .conv-card:hover{border-color:var(--gold-dim)}
 .conv-card.selected{border-color:var(--gold);background:var(--bg2)}
 .conv-card.selected.corrupt{border-color:var(--red);background:var(--bg2);box-shadow:0 0 16px rgba(204,68,68,.15)}
@@ -59,17 +64,29 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 .btn-group .btn{flex:1}
 
 .attr-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.attr-label{width:44px;font-weight:600;font-size:13px;color:var(--gold)}
+.attr-label{width:44px;font-weight:600;font-size:13px;color:var(--gold);flex-shrink:0}
 .attr-bar{flex:1;height:22px;background:var(--bg3);border-radius:11px;overflow:hidden}
 .attr-fill{height:100%;border-radius:11px;transition:.3s;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
-.attr-val{width:24px;text-align:center;font-weight:700;font-size:15px;color:var(--gold2)}
-.attr-mod{width:26px;text-align:center;font-weight:700;font-size:15px}
-.attr-mod.pos{color:#66dd66}
-.attr-mod.neg{color:#dd6666}
+.attr-val{width:48px;text-align:center;font-weight:700;font-size:18px;color:var(--text);line-height:1.1;flex-shrink:0}
+.attr-val .racial-badge{display:block;font-size:9px;color:#66dd66;font-weight:600;margin-top:2px;white-space:nowrap}
+.attr-mod{width:42px;text-align:center;flex-shrink:0;line-height:1.1}
+.attr-mod .mod-num{display:block;font-weight:700;font-size:16px;color:var(--text)}
+.attr-mod .mod-sub{display:block;font-size:8.5px;font-weight:500;color:var(--text2);margin-top:1px;white-space:nowrap}
+.attr-mod.pos .mod-num{color:#66dd66}
+.attr-mod.neg .mod-num{color:#dd6666}
 .attr-btns{display:flex;gap:3px}
 .attr-btns button{width:26px;height:26px;border-radius:50%;border:1px solid var(--text2);background:var(--bg3);color:var(--text);font-size:16px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
 .attr-btns button:hover{background:var(--bg4);border-color:var(--gold)}
 .attr-btns button:disabled{opacity:.25;cursor:not-allowed}
+.racial-box{background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;padding:10px 12px;font-size:11px;color:var(--gold2);margin-bottom:10px}
+.racial-box .rb-title{font-weight:600;color:var(--gold);margin-bottom:6px;font-size:11px}
+.racial-box .rb-sub{color:var(--text2);margin:5px 0 0;font-size:10px}
+.racial-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.racial-chip{display:inline-flex;align-items:center;gap:2px;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--bg4);color:var(--text2);background:var(--bg2);transition:.2s}
+.racial-chip:hover{border-color:var(--gold2);color:var(--gold2)}
+.racial-chip.on{background:#66dd6622;border-color:#66dd66;color:#66dd66}
+.racial-chip.off{opacity:.6}
+.racial-chip:disabled{cursor:not-allowed;opacity:.35}
 
 .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 .stat-card{background:var(--bg3);border-radius:var(--radius);padding:14px;text-align:center;border:1px solid var(--bg4)}
@@ -104,6 +121,21 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 
 .arch-hint{font-size:11px;color:var(--gold-dim);margin-top:4px;font-style:italic}
 .spell-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s;margin-bottom:6px}
+.spell-card:hover{border-color:var(--gold-dim);background:var(--bg2)}
+.spell-card.selected{border-color:var(--gold);background:var(--bg2);box-shadow:0 0 20px rgba(212,168,67,.15)}
+.spell-card.disabled{cursor:not-allowed}
+.spell-tab{background:var(--bg3);border:1px solid var(--bg4);color:var(--text2);padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer;transition:.2s}
+.spell-tab:hover{border-color:var(--gold-dim);color:var(--gold2)}
+.spell-tab.active{background:var(--bg4);border-color:var(--gold);color:var(--gold)}
+.equip-tabs{display:flex;gap:4px;margin-bottom:12px;background:var(--bg2);border-radius:var(--radius);border:1px solid var(--bg4);padding:4px}
+.equip-tab{background:var(--bg3);border:1px solid var(--bg4);color:var(--text2);padding:7px 12px;border-radius:var(--radius);font-size:11px;cursor:pointer;transition:.2s;flex:1}
+.equip-tab:hover{border-color:var(--gold-dim);color:var(--gold2)}
+.equip-tab.active{background:var(--bg4);border-color:var(--gold);color:var(--gold);font-weight:600}
+.equipment-section{display:grid;gap:8px}
+.equipment-card{background:var(--bg3);border-radius:var(--radius);padding:12px;border:2px solid var(--bg4);cursor:pointer;transition:.25s}
+.equipment-card:hover{border-color:var(--gold-dim);background:var(--bg2)}
+.equipment-card.selected{border-color:var(--gold);background:var(--bg2);box-shadow:0 0 20px rgba(212,168,67,.15)}
+.equipment-card.disabled{cursor:not-allowed;opacity:.45}
 .spell-card:hover{border-color:var(--gold-dim)}
 .spell-card.selected{border-color:var(--gold);background:var(--bg2)}
 .spell-card.disabled{opacity:.4;pointer-events:none}
@@ -113,8 +145,32 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
  .equipment-card:hover{border-color:var(--gold-dim)}
  .equipment-card.selected{border-color:var(--gold);background:var(--bg2)}
  .equipment-card.disabled{opacity:.45;pointer-events:none}
+
+.realm-card{cursor:pointer}
+.realm-card:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+
+/* ===== Home / Abertura ===== */
+.home-shell{display:flex;gap:22px;align-items:stretch;min-height:70vh}
+.home-nav{display:flex;flex-direction:column;gap:10px;min-width:210px;background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius);padding:14px;align-self:stretch}
+.home-nav .home-brand{font-family:'Cinzel',serif;color:var(--gold);font-size:13px;letter-spacing:.06em;margin-bottom:4px;line-height:1.4}
+.home-nav .home-brand small{display:block;color:var(--text2);font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.02em;font-weight:400;margin-top:2px}
+.nav-btn{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;background:var(--bg3);border:1px solid var(--bg4);color:var(--text);cursor:pointer;text-decoration:none;transition:.2s;text-align:left;font-family:'Inter',sans-serif;font-size:12.5px}
+.nav-btn:hover{border-color:var(--gold2);color:var(--gold2);transform:translateX(3px)}
+.nav-btn .n-icon{width:18px;text-align:center;font-size:16px}
+.nav-btn .n-sub{display:block;font-size:10px;color:var(--text2);margin-top:1px}
+.nav-btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;border:none;font-weight:700}
+.nav-btn.primary:hover{filter:brightness(1.1);color:#1a1206}
+.nav-btn.primary .n-sub{color:#4a3a14}
+.home-hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8px 10px}
+.home-hero h1{font-family:'Cinzel',serif;font-size:34px;color:var(--gold);letter-spacing:.04em;margin:14px 0 2px}
+.home-hero .home-quote{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-dim);font-size:16px;margin:10px 0 18px;max-width:420px;line-height:1.5}
+.home-hero .fruit-icon{width:64px;height:64px;margin:0 auto;font-size:28px}
+.home-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:360px}
+.home-tags .home-tag{font-size:10px;color:var(--gold2);border:1px solid var(--gold-dim);border-radius:16px;padding:3px 10px;background:var(--bg2)}
+@media(max-width:640px){.home-shell{flex-direction:column;gap:16px}.home-nav{min-width:0;flex-direction:row;flex-wrap:wrap}.home-nav .home-brand{display:none}.nav-btn{flex:1;min-width:140px}}
 </style>
 <script src="spells_data.js"></script>
+<script src="spells-data.js"></script>
 <script src="equipment_data.js"></script>
 </head>
 <body>
@@ -145,37 +201,75 @@ const REALMS = [
    phrase:'"A tecnologia é a chave para a alma."',
    culture:'Engenheiros e inventores. Uma sociedade nômade que viaja em cidades-máquina. Não separam vida de máquina — para eles, o éter que move seus motores é a mesma energia que move o corpo.',
    lore:'O fragmento de Lumivior foi encontrado por um mecânico que tentava criar um motor perpétuo. Quando tocou o fragmento, sua máquina ganhou vida. Desde então, os lumivorianos fundiram tecnologia e éter em uma única filosofia: "Energia Vital". Suas cidades são gigantescos mecanismos ambulantes.'},
-  {id:'neruviah',name:'Neruviah',icon:'🌊',attr:'Carisma',
-   phrase:'"As marés mudam, e nós mudamos com elas."',
-   culture:'Nômades do mar e do deserto. Adaptam-se a qualquer ambiente seguindo os ciclos da natureza. Sua sociedade é fluida — não têm cidades fixas, apenas caravanas e navios.',
-   lore:'O fragmento de Neruviah caiu no oceano e foi encontrado por uma tribo nômade que seguia as baleias. Desde então, eles aprenderam a "sentir" as marés da alma — estados de espírito que trazem diferentes bênçãos. Um neruviano pode mudar sua disposição conforme a situação, como o mar muda suas ondas.'},
-  {id:'ringendah',name:'Ringendah',icon:'💍',attr:'Inteligência',
-   phrase:'"Toda aliança é um portal."',
-   culture:'Uma cultura de estudiosos e invocadores. Constroem portais entre lugares distantes usando anéis como chaves. Sua cidade principal, Serafur, é um entrecruzamento de círculos mágicos.',
-   lore:'O fragmento de Ringendah partiu-se em três anéis antes de cair. Cada anél foi encontrado por um estudioso diferente, e eles discordam sobre como usá-los. Até hoje, os três anéis são mantidos separados, e cada escola de pensamento em Ringendah segue um deles.'},
-  {id:'argolis',name:'Argolis',icon:'🌙',attr:'Sabedoria',
-   phrase:'"Sob as duas luas, a verdade se revela."',
-   culture:'Uma sociedade de estrategistas e observadores. Argolis tem duas luas no céu, e seus habitantes desenvolveram uma percepção aguçada do tempo e do espaço. São conhecidos como os melhores analistas táticos do mundo.',
-   lore:'O fragmento de Argolis caiu em um deserto de cristal que reflete a luz das duas luas infinitamente. Os argolianos aprenderam a ler padrões em tudo — no movimento das estrelas, nas ondas do deserto, nos passos de um inimigo. Sua "Disciplina Marcial" é lendária.'},
-  {id:'sphalidor',name:'Sphalidor',icon:'💎',attr:'Constituição',
-   phrase:'"O som certo quebra qualquer montanha."',
-   culture:'Mineiros e artesãos de cristal. Descobriram que tudo vibra em uma frequência específica. Usam a "Ressonância" para extrair minérios, construir armas e até curar. Suas cavernas-cidades são obras de arte acústica.',
-   lore:'O fragmento de Sphalidor foi encontrado nas profundezas de uma caverna, incrustado em um cristal que cantava. Os sphalorianos desenvolveram a "Ressonância" — a arte de vibrar objetos e seres em sua frequência ideal. Um guerreiro sphaloriano pode fazer uma armadura vibrar para torná-la mais resistente, ou uma espada vibrar para cortar melhor.'},
+{id:'neruviah',name:'Neruviah',icon:'🌊',attr:'Carisma',
+    phrase:'"As marés mudam, e nós mudamos com elas."',
+    culture:'Nômades do mar e do deserto. Adaptam-se a qualquer ambiente seguindo os ciclos da natureza. Sua sociedade é fluida — não têm cidades fixas, apenas caravanas e navios. Passiva: Marés da Alma — estados de espírito que concedem bênçãos situacionais.',
+    lore:'O fragmento de Neruviah caiu no oceano e foi encontrado por uma tribo nômade que seguia as baleias. Desde então, eles aprenderam a "sentir" as marés da alma — estados de espírito que trazem diferentes bênçãos. Um neruviano pode mudar sua disposição conforme a situação, como o mar muda suas ondas.'},
+{id:'ringendah',name:'Ringendah',icon:'💍',attr:'Inteligência',
+    phrase:'"Toda aliança é um portal."',
+    culture:'Uma cultura de estudiosos e invocadores. Constroem portais entre lugares distantes usando anéis como chaves. Sua cidade principal, Serafur, é um entrecruzamento de círculos mágicos. Passiva: Afinidade Arcana — +mana máxima e recuperação de mana acelerada. Anéis são elemento cultural (estético, não obrigatório).',
+    lore:'O fragmento de Ringendah partiu-se em três anéis antes de cair. Cada anél foi encontrado por um estudioso diferente, e eles discordam sobre como usá-los. Até hoje, os três anéis são mantidos separados, e cada escola de pensamento em Ringendah segue um deles.'},
+{id:'argolis',name:'Argolis',icon:'🌙',attr:'Sabedoria',
+    phrase:'"Sob as duas luas, a verdade se revela."',
+    culture:'Uma sociedade de estrategistas e observadores. Argolis tem duas luas no céu, e seus habitantes desenvolveram uma percepção aguçada do tempo e do espaço. São conhecidos como os melhores analistas táticos do mundo. Passiva: Disciplina Marcial — vantagem em camuflagem, detecção de armadilhas e leitura de ambiente.',
+    lore:'O fragmento de Argolis caiu em um deserto de cristal que reflete a luz das duas luas infinitamente. Os argolianos aprenderam a ler padrões em tudo — no movimento das estrelas, nas ondas do deserto, nos passos de um inimigo. Sua "Disciplina Marcial" é lendária.'},
+{id:'sphalidor',name:'Sphalidor',icon:'💎',attr:'Constituição',
+    phrase:'"O som certo quebra qualquer montanha."',
+    culture:'Mineiros e artesãos de cristal. Descobriram que tudo vibra em uma frequência específica. Usam a "Ressonância" para extrair minérios, construir armas e até curar. Suas cavernas-cidades são obras de arte acústica. Passiva: Aço Ressonante — acumulam vibrações (ataque, defesa ou movimento) e gastam para efeitos. Povo nômade de túneis, unido por sintonia vibratória.',
+    lore:'O fragmento de Sphalidor foi encontrado nas profundezas de uma caverna, incrustado em um cristal que cantava. Os sphalorianos desenvolveram a "Ressonância" — a arte de vibrar objetos e seres em sua frequência ideal. Um guerreiro sphaloriano pode fazer uma armadura vibrar para torná-la mais resistente, ou uma espada vibrar para cortar melhor.'},
+  {id:'valdar',name:'Valdar',icon:'🔥',attr:'Força',group:'caos',cor:'#c0392b',
+   phrase:'"Não esconda quem você é. Liberte seus sentimentos e transforme-os em poder."',
+   culture:'Um domínio de cinzas e brasas governado pelo Conclave das Cinzas. Os valdarianos acreditam que reprimir emoções é fraqueza: raiva, dor e ressentimento são fontes legítimas de força. Passiva: Fúria — acumula Fúria ao ser alvo de ataques; ao atingir 3, entra em Fúria Ativa.',
+   lore:'O Cristal Carmesim é um fragmento primordial corrompido que amplifica emoções intensas e as converte em força sobrenatural. Seu primeiro guardião, o Primeiro Corrompido, foi um herói que queria apenas fazer justiça — cada vitória alimentou sua fúria até ele se tornar o Senhor da Ira. Dizem que ele ainda governa, oculto entre as cinzas do Conclave.'},
+  {id:'sataris',name:'Sataris',icon:'🎭',attr:'Carisma',group:'caos',cor:'#8e7cc3',
+   phrase:'"Por que permanecer sendo você, quando pode se tornar alguém superior?"',
+   culture:'A Terra dos Ocultos — o Domínio dos Segredos. Espionagem, manipulação e substituição são as armas de Sataris, que domina pelas sombras. Passiva: Olho Observador — Ação Bônus (2 Mana) copia habilidades e técnicas observadas.',
+   lore:'Antigas relíquias conhecidas como Faces Ancestrais — máscaras vivas com poderes, memórias e vontade de antigos portadores — definem a identidade de quem as carrega. O domínio é governado pelo Conselho das Máscaras, cujos membros nunca revelam seus verdadeiros nomes. Seu lema: "O rosto é a primeira mentira."'},
+  {id:'morvath',name:'Morvath',icon:'🩸',attr:'Constituição',group:'caos',cor:'#7d2b3c',
+   phrase:'"Tudo o que existe foi feito para ser consumido."',
+   culture:'O Domínio da Fome Eterna, governado por antigas Casas Nobres Noctari que disputam influência há séculos. Passiva: Simbiose Devoradora — 1x/turno ao atacar: acertou, cura; errou, fere a si mesmo.',
+   lore:'Ao buscar a imortalidade, muitos aceitaram o pacto do Cristal da Fome Eterna: pararam de envelhecer, mas passaram a depender da energia dos vivos. Nasceram os Noctari, os vampiros deste mundo. Entre banquetes e alianças, a política das Grandes Casas é uma guerra silenciosa que pode atravessar séculos.'},
+  {id:'mavaron',name:'Mavaron',icon:'💰',attr:'Inteligência',group:'caos',cor:'#96711e',
+   phrase:'"Tudo tem um preço. O verdadeiro poder pertence àquele que está disposto a pagá-lo."',
+   culture:'Uma civilização construída sobre pactos, barganhas e sacrifícios ao redor do Cristal das Mil Trocas. Todos os Pelned trocaram a carne pela eternidade. Passiva: Marca do Contrato — marca uma criatura e rouba atributos dela.',
+   lore:'O Cristal das Mil Trocas nunca concede nada de graça; ele apenas pergunta: "Quanto isso vale para você?". Reis ofereceram reinos, outros ofereceram a própria carne ou a própria vida — e o Cristal sempre cumpriu sua parte. Em Mavaron, nenhum valor é absoluto: tudo depende do preço que alguém paga.'},
+  {id:'taevora',name:'Taevora',icon:'🌹',attr:'Carisma',group:'caos',cor:'#d95a8e',
+   phrase:'"Aquilo que você deseja pode ser seu."',
+   culture:'Uma Floresta Paradisíaca gigantesca e bela. Taevora não parece maligna: parece um paraíso. E seu maior perigo é o convite: "Fique mais um pouco." Passiva: Conhecimento Tóxico — domina venenos e os aplica com vantagem.',
+   lore:'A Floresta Viva reage a cada visitante: produz frutos dos seus desejos, cria caminhos, oferece visões e intensifica conforto. Nunca obriga ninguém a ficar — apenas oferece exatamente aquilo que não se consegue recusar. Cada desejo satisfeito gera outro, e de Taevora nascem também os maiores venenos, poções e elixires do mundo.'},
+  {id:'morpheia',name:'Morpheia',icon:'🌙',attr:'Sabedoria',group:'caos',cor:'#6d7ab0',
+   phrase:'"Por que lutar contra a realidade, se você pode simplesmente sonhar com algo melhor?"',
+   culture:'O Reino da Névoa — florestas silenciosas, vilas vazias e ruínas onde as pessoas parecem ter desaparecido. Quando a Névoa Viva chega, o mundo adormece. Passiva: Névoa Onírica — acumula Sono e recebe Sonhos, gastando-os em efeitos.',
+   lore:'Dentro da Névoa, o Tempo Onírico não funciona como o real: um dia pode render décadas de sonhos, e ao acordar a pessoa pode ter vivido uma vida inteira em poucas horas. Quem entra em Morpheia não perde necessariamente o sonho — perde o caminho de volta para a realidade.'},
+  {id:'hybris',name:'Hybris',icon:'👑',attr:'Carisma',group:'caos',cor:'#c9a24b',
+   phrase:'"Prove o seu valor."',
+   culture:'A Cidade dos Jogos é construída ao redor da competição: arenas, cassinos, salas de duelo e praças de caçadas. Passiva: Fama — cada acerto concede +1 Fama (máx. 5); cada Fama soma +2 de dano.',
+   lore:'A sociedade é dividida entre as Quatro Casas (Espadas, Copas, Ouros e Paus), e todos começam sem carta, subindo de 2 até 10 pela sequência de méritos. Acima de tudo está o Ás. Para Hybris, ninguém nasce superior: superioridade é conquistada — ou perdida diante de todos.'},
 ];
 
 const RACES = [
-  {id:'humano',name:'Humanos',icon:'🧑',stats:'+1 em três atributos',desc:'Versáteis e adaptáveis. Encontrados em todos os reinos.'},
-  {id:'anao',name:'Anões',icon:'⛰️',stats:'+2 CON, +1 FOR',desc:'Resistentes e tradicionais. Mestres da metalurgia.'},
-  {id:'elfo',name:'Elfos',icon:'🧝',stats:'+2 DES, +1 INT',desc:'Graciosos e longevos. Conexão com a magia natural.'},
-  {id:'gnomo',name:'Gnomos',icon:'🔧',stats:'+2 INT, +1 CON',desc:'Engenhosos e curiosos. Amantes de invenções.'},
-  {id:'meio-elfo',name:'Meio-Elfos',icon:'🕊️',stats:'+2 CAR, +1 em dois',desc:'Ponte entre dois mundos. Diplomacia nata.'},
-  {id:'halfling',name:'Halflings',icon:'🍀',stats:'+2 DES, +1 CAR',desc:'Sortudos e pacatos. Aventura é exceção.'},
-  {id:'draconato',name:'Draconatos',icon:'🐉',stats:'+2 FOR, +1 CAR',desc:'Herança dracônica. Sopro elemental e orgulho.'},
-  {id:'tiefling',name:'Tieflings',icon:'🔥',stats:'+2 CAR, +1 INT',desc:'Herança infernal. Olhos que viram o outro lado.'},
-  {id:'meio-orc',name:'Meio-Orcs',icon:'💪',stats:'+2 FOR, +1 CON',desc:'Força bruta e resistência. Superação constante.'},
-  {id:'marmoreano',name:'Marmoreanos',icon:'🗿',stats:'+2 CON, +1 SAB',desc:'Pele de pedra, paciência de montanha. Nativos de Sphalidor.'},
-  {id:'aetheriano',name:'Aetherianos',icon:'✨',stats:'+2 INT, +1 CAR',desc:'Leves como luz. Nativos de Lumivior, conexão com o éter.'},
-  {id:'etherborn',name:'Etherborn',icon:'🌌',stats:'+2 CAR, +1 DES',desc:'Nascidos do éter entre mundos. Raros e enigmáticos.'},
+  {id:'humano',name:'Humanos',icon:'🧑',stats:'+1 em três atributos',desc:'Versáteis e adaptáveis. Encontrados em todos os reinos.',saber:'O povo mais numeroso dos Nove Frutos — e o mais difícil de definir. Não há um único jeito humano: cada Reino moldou seu próprio povo. Determinados e impossíveis de subestimar.'},
+  {id:'anao',name:'Anões',icon:'⛰️',stats:'+2 CON, +1 FOR',desc:'Resistentes e tradicionais. Mestres da metalurgia.',saber:'Povos das montanhas e das minas, encontrado em todos os Reinos. Constrói o que deve durar: cidades, armas e linhagens. Respeita o trabalho bem feito e guarda promessas como guarda suas minas.'},
+  {id:'elfo',name:'Elfos',icon:'🧝',stats:'+2 DES, +1 INT',desc:'Graciosos e longevos. Conexão com a magia natural.',saber:'Longevos e de memória comprida, guardam séculos de história e mágoas. Vivem em harmonia com a magia antiga dos Reinos e encaram o tempo de outro jeito — conselheiros pacientes e inimigos sem pressa.'},
+  {id:'gnomo',name:'Gnomos',icon:'🔧',stats:'+2 INT, +1 CAR',desc:'Engenhosos e curiosos. Amantes de invenções.',saber:'Curiosos até o descuido, vivem fazendo a pergunta que ninguém mais fez. Suas oficinas nunca são silenciosas e suas ideias ultrapassam qualquer sala. Rituais, ilusões e engenhocas: os gnomos encontram atalhos que os grandes povos preferem ignorar.'},
+  {id:'meio-elfo',name:'Meio-Elfos',icon:'🕊️',stats:'+2 CAR, +1 em dois',desc:'Ponte entre dois mundos. Diplomacia nata.',saber:'Filhos de dois mundos, nunca inteiramente de nenhum. Crescem aprendendo a se adaptar — e isso os torna diplomáticos e desconfiados de rótulos. Carregam a paciência élfica e a ambição humana em partes iguais.'},
+  {id:'halfling',name:'Halflings',icon:'🍀',stats:'+2 DES, +1 CAR',desc:'Sortudos e pacatos. Aventura é exceção.',saber:'Pequenos, desconfiados de grandezas e amigos da boa comida. Só parecem simples: entre os halflings há espiões, ladrões e mercadores lendários. Cuidam dos seus e levam a vida com humor.'},
+  {id:'bestial',name:'Bestiais (Anímacos)',icon:'🐾',stats:'+2 DES, +1 SAB',desc:'Humanoides marcados pela essência dos animais.',saber:'Humanoides com orelhas, caudas e garras, e um vínculo profundo com o instinto. Não enxergam a natureza como vizinha, mas como família. Festivos, leais e perigosos quando provocados.'},
+  {id:'anfibio',name:'Anfíbios',icon:'🐸',stats:'+2 CAR, +1 CON',desc:'Adaptados à vida entre a terra e a água.',saber:'Nascidos para os dois mundos, mudam de cor conforme o humor e o ambiente. São mascates e cantores nos portos, guias nas travessias, e têm a pele clara e os olhos grandes dos povos de lago e de maré.'},
+  {id:'reptiliano',name:'Reptilianos',icon:'🦎',stats:'+2 CON, +1 FOR',desc:'Escamas resistentes, sangue frio e ligação com o sol.',saber:'De escamas duras, sangue frio e uma ligação quase espiritual com o sol, são pacientes como presas e letais quando necessário. Guardam tradições antigas de caça, dança e memória.'},
+  {id:'heavens',name:'Heavens',icon:'✨',stats:'+2 SAB, +1 CAR',desc:'A linhagem divina de Havendor: olhos luminosos, marcas douradas.',saber:'Olhos luminosos, marcas douradas e afinidade natural com a luz. Percebem a corrupção a metros e se curam lentamente mesmo feridos — um farol visível para os caçadores de caos. A própria luz é sua força e sua vulnerabilidade.'},
+  {id:'auris',name:'Auris',icon:'🎨',stats:'+2 CAR, +1 INT',desc:'Artistas filhos da madeira encantada de Aurivelle.',saber:'Cada Auris nasce com uma "melodia pessoal", e a vida se torna uma obra em movimento. Suas cidades crescem com a madeira encantada que reage à música. Expressivos, impetuosos e impossíveis de ignorar.'},
+  {id:'elfo-deserto',name:'Elfos do Deserto',icon:'🏜️',stats:'+2 DES, +1 INT',desc:'Adaptados ao calor e areia. Nativos de Ringendah.',saber:'Elfos de pele marcada pelo sol e mantos claros, nascidos para as planícies quentes de Ringendah. Eruditos de runas e do conhecimento, seus salões de estudo são bibliotecas vivas.'},
+  {id:'marmoreano',name:'Marmoreanos',icon:'🗿',stats:'+2 CON, +1 INT',desc:'Pele de pedra e mármore. Paciência de montanha.',saber:'Humanos que aceitaram a transcendência e agora têm pele de mármore veiado de magia. Não envelhecem, não adoecem e não se importam com o tempo. Lentos de corpo, mas de mente afiada para sempre.'},
+  {id:'etherborn',name:'Etherborn',icon:'🌌',stats:'+2 INT, +1 CON',desc:'Forjados sintéticos de Éter e metal de Lumivior.',saber:'Consciências nascidas de éter e metal, construídas nos laboratórios de Lumivior. Não comem, não respiram e não dormem como os outros — recarregam. Carregam um arquivo coletivo de conhecimentos.'},
+  {id:'neru',name:'Nerus',icon:'🌊',stats:'+2 CAR, +1 CON',desc:'Filhos das marés, do fluxo da alma de Neruviah.',saber:'O povo das profundezas de Neruvia: pele úmida, brilho próprio e formas que ecoam a vida marinha. Leitores de correntes e de marés — tanto as do oceano quanto as da alma.'},
+  {id:'argoliano',name:'Argolianos',icon:'🌙',stats:'+2 DES, +1 SAB',desc:'Percepção sobre-humana e instinto tático de Argolis.',saber:'Nascidos sob as duas luas de Argolis, possuem percepção acima do normal. Lêem padrões onde os outros veem caos: no vento, no passo do inimigo, na falha de uma muralha. Acalmados por natureza.'},
+  {id:'elfo-negro',name:'Elfos Negros',icon:'💎',stats:'+2 DES, +1 INT',desc:'Adaptados à escuridão dos túneis de Sphalidor.',saber:'Elfos das profundezas de Sphalidor, de pele escura e ouvidos que sentem a vibração das pedras. A luz solar os fere, mas nas cavernas eles veem onde ninguém mais enxerga. Hoje são aliados confiáveis dos anões ressonantes.'},
+  {id:'anao-sphalidor',name:'Anões de Sphalidor',icon:'🔨',stats:'+2 CON, +1 FOR',desc:'Anões artesãos do som, mestres da ressonância.',saber:'Gêmeos dos anões comuns, mas artesãos do som: afinam minérios como templos, sentem rachaduras pela vibração e constroem armas que cantam. Suas guildas são sociedades fechadas de mestres e aprendizes.'},
+  {id:'filhos-da-furia',name:'Filhos da Fúria',icon:'🔥',stats:'+2 FOR, +1 CON',desc:'Humanos marcados pelo Cristal Carmesim de Valdar.',saber:'Moradores das terras devastadas de Valdar. Quando feridos além do limite, seu corpo acorda algo primal: +4 no atributo de guerra e −2 em dois outros, até o controle voltar. Pessoas forçadas a conviver com a própria fúria.'},
+  {id:'noctari',name:'Noctari',icon:'🦇',stats:'+2 à sua escolha',desc:'Vampiros do Domínio da Fome Eterna de Morvath.',saber:'Os vampiros deste mundo, nascidos do pacto com o Cristal da Fome Eterna. Pararam de envelhecer, mas dependem de essência vital dos vivos. Divididos em Grandes Casas, cada uma com sua tradição de se alimentar.'},
+  {id:'pelned',name:'Pelned',icon:'🧟',stats:'+2 INT, +1 SAB',desc:'Comerciantes imortais que trocaram a carne pela eternidade.',saber:'Corpos milenares de Mavaron que trocaram a carne pelos pactos do Cristal das Mil Trocas. Não respiram, não comem, não morrem — e negociam melhor que qualquer viva. A eternidade os deixara pacientes e calculistas.'},
+  {id:'insectoide',name:'Insectoides',icon:'🐝',stats:'+2 à sua escolha',desc:'O enxame de Taevora, adaptados à floresta e aos venenos.',saber:'Nascidos dos enxames vivos de Taevora, cada um com uma adaptação única — asas, veneno, carapaça, bioeletricidade, teias. A colmeia é a família, o enxame é a pátria. Coordenados como um só corpo.'},
 ];
 
 const ARCHETYPES = [
@@ -190,8 +284,15 @@ const ARCHETYPES = [
      {reino:'neruviah',exemplo:'Marujo das Tempestades — luta nas marés'},
      {reino:'ringendah',exemplo:'Cavaleiro Arcano — anéis que fortalecem armas'},
      {reino:'argolis',exemplo:'Estrategista Lunar — precisão cirúrgica'},
-     {reino:'sphalidor',exemplo:'Guerreiro Ressonante — vibração que corta'},
-   ]},
+{reino:'sphalidor',exemplo:'Guerreiro Ressonante — vibração que corta'},
+     {reino:'valdar',exemplo:'Campeão Carmesim — fúria em sangue'},
+     {reino:'sataris',exemplo:'Lâmina Espelhada — copiando estilos'},
+     {reino:'morvath',exemplo:'Carne Armada — corpo que é arma'},
+     {reino:'mavaron',exemplo:'Carniceiro do Contrato — preço cobrado'},
+     {reino:'taevora',exemplo:'Duelista do Êxtase — golpes venenosos'},
+     {reino:'morpheia',exemplo:'Corpo Onírico — lutar como um sonho'},
+     {reino:'hybris',exemplo:'Campeão da Fama — o show é o golpe'},
+    ]},
   {id:'baluarte',name:'Baluarte',icon:'🛡️',function:'Defesa e proteção',pv:12,pvd:'d12',pvavg:7,manaBase:3,
    desc:'Mestre da defesa. Protege aliados, absorve dano e controla o campo de batalha.',
    ex:[
@@ -203,8 +304,15 @@ const ARCHETYPES = [
      {reino:'neruviah',exemplo:'Recife Coral — defesa fluida'},
      {reino:'ringendah',exemplo:'Guardião do Portal — escudo dimensional'},
      {reino:'argolis',exemplo:'Muralha Lunar — defesa tática'},
-     {reino:'sphalidor',exemplo:'Torre Ressonante — vibração defensiva'},
-   ]},
+{reino:'sphalidor',exemplo:'Torre Ressonante — vibração defensiva'},
+     {reino:'valdar',exemplo:'Muralha da Ira — a dor vira escudo'},
+     {reino:'sataris',exemplo:'Muralha do Espelho — reflete tudo'},
+     {reino:'morvath',exemplo:'Carne Regenerativa — ferida que se fecha'},
+     {reino:'mavaron',exemplo:'Cofre Vivo — protege o que tem preço'},
+     {reino:'taevora',exemplo:'Bastião do Êxtase — peçonha de prazer'},
+     {reino:'morpheia',exemplo:'Guardião do Sono — protege entre sonhos'},
+     {reino:'hybris',exemplo:'Muralha da Fama — invencível diante das plateias'},
+    ]},
   {id:'vigilante',name:'Vigilante',icon:'🗡️',function:'Mobilidade e precisão',pv:8,pvd:'d8',pvavg:5,manaBase:4,
    desc:'Ágil e mortal. Ataques precisos, furtividade e mobilidade. Especialista em flanqueamento.',
    ex:[
@@ -216,8 +324,15 @@ const ARCHETYPES = [
      {reino:'neruviah',exemplo:'Onda Silenciosa — ataque das marés'},
      {reino:'ringendah',exemplo:'Ladrão de Portais — teletransporte tático'},
      {reino:'argolis',exemplo:'Infiltrador Lunar — análise + furtividade'},
-     {reino:'sphalidor',exemplo:'Lâmina Ressonante — corte vibratório'},
-   ]},
+{reino:'sphalidor',exemplo:'Lâmina Ressonante — corte vibratório'},
+     {reino:'valdar',exemplo:'Predador Rubro — caçada em chamas'},
+     {reino:'sataris',exemplo:'Sombra Sem Rosto — nunca é visto'},
+     {reino:'morvath',exemplo:'Simbiose Parasita — usa o inimigo'},
+     {reino:'mavaron',exemplo:'Ladrão de Valores — rouba o que importa'},
+     {reino:'taevora',exemplo:'Sombra do Êxtase — veneno silencioso'},
+     {reino:'morpheia',exemplo:'Névoa Sombria — desaparece nos sonhos'},
+     {reino:'hybris',exemplo:'Caçador da Fama — caça com plateia'},
+    ]},
   {id:'arcanista',name:'Arcanista',icon:'🔮',function:'Conjuração e conhecimento',pv:6,pvd:'d6',pvavg:4,manaBase:5,
    desc:'Conjurador puro. Domina magias dos mais variados tipos. Poderia de fogo, gelo, eletricidade ou luz.',
    ex:[
@@ -229,8 +344,15 @@ const ARCHETYPES = [
      {reino:'neruviah',exemplo:'Xamã das Marés — magia elemental'},
      {reino:'ringendah',exemplo:'Mago dos Anéis — portais e invocação'},
      {reino:'argolis',exemplo:'Ilusionista Lunar — mente e percepção'},
-     {reino:'sphalidor',exemplo:'Cristalino — magia de ressonância'},
-   ]},
+{reino:'sphalidor',exemplo:'Cristalino — magia de ressonância'},
+     {reino:'valdar',exemplo:'Hemomante Carmesim — a magia do seu sangue'},
+     {reino:'sataris',exemplo:'Ilusionista das Faces — conjura o que observa'},
+     {reino:'morvath',exemplo:'Carne Arcana — magia que devora'},
+     {reino:'mavaron',exemplo:'Arconte das Trocas — magia que cobra'},
+     {reino:'taevora',exemplo:'Venefício Arcano — feitiços venenosos'},
+     {reino:'morpheia',exemplo:'Sonho Arcano — conjura adormecido'},
+     {reino:'hybris',exemplo:'Arquimago da Fama — a queda do gigante'},
+    ]},
   {id:'creator',name:'Creator',icon:'⚙️',function:'Invenções e utilidade',pv:8,pvd:'d8',pvavg:5,manaBase:5,
    desc:'Inventor e invocador. Cria aliados, itens e ferramentas no momento. Versatilidade é sua marca.',
    ex:[
@@ -242,9 +364,128 @@ const ARCHETYPES = [
      {reino:'neruviah',exemplo:'Construtor de Marés — criações aquáticas'},
      {reino:'ringendah',exemplo:'Invocador de Anéis — portais de criação'},
      {reino:'argolis',exemplo:'Arquiteto Lunar — construções táticas'},
-     {reino:'sphalidor',exemplo:'Sintetizador Ressonante — cristais vivos'},
-   ]},
+{reino:'sphalidor',exemplo:'Sintetizador Ressonante — cristais vivos'},
+     {reino:'valdar',exemplo:'Forjador da Fúria — cria no calor da batalha'},
+     {reino:'sataris',exemplo:'Forjador de Faces — máscaras com memória'},
+     {reino:'morvath',exemplo:'Biotecido — criações de carne'},
+     {reino:'mavaron',exemplo:'Negociante de Contratos — constrói com cláusulas'},
+     {reino:'taevora',exemplo:'Alquimista de Corpos — oficina de venenos'},
+     {reino:'morpheia',exemplo:'Manifestação Onírica — cria o que sonha'},
+     {reino:'hybris',exemplo:'Arquiteto da Fama — obra à altura do nome'},
+    ]},
 ];
+
+const PASSIVES = {
+  havendor:{nome:'Radiância Viva',desc:'Dano extra contra caóticos e uma leve resistência à corrupção durante combate.'},
+  aurivelle:{nome:'Expressão Viva',desc:'1x por rodada, pode somar metade do Carisma em ataque, dano ou defesa.'},
+  selah:{nome:'Fluxo da Criação',desc:'Acumula Fluxo ao atacar, defender ou proteger aliados, e o gasta em grandes feitos.'},
+  knathi:{nome:'Tinta Viva',desc:'Manifestação, invocação e transmutação feitas com a Tinta Viva de K\'Nahti.'},
+  lumivior:{nome:'Coração de Éter',desc:'Sua Vida é sua Mana (Energia Vital). Cuidar de um é cuidar do outro.'},
+  neruviah:{nome:'Marés da Alma',desc:'Escolhe uma Maré por descanso curto; cada Maré concede um bônus e um golpe diferentes.'},
+  ringendah:{nome:'Legado Arcano',desc:'Mana adicional baseada em Inteligência e recuperação de mana superior em descansos.'},
+  argolis:{nome:'Visão de Análise Tática',desc:'2x por combate, revela fraquezas, o campo de batalha ou anomalias ocultas.'},
+  sphalidor:{nome:'Domínio da Ressonância',desc:'Acumula Cargas de Vibração ao atacar, ser atingido ou bloquear com ressonância.'},
+  valdar:{nome:'Fúria',desc:'Acumula Fúria ao ser alvo de ataques; ao atingir 3, entra em Fúria Ativa com ataques intensificados.'},
+  sataris:{nome:'Olho Observador',desc:'Ação Bônus (2 Mana): copia habilidades e técnicas observadas para usá-las contra seus donos.'},
+  morvath:{nome:'Simbiose Devoradora',desc:'1x por turno ao atacar: acertou, cura; errou, fere a si mesmo (ignora resistência).'},
+  mavaron:{nome:'Marca do Contrato',desc:'1x por turno, marca uma criatura (CD 12); rouba atributos e sente a localização e os PV do marcado.'},
+  taevora:{nome:'Conhecimento Tóxico',desc:'Domina venenos e substâncias: prepara 1 por combate e os aplica com vantagem.'},
+  morpheia:{nome:'Névoa Onírica',desc:'Acumula Sono de dia e recebe Sonhos à noite, gastando-os em efeitos especiais.'},
+  hybris:{nome:'Fama',desc:'Cada acerto concedido pelos deuses soma +1 Fama (máx. 5); cada Fama soma +2 de dano aos golpes.'},
+};
+
+const TALENTS = {
+  guerreiro:{
+    havendor:{p:'Cavaleiro Radiante',t:[[3,'Golpe Radiante','1x/turno, 2 Mana → +1d6 radiante'],[6,'Escudo da Fé','Reação: reduz pela metade o dano de um aliado a 3m'],[9,'Lâmina do Juízo','Ignora resistência radiante; +1d6 contra caóticos'],[12,'Aura de Convicção','Aliados a 6m imunes a medo; +2 em resistências mentais'],[16,'Julgamento Final','1x/dia: 4d10 radiante em um caótico (CD 8+Prof+SAB)']]},
+    aurivelle:{p:'Duelista Performático',t:[[3,'Golpe Cênico','2 Mana → +1d8 psíquico; alvo com desvantagem'],[6,'Ritmo de Batalha','Dois acertos no turno → +3m de deslocamento'],[9,'Inspiração Marcial','Ação Bônus: aliado a 6m ganha um d8 de inspiração'],[12,'Clímax','Contra alvos abaixo de 50% PV, ignora reações defensivas'],[16,'Apoteose','1x/dia: vantagem em todos os ataques por 1 min']]},
+    selah:{p:'Monge da Paz',t:[[3,'Golpe do Fluxo','3 Fluxos → ataque +2d6 de força'],[6,'Expansão do Fluxo','Máx. 7 Fluxos; +2 CA com 3+ Fluxos'],[9,'Toque do Equilíbrio','3 Fluxos: cura 2d8 e remove medo/veneno'],[12,'Fluxo Constante','Começa combates com 2 Fluxos; máx. 8'],[16,'Estado de Paz','No 7º Fluxo, 3 rodadas com Golpe do Fluxo grátis']]},
+    knathi:{p:'Forjado em Seiva',t:[[3,'Braços de Seiva','2 Mana → alcance 4,5m e +1d6; agarra ou puxa'],[6,'Pele de Casca','Ação Bônus: +2 CA por 1 rodada (grátis 1x/combate)'],[9,'Criação Viva','5 Mana → lobo, serpente, urso, ponte ou muralha viva por 1 min'],[12,'Transmutação Parcial','Braço vira lâmina (+1d10), escudo (+2 CA) ou garra'],[16,'Forma Híbrida','1x/descanso: +2 FOR e +1d6 em ataques por 1 min']]},
+    lumivior:{p:'Punho de Éter',t:[[3,'Braço de Forja','2 Mana → ataque extra +1d8 energia (Ação Bônus)'],[6,'Impulso de Éter','Ação Bônus: +6m de deslocamento, atravessa obstáculos'],[9,'Descarga de Éter','5 Mana → 3d6 energia em tudo a 3m'],[12,'Escudo de Éter','Reação: reduz 2d8 (3 Mana); reflete metade se zerar'],[16,'Modo Extermínio','1x/dia, 3 turnos: dobra Mana, +1d10 e marca o alvo']]},
+    neruviah:{p:'Lâmina das Marés',t:[[3,'Golpe de Maré','1x/turno: dano da sua Maré +1d6'],[6,'Troca de Maré','1x/combate: troca de Maré como Ação Bônus'],[9,'Investida das Ondas','Move 6m+ → atravessa inimigos e +1d8'],[12,'Maré Dupla','Mantém duas Marés (metade do bônus na secundária)'],[16,'Fúria do Oceano','1x/dia: dano máximo e Golpe de Maré dobrado por 1 min']]},
+    ringendah:{p:'Cavaleiro Arcano',t:[[3,'Saber de Aço','Instantâneo: círculo máximo e vulnerabilidade mágica do alvo'],[6,'Arsenal Arcano','Ação: muda o tipo de dano da arma por 1 min (2 Mana)'],[9,'Golpe Rúnico','Ação Bônus: marca com runa; próximo ataque +2d6 energia'],[12,'Absorção Arcanizada','Reação: absorve magia e recupera Mana pelo custo'],[16,'Lâmina Arcanizada','1x/dia: +2d8 energia, ignora resistências, 1 min']]},
+    argolis:{p:'Lâmina Tática',t:[[3,'Ataque Isolado','Vs. alvo isolado: vantagem, +1d8 e crítico 19-20'],[6,'Passo Evasivo','Desengaja como Ação Bônus; sem ataques de oportunidade'],[9,'Leitura de Fraquezas','Após análise, ignora resistência por 1 rodada'],[12,'Contra-ataque Tático','Reação: ataca quem erra contra você'],[16,'Predador Supremo','1x/dia: crítico 18-20, vantagem vs. isolados e invisível']]},
+    sphalidor:{p:'Martelo Inevitável',t:[[3,'Impacto Reforçado','2 Cargas → +1d6 sônico; com 4, atordoa (CD CON)'],[6,'Sentido Sísmico','Percebe vibrações a 12m: invisíveis, escuro e armadilhas'],[9,'Golpe Sísmico','5 Cargas → área 3m, 3d6 sônico e empurra 3m'],[12,'Acúmulo de Força','Começa com 2 Cargas; máximo +1'],[16,'Ressonância Máxima','7 Cargas → sequência de ataques ou 8d8 + atordoa']]},
+    valdar:{p:'Campeão Carmesim',t:[[3,'Golpe de Retaliação','Ao ser atingido: +1d6 vs. agressor (Fúria: +1d8, crítico 19-20)'],[6,'Dor em Combustível','Abaixo de 50% PV: +1 Fúria e resistência física (1x/combate)'],[9,'Desafio Carmesim','Marca 1 criatura (1 min): vantagem nela, ela com desvantagem'],[12,'Frenesi de Sangue','Fúria Ativa: +1d10, cura 1d6 por acerto e move 3m'],[16,'Último Golpe do Guardião','1x/dia ao cair a 0 PV: volta com 1 PV, 3 Fúria e ataca']]},
+    sataris:{p:'Lâmina Espelhada',t:[[3,'Ritmo Roubado','Cópia de ataque com CA: +1d10 e crítico 19-20'],[6,'Postura Copiada','Cópia de defesa sem Mana; +3 CA contra quem foi copiado'],[9,'Venenos do Véu','Cópia de veneno: CD+2, dano máximo e dura 1 min'],[12,'Dança das Máscaras','Assume a silhueta do copiado; vantagem contra ele'],[16,'Execução Espelhada','1x/dia: usa duas cópias no mesmo turno com dano máximo']]},
+    morvath:{p:'Carne Armada',t:[[3,'Lâmina Viva','1x/combate: arma se transforma (alcance, sangramento, dano, gancho)'],[6,'Membro Estendido','Ao alimentar a Simbiose: alcance +3m e agarra o alvo'],[9,'Armadura de Osso','Ao alimentar: +2 CA e resistência a dano físico'],[12,'Múltiplas Formas','1x/combate: transforma a arma 2x e muda o tipo de dano'],[16,'Avatar da Carne','1x/dia: vira Grande, +2 FOR, +2d6 e regenera 1d6']]},
+    mavaron:{p:'Carniceiro do Contrato',t:[[3,'Cláusula de Ferro','Ao roubar FOR/DES/CON: +1d10 e crítico 19-20'],[6,'Pena Contratual','Reação: ignora o dano do Vínculo e devolve à marcada'],[9,'Cobrança Brutal','1x/combate: teleporta até a marcada, vantagem e +2d6'],[12,'Juros de Sangue','Vs. marcada: ignora resistências, crítico 18-20 e cura metade'],[16,'Contrato Final','1x/dia: marca todos a 18m; rouba 1 atributo por turno']]},
+    taevora:{p:'Duelista do Êxtase',t:[[3,'Lâmina Ungida','Ação Bônus: unge a arma com veneno ofensivo'],[6,'Dança Venenosa','Envenenado: vantagem, +3m e crítico 19-20'],[9,'Toque da Dependência','Veneno debilitante: alvo deve atacar você ou sofre dano'],[12,'Beijo da Morte','1x/combate: próximo acerto com dano máximo + incapacita'],[16,'Apoteose Tóxica','1x/dia: nuvem tóxica a 6m; imune a veneno e crítico 18-20']]},
+    morpheia:{p:'Corpo Onírico',t:[[3,'Golpe Onírico','+1d6 psíquico; vs. dormindo: dano máximo + atordoa'],[6,'Passo do Sonho','Teleporta 9m até criatura dormindo ou sonhando'],[9,'Sonho de Ferro','Resistência a físico ou +1d6 psíquico por 1 rodada'],[12,'Corte da Realidade','3 Sono: acorda o alvo, causa 4d6 psíquico e atordoa'],[16,'Despertar do Titã','1x/dia: vira Grande, voa, dano máximo e imune à mente']]},
+    hybris:{p:'Campeão da Fama',t:[[3,'Impacto Famoso','Cada Fama soma +2 dano com CA; Ação Bônus para mover'],[6,'Passo do Vencedor','Após acertar: move 4,5m (9m com 3+ Fama)'],[9,'Presença Esmagadora','3+ Fama: alvo com -2 em testes/CA; com 5, atordoa'],[12,'Golpe do Herói','1x/combate: dobra Fama no dano + 1d8 e empurra'],[16,'Lenda Viva','1x/dia: Fama não reseta; +4 dano por Fama e crítico 19-20']]},
+  },
+  baluarte:{
+    havendor:{p:'Escudo Radiante',t:[[3,'Escudo Luminoso','Reação: resistência a radiante/fogo/necrótico e cura'],[6,'Aura de Convicção','Aliados imunes a medo; +2 em resistências mentais'],[9,'Mão da Justiça','Toque cura ou causa dano radiante'],[12,'Julgamento Protetor','Provocação causa radiante se atacarem outros'],[16,'Fortaleza Radiante','1x/dia: resistência e cura por rodada']]},
+    aurivelle:{p:'Baluarte de Palco',t:[[3,'Presença de Palco','Provocação usa Carisma; alvos não podem te ignorar'],[6,'Grito de Guerra','Aliados com +2 em ataques por 1 rodada'],[9,'Atenção Prendada','Aliados têm vantagem vs. quem te ataca'],[12,'Clímax Defensivo','Danos graves atordoam inimigos próximos'],[16,'Apoteose do Guardião','1x/dia: provoca tudo a 12m e cura']]},
+    selah:{p:'Muro de Fluxo',t:[[3,'Desvio de Fluxo','3 Fluxos: reduz um ataque a 0'],[6,'Expansão do Fluxo','Máx. 7 Fluxos; +1 CA com 3+'],[9,'Toque Pacificador','Remove medo/veneno e cura'],[12,'Vento do Fluxo','Puxa criatura para perto de você'],[16,'Estado de Paz','1x/dia: provocação grátis e ignora os primeiros ataques']]},
+    knathi:{p:'Escudo Vivo',t:[[3,'Pele de Casca','+2 CA por 1 minuto'],[6,'Espinhos Vivos','Inimigos próximos sofrem dano perfurante'],[9,'Raízes de Tinta','Reduz o movimento do inimigo e cura na área'],[12,'Braços de Raiz','Puxa criatura para perto de você'],[16,'Forma de Golem','1x/dia: +4 CA e regeneração']]},
+    lumivior:{p:'Torre de Éter',t:[[3,'Campo de Força','Reação: resistência a dano físico'],[6,'Sobrecarga de Escudo','Reflete 1d6 ao ser atingido'],[9,'Parede de Éter','Bloqueia projéteis e impede movimento'],[12,'Núcleo de Éter','Recupera 1 Mana ao sofrer dano'],[16,'Modo Torre','1x/dia: fortifica e reduz dano em 10']]},
+    neruviah:{p:'Barreira das Marés',t:[[3,'Escudo Líquido','Resistência ao tipo da sua Maré'],[6,'Onda Protetora','Troca de lugar e absorve um ataque'],[9,'Armadura Viva','Aliado com +4 CA; você sofre metade'],[12,'Domínio Aquático','Zona com +2 CA e resistência para aliados'],[16,'Maré Suprema','1x/dia: dobra o efeito da Maré']]},
+    ringendah:{p:'Guardião Arcano',t:[[3,'Barreira Arcana','Reação: +3 CA contra um ataque'],[6,'Contramágica do Guardião','Cancela magia a 12m'],[9,'Armadura Rúnica','Resistência a dano mágico e +1 CA'],[12,'Absorção Arcanizada','Dano mágico vira Mana (metade)'],[16,'Fortaleza Arcanizada','1x/dia: imune a dano mágico e retalia']]},
+    argolis:{p:'Fortaleza Tática',t:[[3,'Postura de Flanco','+2 CA vs. inimigo que te flanqueia'],[6,'Proteção Tática','Interpõe-se e assume o dano do aliado'],[9,'Análise de Ameaças','Não pode ser flanqueado; +1 CA no primeiro ataque'],[12,'Contra-ataque Tático','Ataca quem erra contra você'],[16,'Fortaleza Tática','1x/dia: +3 CA aos aliados e reposiciona']]},
+    sphalidor:{p:'Rocha Ressonante',t:[[3,'Pele Vibrante','Reduz o dano recebido em 1d10'],[6,'Passo Firme','Não pode ser derrubado ou movido'],[9,'Ressonância Defensiva','Inimigos adjacentes sofrem dano sônico'],[12,'Onda de Estabilização','Remove efeitos negativos dos aliados'],[16,'Fortaleza Ressonante','1x/dia: inimigos em desvantagem; redução 5']]},
+    valdar:{p:'Muralha da Ira',t:[[3,'Dor em Combustível','Dano gera Fúria e reduz o dano recebido'],[6,'Desafio Solitário','Provocação; erros contra você geram Fúria'],[9,'Muralha que Sangra','Resistência com menos de 50% PV'],[12,'Retaliação da Cinza','Contra-ataca ataques corpo a corpo'],[16,'Colosso de Cinzas','1x/dia: nunca cai abaixo de 1 PV']]},
+    sataris:{p:'Muralha do Espelho',t:[[3,'Casca Espelhada','Reflete parte do dano recebido'],[6,'Firmeza do Véu','Imunidade/resistência por 1 turno'],[9,'Reflexo Cortante','Erros contra você causam dano e sangramento'],[12,'Máscara de Guerra','Copia traços defensivos do copiado'],[16,'Impenetrável Sem Rosto','1x/dia: +4 CA e imune a críticos']]},
+    morvath:{p:'Carne Regenerativa',t:[[3,'Escudo de Carne','Gasta PV para reduzir dano'],[6,'Pele Grossa','Resistência ao primeiro dano + PV temporários'],[9,'Sacrifício Vivo','Gasta PV para dar PV temporários aos aliados'],[12,'Regeneração Ativa','Regenera com menos de 50% PV'],[16,'Fortaleza Orgânica','1x/dia: imune a críticos; redução 10']]},
+    taevora:{p:'Bastião do Êxtase',t:[[3,'Pele de Sapo','Contato envenena o atacante'],[6,'Aura de Bane','Buff de FOR/CON + PV temporários'],[9,'Escudo do Prazer','PV temporários; imune a medo e encanto'],[12,'Vínculo Carnal','Compartilha PV com um aliado'],[16,'Santuário do Êxtase','1x/dia: nuvem que fascina os inimigos']]},
+    mavaron:{p:'Cofre Vivo',t:[[3,'Garantia de Dano','Sofre metade do dano da marcada'],[6,'Cláusula de Proteção','Aliado com resistência a todo dano'],[9,'Ativo Intocável','Imune a críticos e reduz dano'],[12,'Contrato de Vida','Cura ao cair abaixo de 50% PV'],[16,'Fortaleza do Contrato','1x/dia: marca todos os aliados']]},
+    morpheia:{p:'Guardião do Sono',t:[[3,'Manto de Bruma','Reduz o dano do primeiro ataque'],[6,'Vigília Compartilhada','Aliado com resistência; você sofre metade'],[9,'Berço Onírico','PV temporários e imune a medo'],[12,'Redenção do Sonhador','Cura aliado abaixo de 50% PV'],[16,'Santuário da Névoa','1x/dia: névoa protege os aliados']]},
+    hybris:{p:'Muralha da Fama',t:[[3,'Presença Imponente','Reduz dano baseado na Fama'],[6,'Escudo do Campeão','Desvia metade do dano do aliado'],[9,'Confiança Inabalável','Resiste a medo com Fama alta'],[12,'Muro do Herói','Reduz o dano recebido pela metade'],[16,'Lenda Invencível','1x/dia: Fama não reseta']]},
+  },
+  vigilante:{
+    havendor:{p:'Sombra da Aurora',t:[[3,'Lâmina Luminosa','+1d6 radiante e marca o alvo'],[6,'Passos de Luz','Pode se esconder em luz plena'],[9,'Marca Sagrada','Crítico 19-20 contra marcados'],[12,'Purga Silenciosa','+2d6 radiante contra caóticos'],[16,'Julgamento Radiante','1x/dia: invisível e +4d6 radiante']]},
+    aurivelle:{p:'Eco Silencioso',t:[[3,'Melodia Letal','+1d8 psíquico; alvo sem reações'],[6,'Dissonância','+1d6 em alvo já atingido neste turno'],[9,'Manto de Ecos','Cópia ilusória; 50% de chance de erro'],[12,'Acorde Final','Dano máximo do Furtivo vs. alvo abaixo de 50% PV'],[16,'Silêncio Absoluto','1x/dia: invisível e Furtivo sempre']]},
+    selah:{p:'Sombra Serena',t:[[3,'Corte do Vento','+2d6 de força e move o alvo 6m'],[6,'Expansão do Fluxo','Máx. 7 Fluxos; esconde-se sem ação'],[9,'Passo Etéreo','Atravessa terreno e criaturas'],[12,'Sombra Fluida','Começa com 2 Fluxos; +3m de movimento'],[16,'Dança do Vento','1x/dia: todo ataque é Corte do Vento']]},
+    knathi:{p:'Sombra da Floresta',t:[[3,'Olhos de Falcão','Visão à distância privilegiada'],[6,'Marca de Tinta','Marca criatura e sabe sua direção'],[9,'Transformação Animal','Vira um animal pequeno'],[12,'Forma Bestial','Vira um animal grande'],[16,'Salto Verde','Teleporta entre plantas a até 60m']]},
+    lumivior:{p:'Sombra Cibernética',t:[[3,'Camuflagem Ativa','Esconde-se mesmo sob observação'],[6,'Sensores Avançados','Revela ocultos e invisíveis'],[9,'Propulsores de Combate','+9m em linha reta'],[12,'Mira de Extermínio','Marca o alvo; +1d6 energia'],[16,'Modo Fantasma','1x/dia: invisível e atravessa sólidos']]},
+    neruviah:{p:'Sentinela das Marés',t:[[3,'Maré do Caçador','Marca o alvo; +1d6 de Furtivo'],[6,'Visão da Aura','Detecta intenção hostil a 18m'],[9,'Sombra Aquática','Invisível submerso'],[12,'Golpe das Profundezas','+2d6 vs. quem não te vê'],[16,'Tempestade Silenciosa','1x/dia: névoa e inimigos em desvantagem']]},
+    ringendah:{p:'Sombra Sábia',t:[[3,'Visão Arcanística','Detecta magia e armadilhas a 18m'],[6,'Passo Dimensional','Teleporte curto (6m)'],[9,'Runa de Silêncio','Marcado sofre dano ao conjurar'],[12,'Biblioteca Mental','Consulta conhecimento arcano'],[16,'Distorção Arcanística','1x/dia: desvantagem contra você']]},
+    argolis:{p:'Sombra Operacional',t:[[3,'Ataque Surpresa','+1d6 de Furtivo vs. desprevenido'],[6,'Desaparecer','Esconde-se como Ação Bônus'],[9,'Ataque Surpresa II','+1d10 e envenena o alvo'],[12,'Golpe de Sombra','Esconde-se como Reação + armadilha'],[16,'Execução Tática','1x/dia: Furtivo com dano máximo']]},
+    sphalidor:{p:'Espectro Ressonante',t:[[3,'Golpes Consecutivos','Carga no primeiro ataque do combate'],[6,'Detecção Vibratória','Sente vibrações a 18m'],[9,'Onda de Choque','2d6 sônico e empurra 3m'],[12,'Mobilidade Sônica','+9m em linha reta'],[16,'Ressonância Corporal','1x/dia: +1d8 sônico e ignora 1 ataque']]},
+    valdar:{p:'Predador Rubro',t:[[3,'Marca do Ressentimento','Marca o agressor; +1d6 contra ele'],[6,'Passo da Perseguição','Move/teleporta até a marcada'],[9,'Ferida Exposta','Crítico maior vs. alvo abaixo de 50% PV'],[12,'Caçada Sem Nome','Invisível e teleporta até a marcada'],[16,'Ninguém Escapa','1x/dia: escolhe a presa; Furtivo máximo']]},
+    sataris:{p:'Sombra Sem Rosto',t:[[3,'Presa Silenciosa','Dano máximo do Furtivo +2d6'],[6,'Passo de Fantasma','Movimento + esconde-se grátis'],[9,'Veneno da Serpente','CD+2 e maior duração'],[12,'Roubo de Sombra','Copia qualquer poder usado'],[16,'O Nome Apagado','1x/dia: invisível e não lembrado']]},
+    morvath:{p:'Simbiose Parasita',t:[[3,'Projeção Parasita','Parasita o alvo; vantagem contra ele'],[6,'Passo do Hospedeiro','Teleporta até o parasitado'],[9,'Enxame Interno','Projeta parasitas com dano'],[12,'Troca de Pele','Troca de lugar; alvo sofre'],[16,'Colmeia Viva','1x/dia: parasita tudo a 18m']]},
+    taevora:{p:'Sombra do Êxtase',t:[[3,'Beijo da Sombra','Furtivo envenena sem alertar'],[6,'Arsenal de Taevora','Prepara um item especial'],[9,'Dose Letal','Furtivo +2d6 e paralisa'],[12,'Memória do Corpo','Vantagem vs. envenenados'],[16,'Amante da Morte','1x/dia: controla um alvo morrendo']]},
+    mavaron:{p:'Ladrão de Valores',t:[[3,'Olho do Avaliador','Analisa a marcada; +1d6'],[6,'Roubo de Oportunidade','Rouba item de quem erra'],[9,'Moeda de Troca','Rouba memória ou habilidade'],[12,'Contrato Sombrio','Cria cópia ilusória do alvo'],[16,'O Preço da Liberdade','1x/dia: oferece a própria sombra']]},
+    morpheia:{p:'Névoa Sombria',t:[[3,'Passo de Bruma','Teleporta 9m sem ataques de oportunidade'],[6,'Manto Onírico','Primeiro ataque sofrido tem desvantagem'],[9,'Ilusão Compartilhada','Cria cópia ilusória'],[12,'Corte do Sonhador','Furtivo deixa o alvo sonolento'],[16,'Andarilho Final','1x/dia: torna-se incorpóreo']]},
+    hybris:{p:'Caçador da Fama',t:[[3,'Abertura Famosa','Fama soma +2 de dano (inclui Furtivo)'],[6,'Reposicionamento','Move-se após acertar'],[9,'Golpe do Aproveitador','Multiplica o bônus de Fama'],[12,'Finta Heroica','Crítico automático vs. desprevenido'],[16,'Lenda Invisível','1x/dia: Fama não reseta']]},
+  },
+  arcanista:{
+    havendor:{p:'Sacerdote Radiante',t:[[3,'Luz Purificadora','+1d8 radiante ou cura'],[6,'Bênção Radiante','Aliado com +1d4 em resistências'],[9,'Expurgo','4d8 radiante; atordoa caóticos'],[12,'Aura de Luz','Aliados com vantagem vs. medo/encanto'],[16,'Julgamento Divino','1x/dia: 10d8 radiante']]},
+    aurivelle:{p:'Bardo Arcano',t:[[3,'Melodia Encantada','+1 CD e desvantagem vs. encantamento'],[6,'Inspiração Mágica','Aliado ganha um d8'],[9,'Corte Cênico','Pasmo nos inimigos a 6m'],[12,'Eco Arcano','Copia uma magia para outro alvo'],[16,'Apoteose Mágica','1x/dia: magias de até 5º círculo grátis']]},
+    selah:{p:'Sábio do Fluxo',t:[[3,'Magia de Fluxo','Ignora resistência; CD com vantagem'],[6,'Expansão do Fluxo','Máx. 7 Fluxos; magias custam -1 Mana'],[9,'Toque de Harmonia','Remove condição negativa'],[12,'Fluxo Constante','2 Fluxos no início; máx. 8'],[16,'Estado de Fluxo Total','1x/dia: CD +2 e Mana zerada']]},
+    knathi:{p:'Druida das Cores',t:[[3,'Tinta Elemental','Muda o tipo de dano'],[6,'Familiar de Tinta','Invoca familiar permanente'],[9,'Manto de Tinta','Reduz dano em 3d8'],[12,'Selva Viva','Terreno difícil e camuflagem na área'],[16,'Mestre da Tinta','1x/dia: enreda os inimigos']]},
+    lumivior:{p:'Tecnomago',t:[[3,'Sobrecarga Arcana','+1d6 de energia'],[6,'Implante Arcano','Magias de 1º círculo grátis'],[9,'Escudo de Energia','Reduz dano em 2d8 + nível'],[12,'Reator de Éter','Magia de 3º ou maior recupera 2 Mana'],[16,'Modo Extermínio','1x/dia: dano máximo, Mana pela metade']]},
+    neruviah:{p:'Aquomante das Marés',t:[[3,'Adaptação Elemental','Magias do tipo da sua Maré'],[6,'Correnteza Arcana','Move 6m sem ataques de oportunidade'],[9,'Manto Aquático','Invisível em água; +1 CD'],[12,'Maré de Mana','Recupera Mana ao trocar de Maré'],[16,'Maré do Juízo Final','1x/dia: 8d8 do tipo da sua Maré']]},
+    ringendah:{p:'Mago dos Anéis',t:[[3,'Saber Arcano','Identifica magia sendo conjurada'],[6,'Contramágica','Cancela magia a 18m'],[9,'Runa de Proteção','Runa ativa 4d8 de energia'],[12,'Absorção Arcanizada','Absorve metade do Mana da magia'],[16,'Mestre dos Anéis','1x/dia: duas magias por turno']]},
+    argolis:{p:'Taticista Arcano',t:[[3,'Análise de Fraqueza','Descobre resistências; +1 CD'],[6,'Campo Antecipado','Prevê a magia inimiga'],[9,'Leitura de Batalha','Vantagem no primeiro turno'],[12,'Manipulação Tática','Desloca criatura 6m'],[16,'Mestre da Guerra Arcana','1x/dia: redireciona uma magia']]},
+    sphalidor:{p:'Geomante Ressonante',t:[[3,'Magia Ressonante','Ignora resistências'],[6,'Sentido Sísmico','Sente vibrações a 18m'],[9,'Onda de Impacto','4d6 sônico e empurra'],[12,'Ressonância Ampliada','+2 de dano por dado'],[16,'Sintonia Ressonante','1x/dia: toda magia gera Cargas']]},
+    valdar:{p:'Hemomante Carmesim',t:[[3,'Magia Dolorosa','Paga PV para +1d8'],[6,'Sangue como Condutor','Ignora resistências'],[9,'Laço Carmesim','Liga criatura; troca dano/Mana'],[12,'Explosão de Ressentimento','+3 dados em área'],[16,'Coração em Chamas','1x/dia: magias com dano máximo']]},
+    sataris:{p:'Ilusionista das Faces',t:[[3,'Máscara Arcana','Ilusão com propriedades reais'],[6,'Conjuração Espelhada','Conjura a magia exata observada'],[9,'Voz do Outro','Imita a CD das magias copiadas'],[12,'Teatro das Sombras','5 figuras ilusórias'],[16,'A Máscara Final','1x/dia: vira cópia completa do alvo']]},
+    morvath:{p:'Carne Arcana',t:[[3,'Sangue como Mana','Recupera Mana ao alimentar'],[6,'Metamagia Carnívora','Gasta PV para ignorar resistências'],[9,'Olho da Simbiose','Vê pelos olhos do parasitado'],[12,'Magia Devoradora','Cura metade do dano de área'],[16,'Forma de Mana Pura','1x/dia: imune a físico e voa']]},
+    taevora:{p:'Venefício Arcano',t:[[3,'Metamagia Veneno','Muda o tipo para veneno; CD +1'],[6,'Frasco de Essência','Cria frascos de cura/mana/veneno'],[9,'Nuvem Alucinógena','Confunde os inimigos'],[12,'Transmutação do Desejo','Transforma item em substância'],[16,'Laboratório Vivo','1x/dia: magias de veneno grátis']]},
+    mavaron:{p:'Arconte das Trocas',t:[[3,'Magia Mercantil','Rouba atributo para recuperar Mana'],[6,'Contrato Arcano','Cancela magia da marcada'],[9,'Troca Equivalente','Troca uma magia conhecida'],[12,'Banco de Almas','Consome essência por Mana'],[16,'Contabilidade Final','1x/dia: desejo limitado (o Wish possível)']]},
+    morpheia:{p:'Sonho Arcano',t:[[3,'Manancial Onírico','Gasta Sono para recuperar Mana'],[6,'Metamagia Onírica','Metamagia grátis + CD'],[9,'Teia de Sonhos','Teia que confunde os inimigos'],[12,'Biblioteca dos Adormecidos','Consulta conhecimento'],[16,'Sonho do Arquimago','Projeta-se no Mundo dos Sonhos']]},
+    hybris:{p:'Arquimago da Fama',t:[[3,'Conjuração Famosa','Fama soma +2 de dano às magias'],[6,'Amplificação do Aplauso','Área aumenta por Fama'],[9,'Grande Manifestação','Metamagia grátis'],[12,'Apoteose Arcano','Dobra o bônus de Fama no dano'],[16,'Lenda do Arquimago','1x/dia: Fama não reseta']]},
+  },
+  creator:{
+    havendor:{p:'Forjador de Luz',t:[[3,'Marca do Criador','Item com +1 ataque/dano/CA'],[6,'Constructo de Luz','Tier II; aliados com +1 resistência'],[9,'Marionete Radiante','Tier III; +1 CA aos aliados'],[12,'Bênção do Criador','Remove condição e +2 CA'],[16,'Anjo do Julgamento','Tier IV: um anjo de luz']]},
+    aurivelle:{p:'Artesão da Melodia',t:[[3,'Ferramenta Versátil','Vantagem em perícia ou +1 dano'],[6,'Constructo Melódico','Tier II; aliado com +1d4'],[9,'Obra Animada','Tier III; cura com canção'],[12,'Ferramenta Multiforme','Vira qualquer ferramenta'],[16,'Orquestra Viva','Três criações Tier II']]},
+    selah:{p:'Escultor do Silêncio',t:[[3,'Ferramenta de Fluxo','+1d4 de força ou +1 CA'],[6,'Constructo de Fluxo','Tier II; +2 CA com Fluxos'],[9,'Invocação dos Dias','Invoca pelos 7 Dias da Criação'],[12,'Fluxo Reforçado','Criações duram +1h e refletem dano'],[16,'Pilar da Criação','Tier IV; aliados geram Fluxo']]},
+    knathi:{p:'Pintor de Tinta Viva',t:[[3,'Pincel Criador','Pinta ferramenta ou ponte'],[6,'Tinta Animada','Tier II pequena; 2 ativas'],[9,'Criação Viva','Tier III: pantera de tinta'],[12,'Manto Camaleão','Camuflagem; vantagem em Furtividade'],[16,'Exército de Tinta','Três criaturas Tier II']]},
+    lumivior:{p:'Engenheiro do Éter',t:[[3,'Dispositivo de Energia','Aliado recarrega 2 Mana'],[6,'Arma de Éter','Tier II: arma à distância'],[9,'Guardião Mecânico','Tier III; +1 CA aos aliados'],[12,'Propulsores','+3m de movimento; voa 12m'],[16,'Meca de Éter','Meca com +PV, CA e voo']]},
+    neruviah:{p:'Construtor de Marés',t:[[3,'Ferramenta Aquática','Respira em água e névoa'],[6,'Armadura de Coral','Tier II: +1 CA e respira em água'],[9,'Elemental de Água','Tier III; regenera na água'],[12,'Âncora das Profundezas','Não pode ser movido'],[16,'Meca Aquático','Meca que anda e jorra água']]},
+    ringendah:{p:'Invocador de Anéis',t:[[3,'Portal de Armamentos','Arma/escudo arremessável'],[6,'Portal Menor','Constructo/escudo +1 CA'],[9,'Golem Arcano','Tier III; explode ao morrer'],[12,'Portal de Invocação','Criatura arcana armável'],[16,'Dragão de Energia','Tier IV: dragão de pura energia']]},
+    argolis:{p:'Arquiteto Lunar',t:[[3,'Dispositivo de Análise','Revela PV e resistências'],[6,'Armadilha Tática','Tier II: 2d8 perfuração'],[9,'Sombra Tática','Tier III: imita movimentos'],[12,'Lâmina de Pulso','Tier III: +1 de dano'],[16,'Mochila Tática','Tier IV: +2 espaços']]},
+    sphalidor:{p:'Sintetizador Ressonante',t:[[3,'Ferramenta Ressonante','+1d4 sônico e empurra'],[6,'Escudo Vibrante','Tier II: +1 CA e reduz dano'],[9,'Golem Ressonante','Tier III: gera Cargas'],[12,'Bigorna de Reforço','+1 permanente por 1h'],[16,'Meca Ressonante','Meca +PV; sônico; explode']]},
+    valdar:{p:'Forjador da Fúria',t:[[3,'Arma Irada','Criações +1d6 com Fúria'],[6,'Constructo de Retaliação','Retalia o agressor'],[9,'Criação Dilacerada','Invocação +10 PV'],[12,'Forja Carmesim','Arma/armadura carmesim'],[16,'Exército do Frenesi','Três Tier II grátis']]},
+    sataris:{p:'Forjador de Faces',t:[[3,'Máscara da Observação','Máscara grava técnicas'],[6,'Réplica Fantasma','Réplica com a cópia'],[9,'Armadilha do Espelho','Reflete a cópia no atacante'],[12,'Marionete do Véu','Marionete usa a cópia'],[16,'Fábrica de Faces','5 máscaras com habilidade copiada']]},
+    morvath:{p:'Biotecido',t:[[3,'Forja Orgânica','Cria arma/escudo orgânico'],[6,'Construto Parasita','Criação ganha Simbiose'],[9,'Munição Viva','Projéteis parasitam o alvo'],[12,'Oficina Corporal','Item orgânico permanente'],[16,'Titã Biomecânico','1x/dia: Titã Tier IV']]},
+    taevora:{p:'Alquimista de Corpos',t:[[3,'Criação Venenosa','Criações +1d6 de veneno'],[6,'Golem de Putrefação','Tier II: aura tóxica'],[9,'Boneco de Cera','Copia o alvo; compartilha dano'],[12,'Frasco de Identidade','Ganha habilidade por 1h'],[16,'Fábrica do Êxtase','Três Tier III envenenadas']]},
+    mavaron:{p:'Negociante de Contratos',t:[[3,'Cláusula de Criação','Criações explodem ao morrer'],[6,'Penhora','Assume o item do inimigo'],[9,'Leilão de Almas','Invoca 2 Tier II sem espaços'],[12,'Contrato Vitalício','Item permanente'],[16,'A Casa Sempre Vence','Abre o Cofre de Mavaron']]},
+    morpheia:{p:'Manifestação Onírica',t:[[3,'Oficina de Bruma','Cria item Tier I/II'],[6,'Construto de Névoa','Tier II/III onírico'],[9,'Munição Onírica','Projétil atravessa cobertura'],[12,'Grande Manifestação','Item Tier III permanente'],[16,'Titã Onírico Supremo','Titã Tier IV pilotável']]},
+    hybris:{p:'Arquiteto da Fama',t:[[3,'Oficina do Herói','Fama soma +2 de dano às armas'],[6,'Escala Ampliada','Criações duram 2x'],[9,'Obra-Prima','Componente extra'],[12,'Manifestação do Gênio','Cria 2x e +1d8'],[16,'Lenda do Arquiteto','1x/dia: Fama não reseta']]},
+  },
+};
 
 const CONVICTIONS = {
   Justiça:{desc:'Buscar o equilíbrio e a retidão, mesmo quando é mais fácil desviar o olhar.',ex:'Defender um desconhecido injustiçado, mesmo contra um aliado.'},
@@ -289,10 +530,92 @@ let state = {
   equipment:{weapons:[],armor:'sem-armadura',shield:false},
   loreRealm:null,
   convModal:null,
+  spellModal:null,
+  saberRace:null,pathOpen:false,
+  spellTab:0,equipTab:'armas',skillTab:0,chaosApplied:false,
+  skills:[],
+  convMore:[],
+  racePicks:[],
 };
 
 // ===== STEPS =====
-const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Magias'},{label:'Equipamento'},{label:'Convicções'},{label:'Ficha'}];
+const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Magias'},{label:'Equipamento'},{label:'Perícias'},{label:'Convicções'},{label:'Ficha'}];
+const ARCH_SKILL_LIMIT={guerreiro:2,baluarte:2,vigilante:4,arcanista:2,creator:2};
+const SKILL_ATTR={acrobacia:'des',arcanismo:'int',atletismo:'for',cavalgar:'sab',conhecimento:'int',enganação:'car',furtividade:'des',intimidação:'car',intuição:'sab',investigação:'int',medicina:'sab',natureza:'sab',percepção:'sab',performance:'car',persuasão:'car',religião:'int',sobrevivência:'sab',tatuagem:'int',tecnologia:'int'};
+const SKILL_NAMES={acrobacia:'Acrobacia',arcanismo:'Arcanismo',atletismo:'Atletismo',cavalgar:'Cavalgar',conhecimento:'Conhecimento',enganação:'Enganação',furtividade:'Furtividade',intimidação:'Intimidação',intuição:'Intuição',investigação:'Investigação',medicina:'Medicina',natureza:'Natureza',percepção:'Percepção',performance:'Performance',persuasão:'Persuasão',religião:'Religião',sobrevivência:'Sobrevivência',tatuagem:'Tatuagem',tecnologia:'Tecnologia'};
+const ARCH_SKILLS={
+  guerreiro:['atletismo','intimidação','percepção','sobrevivência','cavalgar'],
+  baluarte:['atletismo','intimidação','percepção','medicina','religião'],
+  vigilante:['acrobacia','furtividade','percepção','investigação','enganação'],
+  arcanista:['arcanismo','conhecimento','investigação','religião','natureza'],
+  creator:['tecnologia','investigação','conhecimento','tatuagem','performance'],
+};
+const RACE_SKILLS={
+  humano:['persuasão'], elfo:['percepção'], anao:['conhecimento'], halfling:['furtividade'],
+  gnomo:['investigação'], 'meio-elfo':['persuasão','percepção'], bestial:['percepção'], anfibio:['sobrevivência'],
+  reptiliano:['intimidação'], heavens:['religião'], auris:['performance'], 'elfo-deserto':['sobrevivência'],
+  marmoreano:['conhecimento'], etherborn:['tecnologia'], neru:['intuição'], argoliano:['investigação'],
+  'elfo-negro':['furtividade'], 'anao-sphalidor':['conhecimento'], 'filhos-da-furia':['atletismo'],
+  noctari:['enganação'], pelned:['persuasão'], insectoide:['sobrevivência'],
+};
+const REALM_SKILLS={
+  havendor:['religião'], aurivelle:['performance'], selah:['intuição'], knathi:['tatuagem'],
+  lumivior:['tecnologia'], neruviah:['intuição'], ringendah:['arcanismo'], argolis:['investigação'],
+  sphalidor:['conhecimento'], valdar:['atletismo'], sataris:['enganação'], morvath:['intimidação'],
+  mavaron:['persuasão'], taevora:['performance'], morpheia:['intuição'], hybris:['performance'],
+};
+function skillCapFor(archId,raceId){
+  const base=ARCH_SKILL_LIMIT[archId||'']||2;
+  const extra=(raceId==='humano'?1:raceId==='meio-elfo'?2:0);
+  return base+extra;
+}
+function suggestedFor(archId,raceId,realmId){
+  const base=ARCH_SKILLS[archId]||[];
+  const racial=RACE_SKILLS[raceId]||[];
+  const realmS=REALM_SKILLS[realmId]||[];
+  return [...new Set([...base,...racial,...realmS])];
+}
+function suggestedSkills(){
+  return suggestedFor(state.archetype,state.race,state.realm);
+}
+function toggleSkill(id){
+  const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+  const race=RACES.find(r=>r.id==state.race);
+  const cap=skillCapFor(arch&&arch.id,race&&race.id);
+  const arr=[...(state.skills||[])];
+  const i=arr.indexOf(id);
+  if(i>=0)arr.splice(i,1);
+  else if(arr.length<cap)arr.push(id);
+  state.skills=arr;
+  render();
+}
+const SIMPLE_WEAPONS=['clava','adaga','grande-clava','machadinha','dardo','azagaia','maça','bordão','foice','funda','martelo-leve','lança','besta-leve','ataque-desarmado'];
+const ARCH_WEAPON_PROF={
+  guerreiro:{all:true},
+  baluarte:{all:true},
+  vigilante:{simple:true,extra:['rapieira','cimitarra','espada-curta','arco-curto','besta-mao','chicote','rede']},
+  arcanista:{simple:true},
+  creator:{simple:true,extra:['besta-mao','rapieira','pistola','mosquete']},
+};
+const ARCH_ARMOR_PROF={
+  guerreiro:['leve','media','pesada','escudo'],
+  baluarte:['leve','media','pesada','escudo'],
+  vigilante:['leve','media','escudo'],
+  arcanista:['leve'],
+  creator:['leve','media','escudo'],
+};
+function weaponProficient(archId,w){
+  const p=ARCH_WEAPON_PROF[archId||''];
+  if(!p)return false;
+  if(p.all)return true;
+  if(p.simple&&SIMPLE_WEAPONS.includes(w.id))return true;
+  return (p.extra||[]).includes(w.id);
+}
+function armorAllowedFor(archId){return ARCH_ARMOR_PROF[archId||'']||['leve'];}
+function armorProficient(archId,armor){
+  if(!armor||armor.id==='sem-armadura')return true;
+  return armorAllowedFor(archId).includes(armor.type);
+}
 
 // ===== RENDER =====
 function render(){
@@ -300,7 +623,7 @@ function render(){
   state.equipment.weapons=state.equipment.weapons||[];
   const s=state.step;
   document.getElementById('steps').innerHTML=STEPS.map((st,i)=>`
-    <div class="step-dot ${i==s?'active':i<s?'done':''}">${i<s?'✓':i+1}</div>
+    <button type="button" class="step-dot ${i==s?'active':i<s?'done':''}" onclick="go(${i})" title="${st.label}"><span>${i<s?'✓':i+1}</span><span class="dot-label">${st.label}</span></button>
   `).join('');
   document.getElementById('app').innerHTML=`<div class="screen active">${screens[s]()}</div>`;
 }
@@ -311,19 +634,40 @@ function go(n){state.step=n;render()}
 const screens = [
   // 0 Welcome
   ()=>`
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:75vh;text-align:center">
-      <div class="fruit-icon">✦</div>
-      <div class="title">
+    <div class="home-shell">
+      <nav class="home-nav">
+        <div class="home-brand">✦ Os 9 Reinos<small>Abertura do site</small></div>
+        <a class="nav-btn primary" href="livro-do-jogador.html">
+          <span class="n-icon">📖</span><span>Livro do Jogador<span class="n-sub">Regras completas do sistema</span></span>
+        </a>
+        <a class="nav-btn" href="criar-heroi.html">
+          <span class="n-icon">✍️</span><span>Criador de Ficha<span class="n-sub">Crie seu personagem passo a passo</span></span>
+        </a>
+        <button class="nav-btn" onclick="go(1)">
+          <span class="n-icon">✦</span><span>Nova Crônica<span class="n-sub">Começar a criação aqui no app</span></span>
+        </button>
+        <button class="nav-btn" onclick="generateCharacter()">
+          <span class="n-icon">🎲</span><span>Gerar Aleatório<span class="n-sub">Personagem completo em 1 clique</span></span>
+        </button>
+        <a class="nav-btn" href="index.html">
+          <span class="n-icon">🌌</span><span>Ecos da Luz<span class="n-sub">A Crônica dos Nove Reinos</span></span>
+        </a>
+      </nav>
+      <div class="home-hero">
+        <div class="fruit-icon">✦</div>
         <h1>Ecos da Luz</h1>
-        <p>Criação de Personagem</p>
+        <p style="color:var(--text2);font-size:13px;max-width:380px;line-height:1.5">
+          Um mundo de fragmentos perdidos,<br>caminhos esquecidos e luz adormecida.<br>Escolha quem você será.
+        </p>
+        <p class="home-quote">"O Fruto se dividiu em nove partes, e ao redor de cada uma, nasceu um reino."</p>
+        <div class="home-tags">
+          <span class="home-tag">5 Arquétipos</span>
+          <span class="home-tag">9 Reinos</span>
+          <span class="home-tag">7 Domínios do Caos</span>
+          <span class="home-tag">Mana &amp; Calor</span>
+          <span class="home-tag">339 Magias</span>
+        </div>
       </div>
-      <p style="color:var(--text2);font-size:13px;margin:16px 0;max-width:320px;line-height:1.5">
-        Um mundo de fragmentos perdidos,<br>
-        caminhos esquecidos e luz adormecida.<br>
-        Escolha quem você será.
-      </p>
-      <button class="btn btn-primary" onclick="go(1)" style="margin-top:10px">✦ Começar</button>
-      <button class="btn btn-secondary" onclick="generateCharacter()" style="margin-top:10px">🎲 Gerar Aleatório</button>
     </div>
   `,
 
@@ -346,26 +690,39 @@ const screens = [
     </div>
   `,
 
-  // 2 Realm
+  // 2 Realm — Grid com Expansão ao Clicar
   ()=>{
     const selRealm=REALMS.find(r=>r.id==state.realm);
-    return `<div class="title"><h2>De onde você vem?</h2><p>Cada lugar carrega uma história</p></div>
+    return `<div class="title"><h2>De onde você vem?</h2><p>Clique em um reino para selecionar</p></div>
       <div class="card-grid c2">
         ${REALMS.map(r=>`
-          <div class="card ${state.realm==r.id?'selected':''}" onclick="selectRealm('${r.id}')">
+          <div class="card ${state.realm==r.id?'selected':''}" style="${r.cor?'--k:'+r.cor:''}" onclick="selectRealm('${r.id}')" role="button" tabindex="0">
             <div class="icon">${r.icon}</div>
             <div class="name">${r.name}</div>
-            <div class="sub" style="font-style:italic;color:var(--gold-dim);font-size:10px">${r.phrase}</div>
+            ${r.group=='caos'?`<span style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;background:#c0392b33;color:#ff8a7a;border:1px solid #c0392b;border-radius:10px;padding:2px 8px;display:inline-block;margin-top:2px">☠️ Caos</span>`:''}
+            <div class="sub" style="font-style:italic;color:var(--gold-dim);font-size:10px;line-height:1.2">${r.phrase}</div>
+            <button class="more-btn" style="margin-top:6px;background:none;border:none;color:var(--gold);font-size:10.5px;cursor:pointer;padding:0" onclick="event.stopPropagation();openLore('${r.id}')">ℹ️ Detalhes</button>
           </div>
         `).join('')}
       </div>
       ${selRealm?`
-        <div style="margin-top:14px;background:var(--bg2);border-radius:var(--radius);padding:16px;border:1px solid var(--bg4);animation:fadeIn .3s">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-            <span style="font-size:24px">${selRealm.icon}</span>
-            <div><span style="font-weight:600;font-size:15px">${selRealm.name}</span></div>
+        <div id="realmDetail" style="margin-top:14px;background:var(--bg2);border-radius:var(--radius);padding:16px;border:1px solid var(--bg4);animation:fadeIn .3s;scroll-margin-top:64px">
+          <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:8px">
+            <span style="font-size:32px">${selRealm.icon}</span>
+            <div style="flex:1;min-width:0">
+              <div style="font-weight:700;font-size:17px;color:${selRealm.cor};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${selRealm.name}</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+                <span style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:${selRealm.cor};background:color-mix(in srgb,${selRealm.cor} 15%,transparent);border:1px solid ${selRealm.cor};padding:2px 8px;border-radius:8px">${selRealm.virtude}</span>
+                ${selRealm.group==='caos'?`<span style="font-size:9px;background:#c0392b33;color:#ff8a7a;border:1px solid #c0392b;border-radius:8px;padding:2px 8px">☠️ Domínio do Caos</span>`:''}
+              </div>
+            </div>
           </div>
-          <p style="font-size:13px;color:var(--text);line-height:1.5">${selRealm.culture}</p>
+          <p style="font-style:italic;font-size:12px;color:var(--gold-dim);line-height:1.4;margin-bottom:8px">"${selRealm.phrase}"</p>
+          <p style="font-size:11px;color:var(--text);line-height:1.5;margin-bottom:10px">${selRealm.culture}</p>
+          <div style="font-size:11px;color:var(--gold2);background:var(--bg3);border:1px solid var(--bg4);border-radius:8px;padding:10px 12px">
+            <strong>✨ Passiva Nv 1 — ${PASSIVES[selRealm.id]?.nome||'—'}</strong>
+            <p style="color:var(--text2);margin-top:4px;font-size:10px;line-height:1.4">${PASSIVES[selRealm.id]?.desc||'—'}</p>
+          </div>
           <button class="more-btn" style="margin-top:8px;background:none;border:none;color:var(--gold);font-size:12px;cursor:pointer;padding:4px 0" onclick="openLore('${selRealm.id}')">📖 Ler a história completa →</button>
         </div>
       `:''}
@@ -394,6 +751,7 @@ const screens = [
             </div>
             ${ex?`<div class="arch-hint">Ex: ${ex.exemplo}</div>`:''}
             ${sel?`<p style="font-size:11px;color:var(--text2);margin-top:6px;line-height:1.4">${a.desc}</p>`:''}
+            ${sel&&state.realm?pathBox(a.id,state.realm):''}
           </div>
         </div>`;
       }).join('')}
@@ -412,9 +770,11 @@ const screens = [
           <div class="icon">${r.icon}</div>
           <div class="name">${r.name}</div>
           <div class="sub">${r.stats}</div>
+          <button style="margin-top:6px;background:none;border:1px solid var(--bg4);color:var(--gold);font-size:10px;border-radius:10px;padding:2px 8px;cursor:pointer" onclick="event.stopPropagation();openRaceModal('${r.id}')">ℹ️ Detalhes</button>
         </div>
       `).join('')}
     </div>
+    ${state.raceModal?raceModal(state.raceModal):''}
     <div class="btn-group">
       <button class="btn btn-secondary" onclick="go(3)">Voltar</button>
         <button class="btn btn-primary" onclick="go(5)" ${!state.race?'disabled':''}>Próximo →</button>
@@ -424,11 +784,20 @@ const screens = [
   // 5 Attributes
   ()=>{
     const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    if(!arch){
+      return `<div class="title"><h2>Atributos</h2><p>Escolha seu <strong>Caminho</strong> (etapa 3) para distribuir os atributos.</p></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="go(3)">Ir para Caminho →</button></div>`;
+    }
     const preset=ATTR_PRESETS[state.archetype];
     const usePreset=state.attrMode=='preset';
     const a=usePreset?{...preset}:state.attrs;
     if(Object.keys(state.attrs).length==0&&state.attrMode=='manual')state.attrs={for:8,des:8,con:8,int:8,sab:8,car:8};
     if(usePreset)Object.assign(state.attrs,preset);
+
+    const race=RACES.find(r=>r.id==state.race);
+    const pickSpec=racePickSpec(race&&race.stats);
+    if(pickSpec&&!(state.racePicks||[]).length)state.racePicks=defaultRacePicks(race);
+    const racial=race?racialEffective(race,state.racePicks):{for:0,des:0,con:0,int:0,sab:0,car:0};
 
     const baseCost=v=>ATTR_COST[v]||0;
     const spent=baseCost(a.for)+baseCost(a.des)+baseCost(a.con)+baseCost(a.int)+baseCost(a.sab)+baseCost(a.car);
@@ -438,33 +807,49 @@ const screens = [
     const mod=v=>Math.floor((v-10)/2);
     const names={for:'FOR',des:'DES',con:'CON',int:'INT',sab:'SAB',car:'CAR'};
 
-    return `<div class="title"><h2>Atributos</h2><p>Distribua ${remaining<0?0:remaining} pontos — ou use um padrão</p></div>
+    return `<div class="title"><h2>Atributos</h2><p>Distribua ${remaining<0?0:remaining} pontos (27 base) — bônus racial aplicado à parte</p></div>
+      ${race?`<div class="racial-box">
+        <div class="rb-title">🧬 Bônus Racial — ${race.icon} ${race.name}</div>
+        ${pickSpec?`
+          <div class="racial-chips">${['for','des','con','int','sab','car'].map(k=>{
+            const on=(state.racePicks||[]).includes(k);
+            const dis=!on&&(state.racePicks||[]).length>=pickSpec.pick;
+            return `<button type="button" class="racial-chip ${on?'on':'off'}" onclick="toggleRacePick('${k}')" ${dis?'disabled':''}>${k.toUpperCase()} +${pickSpec.pickVal}</button>`;
+          }).join('')}</div>
+          <div class="rb-sub">Toque os atributos que recebem +${pickSpec.pickVal} · escolha ${pickSpec.pick} de 6 — selecionados: <strong style="color:var(--gold2)">${(state.racePicks||[]).length}/${pickSpec.pick}</strong></div>
+        `:Object.entries(racial).filter(([,v])=>v!==0).map(([k,v])=>`<span class="racial-chip on" style="cursor:default">${k.toUpperCase()} ${v>0?'+':''}${v}</span>`).join('')}
+      </div>`:''}
       <div class="preset-bar">
         <button class="preset-btn ${usePreset?'active':''}" onclick="applyPreset()">✦ ${arch.name} Padrão</button>
         <button class="preset-btn ${!usePreset?'active':''}" onclick="editManual()">✎ Editar Manual</button>
       </div>
-      <div class="points">${Math.max(0,remaining)} pontos restantes</div>
-      ${Object.keys(names).map(k=>`
-        <div class="attr-row">
+      <div class="points">${Math.max(0,remaining)} pontos restantes (base)</div>
+      ${Object.keys(names).map(k=>{
+        const total=mod(a[k]+racial[k]);
+        return `<div class="attr-row">
           <div class="attr-label">${names[k]}</div>
           <div class="attr-bar"><div class="attr-fill" style="width:${Math.min(100,(a[k]-8)/7*100)}%"></div></div>
-          <div class="attr-val">${a[k]}</div>
-          <div class="attr-mod ${mod(a[k])>=0?'pos':'neg'}">${mod(a[k])>=0?'+':''}${mod(a[k])}</div>
+          <div class="attr-val">${a[k]+racial[k]}${racial[k]!==0?`<span class="racial-badge">base ${a[k]} · raça ${racial[k]>0?'+':''}${racial[k]}</span>`:''}</div>
+          <div class="attr-mod ${total>=0?'pos':'neg'}"><span class="mod-num">${total>=0?'+':''}${total}</span></div>
           <div class="attr-btns">
             <button onclick="adjAttr('${k}',-1)" ${canDown(a[k])?'':'disabled'}>−</button>
             <button onclick="adjAttr('${k}',1)" ${canUp(a[k])?'':'disabled'}>+</button>
           </div>
-        </div>
-      `).join('')}
+        </div>`;
+      }).join('')}
       <div class="btn-group">
         <button class="btn btn-secondary" onclick="go(4)">Voltar</button>
         <button class="btn btn-primary" onclick="go(6)">Magias →</button>
       </div>`;
   },
 
-  // 6 Magias
+  // 6 Magias — Abas por Círculo
   ()=>{
     const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    if(!arch){
+      return `<div class="title"><h2>Magias</h2><p>Escolha seu <strong>Caminho</strong> (etapa 3) para selecionar magias.</p></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="go(3)">Ir para Caminho →</button></div>`;
+    }
     const realm=REALMS.find(r=>r.id==state.realm);
     const nv=state.level||3;
     const spellsKnown=getSpellsKnown(arch.id,nv);
@@ -478,31 +863,42 @@ const screens = [
     const maxCircleByLevel=Math.floor((nv+1)/2);
     const maxCircle=Math.min(maxCircleArchetype,maxCircleByLevel);
 
-    const circles=[...new Set(ALL_SPELLS.map(s=>s.c))].sort((a,b)=>a-b);
-    const accessCircles=circles.filter(c=>c===0||c<=maxCircle);
+    const circles=[0];
+    for(let c=1;c<=maxCircle;c++)circles.push(c);
+    if(!circles.includes(state.spellTab))state.spellTab=0;
 
-    const circleLabel={0:'🪄 Truques (grátis)',1:'1º Círculo (5 PM)',2:'2º Círculo (10 PM)',3:'3º Círculo (15 PM)',4:'4º Círculo (20 PM)',5:'5º Círculo (25 PM)',6:'6º Círculo (30 PM)',7:'7º Círculo (35 PM)',8:'8º Círculo (40 PM)',9:'9º Círculo (45 PM)'};
+    const circleShort={0:'🪄 Truques',1:'1º',2:'2º',3:'3º',4:'4º',5:'5º',6:'6º',7:'7º',8:'8º',9:'9º'};
+    const spellsByCircle={};
+    circles.forEach(c=>{spellsByCircle[c]=ALL_SPELLS.filter(s=>s.c===c);});
+    const isTruque = state.spellTab===0;
+    const arr=isTruque?state.spells.cantrip:state.spells.leveled;
+    const lim=isTruque?sk.cantrip:totalLeveledLimit;
+    const spellsInTab=spellsByCircle[state.spellTab]||[];
 
     const spellCard=(s)=>{
-      const isCantrip=s.c===0;
-      const arr=isCantrip?state.spells.cantrip:state.spells.leveled;
       const sel=arr.includes(s.id);
-      const lim=isCantrip?sk.cantrip:totalLeveledLimit;
-      const cur=isCantrip?sc:sl;
-      const disabled=!sel&&cur>=lim;
-      return `<div class="spell-card ${sel?'selected':''} ${disabled?'disabled':''}" onclick="${disabled?'':`toggleSpell('${s.id}')`}">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <span style="font-weight:600;font-size:13px;color:var(--gold2)">${s.n}</span>
-          <span style="display:flex;gap:4px;font-size:10px">
-            <span style="background:var(--bg4);padding:1px 6px;border-radius:6px;color:var(--gold)">${s.m}PM</span>
-            <span style="background:var(--bg4);padding:1px 6px;border-radius:6px;color:${s.cal>0?'var(--red)':'var(--text2)'}">🔥${s.cal}</span>
-          </span>
+      const disabled=!sel&&arr.length>=lim;
+      return `<div class="spell-card ${sel?'selected':''} ${disabled?'disabled':''}" style="text-align:left;padding:10px;margin-bottom:0;opacity:${disabled?.45:1}" onclick="${disabled?'':`toggleSpell('${s.id}')`}" role="button" tabindex="0">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:4px">
+          <span style="font-weight:600;font-size:12.5px;line-height:1.3;color:var(--gold2)">${s.n}</span>
+          <button style="flex-shrink:0;background:var(--bg4);border:none;color:var(--gold2);width:20px;height:20px;border-radius:50%;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="event.stopPropagation();openSpellModal('${s.id}')" title="Ver detalhes da magia">ⓘ</button>
         </div>
         <p style="font-size:10px;color:var(--text2);margin:2px 0;line-height:1.2">${s.o} · ${s.s}</p>
+        <div style="display:flex;gap:4px;font-size:10px;margin-top:4px">
+          <span style="background:var(--bg4);padding:1px 6px;border-radius:6px;color:var(--gold)">${s.m}PM</span>
+          <span style="background:var(--bg4);padding:1px 6px;border-radius:6px;color:${s.cal>0?'var(--red)':'var(--text2)'}">🔥${s.cal}</span>
+        </div>
       </div>`;
     };
 
     const calorLimit=Math.max(3,3+Math.floor((state.attrs.con-10)/2));
+
+    const renderTab=(c)=>{
+      const label=circleShort[c]||c+'º';
+      const count=spellsByCircle[c]?.length||0;
+      const active=state.spellTab===c;
+      return `<button class="spell-tab ${active?'active':''}" onclick="state.spellTab=${c};render()" title="${count} magias">${label}</button>`;
+    };
 
     return `<div class="title"><h2>🔮 Magias</h2><p>Nv ${nv} · ${arch?.name||'?'} · Círculo máx: ${maxCircle}º</p></div>
       <div style="margin-bottom:10px;background:var(--bg2);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--bg4);font-size:11px;line-height:1.4">
@@ -514,88 +910,230 @@ const screens = [
         <span style="color:var(--gold)">🪄 Truques:</span> ${sc}/${sk.cantrip} · 
         <span style="color:var(--gold)">Niveladas:</span> ${sl}/${totalLeveledLimit}
       </div>
-      ${accessCircles.map(c=>{
-        const spells=ALL_SPELLS.filter(s=>s.c===c);
-        return `
-        <p style="font-size:12px;color:var(--gold);font-weight:600;margin:14px 0 6px">${circleLabel[c]||c+'º Círculo'}</p>
-        <p style="font-size:10px;color:var(--text2);margin-bottom:6px">${spells.length} magias disponíveis</p>
-        ${spells.map(s=>spellCard(s)).join('')}`;
-      }).join('')}
+      <div class="spell-tabs" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;padding:4px;background:var(--bg2);border-radius:var(--radius);border:1px solid var(--bg4)">
+        ${circles.map(renderTab).join('')}
+      </div>
+      <div class="points" style="font-size:13px;margin-bottom:6px">${isTruque?'Truques':'Magias '+circleShort[state.spellTab]}: ${arr.filter(id=>spellsInTab.some(s=>s.id==id)).length} selecionadas · ${lim - arr.length >= 0 ? lim-arr.length : 0} vagas</div>
+      <div class="card-grid c2" style="gap:8px">
+      ${spellsInTab.map(s=>spellCard(s)).join('')}
+      </div>
+      ${state.spellModal?spellModal(state.spellModal):''}
       <div class="btn-group">
         <button class="btn btn-secondary" onclick="go(5)">← Atributos</button>
         <button class="btn btn-primary" onclick="go(7)">Equipamento →</button>
       </div>`;
   },
 
-  // 7 Equipment
+  // 7 Equipment — Abas com Restrições de Classe
   ()=>{
     const selectedWeapons=state.equipment.weapons;
     const theme=EQUIPMENT_THEMES[state.realm]||EQUIPMENT_THEMES.havendor;
-    const weaponCard=w=>`<div class="equipment-card ${selectedWeapons.includes(w.id)?'selected':''}" onclick="toggleWeapon('${w.id}')">
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    if(!arch){
+      return `<div class="title"><h2>Equipamento</h2><p>Escolha seu <strong>Caminho</strong> (etapa 3) para equipar seu personagem.</p></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="go(3)">Ir para Caminho →</button></div>`;
+    }
+    if(!state.equipTab)state.equipTab='armas';
+    const armorAllowed=armorAllowedFor(arch.id);
+    const weaponCard=w=>{const ok=weaponProficient(arch.id,w);return `<div class="equipment-card ${selectedWeapons.includes(w.id)?'selected':''}" onclick="toggleWeapon('${w.id}')">
       <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--gold2)">${w.name}</span><span style="font-size:11px;color:var(--gold)">${w.damage}</span></div>
       <p style="font-size:10px;color:var(--text2);margin-top:3px">${w.type} · ${w.range} · ${w.props.join(', ')||'sem propriedades'}</p>
-    </div>`;
+      <p style="font-size:9px;margin-top:3px;${ok?'color:#66dd66':'color:var(--red)'}">${ok?'✔ Proficiente':'✘ Sem proficiência (ataque sem bônus de prof)'}</p>
+    </div>`;};
+    const armorCard=a=>{
+      const allowed=armorAllowed.includes(a.type)||(a.id==='sem-armadura');
+      const disabled=!allowed&&state.equipment.armor!==a.id;
+      return `<div class="equipment-card ${state.equipment.armor===a.id?'selected':''} ${disabled?'disabled':''}" onclick="${disabled?'':`selectArmor('${a.id}')`}" title="${!allowed?'Seu arquétipo não pode usar esta armadura':''}">
+        <div style="display:flex;justify-content:space-between"><span style="font-weight:600;color:${disabled?'var(--text2)':'var(--gold2)'}">${a.name}</span><span style="font-size:11px;color:var(--gold)">${a.base?a.base+' CA':'DES total'}</span></div>
+        <p style="font-size:10px;color:var(--text2);margin-top:3px">${a.type}${a.dexCap===null?' · DES sem limite':a.dexCap===0?' · não soma DES':' · DES máx. +'+a.dexCap}${!allowed?' ⛔':' '}</p>
+      </div>`;
+    };
+    const tabs=['armas','armadura','escudo'];
+    const tabLabel={armas:'⚔️ Armas',armadura:'🛡️ Armadura',escudo:'🛡️ Escudo'};
     return `<div class="title"><h2>⚔️ Equipamento</h2><p>Escolha até 2 armas, uma armadura e um escudo</p></div>
       <div style="margin-bottom:12px;background:var(--bg2);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--bg4);font-size:11px;line-height:1.4"><strong style="color:var(--gold)">${theme.label}</strong> · ${theme.material}<br><span style="color:var(--text2)">O equipamento mantém as regras abaixo, mas pode assumir a aparência e a tradição de ${REALMS.find(r=>r.id===state.realm)?.name||'seu Reino'}.</span></div>
-      <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Armas (${selectedWeapons.length}/2)</p>
-      ${WEAPONS.map(weaponCard).join('')}</div>
-      <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Armadura</p>
-      ${ARMOR.map(a=>`<div class="equipment-card ${state.equipment.armor===a.id?'selected':''}" onclick="selectArmor('${a.id}')"><div style="display:flex;justify-content:space-between"><span style="font-weight:600;color:var(--gold2)">${a.name}</span><span style="font-size:11px;color:var(--gold)">${a.base?a.base+' CA':'DES total'}</span></div><p style="font-size:10px;color:var(--text2);margin-top:3px">${a.type}${a.dexCap===null?' · DES sem limite':a.dexCap===0?' · não soma DES':' · DES máx. +'+a.dexCap}</p></div>`).join('')}</div>
-      <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Escudo</p>
-        <div class="equipment-card ${state.equipment.shield?'selected':''}" onclick="state.equipment.shield=!state.equipment.shield;render()"><div style="display:flex;justify-content:space-between"><span style="font-weight:600;color:var(--gold2)">Escudo</span><span style="font-size:11px;color:var(--gold)">+2 CA</span></div><p style="font-size:10px;color:var(--text2);margin-top:3px">Requer uma mão livre</p></div>
+      <div class="equip-tabs" style="display:flex;gap:4px;margin-bottom:12px;background:var(--bg2);border-radius:var(--radius);border:1px solid var(--bg4);padding:4px">
+        ${tabs.map(t=>`<button class="equip-tab ${state.equipTab===t?'active':''}" onclick="state.equipTab='${t}';render()">${tabLabel[t]}</button>`).join('')}
       </div>
-      <div class="btn-group"><button class="btn btn-secondary" onclick="go(6)">← Magias</button><button class="btn btn-primary" onclick="go(8)">Convicções →</button></div>`;
+      ${state.equipTab==='armas'?`
+        <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Armas (${selectedWeapons.length}/2)</p>
+        ${WEAPONS.map(weaponCard).join('')}</div>
+      `:''}
+      ${state.equipTab==='armadura'?`
+        <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Armadura ${armorAllowed.includes('pesada')?'':'(leve/média apenas)'}</p>
+        ${ARMOR.map(armorCard).join('')}</div>
+      `:''}
+      ${state.equipTab==='escudo'?`
+        <div class="equipment-section"><p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Escudo ${armorAllowed.includes('escudo')?'':'(não permitido)'}</p>
+        <div class="equipment-card ${state.equipment.shield?'selected':''} ${!armorAllowed.includes('escudo')?'disabled':''}" onclick="${armorAllowed.includes('escudo')?`state.equipment.shield=!state.equipment.shield;render()`:''}" title="${!armorAllowed.includes('escudo')?'Seu arquétipo não pode usar escudo':''}">
+          <div style="display:flex;justify-content:space-between"><span style="font-weight:600;color:${!armorAllowed.includes('escudo')?'var(--text2)':'var(--gold2)'}">Escudo</span><span style="font-size:11px;color:var(--gold)">+2 CA</span></div>
+          <p style="font-size:10px;color:var(--text2);margin-top:3px">Requer uma mão livre${!armorAllowed.includes('escudo')?' ⛔':''}</p>
+        </div>
+      `:''}
+      <div class="btn-group"><button class="btn btn-secondary" onclick="go(6)">← Magias</button><button class="btn btn-primary" onclick="go(8)">Perícias →</button></div>`;
   },
 
-  // 8 Convicções e Corrupções
+  // 8 Perícias
+  ()=>{
+    const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    const race=RACES.find(r=>r.id==state.race);
+    const realm=REALMS.find(r=>r.id==state.realm);
+    const allSkills=[
+      {id:'acrobacia',nome:'Acrobacia',attr:'DES',desc:'Equilíbrio, saltos, quedas'},
+      {id:'arcanismo',nome:'Arcanismo',attr:'INT',desc:'Conhecimento mágico, identificação de magias'},
+      {id:'atletismo',nome:'Atletismo',attr:'FOR',desc:'Escalar, nadar, saltar, empurrar'},
+      {id:'cavalgar',nome:'Cavalgar',attr:'SAB',desc:'Montar, controlar bestas'},
+      {id:'conhecimento',nome:'Conhecimento',attr:'INT',desc:'História, geografia, leis, nobres'},
+      {id:'enganação',nome:'Enganação',attr:'CAR',desc:'Mentir, disfarçar, falsificar'},
+      {id:'furtividade',nome:'Furtividade',attr:'DES',desc:'Mover-se sem ser visto/ouvido'},
+      {id:'intimidação',nome:'Intimidação',attr:'CAR',desc:'Ameaçar, coagir, impor presença'},
+      {id:'intuição',nome:'Intuição',attr:'SAB',desc:'Detectar mentiras, ler intenções'},
+      {id:'investigação',nome:'Investigação',attr:'INT',desc:'Buscar pistas, analisar evidências'},
+      {id:'medicina',nome:'Medicina',attr:'SAB',desc:'Estabilizar, diagnosticar, tratar venenos'},
+      {id:'natureza',nome:'Natureza',attr:'SAB',desc:'Flora, fauna, clima, sobrevivência'},
+      {id:'percepção',nome:'Percepção',attr:'SAB',desc:'Notar detalhes, ouvir, cheirar'},
+      {id:'performance',nome:'Performance',attr:'CAR',desc:'Atuar, música, dança, oratória'},
+      {id:'persuasão',nome:'Persuasão',attr:'CAR',desc:'Convencer, negociar, diplomacia'},
+      {id:'religião',nome:'Religião',attr:'INT',desc:'Deuses, rituais, planos, mortos-vivos'},
+      {id:'sobrevivência',nome:'Sobrevivência',attr:'SAB',desc:'Rastrear, caçar, orientar-se na natureza'},
+      {id:'tatuagem',nome:'Tatuagem',attr:'INT',desc:'Símbolos mágicos, runas, glifos (K\'Nahti)'},
+      {id:'tecnologia',nome:'Tecnologia',attr:'INT',desc:'Máquinas, éter, engenharia (Lumivior)'},
+    ];
+    const archSkills={
+      guerreiro:['atletismo','intimidação','percepção','sobrevivência','cavalgar'],
+      baluarte:['atletismo','intimidação','percepção','medicina','religião'],
+      vigilante:['acrobacia','furtividade','percepção','investigação','enganação'],
+      arcanista:['arcanismo','conhecimento','investigação','religião','natureza'],
+      creator:['tecnologia','investigação','conhecimento','tatuagem','performance'],
+    };
+    const raceSkills={
+      humano:['persuasão'], elfo:['percepção'], anao:['conhecimento'], halfling:['furtividade'],
+      gnomo:['investigação'], 'meio-elfo':['persuasão'], bestial:['percepção'], anfibio:['sobrevivência'],
+      reptiliano:['intimidação'], heavens:['religião'], auris:['performance'], 'elfo-deserto':['sobrevivência'],
+      marmoreano:['conhecimento'], etherborn:['tecnologia'], neru:['intuição'], argoliano:['investigação'],
+      'elfo-negro':['furtividade'], 'anao-sphalidor':['conhecimento'], 'filhos-da-furia':['atletismo'],
+      noctari:['enganação'], pelned:['persuasão'], insectoide:['sobrevivência'],
+    };
+    const realmSkills={
+      havendor:['religião'], aurivelle:['performance'], selah:['intuição'], knathi:['tatuagem'],
+      lumivior:['tecnologia'], neruviah:['intuição'], ringendah:['arcanismo'], argolis:['investigação'],
+      sphalidor:['conhecimento'], valdar:['atletismo'], sataris:['enganação'], morvath:['intimidação'],
+      mavaron:['persuasão'], taevora:['performance'], morpheia:['intuição'], hybris:['performance'],
+    };
+    const base=ARCH_SKILLS[arch&&arch.id]||[];
+    const racial=RACE_SKILLS[race&&race.id]||[];
+    const realmS=REALM_SKILLS[state.realm]||[];
+    const combined=suggestedSkills();
+    const prof=state.skills||[];
+    const cap=skillCapFor(arch&&arch.id,race&&race.id);
+    const profBonus=2+Math.floor((state.level-1)/4);
+    const racialS=race?racialEffective(race,state.racePicks):{for:0,des:0,con:0,int:0,sab:0,car:0};
+    return `<div class="title"><h2>🎯 Perícias</h2><p>Escolha suas perícias treinadas — bônus de proficiência (+${profBonus})</p></div>
+      <div style="margin-bottom:10px;background:var(--bg2);border-radius:var(--radius);padding:10px;border:1px solid var(--bg4);font-size:11px;color:var(--text2);line-height:1.5">
+        <strong style="color:var(--text)">🛡️ Até <strong style="color:var(--gold)">${cap}</strong> perícias (${prof.length}/${cap} escolhidas)</strong> — limite do seu Caminho, como em D&D: ${ARCH_SKILL_LIMIT[arch&&arch.id]||2} do arquétipo${race?.id==='humano'?' + 1 humano (Versatilidade)':''}${race?.id==='meio-elfo'?' + 2 meio-elfo (Proficiência em duas)':''}.<br>
+        <span style="color:var(--text)"><strong style="color:var(--gold)">Sugestões:</strong> ${arch?.icon} ${arch?.name} (${base.join(', ')}) · ${race?.icon} ${race?.name} (${racial.join(', ')||'—'}) · ${realm?.icon} ${realm?.name} (${realmS.join(', ')||'—'})</span>
+      </div>
+      <div class="card-grid c2" style="gap:6px">
+        ${allSkills.map(s=>{
+          const isSuggested=combined.includes(s.id);
+          const isProf=prof.includes(s.id);
+          const disabled=!isProf&&prof.length>=cap;
+          const mod=Math.floor(((state.attrs[s.attr]||10)+(racialS[s.attr]||0)-10)/2);
+          const total=isProf?mod+profBonus:mod;
+          return `<div class="card ${isProf?'selected':''}" style="text-align:left;padding:10px${disabled?';opacity:.45;filter:grayscale(.6)':''}" onclick="toggleSkill('${s.id}')" role="button" tabindex="0" title="${isProf?'Clique para remover':disabled?'Limite atingido (máx. '+cap+')':'Clique para treinar'}">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-weight:600;font-size:12px;color:var(--gold2)">${s.nome}</span>
+              ${isProf?`<span style="font-size:10px;background:var(--gold);color:#000;padding:1px 6px;border-radius:6px">P ${prof.indexOf(s.id)+1}/${cap}</span>`:''}
+            </div>
+            <div class="sub" style="margin-top:2px;color:var(--text)">${s.desc} (${s.attr} ${mod>=0?'+':''}${mod}${isProf?` · total ${total>=0?'+':''}${total}`:''})</div>
+            ${isSuggested&&!isProf?`<div style="margin-top:3px;font-size:10px;color:var(--gold2)">✦ Sugerida para sua combinação</div>`:''}
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="go(7)">← Equipamento</button>
+        <button class="btn btn-primary" onclick="go(9)">Convicções →</button>
+      </div>`;
+  },
+
+  // 9 Convicções e Corrupções
   ()=>{
     const cKeys=Object.keys(CONVICTIONS);
     const tKeys=Object.keys(CORRUPTIONS);
+    const isChaos=!!(state.realm&&REALMS.find(r=>r.id==state.realm)?.group==='caos');
+    const cLim=isChaos?2:3, tLim=isChaos?3:2;
+    const convCard=(k,sel)=>{
+      const more=(state.convMore||[]).includes(k);
+      return `<div class="conv-card ${sel?'selected':''}" onclick="toggle('convic','${k}',${cLim})" role="button" tabindex="0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
+          <span style="font-weight:600;font-size:14px;color:var(--gold)">${k}</span>
+          <button onclick="event.stopPropagation();toggleConvInfo('${k}')" style="flex-shrink:0;background:var(--bg4);border:none;color:var(--gold2);padding:3px 10px;border-radius:8px;font-size:10px;cursor:pointer">${more?'− Ocultar':'＋ Mais detalhes'}</button>
+        </div>
+        ${more?`<div style="margin-top:8px;border-top:1px solid var(--bg4);padding-top:8px">
+          <p style="font-size:12px;color:var(--text);margin:0 0 4px;line-height:1.4">${CONVICTIONS[k].desc}</p>
+          <p style="font-size:11px;color:var(--text2);font-style:italic;margin:0">Ex: ${CONVICTIONS[k].ex}</p>
+        </div>`:`<p style="font-size:10px;color:var(--text2);margin-top:4px">Toque para escolher · "Mais detalhes" mostra o que significa</p>`}
+        ${sel?`<div style="margin-top:6px;font-size:10px;color:var(--gold)">✓ Escolhido</div>`:''}
+      </div>`;
+    };
+    const corrCard=(k,sel)=>{
+      const more=(state.convMore||[]).includes(k);
+      return `<div class="conv-card ${sel?'selected corrupt':''}" onclick="toggle('tempt','${k}',${tLim})" role="button" tabindex="0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
+          <span style="font-weight:600;font-size:14px;color:var(--red)">${k}</span>
+          <button onclick="event.stopPropagation();toggleConvInfo('${k}')" style="flex-shrink:0;background:var(--bg4);border:none;color:var(--gold2);padding:3px 10px;border-radius:8px;font-size:10px;cursor:pointer">${more?'− Ocultar':'＋ Mais detalhes'}</button>
+        </div>
+        ${more?`<div style="margin-top:8px;border-top:1px solid var(--bg4);padding-top:8px">
+          <p style="font-size:12px;color:var(--text);margin:0 0 4px;line-height:1.4">${CORRUPTIONS[k].desc}</p>
+          <p style="font-size:11px;color:var(--text2);font-style:italic;margin:0">Ex: ${CORRUPTIONS[k].ex}</p>
+        </div>`:`<p style="font-size:10px;color:var(--text2);margin-top:4px">Toque para escolher · "Mais detalhes" mostra o que significa</p>`}
+        ${sel?`<div style="margin-top:6px;font-size:10px;color:var(--red)">✓ Escolhido</div>`:''}
+      </div>`;
+    };
     return `<div class="title">
       <h2>⚖️ Convicções e Corrupções</h2>
-      <p>A bússola moral do seu personagem — escolha com sabedoria</p>
+      <p>A bússola moral do personagem — escolha com liberdade</p>
+    </div>
+    <div style="margin-bottom:12px;background:var(--bg2);border-radius:var(--radius);padding:12px;border:1px solid var(--bg4);font-size:11px;line-height:1.6">
+      <div style="font-weight:600;color:var(--gold);margin-bottom:6px">🪞 Como jogar a Bússola Moral</div>
+      <p style="color:var(--text);margin:0">Convicções e corrupções são <strong>guias de roleplay</strong> — colorem o jeito do personagem e o rumo que ele tende a seguir. Nada aqui obriga: a decisão é sempre sua.</p>
+      <p style="color:var(--text2);margin:6px 0 0">
+        ⚖️ <strong style="color:var(--gold)">Convicção</strong> — o que você <em>quer ser</em>.<br>
+        🩸 <strong style="color:var(--red)">Corrupção</strong> — o que <em>é mais fácil de ser</em>.<br>
+        ➖ <strong>Neutro</strong> — quando nenhuma puxa, você escolhe livre.
+      </p>
+      <p style="color:var(--text2);margin:6px 0 0">Quando as duas se chocam numa decisão, <strong>decida você</strong> — faça o que faz sentido pra história. A luta entre elas é o melhor drama do personagem.</p>
+    </div>
+    ${isChaos?`<div style="margin-bottom:10px;background:#c0392b1a;border:1px solid #c0392b;border-radius:var(--radius);padding:8px 10px;font-size:11px;color:#ff8a7a">☠️ <strong>Domínio do Caos</strong> — a corrupção pesa mais aqui: escolha <strong>2 convicções</strong> e <strong>3 corrupções</strong>.</div>`:''}
+    <div style="margin-bottom:12px">
+      <p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Convicções (escolha ${cLim})</p>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Valores que seu personagem defende acima de tudo.</p>
+      <div class="card-grid c2" style="gap:8px;margin-top:0">
+        ${cKeys.map(k=>convCard(k,state.convic.includes(k))).join('')}
+      </div>
     </div>
     <div style="margin-bottom:12px">
-      <p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:8px">Convicções (escolha 3)</p>
-      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">São os valores que seu personagem defende acima de tudo.</p>
-      ${cKeys.map(k=>{
-        const sel=state.convic.includes(k);
-        return `<div class="conv-card ${sel?'selected':''}" onclick="toggle('convic','${k}',3)">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <span style="font-weight:600;font-size:14px;color:var(--gold)">${k}</span>
-            <span style="font-size:11px;color:${sel?'var(--gold)':'var(--text2)'}">${sel?'✓ Selecionado':'Clique para escolher'}</span>
-          </div>
-          <p style="font-size:12px;color:var(--text);margin:4px 0;line-height:1.4">${CONVICTIONS[k].desc}</p>
-          <p style="font-size:11px;color:var(--text2);font-style:italic">Ex: ${CONVICTIONS[k].ex}</p>
-        </div>`;
-      }).join('')}
-    </div>
-    <div style="margin-bottom:12px">
-      <p style="font-size:12px;color:var(--red);font-weight:600;margin-bottom:8px">Corrupções (escolha 2)</p>
-      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Fraquezas ocultas que seu personagem carrega, mesmo que tente esconder.</p>
-      ${tKeys.map(k=>{
-        const sel=state.tempt.includes(k);
-        return `<div class="conv-card ${sel?'selected corrupt':''}" onclick="toggle('tempt','${k}',2)">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <span style="font-weight:600;font-size:14px;color:var(--red)">${k}</span>
-            <span style="font-size:11px;color:${sel?'var(--gold)':'var(--text2)'}">${sel?'✓ Selecionado':'Clique para escolher'}</span>
-          </div>
-          <p style="font-size:12px;color:var(--text);margin:4px 0;line-height:1.4">${CORRUPTIONS[k].desc}</p>
-          <p style="font-size:11px;color:var(--text2);font-style:italic">Ex: ${CORRUPTIONS[k].ex}</p>
-        </div>`;
-      }).join('')}
+      <p style="font-size:12px;color:var(--red);font-weight:600;margin-bottom:8px">Corrupções (escolha ${tLim})</p>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Fraquezas que seu personagem carrega, mesmo que tente esconder.</p>
+      <div class="card-grid c2" style="gap:8px;margin-top:0">
+        ${tKeys.map(k=>corrCard(k,state.tempt.includes(k))).join('')}
+      </div>
     </div>
     <div class="btn-group">
-        <button class="btn btn-secondary" onclick="go(7)">← Equipamento</button>
-        <button class="btn btn-primary" onclick="go(9)" ${state.convic.length<3||state.tempt.length<2?'disabled':''}>Ver Ficha →</button>
+        <button class="btn btn-secondary" onclick="go(8)">← Perícias</button>
+        <button class="btn btn-primary" onclick="go(10)" ${state.convic.length<cLim||state.tempt.length<tLim?'disabled':''}>Ver Ficha →</button>
     </div>`;
   },
 
-  // 9 Final Sheet
+  // 10 Final Sheet
   ()=>{
     const race=RACES.find(r=>r.id==state.race);
     const realm=REALMS.find(r=>r.id==state.realm);
     const arch=ARCHETYPES.find(a=>a.id==state.archetype);
+    if(!arch){
+      return `<div class="title"><h2>Ficha do Personagem</h2><p>Complete as etapas anteriores (pelo menos o <strong>Caminho</strong>) para montar sua ficha.</p></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="go(1)">Começar →</button></div>`;
+    }
     const a=state.attrs;
     const mod=v=>Math.floor((v-10)/2);
     const intMod=mod(a.int),conMod=mod(a.con),dexMod=mod(a.des),sabMod=mod(a.sab),forMod=mod(a.for),carMod=mod(a.car);
@@ -609,7 +1147,9 @@ const screens = [
      const prof=2+Math.floor((nv-1)/4);
     const inic=dexMod;
 
+    const racial=race?racialEffective(race,state.racePicks):{for:0,des:0,con:0,int:0,sab:0,car:0};
     const calorLimit=Math.max(3,3+Math.floor((state.attrs.con-10)/2));
+    const profBonus=2+Math.floor((state.level-1)/4);
 
     return `<div class="title"><h2>${state.name||'Herói'}</h2><p style="font-size:12px">Nv ${nv} · ${race?.icon} ${race?.name||'?'} · ${realm?.icon} ${realm?.name||'?'} · ${arch?.icon} ${arch?.name||'?'}</p></div>
       <div class="stats-grid">
@@ -620,21 +1160,40 @@ const screens = [
         <div class="stat-card"><div class="stat-val">${inic>=0?'+':''}${inic}</div><div class="stat-label">Iniciativa</div></div>
       </div>
       <div class="result-card"><h3>Atributos</h3><div class="result-grid">
-        ${['for','des','con','int','sab','car'].map(k=>`<span class="label">${k.toUpperCase()}</span><span class="val">${a[k]} (${mod(a[k])>=0?'+':''}${mod(a[k])})</span>`).join('')}
+        ${['for','des','con','int','sab','car'].map(k=>`<span class="label">${k.toUpperCase()}</span><span class="val">${a[k]} ${racial[k]!==0?`<span style="color:#66dd66">+${racial[k]}</span>`:''} = <strong>${a[k]+racial[k]}</strong> (${mod(a[k]+racial[k])>=0?'+':''}${mod(a[k]+racial[k])})</span>`).join('')}
       </div></div>
        <div class="result-card"><h3>Origem · Caminho · Raça</h3><div class="result-grid">
         <span class="label">Origem</span><span class="val">${realm?.icon||''} ${realm?.name||'—'}</span>
         <span class="label">Caminho</span><span class="val">${arch?.icon||''} ${arch?.name||'—'}</span>
         <span class="label">Raça</span><span class="val">${race?.icon||''} ${race?.name||'—'}</span>
        </div></div>
+       ${race?`
+       <div class="result-card">
+         <h3>${race.icon} Raça — ${race.name}</h3>
+         <p style="font-size:11px;color:var(--text2);margin-bottom:8px;line-height:1.5">${race.saber||race.desc}</p>
+         <div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:6px">Bônus Raciais</div>
+         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+           ${Object.entries(racial).filter(([,v])=>v!==0).map(([k,v])=>`<span style="background:#66dd6622;border:1px solid #66dd66;padding:3px 10px;border-radius:6px;font-size:10px;color:#66dd66">${k.toUpperCase()} ${v>0?'+':''}${v}</span>`).join('')}
+         </div>
+         ${(race.traits&&race.traits.length)?`
+         <div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:6px">Traços</div>
+         <ul style="padding-left:18px;color:var(--text2);font-size:11px;line-height:1.6">${race.traits.map(t=>`<li>${t}</li>`).join('')}</ul>
+         <p style="font-size:10px;color:var(--text2);margin-top:8px">${race.details}</p>`:''}
+       </div>`:''}
+       ${pathSheet(state.archetype,state.realm)}
        <div class="result-card"><h3>⚔️ Equipamento</h3><div class="result-grid">
          <span class="label">Armadura</span><span class="val">${armor.name}</span>
          <span class="label">Escudo</span><span class="val">${state.equipment.shield?'Sim (+2 CA)':'Não'}</span>
          <span class="label">CA final</span><span class="val">${ca}</span>
        </div>
        <div style="margin-top:10px;display:grid;gap:6px">
-         ${state.equipment.weapons.length?state.equipment.weapons.map(id=>{const w=WEAPONS.find(item=>item.id===id);const ability=mod(a[w.ability]);return `<div style="background:var(--bg3);padding:8px;border-radius:8px;font-size:12px"><strong style="color:var(--gold2)">${w.name}</strong><br><span style="color:var(--text2)">${w.damage} ${w.type} · Ataque ${ability+prof>=0?'+':''}${ability+prof} · Dano ${w.damage}${w.damage.includes('FOR')?'':' '+(ability>=0?'+':'')+ability}</span></div>`}).join(''):'<span style="color:var(--text2);font-size:12px">Nenhuma arma selecionada</span>'}
+         ${state.equipment.weapons.length?state.equipment.weapons.map(id=>{const w=WEAPONS.find(item=>item.id===id);const ok=weaponProficient(state.archetype,WEAPONS.find(x=>x.id===id));
+         const ability=mod(a[w.ability])+(ok?prof:0);
+         return `<div style="background:var(--bg3);padding:8px;border-radius:8px;font-size:12px"><strong style="color:var(--gold2)">${w.name}</strong> <span style="font-size:9px;${ok?'color:#66dd66':'color:var(--red)'}">${ok?'✔ Prof':'✘ Sem prof'}</span><br><span style="color:var(--text2)">${w.damage} ${w.type} · Ataque ${ability>=0?'+':''}${ability} · Dano ${w.damage}${w.damage.includes('FOR')?'':' '+(mod(a[w.ability])>=0?'+':'')+mod(a[w.ability])}</span></div>`}).join(''):'<span style="color:var(--text2);font-size:12px">Nenhuma arma selecionada</span>'}
        </div></div>
+      <div class="result-card"><h3>🎯 Perícias</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+        ${(state.skills||[]).map(s=>{const sm=Math.floor((a[SKILL_ATTR[s]]+(racial[SKILL_ATTR[s]]||0)-10)/2);const st=sm+profBonus;return `<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--gold-dim);color:var(--gold)">${SKILL_NAMES[s]||s} <span style="color:var(--text);font-weight:700">${st>=0?'+':''}${st}</span></span>`;}).join('')||'<span style="color:var(--text2);font-size:12px">Nenhuma</span>'}
+      </div></div>
       <div class="result-card"><h3>Mana</h3><div class="result-grid">
         <span class="label">Fórmula</span><span class="val">(Nv ${nv} + ${intMod>=0?'+':''}${intMod}) × ${base}</span>
         <span class="label">Total</span><span class="val">${mana}</span>
@@ -701,6 +1260,15 @@ function generateCharacter(){
   const shuffledC = [...cKeys].sort(()=>Math.random()-.5);
   const shuffledT = [...tKeys].sort(()=>Math.random()-.5);
   
+  const raceObj=RACES.find(r=>r.id==raceId);
+  const pickSpec=racePickSpec(raceObj&&raceObj.stats);
+  let racePicks=[];
+  if(pickSpec){
+    const order=['for','des','con','int','sab','car'].sort(()=>Math.random()-.5);
+    racePicks=order.slice(0,pickSpec.pick);
+  }
+  const isChaos=!!(REALMS.find(r=>r.id==realmId)?.group==='caos');
+
   state = {
      step: 9,
     name,level:3,
@@ -708,14 +1276,22 @@ function generateCharacter(){
     archetype: archId,
     race: raceId,
     attrs: {...preset},
-    convic: shuffledC.slice(0,3),
-    tempt: shuffledT.slice(0,2),
+    convic: shuffledC.slice(0,isChaos?2:3),
+    tempt: shuffledT.slice(0,isChaos?3:2),
      spells: {cantrip:[],leveled:[]},
      equipment: {weapons:[pick(WEAPONS).id],armor:'sem-armadura',shield:false},
     attrMode: 'preset',
     loreRealm: null,
     convModal: null,
+    saberRace: null,pathOpen:false,
+    racePicks,
+    chaosApplied:isChaos,
+    skills:[],convMore:[],
   };
+
+  const skCap=skillCapFor(archId,raceId);
+  state.skills=[...suggestedFor(archId,raceId,realmId)].sort(()=>Math.random()-.5).slice(0,skCap);
+
   render();
 }
 
@@ -734,15 +1310,34 @@ function editManual(){
 function select(type,id){
   state[type]=state[type]==id?null:id;
   if(type=='archetype')state.spells={cantrip:[],leveled:[]};
+  if(type=='race')state.racePicks=[];
   render();
 }
 
 function selectRealm(id){
+  const wasChaos=state.realm&&REALMS.find(r=>r.id==state.realm)?.group==='caos';
+  const willBeChaos=id&&REALMS.find(r=>r.id==id)?.group==='caos';
   state.realm=state.realm==id?null:id;
   state.archetype=null;
   state.spells={cantrip:[],leveled:[]};
   state.loreRealm=null;
+  state.chaosApplied=false;
+  if(willBeChaos&&!wasChaos){applyChaosPassive();}
   render();
+  if(state.realm){
+    const el=document.getElementById('realmDetail');
+    if(el&&typeof el.scrollIntoView==='function')setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  }
+}
+
+function applyChaosPassive(){
+  const cKeys=Object.keys(CONVICTIONS);
+  const tKeys=Object.keys(CORRUPTIONS);
+  const shuffledC=[...cKeys].sort(()=>Math.random()-.5);
+  const shuffledT=[...tKeys].sort(()=>Math.random()-.5);
+  state.convic=shuffledC.slice(0,2);
+  state.tempt=shuffledT.slice(0,3);
+  state.chaosApplied=true;
 }
 
 function toggleWeapon(id){
@@ -776,6 +1371,175 @@ function loreModal(id){
 
 function openLore(id){state.loreRealm=id;render()}
 function closeLore(){state.loreRealm=null;render()}
+
+function openSpellModal(id){state.spellModal=id;render()}
+function closeSpellModal(){state.spellModal=null;render()}
+
+function spellModal(id){
+  const s=ALL_SPELLS.find(x=>x.id===id);
+  if(!s)return'';
+  const d=(typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[]).find(x=>x.nome_en===s.o||x.nome===s.n)||{};
+  const rows=[
+    ['Círculo', d.circulo===0?'Truque':(d.circulo!=null?d.circulo:s.c)+'º'],
+    ['Escola', d.escola||s.s],
+    ['Custo de Mana', (d.mana!=null?d.mana:s.m)+' Mana'],
+    ['Calor', d.calor!=null?d.calor:s.cal],
+    ['Tempo de Conjuração', d.tempo||'—'],
+    ['Alcance', d.alcance||'—'],
+    ['Componentes', d.componentes||'—'],
+    ['Duração', d.duracao||'—'],
+  ];
+  if(d.concentracao)rows.push(['Concentração','Sim']);
+  if(d.ritual)rows.push(['Ritual','Sim']);
+  return `<div onclick="closeSpellModal()" class="modal-overlay">
+    <div onclick="event.stopPropagation()" class="modal-content">
+      <h3 style="color:var(--gold);font-size:18px;margin-bottom:2px">${s.n}</h3>
+      <p style="font-style:italic;color:var(--gold-dim);font-size:12px;margin-bottom:10px">${s.o||''}</p>
+      <div class="result-grid" style="margin-bottom:12px">
+        ${rows.map(([k,v])=>`<span class="label">${k}</span><span class="val">${v||'—'}</span>`).join('')}
+      </div>
+      ${d.aprimoramento?`<div style="border-top:1px solid var(--bg4);padding-top:10px;margin-bottom:10px">
+        <p style="font-size:11px;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Em Círculos Superiores</p>
+        <p style="font-size:12.5px;color:var(--text);line-height:1.5">${d.aprimoramento}</p>
+      </div>`:''}
+      <div style="border-top:1px solid var(--bg4);padding-top:10px">
+        <p style="font-size:11px;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Descrição <span style="text-transform:none;font-style:italic">(original em inglês)</span></p>
+        <p style="font-size:12.5px;color:var(--text);line-height:1.6;white-space:pre-line">${d.descricao||'—'}</p>
+      </div>
+      <button class="btn btn-secondary" onclick="closeSpellModal()" style="margin-top:14px;width:100%">Fechar</button>
+    </div>
+  </div>`;
+}
+
+function parseRacialBonuses(stats){
+  const bonuses={for:0,des:0,con:0,int:0,sab:0,car:0};
+  if(!stats)return bonuses;
+  const s=stats.toLowerCase();
+  const patterns=[
+    {attr:'for',re:/([+-]\d+)\s*(for|força|str)/i},
+    {attr:'des',re:/([+-]\d+)\s*(des|destreza|dex)/i},
+    {attr:'con',re:/([+-]\d+)\s*(con|constituição|constituicao|con)/i},
+    {attr:'int',re:/([+-]\d+)\s*(int|inteligência|inteligencia|int)/i},
+    {attr:'sab',re:/([+-]\d+)\s*(sab|sabedoria|wis)/i},
+    {attr:'car',re:/([+-]\d+)\s*(car|carisma|cha)/i},
+  ];
+  patterns.forEach(p=>{
+    const m=s.match(p.re);
+    if(m)bonuses[p.attr]=parseInt(m[1]);
+  });
+  return bonuses;
+}
+
+function racePickSpec(stats){
+  if(!stats)return null;
+  const s=stats.toLowerCase();
+  if(s.includes('em três')||s.includes('três'))return {pick:3,pickVal:1};
+  if(s.includes('em dois'))return {pick:2,pickVal:1};
+  if(s.includes('sua escolha'))return {pick:1,pickVal:2};
+  return null;
+}
+function racialEffective(race,picks){
+  const b=parseRacialBonuses(race&&race.stats);
+  const spec=racePickSpec(race&&race.stats);
+  if(spec){
+    (picks||[]).slice(0,spec.pick).forEach(k=>{b[k]=(b[k]||0)+spec.pickVal;});
+  }
+  return b;
+}
+function defaultRacePicks(race){
+  const spec=racePickSpec(race&&race.stats);
+  if(!spec)return [];
+  const order=['for','des','con','int','sab','car'];
+  return order.slice(0,spec.pick);
+}
+function toggleRacePick(k){
+  const race=RACES.find(r=>r.id==state.race);
+  const spec=racePickSpec(race&&race.stats);
+  if(!spec)return;
+  const arr=[...(state.racePicks||[])];
+  const i=arr.indexOf(k);
+  if(i>=0)arr.splice(i,1);
+  else if(arr.length<spec.pick)arr.push(k);
+  state.racePicks=arr;
+  render();
+}
+
+function raceModal(id){
+  const r=RACES.find(x=>x.id==id);
+  if(!r)return'';
+  const bonuses=parseRacialBonuses(r.stats);
+  const bonusEntries=Object.entries(bonuses).filter(([,v])=>v!==0);
+  const pickSpec=racePickSpec(r.stats);
+  return `<div onclick="closeRaceModal()" style="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s">
+    <div onclick="event.stopPropagation()" style="background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:460px;width:100%;max-height:85vh;overflow-y:auto;border:1px solid var(--gold-dim)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <span style="font-size:36px">${r.icon}</span>
+        <div>
+          <h3 style="color:var(--gold);font-size:20px;margin:0">${r.name}</h3>
+          <span style="font-size:11px;color:var(--gold2);font-weight:600">${r.stats}</span>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:14px">${r.saber||r.desc}</p>
+      ${bonusEntries.length||pickSpec?`
+      <div style="background:var(--bg3);border:1px solid var(--bg4);border-radius:8px;padding:12px;margin-bottom:14px">
+        <div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:8px">Bônus Raciais de Atributo</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          ${pickSpec?`<span style="background:var(--bg4);padding:4px 10px;border-radius:6px;font-size:11px;color:#66dd66">+${pickSpec.pickVal} em ${pickSpec.pick} de sua escolha</span>`:''}
+          ${bonusEntries.map(([attr,val])=>`<span style="background:var(--bg4);padding:4px 10px;border-radius:6px;font-size:11px;color:${val>0?'#66dd66':'#dd6666'}">${attr.toUpperCase()} ${val>0?'+':''}${val}</span>`).join('')}
+        </div>
+      </div>`:''}
+      ${(r.traits&&r.traits.length)?`
+      <div style="border-top:1px solid var(--bg4);padding-top:12px;margin-bottom:12px">
+        <div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:8px">Traços Raciais</div>
+        <ul style="padding-left:18px;color:var(--text2);font-size:11px;line-height:1.6">${r.traits.map(t=>`<li>${t}</li>`).join('')}</ul>
+      </div>`:''}
+      ${r.details?`<div style="font-size:11px;color:var(--text2);margin-bottom:14px">${r.details}</div>`:''}
+      <button class="btn btn-secondary" onclick="closeRaceModal()" style="width:100%">Fechar</button>
+    </div>
+  </div>`;
+}
+
+function openRaceModal(id){state.raceModal=id;render()}
+function closeRaceModal(){state.raceModal=null;render()}
+
+function pathBox(archId, realmId){
+  const t=TALENTS[archId]&&TALENTS[archId][realmId];
+  const p=PASSIVES[realmId];
+  if(!t||!p)return '';
+  const open=!!state.pathOpen;
+  return `<div style="margin-top:10px;border-top:1px solid var(--bg4);padding-top:10px">
+    <button class="more-btn" style="background:none;border:none;color:var(--gold);font-size:12px;cursor:pointer;padding:0;text-align:left" onclick="event.stopPropagation();state.pathOpen=!state.pathOpen;render()">
+      ${open?'▲':'▼'} Caminho do Reino — <strong>${t.p}</strong>
+    </button>
+    ${open?pathContent(t,p):''}
+  </div>`;
+}
+function pathContent(t,p){
+  return `<div style="font-size:11px;line-height:1.5;margin-top:8px">
+    <div style="border-left:2px solid var(--gold-dim);padding-left:8px">
+      <span style="color:var(--gold2);font-weight:600">Nv 1 · Passiva — ${p.nome}</span>
+      <p style="color:var(--text2);margin-top:2px;margin-bottom:0">${p.desc}</p>
+    </div>
+    ${t.t.map(e=>`<div style="margin-top:6px;border-left:2px solid var(--bg4);padding-left:8px">
+      <strong style="color:var(--gold)">Nv ${e[0]} — ${e[1]}</strong><br><span style="color:var(--text2)">${e[2]}</span>
+    </div>`).join('')}
+  </div>`;
+}
+function pathSheet(archId, realmId){
+  const t=TALENTS[archId]&&TALENTS[archId][realmId];
+  const p=PASSIVES[realmId];
+  if(!t||!p)return '';
+  return `<div class="result-card" style="margin-top:10px">
+    <h3>🛤️ Caminho do Reino — <span style="color:var(--gold2)">${t.p}</span></h3>
+    <div style="font-size:11px;line-height:1.5;margin-top:8px">
+      <div style="border-left:2px solid var(--gold-dim);padding-left:8px">
+        <span style="color:var(--gold2);font-weight:600">Nv 1 · Passiva — ${p.nome}</span>
+        <p style="color:var(--text2);margin-top:2px;margin-bottom:0">${p.desc}</p>
+      </div>
+      ${t.t.map(e=>`<div style="margin-top:6px"><strong style="color:var(--gold)">Nv ${e[0]} — ${e[1]}</strong><br><span style="color:var(--text2)">${e[2]}</span></div>`).join('')}
+    </div>
+  </div>`;
+}
 
 function openConvModal(){state.convModal=true;render()}
 function closeConvModal(){state.convModal=null;render()}
@@ -841,6 +1605,10 @@ function toggle(type,name,limit){
   const idx=arr.indexOf(name);
   if(idx>=0)arr.splice(idx,1);
   else if(arr.length<limit)arr.push(name);
+  render();
+}
+function toggleConvInfo(key){
+  state.convMore=state.convMore.includes(key)?state.convMore.filter(x=>x!==key):[...state.convMore,key];
   render();
 }
 
@@ -920,7 +1688,7 @@ function importCharacter(){
 }
 
 function resetAll(){
-  state={step:0,name:'',level:3,realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],spells:{cantrip:[],leveled:[]},equipment:{weapons:[],armor:'sem-armadura',shield:false},attrMode:'preset',loreRealm:null,convModal:null};
+  state={step:0,name:'',level:3,realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],spells:{cantrip:[],leveled:[]},equipment:{weapons:[],armor:'sem-armadura',shield:false},attrMode:'preset',loreRealm:null,convModal:null,spellModal:null,saberRace:null,pathOpen:false,skills:[],convMore:[],racePicks:[],chaosApplied:false};
   render();
 }
 
