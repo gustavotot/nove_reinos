@@ -1217,7 +1217,7 @@ const screens = [
         <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">
           ${[...state.spells.cantrip,...state.spells.leveled].map(id=>{
             const s=getSpellById(id);
-            return s?`<span style="background:var(--bg3);padding:3px 10px;border-radius:16px;font-size:11px;border:1px solid var(--gold-dim);color:var(--gold2)">${s.name} <span style="color:var(--text2);font-size:10px">${s.mana}PM</span></span>`:'';
+            return s?`<span style="background:var(--bg3);padding:3px 10px;border-radius:16px;font-size:11px;border:1px solid var(--gold-dim);color:var(--gold2)">${s.n} <span style="color:var(--text2);font-size:10px">${s.m}PM</span></span>`:'';
           }).join('')}
         </div>
         <div style="font-size:11px;color:var(--text2);margin-top:6px">
