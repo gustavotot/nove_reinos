@@ -111,6 +111,16 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:13px}
 .result-grid .label{color:var(--text2)}.result-grid .val{font-weight:600;text-align:right}
 .mod-chip{display:inline-flex;align-items:center;justify-content:center;min-width:36px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;font-weight:800;font-size:15px;border-radius:9px;padding:3px 9px;margin-left:10px;border:1px solid rgba(0,0,0,.35);box-shadow:0 2px 8px rgba(0,0,0,.45)}
+.note{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;color:var(--text);padding:10px 12px;font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.6;resize:vertical;outline:none;min-height:70px}
+.note:focus{border-color:var(--gold-dim);background:var(--bg2)}
+.note-grid{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:520px){.note-grid{grid-template-columns:1fr 1fr}}
+.note-field label{display:block;font-size:11px;color:var(--gold);font-weight:600;margin-bottom:3px}
+.note-inp{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;color:var(--text);padding:8px 10px;font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:.2s}
+.note-inp:focus{border-color:var(--gold-dim);background:var(--bg2)}
+select.note-inp{cursor:pointer}
+select.note-inp option{background:var(--bg2);color:var(--text)}
+@media print{.note,.note-inp{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff;border-color:#999;color:#111}}
 
 .points{text-align:center;font-size:16px;font-weight:600;color:var(--gold);margin-bottom:12px}
 .title{text-align:center;margin-bottom:10px}
@@ -516,6 +526,44 @@ const SPELL_PROGRESSION = {
 const ESCOLAS = ['Abjuração','Adivinhação','Conjuração','Encantamento','Evocação','Ilusão','Necromancia','Transmutação'];
 
 function attrMod(v){return Math.floor((v-10)/2)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const NOTES_DEFAULT={genero:'',cabelo:'',olhos:'',altura:'',estatura:'',fisico:'',roupa:'',armamento:'',cores:'',aparencia:'',origem:'',historia:''};
+function noteState(){state.notes=Object.assign({...NOTES_DEFAULT},state.notes||{});return state.notes}
+function noteField(key,label,placeholder,type){
+  const n=noteState();
+  return `<div class="note-field"><label>${label}</label><input class="note-inp" type="${type||'text'}" value="${esc(n[key]||'')}" placeholder="${esc(placeholder||'')}" oninput="state.notes.${key}=this.value"></div>`;
+}
+function noteArea(key,label,placeholder,min){
+  const n=noteState();
+  return `<div style="margin-bottom:12px"><div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:4px">${label}</div><textarea class="note" style="${min?'min-height:'+min+'px':''}" placeholder="${esc(placeholder||'')}" oninput="state.notes.${key}=this.value">${esc(n[key]||'')}</textarea></div>`;
+}
+function notesEditHTML(){
+  const n=noteState();
+  const gen=[['', 'Prefiro não informar'],['Feminino','Feminino'],['Masculino','Masculino'],['Outro','Outro'],['Assexuado / Sem gênero','Assexuado / Sem gênero (alguns povos, como criaturas do mar, não têm gênero)']];
+  return `
+    <div class="result-card">
+      <h3>🎭 Background & Aparência</h3>
+      <p style="font-size:11px;color:var(--text2);margin-bottom:12px;line-height:1.5">Tudo opcional — ajude o personagem a ganhar rosto e história. Entrará no PDF e no JSON.</p>
+      <div style="font-size:12px;color:var(--gold);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Aparência</div>
+      <div class="note-grid">
+        <div class="note-field"><label>Gênero</label><select class="note-inp" onchange="state.notes.genero=this.value">
+          ${gen.map(([v,l])=>`<option value="${v}" ${n.genero===v?'selected':''}>${l}</option>`).join('')}
+        </select></div>
+        ${noteField('cabelo','Cor do Cabelo','Ex.: loiro acinzentado, ruivo, preto metálico…')}
+        ${noteField('olhos','Cor dos Olhos','Ex.: âmbar, azuis, olhos radiante dourados…')}
+        ${noteField('altura','Altura','Ex.: 1,82 m')}
+        ${noteField('estatura','Estatura','Ex.: alto, baixo, mediano')}
+        ${noteField('fisico','Físico','Ex.: esguio, atlético, robusto, franzino…')}
+        ${noteField('roupa','Vestuário / Traje','Ex.: manto verde, couro do deserto, uniforme de ordem…')}
+        ${noteField('armamento','Armamento','Ex.: espada com runas de luz, lança de marfim…')}
+        ${noteField('cores','Cores Proeminentes','Ex.: branco-mármore, dourado, bordo…')}
+      </div>
+      ${noteArea('aparencia','Aparência em Detalhes','Conte o resto do visual como quiser: marcas, cicatrizes, postura, jeito de andar, trejeitos, auras…')}
+      <div style="font-size:12px;color:var(--gold);font-weight:700;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.06em">Background</div>
+      ${noteArea('origem','Origem','De onde ele vem? Onde cresceu, sua família, sua terra, sua gente… e como acabou seguindo esse caminho.')}
+      ${noteArea('historia','História & Background','Conte a história: quem era antes, o que viveu, tragédias e conquistas, sonhos, medos… o que o move hoje.',120)}
+    </div>`;
+}
 
 // Calcula os limites de magias do personagem no nível atual
 function getSpellLimits(){
@@ -567,7 +615,7 @@ let state = {
 };
 
 // ===== STEPS =====
-const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Magias'},{label:'Equipamento'},{label:'Perícias'},{label:'Convicções'},{label:'Ficha'}];
+const STEPS = [{label:'Início'},{label:'Nome'},{label:'Origem'},{label:'Caminho'},{label:'Raça'},{label:'Atributos'},{label:'Magias'},{label:'Equipamento'},{label:'Perícias'},{label:'Convicções'},{label:'Background'},{label:'Ficha'}];
 const ARCH_SKILL_LIMIT={guerreiro:2,baluarte:2,vigilante:4,arcanista:2,creator:2};
 const SKILL_ATTR={acrobacia:'des',arcanismo:'int',atletismo:'for',cavalgar:'sab',conhecimento:'int',enganação:'car',furtividade:'des',intimidação:'car',intuição:'sab',investigação:'int',medicina:'sab',natureza:'sab',percepção:'sab',performance:'car',persuasão:'car',religião:'int',sobrevivência:'sab',tatuagem:'int',tecnologia:'int'};
 const SKILL_NAMES={acrobacia:'Acrobacia',arcanismo:'Arcanismo',atletismo:'Atletismo',cavalgar:'Cavalgar',conhecimento:'Conhecimento',enganação:'Enganação',furtividade:'Furtividade',intimidação:'Intimidação',intuição:'Intuição',investigação:'Investigação',medicina:'Medicina',natureza:'Natureza',percepção:'Percepção',performance:'Performance',persuasão:'Persuasão',religião:'Religião',sobrevivência:'Sobrevivência',tatuagem:'Tatuagem',tecnologia:'Tecnologia'};
@@ -976,7 +1024,7 @@ const screens = [
 
       <div class="btn-group">
         <button class="btn btn-secondary" onclick="go(5)">← Atributos</button>
-        <button class="btn btn-primary" onclick="go(7)">Perícias →</button>
+        <button class="btn btn-primary" onclick="go(7)">Equipamento →</button>
       </div>`;
   },
 
@@ -1139,11 +1187,26 @@ const screens = [
     </div>
     <div class="btn-group">
          <button class="btn btn-secondary" onclick="go(8)">← Perícias</button>
-         <button class="btn btn-primary" onclick="go(10)" ${state.convic.length<cLim||state.tempt.length<tLim?'disabled':''}>Ver Ficha →</button>
+         <button class="btn btn-primary" onclick="go(10)" ${state.convic.length<cLim||state.tempt.length<tLim?'disabled':''}>Background →</button>
     </div>`;
   },
 
-  // 10 Final Sheet
+  // 10 Background & Aparência
+  ()=>`
+    <div class="title">
+      <h2>🎭 Background & Aparência</h2>
+      <p style="font-size:12px;color:var(--text2);max-width:520px;margin:6px auto 0">Dê rosto e história ao herói. Cada campo é opcional — mas quanto mais você planta, mais vivo ele fica.</p>
+    </div>
+    <div style="max-width:640px;margin:0 auto">
+      ${notesEditHTML()}
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="go(9)">← Convicções</button>
+      <button class="btn btn-primary" onclick="go(11)">Ver Ficha →</button>
+    </div>
+  `,
+
+  // 11 Final Sheet
   ()=>{
     const race=RACES.find(r=>r.id==state.race);
     const realm=REALMS.find(r=>r.id==state.realm);
@@ -1257,9 +1320,10 @@ const screens = [
        </div>
        <div class="result-card"><h3>🎯 Perícias</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
          ${(state.skills||[]).map(s=>{const sm=Math.floor((a[SKILL_ATTR[s]]+(racial[SKILL_ATTR[s]]||0)-10)/2);const st=sm+profBonus;return `<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--gold-dim);color:var(--gold)">${SKILL_NAMES[s]||s} <span style="color:var(--text);font-weight:700">${st>=0?'+':''}${st}</span></span>`;}).join('')||'<span style="color:var(--text2);font-size:12px">Nenhuma</span>'}
-       </div></div>
-       <div class="btn-group">
-         <button class="btn btn-secondary" onclick="go(8)">← Convicções</button>
+</div></div>
+        ${notesEditHTML()}
+        <div class="btn-group">
+         <button class="btn btn-secondary" onclick="go(10)">← Background</button>
          <button class="btn btn-primary" onclick="window.print()">🖨️ Exportar PDF</button>
          <button class="btn btn-secondary" onclick="exportJSON()">💾 JSON</button>
          <button class="btn btn-secondary" onclick="triggerImportFile()">📂 Importar</button>
@@ -1326,7 +1390,7 @@ function generateCharacter(){
     spells: {truques:[], magias:[]},
     equipment: {weapons:[pick(WEAPONS).id],armor:'sem-armadura',shield:false},
     spellModal: null,
-    maxStep: 9,
+    maxStep: 11,
     skills:[],
     convMore:[],
     racePicks,
@@ -1689,17 +1753,17 @@ function spellModal(id){
 }
 
 function resetAll(){
-  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null,nivel:1,spellCircle:0,spells:{truques:[],magias:[]},equipment:{weapons:[],armor:'sem-armadura',shield:false},spellModal:null,maxStep:0,saberRace:null,pathOpen:false,spellTab:0,equipTab:'armas',skillTab:0,chaosApplied:false,skills:[],convMore:[],racePicks:[]};
+  state={step:0,name:'',realm:null,archetype:null,race:null,attrs:{},convic:[],tempt:[],attrMode:'preset',loreRealm:null,convModal:null,nivel:1,spellCircle:0,spells:{truques:[],magias:[]},equipment:{weapons:[],armor:'sem-armadura',shield:false},spellModal:null,maxStep:0,saberRace:null,pathOpen:false,spellTab:0,equipTab:'armas',skillTab:0,chaosApplied:false,skills:[],convMore:[],racePicks:[],notes:{...NOTES_DEFAULT}};
   render();
 }
 
-function getExportData(){return {_tipo:'os9reinos-personagem',_versao:2,name:state.name,realm:state.realm,archetype:state.archetype,race:state.race,attrs:state.attrs,attrMode:state.attrMode,convic:state.convic,tempt:state.tempt,nivel:state.nivel,spells:state.spells,equipment:state.equipment};}
+function getExportData(){return {_tipo:'os9reinos-personagem',_versao:2,name:state.name,realm:state.realm,archetype:state.archetype,race:state.race,attrs:state.attrs,attrMode:state.attrMode,convic:state.convic,tempt:state.tempt,nivel:state.nivel,spells:state.spells,equipment:state.equipment,notes:Object.assign({...NOTES_DEFAULT},state.notes||{})};}
 function exportJSON(){
   const blob=new Blob([JSON.stringify(getExportData(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.download=((state.name||'heroi').replace(/[^a-zA-Z0-9_-]+/g,'_')||'heroi')+'.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
 }
 function triggerImportFile(){document.getElementById('importFileInput').click()}
-function handleImportFile(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const d=JSON.parse(e.target.result);const oldSpells=d.spells||{};state={...state,...d,step:9,maxStep:9,equipment:d.equipment||{weapons:[],armor:'sem-armadura',shield:false},spells:{truques:Array.isArray(oldSpells.truques)?oldSpells.truques:(oldSpells.cantrip||[]),magias:Array.isArray(oldSpells.magias)?oldSpells.magias:(oldSpells.leveled||[])}};render()}catch(err){alert('Não foi possível ler este arquivo JSON.')}event.target.value=''};reader.readAsText(file)}
+function handleImportFile(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const d=JSON.parse(e.target.result);const oldSpells=d.spells||{};state={...state,...d,step:11,maxStep:11,equipment:d.equipment||{weapons:[],armor:'sem-armadura',shield:false},spells:{truques:Array.isArray(oldSpells.truques)?oldSpells.truques:(oldSpells.cantrip||[]),magias:Array.isArray(oldSpells.magias)?oldSpells.magias:(oldSpells.leveled||[])},notes:Object.assign({...NOTES_DEFAULT},d.notes||{})};render()}catch(err){alert('Não foi possível ler este arquivo JSON.')}event.target.value=''};reader.readAsText(file)}
 
 document.addEventListener('keydown',e=>{
   if(e.key=='Enter'&&state.step==1){nextName();return}
