@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reinos — Ecos da Luz</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--bg4:#232323;--gold:#d4a843;--gold2:#f0d080;--gold-dim:#8a7a40;--text:#e8e0d0;--text2:#a89a88;--text3:#6a6058}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
+header{background:linear-gradient(180deg,#1a1a1a 0%,#0a0a0a 100%);padding:clamp(2rem,7vw,3rem) clamp(1.2rem,4vw,2rem);text-align:center}
+header h1{color:var(--gold2);font-size:clamp(1.8rem,6vw,2.6rem)}
+header p{color:var(--text2);margin-top:.5rem}
+main{flex:1;max-width:1000px;margin:0 auto;padding:clamp(2rem,6vw,3rem) clamp(1.2rem,4vw,2rem);width:100%}
+h2.sec{color:var(--gold2);margin:0 0 1rem;font-size:clamp(1.1rem,4vw,1.35rem)}
+h2.sec:not(:first-child){margin-top:2.5rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:clamp(.9rem,3vw,1.1rem)}
+.card{display:flex;flex-direction:column;justify-content:space-between;background:var(--bg2);border:1px solid var(--bg4);border-radius:14px;padding:1.2rem;text-decoration:none;color:var(--text);transition:.25s;overflow:hidden;position:relative}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.4);border-color:var(--gold-dim)}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,var(--c) 0%,transparent 60%);opacity:.08;pointer-events:none}
+.card .top{display:flex;align-items:center;justify-content:space-between}
+.card .ico{font-size:1.7rem}
+.card .grp{font-size:.68rem;text-transform:uppercase;letter-spacing:.09em;color:var(--text3)}
+.card h3{color:var(--gold2);margin-top:.6rem;font-size:1.15rem}
+.card .virt{font-size:.8rem;color:var(--c);margin-top:.15rem;font-family:'Cormorant Garamond',serif;font-style:italic}
+.card .frase{font-size:.8rem;color:var(--text2);margin-top:.6rem;font-style:italic}
+footer{padding:1.5rem;text-align:center;color:var(--text3);font-size:.85rem}
+a.back{display:inline-block;margin-bottom:1.5rem;color:var(--gold2);text-decoration:none;font-size:.9rem}
+a.back:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header>
+<h1>🏰 Os Reinos</h1>
+<p>A história e a cultura dos Nove Reinos da Luz e dos Sete Domínios do Caos</p>
+</header>
+<main>
+<a class="back" href="index.html">← Voltar ao início</a>
+
+<h2 class="sec">Reinos da Luz</h2>
+<div class="grid" id="luz"></div>
+
+<h2 class="sec">Domínios do Caos</h2>
+<div class="grid" id="caos"></div>
+</main>
+<footer>Ecos da Luz © 2024</footer>
+
+<script src="reinos-data.js"></script>
+<script>
+const luz=document.querySelector('#luz');
+const caos=document.querySelector('#caos');
+const GRUPO={luz:'Reino da Luz',caos:'Domínio do Caos'};
+REINO_DATA.sort((a,b)=>a.ordem-b.ordem).forEach(r=>{
+  const a=document.createElement('a');
+  a.className='card';
+  a.href='reino.html?id='+r.id;
+  a.style.setProperty('--c',r.cor);
+  a.innerHTML='<div><div class="top"><span class="ico">'+r.icone+'</span><span class="grp">'+GRUPO[r.group]+'</span></div><h3>'+r.nome+'</h3><div class="virt">'+r.virtude+'</div></div><div class="frase">'+r.frase+'</div>';
+  (r.group==='caos'?caos:luz).appendChild(a);
+});
+</script>
+</body>
+</html>

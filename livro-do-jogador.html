@@ -2,113 +2,255 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Livro do Jogador — Os 9 Reinos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ecos da Luz — Livro do Jogador</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root{
-  --bg:#0a0a0a; --bg2:#111111; --bg3:#1a1a1a; --bg4:#222222;
+  --bg:#0a0a0a; --bg2:#111111; --bg3:#1a1a1a; --bg4:#232323;
   --gold:#d4a843; --gold2:#f0d080; --gold-dim:#8a7a40;
-  --text:#e8e0d0; --text2:#a89a88; --red:#cc4444;
+  --text:#e8e0d0; --text2:#a89a88; --text3:#6a6058; --red:#cc4444;
+  --cyan:#4a9fb5; --lime:#7cb342; --purple:#8b6bb3;
   --serif:'Cormorant Garamond',serif;
 }
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
-h1,h2,h3,h4{font-family:'Cinzel',serif;color:var(--gold)}
-h1{font-size:2.4rem} h2{font-size:1.6rem;margin-top:2.6rem;border-bottom:1px solid var(--bg4);padding-bottom:.4rem}
-h3{font-size:1.2rem;color:var(--gold2);margin-top:1.6rem} h4{font-size:1rem;color:var(--text2);margin-top:1rem}
-p{margin:.6rem 0} ul,ol{margin:.6rem 0 .6rem 1.4rem}
-a{color:var(--gold2)}
-.quote{font-family:var(--serif);font-style:italic;color:var(--gold-dim);font-size:1.15rem;border-left:3px solid var(--gold-dim);padding-left:1rem;margin:1rem 0}
-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
-th,td{border:1px solid var(--bg4);padding:.5rem .7rem;text-align:left}
-th{background:var(--bg3);color:var(--gold)}
-tr:nth-child(even){background:var(--bg2)}
-.card{background:var(--bg2);border:1px solid var(--bg4);border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0}
-.wrap{max-width:860px;margin:0 auto;padding:2rem 1.4rem 5rem}
-#toc{background:var(--bg2);border:1px solid var(--bg4);border-radius:10px;padding:1.2rem 1.6rem;margin:1.6rem 0}
-#toc a{display:block;padding:.2rem 0;color:var(--text)}
-#toc a:hover{color:var(--gold)}
-.tag{display:inline-block;background:var(--bg4);color:var(--gold-dim);font-size:.75rem;padding:2px 9px;border-radius:12px;margin:2px}
-header{text-align:center;padding:2rem 0}
-.subtitle{color:var(--text2);font-size:1rem}
-@media print{ body{background:#fff;color:#111} .card,table,th,td{border-color:#ccc} th{background:#eee} }
+
+html,body{height:100%;width:100%}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.68}
+h1,h2,h3,h4{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.03em}
+h1{font-size:clamp(2rem,7vw,2.8rem);color:var(--gold2)}
+h2{font-size:clamp(1.4rem,5vw,2rem);color:var(--gold2);display:flex;align-items:center;gap:.6rem;margin-top:2.5rem;margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:2px solid rgba(212,168,67,.15)}
+h3{font-size:clamp(1.1rem,4vw,1.4rem);color:var(--gold2);margin-top:1.6rem;margin-bottom:0.8rem}
+h4{font-size:clamp(0.95rem,3vw,1.15rem);color:var(--text2);margin-top:1rem;margin-bottom:0.6rem}
+p{margin:.7rem 0;font-size:clamp(0.95rem,2.5vw,1.05rem)}
+ul,ol{margin:.7rem 0 .7rem 1.8rem;font-size:clamp(0.95rem,2.5vw,1.05rem)}
+
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Back link */
+.back-link{
+  position:absolute;top:16px;left:16px;z-index:5;
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--text2);text-decoration:none;font-size:0.9rem;
+  padding:6px 12px;border:1px solid var(--bg4);border-radius:20px;
+  background:rgba(17,17,17,.8);transition:.2s;
+}
+.back-link:hover{color:var(--gold2);border-color:var(--gold-dim);text-decoration:none}
+
+.container{width:100%;max-width:100%}
+.wrap{width:100%;max-width:940px;margin:0 auto;padding:clamp(1.2rem,4vw,2.2rem)}
+
+/* Header */
+header{background:linear-gradient(180deg,#1a1a1a 0%,#0a0a0a 100%);padding:clamp(2rem,8vw,3.5rem) clamp(1.2rem,4vw,2rem);text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(212,168,67,.1) 0%,transparent 70%);pointer-events:none}
+.header-content{position:relative;z-index:2}
+.fruit{width:clamp(70px,15vw,120px);height:clamp(70px,15vw,120px);background:radial-gradient(circle at 30% 30%,var(--gold2),var(--gold),var(--gold-dim));border-radius:50%;margin:0 auto 1.2rem;box-shadow:0 0 50px rgba(212,168,67,.35),inset -15px -15px 30px rgba(0,0,0,.5)}
+header h1{margin-bottom:0.3rem}
+.header-subtitle{color:var(--text2);font-size:clamp(1rem,3vw,1.25rem);margin-bottom:1rem}
+.header-quote{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,3vw,1.25rem);color:var(--gold-dim);margin:1.5rem 0;line-height:1.7}
+
+/* TOC */
+.toc-container{background:var(--bg2);border:1px solid var(--bg4);border-radius:14px;margin:2rem clamp(1.2rem,4vw,2rem);padding:1.5rem;max-width:940px;margin-left:auto;margin-right:auto}
+.toc-title{color:var(--gold);font-weight:600;margin-bottom:1rem;font-size:clamp(1.05rem,3vw,1.25rem)}
+.toc-grid{display:grid;grid-template-columns:1fr;gap:0.6rem}
+@media(min-width:640px){.toc-grid{grid-template-columns:repeat(2,1fr);gap:0.8rem}}
+.toc-link{display:block;padding:0.7rem 1rem;background:var(--bg3);border:1px solid var(--bg4);border-radius:8px;color:var(--text);text-decoration:none;transition:.2s;font-size:clamp(0.9rem,2.5vw,1rem)}
+.toc-link:hover{background:var(--bg2);border-color:var(--gold-dim);color:var(--gold2)}
+
+/* Content sections */
+section{background:var(--bg);padding:2rem clamp(1.2rem,4vw,2rem);border-bottom:1px solid var(--bg4)}
+section:nth-child(even){background:var(--bg2)}
+
+.card{background:var(--bg3);border:1px solid var(--bg4);border-radius:12px;padding:1.4rem;margin:1.2rem 0;transition:.3s}
+.card:hover{border-color:var(--gold-dim);background:var(--bg2)}
+.card p{margin:.6rem 0 0}
+
+.quote{font-family:var(--serif);font-style:italic;color:var(--gold-dim);font-size:clamp(1.05rem,3vw,1.3rem);border-left:3px solid var(--gold-dim);padding-left:1.2rem;margin:1.5rem 0;line-height:1.8}
+
+table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:clamp(0.85rem,2vw,0.95rem)}
+th,td{border:1px solid var(--bg4);padding:clamp(0.6rem,1.5vw,0.8rem);text-align:left}
+th{background:var(--bg3);color:var(--gold);font-weight:600}
+tr:nth-child(even){background:var(--bg3)}
+
+/* Details/expandable */
+details{background:var(--bg2);border:1px solid var(--bg4);border-radius:10px;margin:.8rem 0;overflow:hidden}
+details[open]{border-color:var(--gold-dim);background:var(--bg3)}
+summary{cursor:pointer;padding:1.1rem;font-family:'Cinzel',serif;color:var(--gold2);font-size:clamp(1rem,3vw,1.2rem);font-weight:600;list-style:none;display:flex;align-items:center;gap:.6rem;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--gold-dim);transition:.2s;font-weight:700}
+details[open] summary::before{content:"▾"}
+.detbody{padding:0 1.1rem 1.2rem;border-top:1px solid var(--bg4)}
+.detbody p:first-child{margin-top:0}
+.detbody p{margin:.8rem 0}
+
+.badge{display:inline-block;font-size:clamp(0.65rem,1.5vw,0.8rem);background:var(--bg4);color:var(--gold-dim);padding:3px 12px;border-radius:14px;margin:0.4rem 0.4rem 0.4rem 0;font-weight:600}
+
+/* Key features grid */
+.features{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0}
+@media(min-width:640px){.features{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.features{grid-template-columns:repeat(3,1fr)}}
+.feature{background:var(--bg3);padding:1.2rem;border-radius:10px;border-left:3px solid var(--gold);text-align:center}
+.feature-icon{font-size:clamp(2rem,5vw,3rem);margin-bottom:0.8rem}
+.feature-title{color:var(--gold2);font-weight:600;margin-bottom:0.6rem}
+.feature-text{color:var(--text2);font-size:clamp(0.9rem,2vw,1rem)}
+
+.stats-table{display:grid;gap:1rem;margin:1.2rem 0}
+.stat-row{display:grid;grid-template-columns:120px 1fr;gap:1rem;align-items:center;padding:0.8rem;background:var(--bg3);border-radius:8px}
+@media(max-width:480px){.stat-row{grid-template-columns:80px 1fr}}
+
+/* Cores por reino */
+.k-havendor{border-left-color:#e0876d}
+.k-aurivelle{border-left-color:#f0c34a}
+.k-selah{border-left-color:#a9d3df}
+.k-knathi{border-left-color:#7ba869}
+.k-lumivior{border-left-color:#63d9c4}
+.k-neruviah{border-left-color:#3f93a8}
+.k-ringendah{border-left-color:#a374d1}
+.k-argolis{border-left-color:#7c86ba}
+.k-sphalidor{border-left-color:#c987ab}
+.k-caos{border-left-color:var(--red)}
+
+summary{border-left:4px solid;padding-left:1rem}
+
+/* Footer */
+footer{background:var(--bg2);border-top:1px solid var(--bg4);padding:2rem clamp(1.2rem,4vw,2rem);text-align:center;color:var(--text2);font-size:clamp(0.85rem,2vw,0.95rem)}
+footer a{color:var(--gold2)}
+
+/* Responsive */
+@media(max-width:480px){
+  header{padding:1.5rem 1.2rem}
+  .toc-container{margin:1.5rem clamp(1rem,3vw,1.5rem)}
+  section{padding:1.5rem 1.2rem}
+  .detbody{padding:0 0.8rem 1rem}
+  summary{padding:0.9rem}
+}
+
+/* Print */
+@media print{
+  header,footer,.toc-container{display:none}
+  section{page-break-inside:avoid;break-inside:avoid}
+  details{border:1px solid #ccc}
+  summary::before{display:none}
+}
+
+/* Accessibility */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* Scroll indicator */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 </style>
 </head>
 <body>
-<div class="wrap">
 
 <header>
-<h1>Os 9 Reinos</h1>
-<p class="subtitle">Livro do Jogador · sistema baseado em D&amp;D 5e</p>
-<p class="quote">"O Fruto se dividiu em nove partes, e ao redor de cada uma, nasceu um reino."</p>
+<a class="back-link" href="index.html">← Início</a>
+<div class="header-content">
+<div class="fruit"></div>
+<h1>Ecos da Luz</h1>
+<p class="header-subtitle">Livro do Jogador</p>
+<p class="header-quote">"O Fruto se dividiu em nove partes, e ao redor de cada uma, nasceu um reino."</p>
+</div>
 </header>
 
-<div id="toc">
-<strong style="color:var(--gold)">Índice</strong>
-<a href="#intro">1. O que é este sistema</a>
-<a href="#diferencas">2. O que muda do D&amp;D 5e</a>
-<a href="#criacao">3. Criação de Personagem — passo a passo</a>
-<a href="#atributos">4. Atributos e Perícias</a>
-<a href="#racas">5. Raças</a>
-<a href="#reinos">6. Os 9 Reinos</a>
-<a href="#arquetipos">7. Os 5 Arquétipos</a>
-<a href="#magia">8. Sistema de Magia — Mana e Calor</a>
-<a href="#convic">9. Convicções e Corrupções</a>
-<a href="#caos">10. O Caos e os 7 Domínios</a>
-<a href="#app">11. O App de Criação de Personagem</a>
+<div class="toc-container wrap">
+<div class="toc-title">📑 Índice</div>
+<div class="toc-grid">
+<a href="#intro" class="toc-link">1. Bem-vindo a Ecos da Luz</a>
+<a href="#diferencas" class="toc-link">2. O que muda do D&D 5e</a>
+<a href="#criacao" class="toc-link">3. Criação de Personagem</a>
+<a href="#atributos" class="toc-link">4. Atributos e Perícias</a>
+<a href="#racas" class="toc-link">5. Raças — visão geral</a>
+<a href="#reinos" class="toc-link">6. Os 9 Reinos de Luz</a>
+<a href="#arquetipos" class="toc-link">7. Os 5 Arquétipos</a>
+<a href="#magia" class="toc-link">8. Mana e Calor Mágico</a>
+<a href="#convic" class="toc-link">9. Convicções e Corrupções</a>
+<a href="#caos" class="toc-link">10. Os 7 Reinos do Caos</a>
+<a href="#enciclopedia-racas" class="toc-link">11. Enciclopédia — Raças</a>
+<a href="#enciclopedia-reinos" class="toc-link">12. Enciclopédia — Reinos</a>
+</div>
 </div>
 
-<h2 id="intro">1. O que é este sistema</h2>
-<p>Este é um sistema de RPG de mesa que usa as <strong>regras de combate, testes, magias e equipamentos do D&amp;D 5e</strong> como base. Se você já jogou D&amp;D, vai reconhecer quase tudo: d20, atributos, CA, testes de resistência, círculos de magia. Nós não inventamos um sistema do zero — <strong>adaptamos e trocamos algumas peças</strong> para criar um mundo e uma identidade próprios.</p>
-<p>O personagem é construído em <strong>quatro camadas</strong>:</p>
+<section id="intro">
+<div class="wrap">
+<h2>❤️ Bem-vindo a Ecos da Luz</h2>
+<p>Então, é o seguinte: <strong>Ecos da Luz</strong> é um RPG de mesa construído em cima das regras do D&D 5e — a gente não reinventou a roda. d20, atributos, CA, testes de resistência, círculos de magia, tudo isso continua igual. O que a gente fez foi trocar algumas peças pra criar um mundo com cara própria.</p>
+
 <div class="card">
-🧬 <strong>Raça</strong> = quem você nasceu (biologia, traços físicos)<br>
-🌍 <strong>Reino</strong> = onde você nasceu (cultura, fonte de poder, passiva única)<br>
-⚔️ <strong>Arquétipo</strong> = como você luta (sua função em combate)<br>
-⚖️ <strong>Convicções e Corrupções</strong> = quem você está se tornando (bússola moral narrativa)
+<strong>🧬 Raça</strong> — quem você nasceu (corpo, biologia)<br><br>
+<strong>🌍 Reino</strong> — onde você nasceu (cultura, fonte de poder, uma passiva única sua)<br><br>
+<strong>⚔️ Arquétipo</strong> — como você luta (sua função em combate)<br><br>
+<strong>⚖️ Convicções e Corrupções</strong> — quem você está se tornando
 </div>
-<p>São milhares de combinações possíveis (raças × 9 reinos × 5 arquétipos), e cada uma tem sua própria fantasia, estilo de jogo e magia.</p>
 
-<h2 id="diferencas">2. O que muda do D&amp;D 5e</h2>
+<p>Faz a conta: raças × 9 Reinos de Luz (ou 7 do Caos) × 5 Arquétipos. São milhares de combinações, e cada uma joga diferente de verdade — um Guerreiro de Havendor e um Guerreiro de Sphalidor não têm nada a ver um com o outro em combate.</p>
+</div>
+</section>
+
+<section id="diferencas">
+<div class="wrap">
+<h2>⚡ O que muda do D&D 5e</h2>
+<p>Se você já jogou D&D, vai se sentir em casa rapidinho. Aqui está o que é diferente:</p>
+
 <table>
-<tr><th>Mecânica</th><th>D&amp;D 5e</th><th>Os 9 Reinos</th></tr>
-<tr><td>Magia</td><td>Slots por círculo, que acabam e voltam no descanso</td><td><strong>Mana</strong> — um único pool que você gasta livremente (Círculo × 5)</td></tr>
-<tr><td>Alinhamento</td><td>Bom/Neutro/Mau, fixo na ficha</td><td><strong>Convicções e Corrupções</strong> — 3 princípios + 2 fraquezas, tracking secreto do Mestre</td></tr>
-<tr><td>Classes malignas</td><td>Existem</td><td>Não existem <em>dentro</em> dos 9 Reinos de Luz — mas existem os <strong>7 Domínios do Caos</strong> (seção 10), origens sombrias completas, cada uma baseada em um pecado capital</td></tr>
-<tr><td>Raça + Classe</td><td>Separadas</td><td><strong>Raça + Reino + Arquétipo</strong> (a "classe" nasce do cruzamento reino×arquétipo)</td></tr>
-<tr><td>Uso de magia sem recurso</td><td>Impossível sem slot</td><td>Possível — mas <strong>custa Vida</strong> (círculo × 5 de PV)</td></tr>
-<tr><td>Excesso de magia</td><td>Não existe</td><td><strong>Calor Mágico</strong> — abusar de magia pode causar dano extra ou ferir você mesmo</td></tr>
-<tr><td>Nº de classes</td><td>12+</td><td><strong>5 Arquétipos</strong>, cada um com 9 variações de Reino (45 combinações) + variações do Caos</td></tr>
+<tr><th>Mecânica</th><th>D&D 5e</th><th>Ecos da Luz</th></tr>
+<tr><td><strong>Magia</strong></td><td>Slots por círculo</td><td><strong>Mana</strong> — um pool único</td></tr>
+<tr><td><strong>Alinhamento</strong></td><td>Bom/Neutro/Mau</td><td><strong>Convicções + Corrupções</strong></td></tr>
+<tr><td><strong>Reinos malignas</strong></td><td>Não existem</td><td><strong>7 Reinos do Caos</strong> — origens completas</td></tr>
+<tr><td><strong>Magia sem custo</strong></td><td>Impossível</td><td>Custa <strong>PV</strong> em vez de Mana</td></tr>
+<tr><td><strong>Abuso de magia</strong></td><td>Sem risco</td><td><strong>Calor Mágico</strong> — tem consequência</td></tr>
+<tr><td><strong>Nº de "classes"</strong></td><td>12+</td><td><strong>5 Arquétipos</strong> × 16 Reinos</td></tr>
 </table>
-<p>Magias, dano, alcance, duração e equipamentos seguem exatamente as regras do D&amp;D 5e (SRD) — só muda a <em>aparência</em> e, em alguns casos, o custo em Mana em vez de slot.</p>
 
-<h2 id="criacao">3. Criação de Personagem — passo a passo</h2>
-<h3>Passo 1 — Escolha sua Raça</h3>
-<p>Define bônus de atributo e traços físicos. Veja a seção 5.</p>
-<h3>Passo 2 — Escolha seu Reino</h3>
-<p>Define sua cultura, filosofia e a passiva única do seu povo. Veja a seção 6.</p>
-<h3>Passo 3 — Escolha seu Arquétipo</h3>
-<p>Define PV, Mana e sua função em combate. Veja a seção 7.</p>
-<h3>Passo 4 — Distribua seus Atributos (27 pontos)</h3>
-<table>
-<tr><th>Valor</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th></tr>
-<tr><td>Custo</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>7</td><td>9</td></tr>
-</table>
-<p>Modificador = (Atributo − 10) ÷ 2, arredondado para baixo. <strong>Inteligência</strong> define sua Mana total — priorize INT se for Arcanista ou Creator.</p>
-<h3>Passo 5 — Calcule seus Recursos</h3>
-<p><strong>PV nível 1</strong> = valor máximo do dado do Arquétipo + mod. de CON. Nos níveis seguintes, role 1 dado do Arquétipo + mod. de CON (ou use a média).</p>
-<p><strong>Mana</strong> = máx(1, Nível + mod. INT) × Base do Arquétipo. Recupera 100% em descanso longo, 25% em descanso curto.</p>
-<p><strong>CA</strong> = 10 + mod. DES + bônus de armadura/escudo. <strong>Iniciativa</strong> = mod. DES (Vigilantes somam metade do nível).</p>
-<h3>Passo 6 — Escolha Convicções e Corrupções</h3>
-<p>3 Convicções + 2 Corrupções, escolhidas em segredo com o Mestre. Veja a seção 9.</p>
-<h3>Passo 7 — Equipamento</h3>
-<p>Use o equipamento inicial padrão do D&amp;D 5e para seu Arquétipo, com aparência adaptada ao seu Reino (ex.: espada longa de Havendor = "lâmina de luz").</p>
+<p>Magias, dano, equipamento — tudo isso continua sendo D&D 5e puro. O que muda é como você paga e a roupagem que tudo ganha.</p>
+</div>
+</section>
 
-<h2 id="atributos">4. Atributos e Perícias</h2>
+<section id="criacao">
+<div class="wrap">
+<h2>🎲 Criação de Personagem — passo a passo</h2>
+
+<div style="display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0">
+<div class="card">
+<strong>Passo 1 — Raça</strong><br>Define bônus de atributo e traços físicos.
+</div>
+<div class="card">
+<strong>Passo 2 — Reino</strong><br>Define cultura, filosofia e passiva única — de Luz ou do Caos.
+</div>
+<div class="card">
+<strong>Passo 3 — Arquétipo</strong><br>Define PV, Mana e função em combate.
+</div>
+<div class="card">
+<strong>Passo 4 — Distribua 27 pontos entre atributos</strong><br>
+8 (0 pts) → 9 (1) → 10 (2) → 11 (3) → 12 (4) → 13 (5) → 14 (7) → 15 (9)
+</div>
+<div class="card">
+<strong>Passo 5 — Calcule PV, Mana, CA e Iniciativa</strong><br>
+PV = máx dado + mod CON | Mana = (Nível + mod INT) × Base Arquétipo | CA = 10 + DES + armadura
+</div>
+<div class="card">
+<strong>Passo 6 — Convicções e Corrupções</strong><br>
+3 Convicções + 2 Corrupções, em segredo com o Mestre.
+</div>
+<div class="card">
+<strong>Passo 7 — Equipamento</strong><br>
+Equipamento inicial padrão do D&D 5e, com aparência adaptada ao seu Reino.
+</div>
+</div>
+</div>
+</section>
+
+<section id="atributos">
+<div class="wrap">
+<h2>📊 Atributos e Perícias</h2>
 <table>
-<tr><th>Atributo</th><th>Sigla</th><th>Uso</th></tr>
+<tr><th>Atributo</th><th>Sigla</th><th>Pra que serve</th></tr>
 <tr><td>Força</td><td>FOR</td><td>Combate corpo a corpo</td></tr>
 <tr><td>Destreza</td><td>DES</td><td>CA, iniciativa, furtividade</td></tr>
 <tr><td>Constituição</td><td>CON</td><td>PV, limite de Calor Mágico</td></tr>
@@ -116,129 +258,301 @@ header{text-align:center;padding:2rem 0}
 <tr><td>Sabedoria</td><td>SAB</td><td>Percepção, intuição</td></tr>
 <tr><td>Carisma</td><td>CAR</td><td>Presença, persuasão</td></tr>
 </table>
-<p>As 18 perícias e proficiências de classe seguem o padrão do D&amp;D 5e (Atletismo/FOR, Furtividade/DES, Arcanismo/INT, Percepção/SAB, Persuasão/CAR etc.). Bônus de proficiência: +2 (Nv 1–4) até +6 (Nv 17–20).</p>
+<p>As 18 perícias seguem D&D 5e exatamente. Bônus de proficiência vai de +2 (Nv 1–4) até +6 (Nv 17–20).</p>
+</div>
+</section>
 
-<h2 id="racas">5. Raças</h2>
-<p>Raça é biologia — separada de cultura (Reino). Três categorias:</p>
-<h3>Universais (encontradas em qualquer Reino)</h3>
-<p>Humano, Elfo, Anão, Halfling, Gnomo, Meio-Elfo, Bestial (Anímaco), Anfíbio, Reptiliano — cada uma com bônus de atributo e traços próprios, adaptados do D&amp;D 5e.</p>
-<h3>Específicas de um Reino</h3>
+<section id="racas">
+<div class="wrap">
+<h2>🧬 Raças — visão geral</h2>
+<p>Raça é pura biologia — separada de cultura (Reino). Três famílias:</p>
+<div class="features">
+<div class="feature">
+<div class="feature-icon">🧑</div>
+<div class="feature-title">Universais</div>
+<div class="feature-text">Encontradas em qualquer Reino: Humano, Elfo, Anão, Halfling, Gnomo, Meio-Elfo, Bestial, Anfíbio, Reptiliano</div>
+</div>
+<div class="feature">
+<div class="feature-icon">👑</div>
+<div class="feature-title">Nativas de um Reino de Luz</div>
+<div class="feature-text">Específicas de suas terras: Aetherianos, Auris, Marmoreanos, Etherborn, Neruvianos, Argolianos, Umbrélficos</div>
+</div>
+<div class="feature">
+<div class="feature-icon">🌑</div>
+<div class="feature-title">Do Caos</div>
+<div class="feature-text">Raças sombrias: Filhos da Fúria, Noctari, Pelned, Insectoides</div>
+</div>
+</div>
+<p>Descrição completa com bônus e traços na seção 11.</p>
+</div>
+</section>
+
+<section id="reinos">
+<div class="wrap">
+<h2>🌍 Os 9 Reinos de Luz — visão geral</h2>
 <table>
-<tr><th>Raça</th><th>Reino nativo</th><th>Traço marcante</th></tr>
-<tr><td>Aetherianos</td><td>Havendor</td><td>Olhos do Juízo, Regeneração Divina</td></tr>
-<tr><td>Elfos do Deserto / Marmoreanos</td><td>Ringendah</td><td>Mente Arcana / Corpo Petrificado</td></tr>
-<tr><td>Etherborn / Etherkin</td><td>Lumivior</td><td>Vida = Mana, corpo sintético</td></tr>
-<tr><td>Neruvianos</td><td>Nerúvia</td><td>Respiração aquática, inspiração marinha</td></tr>
-<tr><td>Argolianos</td><td>Argolis</td><td>Visão Tática (revela campo/inimigos/ocultos)</td></tr>
-<tr><td>Umbrélficos</td><td>Sphalidor</td><td>Eco-Sentido, sensível à luz</td></tr>
+<tr><th>Reino</th><th>Virtude</th><th>Passiva</th><th>Estilo</th></tr>
+<tr><td>❤️ Havendor</td><td>Amor</td><td>Radiância Viva</td><td>Cavaleiros e sacerdotes de luz</td></tr>
+<tr><td>🎭 Aurivelle</td><td>Alegria</td><td>Expressão Viva</td><td>Artistas performáticos</td></tr>
+<tr><td>🌄 Sélah</td><td>Paz</td><td>Fluxo da Criação</td><td>Monges sábios</td></tr>
+<tr><td>🌿 K'Nahti</td><td>Paciência</td><td>Tinta Viva</td><td>Druidas criadores</td></tr>
+<tr><td>⚙️ Lumivior</td><td>Amabilidade</td><td>Coração de Éter</td><td>Tecnomagia</td></tr>
+<tr><td>🌊 Nerúvia</td><td>Bondade</td><td>Marés da Alma</td><td>Civilização oceânica</td></tr>
+<tr><td>📜 Ringendah</td><td>Fidelidade</td><td>Legado Arcano</td><td>Eruditos e arquimagos</td></tr>
+<tr><td>🌙 Argolis</td><td>Mansidão</td><td>Visão Tática</td><td>Ninjas e táticos</td></tr>
+<tr><td>🔨 Sphalidor</td><td>Domínio Próprio</td><td>Domínio da Ressonância</td><td>Ferreiros e guerreiros</td></tr>
 </table>
-<h3>Do Caos</h3>
-<p>Filhos da Fúria (Valdar), Noctari (Morvath), Pelned (Mavaron), Insectoides (Taevora) — raças de origem sombria, com poder maior e uma fraqueza forte. Veja a seção 10.</p>
+<p>Lore, filosofia e vantagens/fraquezas de cada um na seção 12.</p>
+</div>
+</section>
 
-<h2 id="reinos">6. Os 9 Reinos</h2>
-<p>Cada Reino nasceu ao redor de um fragmento do Fruto do Espírito e tem uma <strong>passiva única</strong> que molda todos os personagens daquele lugar, além de definir o estilo de magia e a estética.</p>
+<section id="arquetipos">
+<div class="wrap">
+<h2>⚔️ Os 5 Arquétipos</h2>
 <table>
-<tr><th>Reino</th><th>Virtude</th><th>Passiva / recurso</th><th>Estilo</th></tr>
-<tr><td>Havendor</td><td>Amor</td><td>Radiância Viva</td><td>Cavaleiros e sacerdotes de luz</td></tr>
-<tr><td>Aurivelle</td><td>Alegria</td><td>Expressão Viva (metade do CAR em ação, dano ou defesa 1×/rodada)</td><td>Artistas e duelistas performáticos</td></tr>
-<tr><td>Sélah</td><td>Paz</td><td>Fluxo da Criação (acumula 3 ou 7 Fluxos)</td><td>Monges e sábios do fluxo</td></tr>
-<tr><td>K'Nahti</td><td>Paciência</td><td>Tinta Viva (manifestação, invocação, transmutação)</td><td>Druidas e criadores lentos e poderosos</td></tr>
-<tr><td>Lumivior</td><td>Amabilidade</td><td>Coração de Éter (Vida = Mana)</td><td>Tecnomagia, cidade-máquina</td></tr>
-<tr><td>Nerúvia</td><td>Bondade</td><td>Marés da Alma (troca de afinidade por descanso)</td><td>Civilização oceânica adaptável</td></tr>
-<tr><td>Ringendah</td><td>Fidelidade</td><td>Legado Arcano (mana extra por INT)</td><td>Eruditos e arquimagos</td></tr>
-<tr><td>Argolis</td><td>Mansidão</td><td>Visão de Análise Tática</td><td>Sociedade marcial, ninjas e táticos</td></tr>
-<tr><td>Sphalidor</td><td>Domínio Próprio</td><td>Domínio da Ressonância (Cargas de Vibração)</td><td>Ferreiros e guerreiros do impacto</td></tr>
+<tr><th>Arquétipo</th><th>Função</th><th>PV</th><th>Mana ×</th><th>Círc. máx.</th></tr>
+<tr><td>🗡️ Guerreiro</td><td>Combate físico</td><td>1d10</td><td>3</td><td>3º</td></tr>
+<tr><td>🛡️ Baluarte</td><td>Defesa/controle</td><td>1d12</td><td>3</td><td>4º</td></tr>
+<tr><td>🕶️ Vigilante</td><td>Mobilidade/precisão</td><td>1d8</td><td>4</td><td>5º</td></tr>
+<tr><td>🔮 Arcanista</td><td>Conjuração pura</td><td>1d6</td><td>5</td><td>9º</td></tr>
+<tr><td>⚙️ Creator</td><td>Criação/invocação</td><td>1d8</td><td>5</td><td>7º</td></tr>
 </table>
-<p>Cada combinação Reino + Arquétipo tem 5 talentos exclusivos (níveis 3, 6, 9, 12 e 16) — as 45 árvores completas estão no app de criação, não neste resumo.</p>
+<div class="quote">Um Guerreiro de Havendor canaliza Radiância. Um Guerreiro de Aurivelle dança em batalha. Todos são Guerreiros. Nenhum luta da mesma forma.</div>
+</div>
+</section>
 
-<h2 id="arquetipos">7. Os 5 Arquétipos</h2>
-<table>
-<tr><th>Arquétipo</th><th>Função</th><th>PV</th><th>Base Mana</th><th>Círculo máx.</th></tr>
-<tr><td>🗡️ Guerreiro</td><td>Combate físico</td><td>1d10</td><td>×3</td><td>3º</td></tr>
-<tr><td>🛡️ Baluarte</td><td>Defesa/controle</td><td>1d12</td><td>×3</td><td>4º</td></tr>
-<tr><td>🕶️ Vigilante</td><td>Mobilidade/precisão</td><td>1d8</td><td>×4</td><td>5º</td></tr>
-<tr><td>🔮 Arcanista</td><td>Conjuração pura</td><td>1d6</td><td>×5</td><td>9º</td></tr>
-<tr><td>⚙️ Creator</td><td>Criação/invocação</td><td>1d8</td><td>×5</td><td>7º</td></tr>
-</table>
-<p>Cada Arquétipo tem habilidades de classe "core" (iguais em qualquer Reino: Ataque Extra do Guerreiro, Domínio Arcano do Arcanista etc.) e talentos exclusivos de Reino nos níveis 3/6/9/12/16, que mudam completamente a fantasia sem mudar o número.</p>
-<p class="quote">Um Guerreiro de Havendor canaliza Radiância. Um Guerreiro de Aurivelle dança e canta em batalha. Todos são Guerreiros. Nenhum luta da mesma forma.</p>
+<section id="magia">
+<div class="wrap">
+<h2>✨ Mana e Calor Mágico</h2>
 
-<h2 id="magia">8. Sistema de Magia — Mana e Calor</h2>
 <h3>Mana</h3>
-<p>Em vez de slots, todo conjurador tem um <strong>pool de Mana</strong>. Cada círculo custa Círculo × 5 de Mana (truques são grátis). Gaste livremente enquanto tiver Mana.</p>
+<p>Esquece slot. Todo conjurador tem um <strong>pool de Mana</strong>, e cada círculo custa Círculo × 5 de Mana (truques são de graça). Gasta à vontade enquanto tiver saldo.</p>
+
 <h3>Calor Mágico</h3>
-<p>Conjurar magia de 1º círculo ou superior gera Calor igual ao círculo. Habilidades marciais que gastam Mana geram +1. O Calor dissipa 1 por turno e zera em descanso curto.</p>
+<p>Conjurar magia de 1º círculo pra cima gera Calor igual ao círculo. O Calor dissipa 1 por turno e zera num descanso curto.</p>
+
 <table>
 <tr><th>Estado</th><th>Condição</th><th>Efeito</th></tr>
 <tr><td>✅ Estável</td><td>Calor ≤ Limite</td><td>Nada</td></tr>
-<tr><td>🔥 Crítico</td><td>Limite &lt; Calor ≤ 2×Limite</td><td>+1d6 dano nas magias</td></tr>
-<tr><td>💥 Sobrecarga</td><td>Calor &gt; 2×Limite</td><td>+1d6 dano nas magias + dano em você mesmo</td></tr>
+<tr><td>🔥 Crítico</td><td>Limite &lt; Calor ≤ 2×Limite</td><td>+1d6 de dano nas magias</td></tr>
+<tr><td>💥 Sobrecarga</td><td>Calor &gt; 2×Limite</td><td>+1d6 de dano nas magias + você leva dano</td></tr>
 </table>
-<p>Limite de Calor = 3 + mod. de CON (mín. 3).</p>
+
+<p><strong>Limite de Calor</strong> = 3 + mod. CON (mín. 3).</p>
+
 <h3>Magia sem Mana</h3>
-<p>Se sua Mana chegar a zero, ainda pode conjurar pagando <strong>PV igual a Círculo × 5</strong>.</p>
+<p>Zerou a Mana? Ainda dá pra conjurar pagando <strong>PV igual a Círculo × 5</strong>.</p>
+</div>
+</section>
 
-<h2 id="convic">9. Convicções e Corrupções</h2>
-<p>Substituem o alinhamento do D&amp;D. Não há "ser mau" neste sistema — todos carregam luz e sombra.</p>
-<ul>
-<li><strong>3 Convicções</strong> — princípios que o personagem defende (ex.: Justiça, Misericórdia, Sacrifício, Verdade, Esperança, Humildade, Fidelidade, Compaixão, Perseverança, Sabedoria)</li>
-<li><strong>2 Corrupções</strong> — fraquezas ocultas (ex.: Orgulho, Ganância, Ira, Inveja, Vaidade, Medo, Controle, Vingança, Apatia, Ambição)</li>
-</ul>
-<p>São escolhas secretas com o Mestre, sem bônus mecânico direto — servem para gerar roleplay e consequências narrativas. Ceder a uma Corrupção pode conceder um <strong>Impulso</strong> temporário (vantagem, recuperar mana, etc.) em troca de uma Marca de Corrupção.</p>
+<section id="convic">
+<div class="wrap">
+<h2>⚖️ Convicções e Corrupções</h2>
+<p>Isso aqui substitui o alinhamento do D&D. Ninguém é "mau" de fábrica — todo mundo carrega luz e sombra.</p>
 
-<h2 id="caos">10. O Caos e os 7 Domínios</h2>
-<p>O Caos não cria — ele corrompe uma verdade legítima da Criação, levando-a ao extremo. Ao redor de cada Cristal Corrompido nasceu um <strong>Domínio do Caos</strong>: uma origem sombria completa, jogável como um "10º/11º/12º... Reino", com sua própria filosofia, povo, raça (quando existe) e talentos para os 5 Arquétipos — exatamente como Havendor ou Sphalidor, só que refletidos e corrompidos.</p>
-<p>São <strong>7 Domínios</strong>, um para cada pecado capital, cada um espelhando (de forma distorcida) um dos 9 Reinos de Luz:</p>
+<div style="display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0">
+<div class="card" style="border-left:3px solid #66dd66">
+<strong>3 Convicções</strong><br>
+Princípios que o personagem defende: Justiça, Misericórdia, Sacrifício, Verdade, Esperança, Humildade, Fidelidade, Compaixão, Perseverança, Sabedoria
+</div>
+<div class="card" style="border-left:3px solid #dd6666">
+<strong>2 Corrupções</strong><br>
+Fraquezas escondidas: Orgulho, Ganância, Ira, Inveja, Vaidade, Medo, Controle, Vingança, Apatia, Ambição
+</div>
+</div>
+
+<p>São escolhas secretas com o Mestre, sem bônus mecânico direto — o objetivo é gerar roleplay e consequência narrativa. Ceder a uma Corrupção pode dar um <strong>Impulso</strong> temporário.</p>
+</div>
+</section>
+
+<section id="caos">
+<div class="wrap">
+<h2>🌑 Os 7 Reinos do Caos</h2>
+<p>O Caos não cria nada do zero — ele pega uma verdade legítima e a corrompe, levando ao extremo. Ao redor de cada Cristal Corrompido nasceu um <strong>Reino do Caos</strong>: uma origem sombria completa, com filosofia, povo, raça (quando existe) e talentos.</p>
+
+<p><strong>Repetindo:</strong> isso não é uma classe maligna à parte, é um Reino — você escolhe um Reino do Caos no lugar de um de Luz, e segue normal.</p>
+
 <table>
-<tr><th>Domínio</th><th>Pecado</th><th>Cristal</th><th>Raça própria</th><th>Reflexo corrompido de</th></tr>
-<tr><td>🔥 Valdar</td><td>Ira</td><td>Cristal Carmesim</td><td>Filhos da Fúria</td><td>Sphalidor</td></tr>
-<tr><td>🎭 Sataris</td><td>Inveja</td><td>Face Ancestral</td><td>—</td><td>Aurivelle</td></tr>
-<tr><td>🩸 Morvath</td><td>Gula</td><td>Cristal da Fome Eterna</td><td>Noctari</td><td>Nerúvia</td></tr>
-<tr><td>💰 Mavaron</td><td>Ganância</td><td>Cristal das Mil Trocas</td><td>Pelned</td><td>Ringendah</td></tr>
-<tr><td>🌹 Taevora</td><td>Luxúria</td><td>Cristal da Luxúria</td><td>Insectoides</td><td>Aurivelle</td></tr>
-<tr><td>🌙 Morpheia</td><td>Preguiça</td><td>Cristal dos Sonhos</td><td>—</td><td>Sélah</td></tr>
-<tr><td>👑 Hybris</td><td>Orgulho</td><td>Coroa Partida</td><td>—</td><td>Argolis</td></tr>
+<tr><th>Reino do Caos</th><th>Pecado</th><th>Reflexo de</th></tr>
+<tr><td>🔥 Valdar</td><td>Ira</td><td>Sphalidor</td></tr>
+<tr><td>🎭 Sataris</td><td>Inveja</td><td>Aurivelle</td></tr>
+<tr><td>🩸 Morvath</td><td>Gula</td><td>Nerúvia</td></tr>
+<tr><td>💰 Mavaron</td><td>Ganância</td><td>Ringendah</td></tr>
+<tr><td>🌹 Taevora</td><td>Luxúria</td><td>Aurivelle</td></tr>
+<tr><td>🌙 Morpheia</td><td>Preguiça</td><td>Sélah</td></tr>
+<tr><td>👑 Hybris</td><td>Orgulho</td><td>Argolis</td></tr>
 </table>
 
-<h3>🔥 Valdar — O Domínio Carmesim</h3>
+<details class="k-caos"><summary>🔥 Valdar — O Domínio Carmesim</summary><div class="detbody">
 <p class="quote">"A força que você esconde ainda pertence ao medo. A força que você liberta pertence a você."</p>
-<p><strong>Mecânica — Fúria:</strong> 1×/turno ao ser alvo de ataque, ganha +1 Fúria (máx. 3). Em 3, entra em <strong>Fúria Ativa</strong>: acertar ataques mantém a Fúria, errar ou não atacar a reduz. No início do turno em Fúria Ativa, faz um teste de SAB para saber se fica Controlado ou entra em Frenesi (ataca o mais próximo). Raça própria: <strong>Filhos da Fúria</strong>, que transformam-se automaticamente ao cair abaixo de 1/3 de PV.</p>
+<p><strong>Mecânica:</strong> Ganha +1 Fúria ao ser alvo de ataque (máx. 3). Em 3, entra em Fúria Ativa. Raça própria: Filhos da Fúria se transformam ao cair abaixo de 1/3 de PV.</p>
+</div></details>
 
-<h3>🎭 Sataris — O Domínio das Máscaras</h3>
+<details class="k-caos"><summary>🎭 Sataris — O Domínio das Máscaras</summary><div class="detbody">
 <p class="quote">"O rosto é a primeira mentira."</p>
-<p><strong>Mecânica — Olho Observador:</strong> gasta Ação Bônus + Mana para copiar uma habilidade observada de um inimigo (1 uso, válido por 24h). Depois pode gastar a cópia pagando Mana do círculo equivalente para usá-la. Um mestre da espionagem e do roubo de identidade.</p>
+<p><strong>Mecânica:</strong> Copia uma habilidade que acabou de observar num inimigo. Depois pode gastar Mana pra usá-la.</p>
+</div></details>
 
-<h3>🩸 Morvath — O Domínio da Fome Eterna</h3>
+<details class="k-caos"><summary>🩸 Morvath — O Domínio da Fome Eterna</summary><div class="detbody">
 <p class="quote">"Tudo o que existe foi feito para ser consumido."</p>
-<p><strong>Mecânica — Simbiose Devoradora:</strong> 1×/turno ao atacar, declara antes: se acertar, cura PV; se errar, sofre o mesmo dano (ignora resistência). Raça própria: <strong>Noctari</strong> (vampiros), com Fome Eterna e vulnerabilidade à luz solar.</p>
+<p><strong>Mecânica:</strong> Ao atacar, declara: se acertar, cura PV; se errar, sofre dano. Raça própria: Noctari (vampiros).</p>
+</div></details>
 
-<h3>💰 Mavaron — O Domínio das Barganhas Eternas</h3>
+<details class="k-caos"><summary>💰 Mavaron — O Domínio das Barganhas Eternas</summary><div class="detbody">
 <p class="quote">"Tudo tem um preço."</p>
-<p><strong>Mecânica — Marca do Contrato:</strong> ao tocar uma criatura, ela faz um teste de resistência; se falhar, fica Marcada. O personagem pode "roubar" pontos de atributo dela e sofre um vínculo de dano compartilhado. Raça própria: <strong>Pelned</strong>, mortos-vivos negociadores que trocaram o corpo por conhecimento.</p>
+<p><strong>Mecânica:</strong> Marca uma criatura; pode roubar pontos de atributo com vínculo de dano compartilhado. Raça própria: Pelned (negociadores mortos-vivos).</p>
+</div></details>
 
-<h3>🌹 Taevora — O Domínio da Luxúria</h3>
+<details class="k-caos"><summary>🌹 Taevora — O Domínio da Luxúria</summary><div class="detbody">
 <p class="quote">"Aquilo que você deseja pode ser seu. Só não pergunte o preço."</p>
-<p><strong>Mecânica — Conhecimento Tóxico:</strong> especialista em venenos (ofensivo, debilitante, utilidade), com entrega variando por arquétipo (ferimento, inalado, contato, ingerido). Raça própria: <strong>Insectoides</strong>, nascidos da metamorfose nos Casulos, com uma Adaptação (voo, veneno, carapaça etc.) + Origem livre (o inseto que inspira a aparência).</p>
+<p><strong>Mecânica:</strong> Especialista em venenos (ofensivo, debilitante, utilidade). Raça própria: Insectoides (metamorfose, Adaptação + Origem).</p>
+</div></details>
 
-<h3>🌙 Morpheia — O Domínio dos Sonhos Perdidos</h3>
+<details class="k-caos"><summary>🌙 Morpheia — O Domínio dos Sonhos Perdidos</summary><div class="detbody">
 <p class="quote">"Por que lutar contra a realidade, se você pode sonhar com algo melhor?"</p>
-<p><strong>Mecânica — Névoa Onírica:</strong> de dia acumula <strong>Sono</strong> (recurso que se gasta com penalidade de deslocamento); de noite recebe <strong>Sonhos</strong> aleatórios (Vital, Arcano, Movimento, Proteção, Força, Compartilhado) que podem ser usados ou repassados a aliados.</p>
+<p><strong>Mecânica:</strong> De dia acumula Sono; de noite recebe Sonhos aleatórios (Vital, Arcano, Movimento, Proteção, Força, Compartilhado).</p>
+</div></details>
 
-<h3>👑 Hybris — O Domínio da Soberba</h3>
+<details class="k-caos"><summary>👑 Hybris — O Domínio da Soberba</summary><div class="detbody">
 <p class="quote">"Prove o seu valor."</p>
-<p><strong>Mecânica — Fama:</strong> +1 Fama a cada acerto (máx. 5), zera tudo ao errar. Cada ponto de Fama vira +2 de dano (nunca bônus de acerto/defesa, pra não gerar bola de neve). Com 1×/descanso longo, pode converter a Fama em PV para sobreviver a um golpe fatal (<em>Orgulho da Morte</em>).</p>
-
-<h3>Como jogar um personagem do Caos</h3>
-<ul>
-<li>Escolhe-se o Domínio no lugar do Reino — a raça pode ser própria do Domínio (quando existir) ou qualquer raça universal marcada pela corrupção.</li>
-<li>Personagens do Caos carregam <strong>mais Corrupções do que Convicções</strong> (a proporção exata é definida caso a caso com o Mestre) e recebem uma <strong>fraqueza forte</strong> específica do Domínio.</li>
-<li>Cada Domínio tem talentos completos para os 5 Arquétipos (níveis 3/6/9/12/16), no mesmo formato dos 9 Reinos de Luz — disponíveis no app de criação.</li>
-<li>Nascer em um Domínio não torna o personagem automaticamente vilão: a corrupção é uma tentação constante, não um destino selado.</li>
-</ul>
-
-<h2 id="app">11. O App de Criação de Personagem</h2>
-<p>Este livro cobre a visão geral do sistema. Para a ficha completa — as 45 árvores de talento por Reino×Arquétipo, as 339 magias com custo e descrição, equipamentos e cálculo automático de PV/Mana/CA — use o aplicativo de criação de personagem (<code>criar-heroi.html</code>), que segue exatamente estas mesmas regras.</p>
-
+<p><strong>Mecânica:</strong> +1 Fama a cada acerto (máx. 5), que vira +2 de dano. 1×/descanso pode converter a Fama em PV pra sobreviver a um golpe fatal.</p>
+</div></details>
 </div>
+</section>
+
+<section id="enciclopedia-racas">
+<div class="wrap">
+<h2>📖 Enciclopédia — Raças em detalhe</h2>
+<p>Clica em cada uma pra abrir os detalhes.</p>
+
+<h3>Raças Universais</h3>
+
+<details><summary>🧑 Humanos</summary><div class="detbody">
+<p><span class="badge">+1 em três atributos</span></p>
+<p>Versáteis, determinados, encontrados em qualquer Reino. <strong>Versatilidade:</strong> proficiência numa perícia adicional. <strong>Determinação:</strong> repete um teste falho 1×/descanso longo.</p>
+</div></details>
+
+<details><summary>🧝 Elfos</summary><div class="detbody">
+<p><span class="badge">+2 DES, +1 INT</span></p>
+<p>Longevos, graciosos, ligados à magia do mundo. Visão na penumbra (36m), imunes a sono mágico, Transe (4h = 8h sono), proficiência em Percepção.</p>
+</div></details>
+
+<details><summary>⛏️ Anões</summary><div class="detbody">
+<p><span class="badge">+2 CON, +1 FOR</span></p>
+<p>Robustos, tradicionais, forjados pela terra. Visão no escuro (36m), resistência a veneno, proficiência com machados/martelos, vantagem em testes sobre pedra/metal.</p>
+</div></details>
+
+<details><summary>🍃 Halflings</summary><div class="detbody">
+<p><span class="badge">+2 DES, +1 CAR</span></p>
+<p>Pequenos, otimistas, sortudos. Sortudo (repete 1s), vantagem contra medo, proficiência em Furtividade.</p>
+</div></details>
+
+<details><summary>⚗️ Gnomos</summary><div class="detbody">
+<p><span class="badge">+2 INT, +1 CAR</span></p>
+<p>Curiosos, inventivos, mestres das engenhocas. Visão no escuro (36m), vantagem contra magia, conhece um truque de ilusão.</p>
+</div></details>
+
+<h3>Raças dos Reinos de Luz</h3>
+
+<details class="k-havendor"><summary>✨ Aetherianos (Havendor)</summary><div class="detbody">
+<p><span class="badge">+2 SAB, +1 CAR</span></p>
+<p>Linhagem quase divina. <strong>Olhos do Juízo:</strong> percebe corrupção a 18m. <strong>Regeneração Divina:</strong> cura 1 PV/turno abaixo de metade da vida. Resistência a corrupção.</p>
+</div></details>
+
+<details class="k-aurivelle"><summary>🎭 Auris (Aurivelle)</summary><div class="detbody">
+<p><span class="badge">+2 CAR, +1 INT</span></p>
+<p>Povo miscigenado da arte. Proficiência em Atuação ou Música, usa CAR pra testes performáticos, vantagem em Carisma sob holofotes.</p>
+</div></details>
+
+<details class="k-lumivior"><summary>⚙️ Etherborn (Lumivior)</summary><div class="detbody">
+<p><span class="badge">+2 INT, +1 CON</span></p>
+<p>Forjados sintéticos de Éter e metal. <strong>Arquivo Coletivo:</strong> acessa informação 1×/descanso longo. Corpo sintético (não respira, imune a doenças), Mana máx. +10%.</p>
+</div></details>
+
+<details class="k-neruviah"><summary>🌊 Neruvianos (Nerúvia)</summary><div class="detbody">
+<p><span class="badge">+2 CAR, +1 CON</span></p>
+<p>Povo aquático. <strong>Respiração aquática</strong>, natação = deslocamento, muda de cor com emoção, escolhe uma <strong>Inspiração Marinha</strong> (Tubarão, Polvo, Água-viva, Coral, Caracol, Crustáceo).</p>
+</div></details>
+
+<details class="k-argolis"><summary>🌙 Argolianos (Argolis)</summary><div class="detbody">
+<p><span class="badge">+2 DES, +1 SAB</span></p>
+<p>Híbridos com percepção sobre-humana. <strong>Visão Tática</strong> — 2×/combate, revela Campo de Batalha, Análise de Inimigos ou Anomalias. Proficiência em Furtividade e Percepção.</p>
+</div></details>
+
+<h3>Raças dos Reinos do Caos</h3>
+
+<details class="k-caos"><summary>🩸 Filhos da Fúria (Valdar)</summary><div class="detbody">
+<p><span class="badge">+2 FOR, +1 CON</span></p>
+<p>Linhagem metamórfica. Ao cair a 1/3 do PV máximo, transforma-se (+4 no atributo de guerra, -2 em outros). Um teste de CON decide entre Frenesi ou Controle.</p>
+</div></details>
+
+<details class="k-caos"><summary>🧛 Noctari (Morvath)</summary><div class="detbody">
+<p><span class="badge">+2 em um atributo à escolha</span></p>
+<p>Vampiros mortos-vivos. <strong>Fome Eterna</strong> (precisa se alimentar), <strong>Toque da Fome</strong> (1d4 + cura), Regeneração Sombria, Visão no Escuro 36m. Fraqueza: luz solar causa dano progressivo.</p>
+</div></details>
+
+<details class="k-caos"><summary>🦋 Insectoides (Taevora)</summary><div class="detbody">
+<p><span class="badge">+2 em um atributo à escolha</span></p>
+<p>Nascidos da metamorfose. Escolhe uma <strong>Adaptação</strong> (Voo, Veneno, Drenagem, Carapaça, Teia, Impulso, Percepção, etc.) e uma <strong>Origem</strong> livre (Besouro, Mariposa, Formiga, Escorpião, etc.).</p>
+</div></details>
+</div>
+</section>
+
+<section id="enciclopedia-reinos">
+<div class="wrap">
+<h2>🌍 Enciclopédia — Reinos em detalhe</h2>
+
+<details class="k-havendor"><summary>❤️ Havendor — Reino do Amor</summary><div class="detbody">
+<p class="quote">"A luz não existe para ser vista. Ela existe para expulsar as trevas."</p>
+<p>Cidade flutuante sustentada por um núcleo divino radiante. <strong>Radiância Viva</strong> — cura, proteção, dano sagrado, especialmente eficaz contra o Caos. Resistência a maldições, cura fortalecida. Fraqueza: quanto maior a santidade, maior o impacto de uma queda.</p>
+</div></details>
+
+<details class="k-aurivelle"><summary>🎭 Aurivelle — Reino da Alegria</summary><div class="detbody">
+<p class="quote">"Enquanto houver canção... o mundo ainda pode florescer."</p>
+<p>Arte deixou de ser expressão e virou magia viva. <strong>Arte Viva</strong>, baseada em Carisma e criatividade. <strong>Expressão Arcana</strong> — usa CAR pra potencializar ações 1×/rodada. Fraqueza: estados emocionais prejudicam a magia.</p>
+</div></details>
+
+<details class="k-selah"><summary>🌄 Sélah — Reino da Paz</summary><div class="detbody">
+<p class="quote">"A paz não é a ausência de conflito. É a presença de ordem."</p>
+<p>Peregrinos cansados fundaram a cidade-templo. <strong>Fluxo da Criação</strong> — acumula Fluxo e gasta em Aspectos (3) ou Grande Aspecto (7). Filosofia: paciência traz recompensa.</p>
+</div></details>
+
+<details class="k-knathi"><summary>🌿 K'Nahti — Reino da Paciência</summary><div class="detbody">
+<p class="quote">"A criação apressada produz ferramentas. A criação paciente produz maravilhas."</p>
+<p>Oculto entre florestas ancestrais. <strong>Tinta Viva</strong> — Manifestação (criar objetos), Invocação (criar criaturas), Transmutação (transformar corpo). Quanto mais tempo você investe, mais poderoso é o resultado.</p>
+</div></details>
+
+<details class="k-lumivior"><summary>⚙️ Lumivior — Reino da Amabilidade</summary><div class="detbody">
+<p class="quote">"Nenhum de nós é completo sozinho."</p>
+<p>Cidade-máquina errante. <strong>Coração de Éter</strong> — Vida e Mana viram um único recurso. Reserva energética maior, cura recupera os dois. Fraqueza: sem energia, tudo para.</p>
+</div></details>
+
+<details class="k-neruviah"><summary>🌊 Nerúvia — Reino da Bondade</summary><div class="detbody">
+<p class="quote">"Assim como a água assume a forma do recipiente, a bondade assume a forma da necessidade."</p>
+<p>Civilização oceânica com capital submersa. <strong>Marés da Alma</strong> — escolhe afinidade temporária (Serena, Crescente, Profunda, Tempestuosa) que muda seu foco entre defesa, suporte, magia ou combate.</p>
+</div></details>
+
+<details class="k-ringendah"><summary>📜 Ringendah — Reino da Fidelidade</summary><div class="detbody">
+<p class="quote">"Conhecimento não é poder. Conhecimento é responsabilidade."</p>
+<p>Reino dos estudiosos — bibliotecas, academias, arquimagos guardiões. <strong>Legado Arcano</strong> — mana extra baseada em INT, recuperação de mana mais rápida, facilidade pra aprender.</p>
+</div></details>
+
+<details class="k-argolis"><summary>🌙 Argolis — Reino da Mansidão</summary><div class="detbody">
+<p class="quote">"A calma não é ausência de guerra. É domínio total dela."</p>
+<p>Reino militarizado e descentralizado. <strong>Visão de Análise Tática</strong> — leitura instantânea de campo 1-2×/combate. Preparação total, meritocracia real. Fraqueza: combate caótico pode superar a melhor leitura tática.</p>
+</div></details>
+
+<details class="k-sphalidor"><summary>🔨 Sphalidor — Reino do Domínio Próprio</summary><div class="detbody">
+<p class="quote">"O que vibra em ti, obedece a ti."</p>
+<p>Reino montanhoso de forja e vibração. <strong>Domínio da Ressonância</strong> — acumula Cargas de Vibração em combate e as gasta pra amplificar dano, defesa ou mobilidade. Fraqueza: mais fraco no início; combates rápidos reduzem acúmulo.</p>
+</div></details>
+</div>
+</section>
+
+<footer>
+<p>Ecos da Luz © 2024 — um sistema de RPG de mesa homebrew baseado em D&D 5e SRD</p>
+<p style="margin-top:1rem;color:var(--text3);"><a href="index.html">← Voltar à página inicial</a> • <a href="criar-heroi.html">Criar Personagem →</a></p>
+</footer>
+
 </body>
 </html>

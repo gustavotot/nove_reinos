@@ -110,6 +110,7 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
 .result-card h3{font-size:15px;color:var(--gold);margin-bottom:8px}
 .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:13px}
 .result-grid .label{color:var(--text2)}.result-grid .val{font-weight:600;text-align:right}
+.mod-chip{display:inline-flex;align-items:center;justify-content:center;min-width:36px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1206;font-weight:800;font-size:15px;border-radius:9px;padding:3px 9px;margin-left:10px;border:1px solid rgba(0,0,0,.35);box-shadow:0 2px 8px rgba(0,0,0,.45)}
 
 .points{text-align:center;font-size:16px;font-weight:600;color:var(--gold);margin-bottom:12px}
 .title{text-align:center;margin-bottom:10px}
@@ -362,7 +363,7 @@ const PASSIVES = {
   knathi:{nome:'Tinta Viva',desc:'Manifestação, invocação e transmutação feitas com a Tinta Viva de K\'Nahti.'},
   lumivior:{nome:'Coração de Éter',desc:'Sua Vida é sua Mana (Energia Vital). Cuidar de um é cuidar do outro.'},
   neruviah:{nome:'Marés da Alma',desc:'Escolhe uma Maré por descanso curto; cada Maré concede um bônus e um golpe diferentes.'},
-  ringendah:{nome:'Legado Arcano',desc:'Mana adicional baseada em Inteligência e recuperação de mana superior em descansos.'},
+  ringendah:{nome:'Legado Arcano',desc:'Aumenta a BASE de mana do arquétipo em +1 — a base é o multiplicador (ex: guerreiro ×3 → ×4, arcanista ×5 → ×6). Recuperação de mana +10% em descansos.'},
   argolis:{nome:'Visão de Análise Tática',desc:'2x por combate, revela fraquezas, o campo de batalha ou anomalias ocultas.'},
   sphalidor:{nome:'Domínio da Ressonância',desc:'Acumula Cargas de Vibração ao atacar, ser atingido ou bloquear com ressonância.'},
   valdar:{nome:'Fúria',desc:'Acumula Fúria ao ser alvo de ataques; ao atingir 3, entra em Fúria Ativa com ataques intensificados.'},
@@ -644,6 +645,45 @@ function armorProficient(archId,armor){
   return armorAllowedFor(archId).includes(armor.type);
 }
 
+// ===== CARGA, DESLOCAMENTO E CA =====
+const CARGA_POR_FOR=7;
+function fmtKg(n){return String(Math.round(n*10)/10).replace('.',',');}
+function currentArmor(){return ARMOR.find(a=>a.id===(state.equipment&&state.equipment.armor))||null;}
+function currentRacial(){const race=RACES.find(r=>r.id===state.race);return race?racialEffective(race,state.racePicks):{for:0,des:0,con:0,int:0,sab:0,car:0};}
+function effectiveFor(){return (state.attrs.for||10)+(currentRacial().for||0);}
+function currentLoad(){
+  const eq=state.equipment||{weapons:[],armor:'sem-armadura',shield:false};
+  const armor=currentArmor();
+  const weapons=(eq.weapons||[]).reduce((s,id)=>{const w=WEAPONS.find(x=>x.id===id);return s+(w&&w.weight||0);},0);
+  return (armor&&armor.weight||0)+(eq.shield?(SHIELD.weight||0):0)+weapons;
+}
+function currentCapacity(){return Math.floor(effectiveFor()*CARGA_POR_FOR);}
+function baseMovementFor(){
+  const race=RACES.find(r=>r.id===state.race);
+  if(!race)return 9;
+  const m=(race.details||'').match(/(?:Médio|Pequeno|Grande) · (\d[\d,]*)m/);
+  return m?parseFloat(m[1].replace(',','.')):9;
+}
+function movementInfo(){
+  const armor=currentArmor();
+  const base=baseMovementFor();
+  const heavy=armor&&armor.forMin&&effectiveFor()<armor.forMin;
+  return {base,final:base-(heavy?3:0),heavy,pen:heavy?3:0,forMin:armor&&armor.forMin,forEff:effectiveFor()};
+}
+function currentCAValue(){
+  const racial=currentRacial();
+  const dexMod=Math.floor(((state.attrs.des||10)+(racial.des||0)-10)/2);
+  const armor=currentArmor();
+  let ca=10+dexMod;
+  if(armor&&armor.base){
+    if(armor.type==='leve')ca=armor.base+dexMod;
+    else if(armor.type==='media')ca=armor.base+Math.min(dexMod,armor.dexCap||2);
+    else ca=armor.base;
+  }
+  if(state.equipment&&state.equipment.shield)ca+=2;
+  return ca;
+}
+
 // ===== RENDER =====
 function render(){
   state.equipment=state.equipment||{weapons:[],armor:'sem-armadura',shield:false};
@@ -764,7 +804,8 @@ const screens = [
             <div class="sub" style="margin-top:2px">${a.function}</div>
             <div style="margin:4px 0;display:flex;gap:6px">
               <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">PV ${a.pvd}</span>
-              <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">Mana ×${a.manaBase}</span>
+              <span style="font-size:10px;background:var(--bg4);padding:2px 8px;border-radius:10px">Mana ×${state.realm==='ringendah'?a.manaBase+1:a.manaBase}</span>
+              ${state.realm==='ringendah'?`<span style="font-size:10px;background:${'#a374d1'}22;border:1px solid ${'#a374d1'};color:${'#a374d1'};padding:2px 8px;border-radius:10px">💍 Legado Arcano +1</span>`:''}
             </div>
             ${ex?`<div class="arch-hint">Ex: ${ex.exemplo}</div>`:''}
             ${sel?`<p style="font-size:11px;color:var(--text2);margin-top:6px;line-height:1.4">${a.desc}</p>`:''}
@@ -943,20 +984,31 @@ const screens = [
   ()=>{
   const selected=state.equipment.weapons;
   const armProfs=armorAllowedFor(state.archetype);
-  const weaponCard=w=>{const ok=weaponProficient(state.archetype,w);return `<div class="card ${selected.includes(w.id)?'selected':''}" style="text-align:left;padding:10px" onclick="toggleEquipmentWeapon('${w.id}')"><div class="name" style="font-size:12px">${w.name} ${ok?`<span style="font-size:9px;color:#66dd66">✔ Prof</span>`:`<span style="font-size:9px;color:var(--red)">✘ Sem prof</span>`}</div><div class="sub">${w.damage} · ${w.type}</div></div>`;};
+  const weaponCard=w=>{const ok=weaponProficient(state.archetype,w);return `<div class="card ${selected.includes(w.id)?'selected':''}" style="text-align:left;padding:10px" onclick="toggleEquipmentWeapon('${w.id}')"><div class="name" style="font-size:12px">${w.name} ${ok?`<span style="font-size:9px;color:#66dd66">✔ Prof</span>`:`<span style="font-size:9px;color:var(--red)">✘ Sem prof</span>`}</div><div class="sub">${w.damage} · ${w.type} · ${fmtKg(w.weight)} kg</div></div>`;};
   const armorCard=a=>{
     const allowed=armProfs.includes(a.type)||(a.id==='sem-armadura');
     const disabled=!allowed&&state.equipment.armor!==a.id;
-    return `<div class="card ${state.equipment.armor===a.id?'selected':''}${disabled?'':''}" style="display:flex;justify-content:space-between;text-align:left;padding:10px;margin-bottom:6px${disabled?';opacity:.45':''}" onclick="${disabled?'':`selectEquipmentArmor('${a.id}')`}"><span class="name" style="font-size:12px">${a.name} ${allowed?`<span style="font-size:9px;color:#66dd66">✔ Prof</span>`:`<span style="font-size:9px;color:var(--red)">✘ ${a.type}</span>`}</span><span class="sub">${a.base?a.base+' CA':'DES total'}</span></div>`;
+    const heavy=a.forMin;
+    const pen=state.equipment.armor===a.id&&effectiveFor()<a.forMin;
+    return `<div class="card ${state.equipment.armor===a.id?'selected':''}${disabled?'':''}" style="text-align:left;padding:10px;margin-bottom:6px${disabled?';opacity:.45':''}" onclick="${disabled?'':`selectEquipmentArmor('${a.id}')`}"><div style="display:flex;justify-content:space-between;align-items:flex-start"><span class="name" style="font-size:12px">${a.name} ${allowed?`<span style="font-size:9px;color:#66dd66">✔ Prof</span>`:`<span style="font-size:9px;color:var(--red)">✘ ${a.type}</span>`}</span><span class="sub">${a.base?a.base+' CA':'DES total'} · ${fmtKg(a.weight)} kg</span></div>${heavy?`<div style="font-size:8.5px;color:var(--red);margin-top:2px;line-height:1.4">⚡ Furtividade com desvantagem · FOR mín ${a.forMin} · Vestir ${a.vestir}min / Tirar ${a.tirar}min${pen?` · <strong>FOR ${effectiveFor()} < ${a.forMin} → −3m deslocamento</strong>`:''}</div>`:''}</div>`;
   };
+  const load=currentLoad();
+  const cap=currentCapacity();
+  const over=load>cap;
+  const mov=movementInfo();
     return `<div class="title"><h2>⚔️ Equipamento</h2><p>Escolha suas armas, armadura e escudo</p></div>
       <p class="arch-hint" style="text-align:center;margin-bottom:10px">O equipamento pode receber o estilo visual do seu Reino sem alterar suas regras.</p>
+      <div style="margin-bottom:10px;background:var(--bg2);border-radius:var(--radius);padding:10px;border:1px solid var(--bg4);font-size:11px;color:var(--text2);line-height:1.5">
+        <strong style="color:var(--gold)">🎒 Carga: ${fmtKg(load)} kg / ${cap} kg</strong> <span style="color:var(--gold-dim)">(capacidade = FOR ${effectiveFor()} × 7)</span>
+        ${over?`<div style="color:var(--red);margin-top:2px">⚠️ Sobrecarregado — o peso excede sua capacidade de carga!</div>`:''}
+        ${mov.heavy?`<div style="color:var(--red);margin-top:2px">⚡ Armadura pesada sem a FOR necessária: deslocamento cai para <strong>${mov.final} m</strong> (de ${mov.base} m).</div>`:''}
+      </div>
       <p style="font-size:12px;color:var(--gold);font-weight:600;margin:10px 0 6px">Armas (${selected.length}/2)</p>
       <div class="card-grid c2">${WEAPONS.map(weaponCard).join('')}</div>
       <p style="font-size:12px;color:var(--gold);font-weight:600;margin:14px 0 6px">Armadura (permitidas: ${['sem armadura',...armProfs.filter(p=>p!=='escudo')].join(', ')})</p>
       ${ARMOR.map(armorCard).join('')}
       <p style="font-size:12px;color:var(--gold);font-weight:600;margin:14px 0 6px">Escudo</p>
-      <div class="card ${state.equipment.shield?'selected':''}" style="display:flex;justify-content:space-between;text-align:left;padding:10px${armProfs.includes('escudo')?'':';opacity:.45'}" onclick="${armProfs.includes('escudo')?`state.equipment.shield=!state.equipment.shield;render()`:''}"><span class="name" style="font-size:12px">Escudo ${armProfs.includes('escudo')?`<span style="font-size:9px;color:#66dd66">✔ Prof</span>`:`<span style="font-size:9px;color:var(--red)">✘</span>`}</span><span class="sub">+2 CA</span></div>
+      <div class="card ${state.equipment.shield?'selected':''}" style="display:flex;justify-content:space-between;text-align:left;padding:10px${armProfs.includes('escudo')?'':';opacity:.45'}" onclick="${armProfs.includes('escudo')?`state.equipment.shield=!state.equipment.shield;render()`:''}"><span class="name" style="font-size:12px">Escudo ${armProfs.includes('escudo')?`<span style="font-size:9px;color:#66dd66">✔ Prof</span>`:`<span style="font-size:9px;color:var(--red)">✘</span>`}</span><span class="sub">+2 CA · 3 kg</span></div>
       <div class="btn-group"><button class="btn btn-secondary" onclick="go(6)">← Magias</button><button class="btn btn-primary" onclick="go(8)">Perícias →</button></div>`;
   },
 
@@ -1105,10 +1157,20 @@ const screens = [
     const intMod=mod(a.int),conMod=mod(a.con),dexMod=mod(a.des),sabMod=mod(a.sab),forMod=mod(a.for),carMod=mod(a.car);
     const nv=state.nivel||1;
     const base=arch.manaBase;
-    const mana=Math.max(1,nv+intMod)*base;
+    const ringendah=realm&&realm.id==='ringendah';
+    const baseReal=base+(ringendah?1:0);
+    const manTerm=Math.max(1,nv+intMod);
+    const mana=manTerm*baseReal;
     const pv=arch.pv+conMod+(nv-1)*(arch.pvavg+conMod);
-    const ca=10+dexMod;
-    const inic=dexMod;
+    const lumivior=realm&&realm.id==='lumivior';
+    const vital=pv+mana;
+    const ca=currentCAValue();
+    const inic=mod(a.des+racialEffective(race,state.racePicks).des);
+    const mov=movementInfo();
+    const load=currentLoad();
+    const cap=currentCapacity();
+    const over=load>cap;
+    const armorSel=currentArmor();
 
     const spellsById=id=>(typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[]).find(s=>s.id===id);
     const truquesSel=(state.spells.truques||[]).map(spellsById).filter(Boolean);
@@ -1118,13 +1180,15 @@ const screens = [
 
     return `<div class="title"><h2>${state.name||'Herói'}</h2><p style="font-size:12px">${race?.icon} ${race?.name||'?'} · ${realm?.icon} ${realm?.name||'?'} · ${arch?.icon} ${arch?.name||'?'} · Nv ${nv}</p></div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-val">${pv}</div><div class="stat-label">PV</div></div>
-        <div class="stat-card"><div class="stat-val">${mana}</div><div class="stat-label">Mana</div></div>
+        ${lumivior?`<div class="stat-card" style="grid-column:1 / -1"><div class="stat-val">${vital}</div><div class="stat-label">⚙️ Energia Vital (Vida + Mana)</div></div>`
+          :`<div class="stat-card"><div class="stat-val">${pv}</div><div class="stat-label">PV</div></div>
+        <div class="stat-card"><div class="stat-val">${mana}</div><div class="stat-label">Mana</div></div>`}
         <div class="stat-card"><div class="stat-val">${ca}</div><div class="stat-label">CA</div></div>
         <div class="stat-card"><div class="stat-val">${inic>=0?'+':''}${inic}</div><div class="stat-label">Iniciativa</div></div>
+        <div class="stat-card"><div class="stat-val">${mov.final} m</div><div class="stat-label">Deslocamento${mov.heavy?' ⚡':''}</div></div>
       </div>
       <div class="result-card"><h3>Atributos</h3><div class="result-grid">
-        ${['for','des','con','int','sab','car'].map(k=>`<span class="label">${k.toUpperCase()}</span><span class="val">${a[k]} ${racial[k]!==0?`<span style="color:#66dd66">+${racial[k]}</span>`:''} = <strong>${a[k]+racial[k]}</strong> (${mod(a[k]+racial[k])>=0?'+':''}${mod(a[k]+racial[k])})</span>`).join('')}
+        ${['for','des','con','int','sab','car'].map(k=>`<span class="label">${k.toUpperCase()}</span><span class="val">${a[k]}${racial[k]!==0?` <span style="color:#66dd66">+${racial[k]}</span>`:''} = <strong>${a[k]+racial[k]}</strong> <span class="mod-chip">${mod(a[k]+racial[k])>=0?'+':''}${mod(a[k]+racial[k])}</span></span>`).join('')}
       </div></div>
       <div class="result-card"><h3>Origem · Caminho · Raça</h3><div class="result-grid">
         <span class="label">Origem</span><span class="val">${realm?.icon||''} ${realm?.name||'—'}</span>
@@ -1144,10 +1208,18 @@ const screens = [
         <p style="font-size:10px;color:var(--text2);margin-top:8px">${race.details}</p>
       </div>`:''}
       ${pathSheet(state.archetype,state.realm)}
-      <div class="result-card"><h3>Mana</h3><div class="result-grid">
-        <span class="label">Fórmula</span><span class="val">(Nv ${nv} + ${intMod>=0?'+':''}${intMod}) × ${base}</span>
-        <span class="label">Total</span><span class="val">${mana}</span>
-      </div></div>
+      ${lumivior?`
+      <div class="result-card"><h3>⚙️ Energia Vital</h3><div class="result-grid">
+        <span class="label">Vida</span><span class="val">${arch.pv}${conMod>=0?'+':''}${conMod}${(nv>1)?` + (${nv-1}×${arch.pvavg}${conMod>=0?'+':''}${conMod})`:''} = ${pv}</span>
+        <span class="label">Mana</span><span class="val">Nv ${nv} + mod INT (<span style="color:var(--gold-dim)">${intMod>0?'+':''}${intMod}</span>) = ${manTerm} × ${base} = ${mana}</span>
+        <span class="label">Total (Vida + Mana)</span><span class="val">${vital}</span>
+      </div></div>`
+      :`<div class="result-card"><h3>Mana</h3><div class="result-grid">
+        <span class="label">Nível + INT</span><span class="val">Nv ${nv} + mod INT (<span style="color:var(--gold-dim)">${intMod>0?'+':''}${intMod}</span>) = ${manTerm}</span>
+        <span class="label">Base do arquétipo</span><span class="val">${arch.name} ×${base} (multiplicador)</span>
+        ${ringendah?`<span class="label">💍 Legado Arcano</span><span class="val">+1 no multiplicador → ×${baseReal}</span>`:''}
+        <span class="label">Total</span><span class="val">${manTerm} × ${baseReal} = <strong>${mana}</strong></span>
+      </div></div>`}
       <div class="result-card">
         <h3>⚖️ Convicções</h3>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
@@ -1175,10 +1247,14 @@ const screens = [
           </div>`:''}
       </div>`:''}
        <div class="result-card"><h3>⚔️ Equipamento</h3><div class="result-grid">
-         <span class="label">Armadura</span><span class="val">${ARMOR.find(x=>x.id===state.equipment.armor)?.name||'Sem armadura'}</span>
-         <span class="label">Escudo</span><span class="val">${state.equipment.shield?'Sim (+2 CA)':'Não'}</span>
+         <span class="label">Armadura</span><span class="val">${ARMOR.find(x=>x.id===state.equipment.armor)?.name||'Sem armadura'}${armorSel?.weight?` <span style="color:var(--gold-dim)">(${fmtKg(armorSel.weight)} kg)</span>`:''}</span>
+         <span class="label">Escudo</span><span class="val">${state.equipment.shield?'Sim (+2 CA, 3 kg)':'Não'}</span>
          <span class="label">Armas</span><span class="val">${state.equipment.weapons.length?state.equipment.weapons.map(id=>{const w=WEAPONS.find(x=>x.id===id);if(!w)return'';const ok=weaponProficient(state.archetype,w);const ab=mod((a[w.ability]||10)+(racial[w.ability]||0))+(ok?profBonus:0);return `${w.name} ${ok?'✔ Prof':'✘ Sem prof'} · Ataque ${ab>=0?'+':''}${ab} · ${w.damage}`;}).join('; '):'Nenhuma'}</span>
-       </div></div>
+         <span class="label">Peso total</span><span class="val">${fmtKg(load)} kg / ${cap} kg ${over?'<span style="color:var(--red)">⚠️ sobrecarga</span>':''} <span style="color:var(--gold-dim);font-size:10px">(Form × 7)</span></span>
+       </div>
+       ${armorSel?.forMin?`<div style="margin-top:8px;font-size:10px;color:var(--red);line-height:1.6">⚡ <strong>Armadura pesada:</strong> Desvantagem em Furtividade · Força mínima ${armorSel.forMin} · Vestir ${armorSel.vestir} min / Tirar ${armorSel.tirar} min${mov.heavy?` · <strong>Deslocamento reduzido para ${mov.final} m</strong> (FOR ${mov.forEff} < ${mov.forMin})`:''}</div>`:''}
+       ${over?`<div style="margin-top:4px;font-size:10px;color:var(--red)">🎒 O peso excede sua capacidade de carga (FOR × 7 kg).</div>`:''}
+       </div>
        <div class="result-card"><h3>🎯 Perícias</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
          ${(state.skills||[]).map(s=>{const sm=Math.floor((a[SKILL_ATTR[s]]+(racial[SKILL_ATTR[s]]||0)-10)/2);const st=sm+profBonus;return `<span style="background:var(--bg3);padding:4px 12px;border-radius:20px;font-size:12px;border:1px solid var(--gold-dim);color:var(--gold)">${SKILL_NAMES[s]||s} <span style="color:var(--text);font-weight:700">${st>=0?'+':''}${st}</span></span>`;}).join('')||'<span style="color:var(--text2);font-size:12px">Nenhuma</span>'}
        </div></div>

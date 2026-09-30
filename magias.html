@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magias — Ecos da Luz</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--bg4:#232323;--gold:#d4a843;--gold2:#f0d080;--gold-dim:#8a7a40;--text:#e8e0d0;--text2:#a89a88;--text3:#6a6058}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3{font-family:'Cinzel',serif;font-weight:700}
+header{background:linear-gradient(180deg,#1a1a1a 0%,#0a0a0a 100%);padding:clamp(2rem,7vw,2.6rem) clamp(1.2rem,4vw,2rem);text-align:center}
+header h1{color:var(--gold2);font-size:clamp(1.8rem,6vw,2.4rem)}
+header p{color:var(--text2);margin-top:.4rem;font-size:.95rem}
+header p b{color:var(--gold)}
+
+/* Barra de filtros */
+.controls{position:sticky;top:0;z-index:40;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--bg4)}
+.controls .in{max-width:1000px;margin:0 auto;padding:.8rem clamp(1.2rem,4vw,2rem);display:flex;flex-direction:column;gap:.6rem}
+@media(min-width:640px){.controls .in{flex-direction:row;align-items:center}}
+.search{flex:1;background:var(--bg3);border:1px solid var(--bg4);color:var(--text);border-radius:10px;padding:.55rem .9rem;font-size:.95rem;font-family:inherit;outline:none;width:100%}
+.search:focus{border-color:var(--gold-dim)}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{border:1px solid var(--bg4);background:var(--bg3);color:var(--text2);border-radius:99px;padding:.25rem .7rem;font-size:.82rem;cursor:pointer;transition:.15s;white-space:nowrap}
+.chip:hover{border-color:var(--gold-dim)}
+.chip.on{background:color-mix(in srgb,var(--gold) 18%,var(--bg2));color:var(--gold2);border-color:var(--gold-dim)}
+select.school{background:var(--bg3);border:1px solid var(--bg4);color:var(--text);border-radius:10px;padding:.5rem .7rem;font-size:.9rem;font-family:inherit;outline:none}
+
+main{flex:1;max-width:1000px;margin:0 auto;padding:clamp(1.4rem,4vw,2.2rem) clamp(1.2rem,4vw,2rem);width:100%}
+.result-count{color:var(--text3);font-size:.85rem;margin-bottom:1rem}
+.count b{color:var(--gold2)}
+
+.grid{display:grid;grid-template-columns:1fr;gap:.7rem}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+.spell{display:flex;flex-direction:column;background:var(--bg2);border:1px solid var(--bg4);border-radius:12px;padding:.85rem 1rem;cursor:pointer;transition:.15s;text-align:left}
+.spell:hover{border-color:var(--gold-dim);transform:translateY(-1px)}
+.spell .top{display:flex;align-items:center;gap:.55rem}
+.badge{font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.12rem .5rem;border-radius:6px;white-space:nowrap}
+.badge.truque{background:rgba(212,168,67,.14);color:var(--gold2);border:1px solid var(--gold-dim)}
+.badge.c{background:var(--bg3);color:var(--text2);border:1px solid var(--bg4)}
+.escola{font-size:.74rem;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;margin-left:auto}
+.spell h3{color:var(--gold2);font-size:1.02rem;margin-top:.5rem;line-height:1.3}
+.spell .en{color:var(--text3);font-size:.72rem;font-style:italic}
+.meta{display:flex;flex-wrap:wrap;gap:.35rem .7rem;margin-top:.55rem;font-size:.78rem;color:var(--text2)}
+.meta span{white-space:nowrap}
+.spell .snippet{margin-top:.5rem;font-size:.82rem;color:var(--text3);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.empty{margin:3rem auto;text-align:center;color:var(--text3)}
+
+footer{padding:1.4rem;text-align:center;color:var(--text3);font-size:.85rem}
+a{color:var(--gold2)}
+a.back{display:inline-block;margin-bottom:1.2rem;color:var(--gold2);text-decoration:none;font-size:.9rem}
+a.back:hover{text-decoration:underline}
+
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem;cursor:pointer}
+.modal{background:var(--bg2);border:1px solid var(--bg4);border-radius:16px;max-width:640px;width:100%;max-height:88vh;overflow:auto;padding:1.4rem 1.5rem;cursor:default;position:relative}
+.modal .close{position:absolute;top:.9rem;right:1.1rem;background:none;border:none;color:var(--text3);font-size:1.3rem;cursor:pointer;line-height:1}
+.modal .close:hover{color:var(--text)}
+.modal h3{color:var(--gold2);font-size:clamp(1.2rem,4.5vw,1.5rem);padding-right:2rem}
+.modal .src{color:var(--gold-dim);font-style:italic;font-size:.82rem;margin-top:.1rem}
+tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0 0}
+tags .t{font-size:.72rem;padding:.12rem .55rem;border-radius:99px;border:1px solid var(--bg4);background:var(--bg3);color:var(--text2)}
+.fields{display:grid;grid-template-columns:auto 1fr;gap:.35rem .8rem;margin:1rem 0;font-size:.86rem}
+.fields .k{color:var(--text3);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;padding-top:.15rem}
+.fields .v{color:var(--text)}
+section.modal-sec{margin-top:.9rem}
+section.modal-sec h4{font-size:.74rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.desc{font-size:.89rem;color:var(--text2);line-height:1.65;white-space:normal}
+.desc p{margin-bottom:.6rem}
+.desc p:last-child{margin-bottom:0}
+.desc ul{margin:.3rem 0 .7rem;padding-left:1.2rem}
+.desc li{margin-bottom:.2rem}
+.desc table{width:100%;border-collapse:collapse;margin:.4rem 0 .8rem;font-size:.8rem}
+.desc td,.desc th{border:1px solid var(--bg4);padding:.35rem .6rem;text-align:left}
+.desc th{background:var(--bg3);color:var(--gold2);font-weight:600}
+.modal .btn{width:100%;margin-top:1.2rem}
+.btn{background:var(--gold);color:#0a0a0a;border:none;border-radius:10px;padding:.6rem;font-family:'Cinzel',serif;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--gold2)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+<h1>🔮 Magias</h1>
+<p>O grimório completo — <b id="total">339</b> magias traduzidas, círculos 0 a 9</p>
+</header>
+
+<div class="controls">
+  <div class="in">
+    <input id="q" class="search" type="search" placeholder="Buscar por nome, escola ou efeito…" autocomplete="off">
+    <div class="chips" id="circles"></div>
+    <select id="school" class="school"><option value="">Todas as escolas</option></select>
+  </div>
+</div>
+
+<main>
+  <a class="back" href="index.html">← Voltar ao início</a>
+  <div class="result-count" id="rc"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">Nenhuma magia encontrada para esses filtros.</div>
+</main>
+
+<div id="overlay" class="overlay" style="display:none" onclick="closeModal()"></div>
+
+<footer>Ecos da Luz © 2024 · Catálogo base SRD 5.2</footer>
+
+<script src="spells-data.js"></script>
+<script>
+const S=typeof SPELLS_DATA!=='undefined'?SPELLS_DATA:[];
+const state={q:'',circ:-2,esc:''};
+const ESCOLA_EMOJI={'Abjuração':'🛡️','Adivinhação':'👁️','Conjuração':'✨','Encantamento':'💫','Evocação':'🔥','Ilusão':'🎭','Necromancia':'💀','Transmutação':'⚗️'};
+const CIRCLES=[['-2','Todos'],['0','Truques'],['1','1º'],['2','2º'],['3','3º'],['4','4º'],['5','5º'],['6','6º'],['7','7º'],['8','8º'],['9','9º']];
+
+const grid=document.querySelector('#grid'),rc=document.querySelector('#rc'),empty=document.querySelector('#empty');
+const qEl=document.querySelector('#q'),school=document.querySelector('#school');
+
+// Círculos chips
+const chipsWrap=document.querySelector('#circles');
+CIRCLES.forEach(([v,label])=>{
+  const b=document.createElement('button');
+  b.className='chip'+(v===state.circ.toString()?' on':'');
+  b.textContent=label;
+  b.onclick=()=>{state.circ=+v;renderChips();render()};
+  chipsWrap.appendChild(b);
+});
+function renderChips(){[...chipsWrap.children].forEach((c,i)=>c.classList.toggle('on',CIRCLES[i][0]===state.circ.toString()))}
+
+// Escolas
+const escOrder=[...new Set(S.map(s=>s.escola))].sort();
+school.innerHTML='<option value="">Todas as escolas</option>'+escOrder.map(e=>`<option>${e}</option>`).join('');
+school.onchange=()=>{state.esc=school.value;render()};
+qEl.oninput=()=>{state.q=qEl.value.toLowerCase();render()};
+
+const md=s=>String(s||'').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*([^*\n]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>');
+function blocks(s){return String(s||'').split(/\n{2,}/).map(b=>b.trim().replace(/^<br>|^<br$/,'')).filter(Boolean)}
+function cell(c){const t=c.trim();return t==='*'?'':md(t)}
+function descHTML(s){
+  const out=[];
+  if(s.aprimoramento)out.push('<p><i>Em círculos superiores:</i> '+md(s.aprimoramento)+'</p>');
+  blocks(s.descricao).forEach(b=>{
+    if(/^\|/.test(b)){
+      const lines=b.split(/\n|<br>/).map(l=>l.replace(/^\|/,'').trim()).filter(l=>l&&!/^[-| ]+$/.test(l));
+      const rows=lines.map((l,i)=>'<tr>'+l.split('|').map(c=>'<'+(i===0?'th':'td')+'>'+cell(c)+'</'+(i===0?'th':'td')+'>').join('')+'</tr>');
+      out.push('<table>'+rows.join('')+'</table>');
+    }else if(/^[-*] /.test(b)){
+      out.push('<ul>'+b.split(/\n|<br>/).filter(l=>/^[-*] /.test(l)).map(l=>'<li>'+md(l.replace(/^[-*] /,''))+'</li>').join('')+'</ul>');
+    }else{
+      out.push('<p>'+md(b)+'</p>');
+    }
+  });
+  return out.join('');
+}
+
+function fieldsHTML(s){
+  const rows=[
+    ['Círculo', s.circulo===0?'Truque':s.circulo+'º'],
+    ['Escola', (ESCOLA_EMOJI[s.escola]?ESCOLA_EMOJI[s.escola]+' ':'')+s.escola],
+    ['Mana', s.mana+' Mana'],
+    ['Calor', s.calor],
+    ['Conjuração', s.tempo],
+    ['Alcance', s.alcance],
+    ['Componentes', s.componentes.toUpperCase()],
+    ['Duração', s.duracao],
+  ];
+  if(s.concentracao)rows.splice(5,0,['Concentração','Sim']);
+  if(s.ritual)rows.splice(5,0,['Ritual','Sim']);
+  return rows.map(([k,v])=>`<div class="k">${k}</div><div class="v">${v}</div>`).join('');
+}
+
+function render(){
+  const q=state.q;
+  const list=S.filter(s=>
+    (state.circ===-2||s.circulo===state.circ)&&
+    (!state.esc||s.escola===state.esc)&&
+    (!q|| (s.nome+' '+s.nome_en+' '+s.escola+' '+s.descricao).toLowerCase().includes(q))
+  ).sort((a,b)=>a.circulo-b.circulo||a.nome.localeCompare(b.nome,'pt'));
+  rc.innerHTML='<b>'+list.length+'</b> de '+S.length+' magias'+(state.esc?' · '+state.esc:'');
+  empty.style.display=list.length?'none':'block';
+  grid.innerHTML=list.map(s=>
+    `<div class="spell" onclick="showSpell('${s.id}')" role="button" tabindex="0"
+       onkeydown="if(event.key==='Enter')showSpell('${s.id}')">
+       <div class="top"><span class="badge ${s.circulo===0?'truque':'c'}">${s.circulo===0?'Truque':s.circulo+'º círculo'}</span>
+       <span class="escola">${ESCOLA_EMOJI[s.escola]||''} ${s.escola}</span></div>
+       <h3>${s.nome}</h3>
+       <div class="en">${s.nome_en||''}</div>
+       <div class="meta"><span>${s.mana} Mana</span><span>${s.calor} calor</span><span>${s.tempo}</span><span>${s.alcance}</span><span>${s.duracao}</span></div>
+       <div class="snippet">${(s.descricao||'').replace(/[|]/g,'').slice(0,150)}…</div>
+     </div>`).join('');
+}
+
+function showSpell(id){
+  const s=S.find(x=>x.id===id);if(!s)return;
+  const ov=document.querySelector('#overlay');
+  ov.style.display='flex';
+  ov.innerHTML=`<div class="modal" onclick="event.stopPropagation()">
+    <button class="close" onclick="closeModal()" aria-label="Fechar">✕</button>
+    <h3>${ESCOLA_EMOJI[s.escola]||''} ${s.nome}</h3>
+    <div class="src">${s.nome_en||''}</div>
+    <tags>${(s.circulo===0?'Truque':s.circulo+'º círculo')+', '+(s.mana+' Mana')+', '+s.calor+' de calor'}</tags>
+    <div class="fields">${fieldsHTML(s)}</div>
+    ${s.aprimoramento?'<section class="modal-sec"><h4>Em círculos superiores</h4><div class="desc"><p>'+md(s.aprimoramento).join(' ')+'</p></div></section>':''}
+    <section class="modal-sec"><h4>Descrição</h4><div class="desc">'+descHTML(s)+'</div></section>
+    <button class="btn" onclick="closeModal()">Fechar</button>
+  </div>`;
+}
+function closeModal(){const ov=document.querySelector('#overlay');ov.style.display='none';ov.innerHTML=''}
+
+render();
+</script>
+</body>
+</html>

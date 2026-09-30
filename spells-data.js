@@ -1,6 +1,6 @@
 // Dados de magias — Ecos da Luz (Os 9 Reinos)
 // Gerado a partir do catálogo de magias (base SRD 5.2). 339 magias, círculos 0-9.
-// Descrições mantidas no idioma original (inglês) da fonte; tradução PT é um próximo passo.
+// Descrições traduzidas para PT (P2 concluído).
 const SPELLS_DATA = [
 {
 "id": "c0_resistance",
@@ -17,7 +17,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a willing creature and choose a damage type: Acid, Bludgeoning, Cold, Fire, Lightning, Necrotic, Piercing, Poison, Radiant, Slashing, or Thunder. When the creature takes damage of the chosen type before the spell ends, the creature reduces the total damage taken by 1d4. A creature can benefit from this spell only once per turn."
+"descricao": "Você toca uma criatura voluntária e escolhe um tipo de dano: Ácido, Cortante, Frio, Fogo, Eletricidade, Impacto, Necrótico, Perfurante, Radiante, Trovão ou Veneno. Quando a criatura sofre dano do tipo escolhido antes da magia terminar, ela reduz o dano total sofrido em 1d4. Uma criatura só pode se beneficiar desta magia uma vez por turno."
 },
 {
 "id": "c0_mage_hand",
@@ -34,7 +34,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again. When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. \n\nAs a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.\n\nThe hand can't attack, activate magic items, or carry more than 10 pounds."
+"descricao": "Uma mão espectral flutuante aparece em um ponto à sua escolha dentro do alcance. A mão dura pela duração da magia e desaparece se ficar a mais de 30 pés de você ou se você lançar a magia novamente. Ao lançar a magia, você pode usar a mão para manipular um objeto, abrir uma porta ou recipiente destrancado, guardar ou retirar um item de um recipiente aberto, ou despejar o conteúdo de um frasco. \n\nComo uma Ação Mágica nos seus turnos seguintes, você pode controlar a mão novamente. Como parte dessa ação, você pode mover a mão em até 30 pés. \n\nA mão não pode atacar, ativar itens mágicos nem carregar mais de 10 libras."
 },
 {
 "id": "c0_produce_flame",
@@ -50,8 +50,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
-"descricao": "A flickering flame appears in your hand and remains there for the duration. While there, the flame emits no heat and ignites nothing, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The spell ends if you cast it again. \n\nUntil the spell ends, you can take a Magic action to hurl fire at a creature or an object within 60 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 Fire damage."
+"aprimoramento": "O dano aumenta em 1d8 quando você alcança os níveis 5 (2d8), 11 (3d8) e 17 (4d8).",
+"descricao": "Uma chama tremulante aparece na sua mão e permanece lá pela duração. Enquanto lá, a chama não emite calor e não incendeia nada, e emite Luz Intensa em um raio de 20 pés e Luz Diminuta por mais 20 pés. A magia termina se você lançá-la novamente. \n\nAté a magia terminar, você pode usar uma Ação Mágica para arremessar fogo em uma criatura ou objeto a até 60 pés de você. Faça um teste de ataque mágico à distância. Em um acerto, o alvo sofre 1d8 de dano de Fogo."
 },
 {
 "id": "c0_guidance",
@@ -68,7 +68,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill."
+"descricao": "Você toca uma criatura voluntária e escolhe uma perícia. Até a magia terminar, a criatura soma 1d4 a qualquer teste de atributo que use a perícia escolhida."
 },
 {
 "id": "c0_true_strike",
@@ -84,8 +84,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "Whether you deal Radiant damage or the weapon's normal damage type, the attack deals extra Radiant damage when you reach levels 5 (1d6), 11 (2d6), and 17 (3d6).",
-"descricao": "Guided by a flash of magical insight, you make one attack with the weapon used in the spell's casting. The attack uses your spellcasting ability for the attack and damage rolls instead of using Strength or Dexterity. If the attack deals damage, it can be Radiant damage or the weapon's normal damage type (your choice)."
+"aprimoramento": "Seja causando dano Radiante ou o tipo de dano normal da arma, o ataque causa dano Radiante extra quando você alcança os níveis 5 (1d6), 11 (2d6) e 17 (3d6).",
+"descricao": "Guiado por um lampejo de insight mágico, você faz um ataque com a arma usada na conjuração desta magia. O ataque usa seu atributo de conjuração nos testes de ataque e dano, em vez de Força ou Destreza. Se o ataque causar dano, ele pode ser dano Radiante ou o tipo de dano normal da arma (sua escolha)."
 },
 {
 "id": "c0_vicious_mockery",
@@ -101,8 +101,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 when you reach level 5 (2d6), level 11 (3d6), and level 17 (4d6).",
-"descricao": "You unleash a string of insults laced with subtle enchantments at one creature you can see or hear within range. The target must succeed on a Wisdom saving throw or take 1d6 Psychic damage and have Disadvantage on the next attack roll it makes before the end of its next turn."
+"aprimoramento": "O dano aumenta em 1d6 quando você alcança os níveis 5 (2d6), 11 (3d6) e 17 (4d6).",
+"descricao": "Você despeja uma sequência de insultos imbuídos de encantamentos sutis em uma criatura que você possa ver ou ouvir dentro do alcance. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou sofre 1d6 de dano Psíquico e tem Desvantagem na próxima jogada de ataque que fizer antes do fim do próximo turno dele."
 },
 {
 "id": "c0_acid_splash",
@@ -118,8 +118,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6).",
-"descricao": "You create an acidic bubble at a point within range, where it explodes in a 5-foot-radius Sphere. Each creature in that Sphere must succeed on a Dexterity saving throw or take 1d6 Acid damage."
+"aprimoramento": "O dano aumenta em 1d6 quando você alcança os níveis 5 (2d6), 11 (3d6) e 17 (4d6).",
+"descricao": "Você cria uma bolha ácida em um ponto dentro do alcance, onde ela explode em uma Esfera de raio de 5 pés. Cada criatura nessa Esfera deve ser bem-sucedida em um teste de resistência de Destreza ou sofre 1d6 de dano de Ácido."
 },
 {
 "id": "c0_eldritch_blast",
@@ -135,8 +135,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The spell creates two beams at level 5, three beams at level 11, and four beams at level 17. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.",
-"descricao": "You hurl a beam of crackling energy. Make a ranged spell attack against one creature or object in range. On a hit, the target takes 1d10 Force damage."
+"aprimoramento": "A magia cria dois raios no nível 5, três raios no nível 11 e quatro raios no nível 17. Você pode direcionar os raios ao mesmo alvo ou a alvos diferentes. Faça uma jogada de ataque separada para cada raio.",
+"descricao": "Você arremessa um raio de energia crepitante. Faça um teste de ataque mágico à distância contra uma criatura ou objeto dentro do alcance. Em um acerto, o alvo sofre 1d10 de dano de Força."
 },
 {
 "id": "c0_fire_bolt",
@@ -152,8 +152,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 when you reach levels 5 (2d10), 11 (3d10), and 17 (4d10).",
-"descricao": "You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried."
+"aprimoramento": "O dano aumenta em 1d10 quando você alcança os níveis 5 (2d10), 11 (3d10) e 17 (4d10).",
+"descricao": "Você arremessa uma partícula de fogo em uma criatura ou objeto dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 1d10 de dano de Fogo. Um objeto inflamável atingido por esta magia começa a queimar se não estiver sendo vestido ou carregado."
 },
 {
 "id": "c0_light",
@@ -170,7 +170,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like. \n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again."
+"descricao": "Você toca um objeto Grande ou menor que não esteja sendo vestido ou carregado por outra pessoa. Até a magia terminar, o objeto emite Luz Intensa em um raio de 20 pés e Luz Diminuta por mais 20 pés. A luz pode ter a cor que você quiser. \n\nCobrir o objeto com algo opaco bloqueia a luz. A magia termina se você lançá-la novamente."
 },
 {
 "id": "c0_ray_of_frost",
@@ -186,8 +186,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
-"descricao": "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 Cold damage, and its Speed is reduced by 10 feet until the start of your next turn."
+"aprimoramento": "O dano aumenta em 1d8 quando você alcança os níveis 5 (2d8), 11 (3d8) e 17 (4d8).",
+"descricao": "Um feixe gélido de luz azul-branca dispara em direção a uma criatura dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, ele sofre 1d8 de dano de Frio, e seu Deslocamento é reduzido em 10 pés até o início do seu próximo turno."
 },
 {
 "id": "c0_sacred_flame",
@@ -203,8 +203,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
-"descricao": "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover or Three-Quarters Cover for this save."
+"aprimoramento": "O dano aumenta em 1d8 quando você alcança os níveis 5 (2d8), 11 (3d8) e 17 (4d8).",
+"descricao": "Uma radiação semelhante a uma chama desce sobre uma criatura que você possa ver dentro do alcance. O alvo deve ser bem-sucedido em um teste de resistência de Destreza ou sofre 1d8 de dano Radiante. O alvo não recebe benefício de Cobertura Parcial ou de Três Quartos neste teste."
 },
 {
 "id": "c0_shocking_grasp",
@@ -220,8 +220,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
-"descricao": "Lightning springs from you to a creature that you try to touch. Make a melee spell attack against the target. On a hit, the target takes 1d8 Lightning damage, and it can't make Opportunity Attacks until the start of its next turn."
+"aprimoramento": "O dano aumenta em 1d8 quando você alcança os níveis 5 (2d8), 11 (3d8) e 17 (4d8).",
+"descricao": "Eletricidade salta de você até uma criatura que você tenta tocar. Faça um teste de ataque mágico corpo a corpo contra o alvo. Em um acerto, o alvo sofre 1d8 de dano de Eletricidade e não pode fazer Ataques de Oportunidade até o início do próximo turno dele."
 },
 {
 "id": "c0_sorcerous_burst",
@@ -237,8 +237,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "This damage increases by 1d8 when you reach level 5 (2d8), 11 (3d8), and 17 (4d8).",
-"descricao": "You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder. \n\nIf you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier."
+"aprimoramento": "O dano aumenta em 1d8 quando você alcança os níveis 5 (2d8), 11 (3d8) e 17 (4d8).",
+"descricao": "Você lança energia mágica em uma criatura ou objeto dentro do alcance. Faça um teste de ataque à distância contra o alvo. Em um acerto, o alvo sofre 1d8 de dano de um tipo à sua escolha: Ácido, Frio, Fogo, Eletricidade, Veneno, Psíquico ou Trovão. \n\nSe você rolar um 8 em um d8 nesta magia, pode rolar outro d8 e somá-lo ao dano. Quando você lança esta magia, o número máximo desses d8 que você pode somar ao dano é igual ao seu modificador de atributo de conjuração."
 },
 {
 "id": "c0_starry_wisp",
@@ -254,8 +254,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
-"descricao": "You launch a mote of light at one creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d8 Radiant damage, and until the end of your next turn, it emits Dim Light in a 10-foot radius and can't benefit from the Invisible condition."
+"aprimoramento": "O dano aumenta em 1d8 quando você alcança os níveis 5 (2d8), 11 (3d8) e 17 (4d8).",
+"descricao": "Você lança uma partícula de luz em uma criatura ou objeto dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 1d8 de dano Radiante e, até o fim do seu próximo turno, emite Luz Diminuta em um raio de 10 pés e não pode se beneficiar da condição Invisível."
 },
 {
 "id": "c0_dancing_lights",
@@ -272,7 +272,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create up to four torch-size lights within range, making them appear as torches, lanterns, or glowing orbs that hover for the duration. Alternatively, you combine the four lights into one glowing Medium form that is vaguely humanlike. Whichever form you choose, each light sheds Dim Light in a 10-foot radius. \n\nAs a Bonus Action, you can move the lights up to 60 feet to a space within range. A light must be within 20 feet of another light created by this spell, and a light vanishes if it exceeds the spell's range."
+"descricao": "Você cria até quatro luzes do tamanho de tochas dentro do alcance, fazendo-as aparecer como tochas, lanternas ou orbes brilhantes que pairam pela duração. Alternativamente, você combina as quatro luzes em uma Forma Média brilhante, vagamente humanoide. Seja qual for a forma escolhida, cada luz emite Luz Diminuta em um raio de 10 pés. \n\nComo uma Ação Bônus, você pode mover as luzes em até 60 pés para um espaço dentro do alcance. Uma luz deve estar a até 20 pés de outra luz criada por esta magia, e uma luz desaparece se ultrapassar o alcance da magia."
 },
 {
 "id": "c0_minor_illusion",
@@ -289,7 +289,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a sound or an image of an object within range that lasts for the duration. See the descriptions below for the effects of each. The illusion ends if you cast this spell again. If a creature takes a Study action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature. \n\n**Sound.** If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else's voice, a lion's roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends. \n\n**Image.** If you create an image of an object—such as a chair, muddy footprints, or a small chest—it must be no larger than a 5- foot Cube. The image can't create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, since things can pass through it."
+"descricao": "Você cria um som ou uma imagem de um objeto dentro do alcance que dura pela duração da magia. Consulte as descrições abaixo para os efeitos de cada um. A ilusão termina se você lançar esta magia novamente. Se uma criatura usar uma ação de Estudar para examinar o som ou a imagem, ela pode determinar que é uma ilusão com um teste de Inteligência (Investigação) bem-sucedido contra a CD de resistência da sua magia. Se uma criatura perceber que a ilusão é o que é, a ilusão fica esmaecida para ela. \n\n**Som.** Se você criar um som, seu volume pode variar de um sussurro a um grito. Pode ser a sua voz, a voz de outra pessoa, o rugido de um leão, o batucar de tambores ou qualquer outro som à sua escolha. O som continua sem parar pela duração, ou você pode produzir sons distintos em momentos diferentes antes de a magia terminar. \n\n**Imagem.** Se você criar a imagem de um objeto — como uma cadeira, pegadas enlameadas ou um baú pequeno — ela deve ter no máximo um Cubo de 5 pés. A imagem não pode criar som, luz, cheiro nem qualquer outro efeito sensorial. A interação física com a imagem revela que ela é uma ilusão, pois coisas podem atravessá-la."
 },
 {
 "id": "c0_chill_touch",
@@ -305,8 +305,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 when you reach levels 5 (2d10), 11 (3d10), and 17 (4d10).",
-"descricao": "Channeling the chill of the grave, make a melee spell attack against a target within reach. On a hit, the target takes 1d10 Necrotic damage, and it can't regain Hit Points until the end of your next turn."
+"aprimoramento": "O dano aumenta em 1d10 quando você alcança os níveis 5 (2d10), 11 (3d10) e 17 (4d10).",
+"descricao": "Canalizando o frio do túmulo, faça um teste de ataque mágico corpo a corpo contra um alvo ao seu alcance. Em um acerto, o alvo sofre 1d10 de dano Necrótico e não pode recuperar Pontos de Vida até o fim do seu próximo turno."
 },
 {
 "id": "c0_poison_spray",
@@ -322,8 +322,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d12 when you reach levels 5 (2d12), 11 (3d12), and 17 (4d12).",
-"descricao": "You spray toxic mist at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d12 Poison damage."
+"aprimoramento": "O dano aumenta em 1d12 quando você alcança os níveis 5 (2d12), 11 (3d12) e 17 (4d12).",
+"descricao": "Você pulveriza névoa tóxica em uma criatura dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 1d12 de dano de Veneno."
 },
 {
 "id": "c0_spare_the_dying",
@@ -339,8 +339,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The range doubles when you reach levels 5 (30 feet), 11 (60 feet), and 17 (120 feet).",
-"descricao": "Choose a creature within range that has 0 Hit Points and isn't dead. The creature becomes Stable."
+"aprimoramento": "O alcance dobra quando você alcança os níveis 5 (30 pés), 11 (60 pés) e 17 (120 pés).",
+"descricao": "Escolha uma criatura dentro do alcance que tenha 0 Pontos de Vida e não esteja morta. A criatura se torna Estável."
 },
 {
 "id": "c0_druidcraft",
@@ -357,7 +357,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "**Weather Sensor.** You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round. \n\n**Bloom.** You instantly make a flower blossom, a seed pod open, or a leaf bud bloom. \n\n**Sensory Effect.** You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube. \n\n**Fire Play.** You light or snuff out a candle, a torch, or a campfire."
+"descricao": "**Sensor de Clima.** Você cria um efeito sensorial Mínusculo e inofensivo que prevê como estará o clima no seu local nas próximas 24 horas. O efeito pode se manifestar como um orbe dourado para céu limpo, uma nuvem para chuva, flocos de neve caindo para neve e assim por diante. Esse efeito persiste por 1 rodada. \n\n**Florescer.** Você instantaneamente faz uma flor desabrochar, uma vagem de sementes se abrir ou um broto de folha florescer. \n\n**Efeito Sensorial.** Você cria um efeito sensorial inofensivo, como folhas caindo, fadas espectrais dançando, uma brisa suave, o som de um animal ou o odor fraco de gambá. O efeito deve caber em um Cubo de 5 pés. \n\n**Jogo com Fogo.** Você acende ou apaga uma vela, uma tocha ou uma fogueira."
 },
 {
 "id": "c0_elementalism",
@@ -374,7 +374,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You exert control over the elements, creating one of the following effects within range: \n\n**Beckon Air.** You create a breeze strong enough to ripple cloth, stir dust, rustle leaves, and close open doors and shutters, all in a 5-foot Cube. Doors and shutters being held open by someone or something aren't affected. \n\n**Beckon Earth.** You create a thin shroud of dust or sand that covers surfaces in a 5-foot-square area, or you cause a single word to appear in your handwriting in a patch of dirt or sand. \n\n**Beckon Fire.** You create a thin cloud of harmless embers and colored, scented smoke in a 5-foot Cube. You choose the color and scent, and the embers can light candles, torches, or lamps in that area. The smoke's scent lingers for 1 minute. \n\n**Beckon Water.** You create a spray of cool mist that lightly dampens creatures and objects in a 5-foot Cube. Alternatively, you create 1 cup of clean water either in an open container or on a surface, and the water evaporates in 1 minute. \n\n**Sculpt Element.** You cause dirt, sand, fire, smoke, mist, or water that can fit in a 1-foot Cube to assume a crude shape (such as that of a creature or an object) for 1 hour."
+"descricao": "Você exerce controle sobre os elementos, criando um dos seguintes efeitos dentro do alcance: \n\n**Atrair Ar.** Você cria uma brisa forte o bastante para ondular tecidos, agitar poeira, farfalhar folhas e fechar portas e janelas abertas, tudo em um Cubo de 5 pés. Portas e janelas mantidas abertas por alguém ou algo não são afetadas. \n\n**Atrair Terra.** Você cria um véu fino de poeira ou areia que cobre superfícies em uma área quadrada de 5 pés, ou faz uma única palavra aparecer na sua caligrafia em um montículo de terra ou areia. \n\n**Atrair Fogo.** Você cria uma nuvem fina de brasas inofensivas e fumaça colorida e perfumada em um Cubo de 5 pés. Você escolhe a cor e o aroma, e as brasas podem acender velas, tochas ou lampiões nessa área. O cheiro da fumaça perdura por 1 minuto. \n\n**Atrair Água.** Você cria um jato de névoa fresca que umedece levemente criaturas e objetos em um Cubo de 5 pés. Alternativamente, você cria 1 xícara de água limpa em um recipiente aberto ou sobre uma superfície, e a água evapora em 1 minuto. \n\n**Esculpir Elemento.** Você faz terra, areia, fogo, fumaça, névoa ou água que caiba em um Cubo de 1 pé assumir uma forma bruta (como a de uma criatura ou objeto) por 1 hora."
 },
 {
 "id": "c0_mending",
@@ -391,7 +391,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage. \n\nThis spell can physically repair a magic item, but it can't restore magic to such an object."
+"descricao": "Esta magia conserta uma única quebra ou rasgo em um objeto que você toca, como um elo de corrente quebrado, as duas metades de uma chave partida, uma capa rasgada ou um odre vazando. Desde que a quebra ou o rasgo não seja maior que 1 pé em qualquer dimensão, você o conserta, sem deixar vestígios do dano anterior. \n\nEsta magia pode consertar fisicamente um item mágico, mas não pode restaurar a magia de tal objeto."
 },
 {
 "id": "c0_message",
@@ -408,7 +408,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You point toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear. You can cast this spell through solid objects if you are familiar with the target and know it is beyond the barrier. Magical silence; 1 foot of stone, metal, or wood; or a thin sheet of lead blocks the spell."
+"descricao": "Você aponta para uma criatura dentro do alcance e sussurra uma mensagem. O alvo (e somente o alvo) ouve a mensagem e pode responder com um sussurro que só você consegue ouvir. Você pode lançar esta magia através de objetos sólidos se estiver familiarizado com o alvo e souber que ele está além da barreira. Silêncio mágico; 1 pé de pedra, metal ou madeira; ou uma folha fina de chumbo bloqueia a magia."
 },
 {
 "id": "c0_prestidigitation",
@@ -425,7 +425,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a magical effect within range. Choose the effect from the options below. If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time. \n\n**Sensory Effect**. You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor. \n\n**Fire Play**. You instantaneously light or snuff out a candle, a torch, or a small campfire. \n\n**Clean or Soil**. You instantaneously clean or soil an object no larger than 1 cubic foot. \n\n**Minor Sensation**. You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour. \n\n**Magic Mark**. You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour. \n\n**Minor Creation**. You create a nonmagical trinket or an illusory image that can fit in your hand. It lasts until the end of your next turn. A trinket can deal no damage and has no monetary worth."
+"descricao": "Você cria um efeito mágico dentro do alcance. Escolha o efeito entre as opções abaixo. Se você lançar esta magia várias vezes, pode ter até três de seus efeitos não instantâneos ativos por vez. \n\n**Efeito Sensorial.** Você cria um efeito sensorial instantâneo e inofensivo, como uma chuva de faíscas, uma lufada de vento, notas musicais fracas ou um odor estranho. \n\n**Jogo com Fogo.** Você instantaneamente acende ou apaga uma vela, uma tocha ou uma pequena fogueira. \n\n**Limpar ou Sujar.** Você instantaneamente limpa ou suja um objeto não maior que 1 pé cúbico. \n\n**Sensação Menor.** Você esfria, aquece ou tempera até 1 pé cúbico de material não vivo por 1 hora. \n\n**Marca Mágica.** Você faz uma cor, uma pequena marca ou um símbolo aparecer em um objeto ou superfície por 1 hora. \n\n**Criação Menor.** Você cria um badulaque não mágico ou uma imagem ilusória que caiba na sua mão. Ele dura até o fim do seu próximo turno. Um badulaque não pode causar dano e não tem valor monetário."
 },
 {
 "id": "c0_shillelagh",
@@ -441,8 +441,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The weapon's damage die changes when you reach levels 5 (d10), 11 (d12), and 17 (2d6).",
-"descricao": "A Club or Quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a d8. If the attack deals damage, it can be Force damage or the weapon's normal damage type (your choice).\n\nThe spell ends early if you cast it again or if you let go of the weapon."
+"aprimoramento": "O dado de dano da arma muda quando você alcança os níveis 5 (d10), 11 (d12) e 17 (2d6).",
+"descricao": "Uma Clava ou Cajado que você está segurando é imbuído do poder da natureza. Pela duração, você pode usar seu atributo de conjuração em vez de Força nos testes de ataque e dano de ataques corpo a corpo com essa arma, e o dado de dano da arma se torna um d8. Se o ataque causar dano, ele pode ser dano de Força ou o tipo de dano normal da arma (sua escolha). \n\nA magia termina antes se você a lançar novamente ou se soltar a arma."
 },
 {
 "id": "c0_thaumaturgy",
@@ -459,7 +459,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time. \n\n**Altered Eyes**. You alter the appearance of your eyes for 1 minute. \n\n**Booming Voice**. Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage on Charisma (Intimidation) checks. \n\n**Fire Play**. You cause flames to flicker, brighten, dim, or change color for 1 minute. \n\n**Invisible Hand**. You instantaneously cause an unlocked door or window to fly open or slam shut. \n\n**Phantom Sound**. You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers. \n\n**Tremors**. You cause harmless tremors in the ground for 1 minute."
+"descricao": "Você manifesta uma pequena maravilha dentro do alcance. Crie um dos efeitos abaixo dentro do alcance. Se você lançar esta magia várias vezes, pode ter até três de seus efeitos de 1 minuto ativos por vez. \n\n**Olhos Alterados.** Você altera a aparência dos seus olhos por 1 minuto. \n\n**Voz Retumbante.** Sua voz ecoa até três vezes mais alto que o normal por 1 minuto. Pela duração, você tem Vantagem em testes de Carisma (Intimidação). \n\n**Jogo com Fogo.** Você faz as chamas tremeluzirem, acenderem, diminuírem ou mudarem de cor por 1 minuto. \n\n**Mão Invisível.** Você instantaneamente faz uma porta ou janela destrancada se escancarar ou bater. \n\n**Som Fantasma.** Você cria um som instantâneo que se origina em um ponto à sua escolha dentro do alcance, como um estrondo de trovão, o grito de um corvo ou sussurros sinistros. \n\n**Tremores.** Você causa tremores inofensivos no chão por 1 minuto."
 },
 {
 "id": "c1_alarm",
@@ -476,7 +476,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You set an alarm against intrusion. Choose a door, a window, or an area within range that is no larger than a 20-foot Cube. Until the spell ends, an alarm alerts you whenever a creature touches or enters the warded area. When you cast the spell, you can designate creatures that won't set off the alarm. You also choose whether the alarm is audible or mental: \n\n Audible Alarm. The alarm produces the sound of a handbell for 10 seconds within 60 feet of the warded area. \n\n Mental Alarm. You are alerted by a mental ping if you are within 1 mile of the warded area. This ping awakens you if you're asleep."
+"descricao": "Você arma um alarme contra invasões. Escolha uma porta, uma janela ou uma área dentro do alcance que não seja maior que um Cubo de 20 pés. Até a magia terminar, um alarme o alerta sempre que uma criatura tocar ou entrar na área protegida. Ao lançar a magia, você pode designar criaturas que não dispararão o alarme. Você também escolhe se o alarme é audível ou mental: \n\n**Alarme Audível.** O alarme produz o som de um sino de mão por 10 segundos a até 60 pés da área protegida. \n\n**Alarme Mental.** Você é alertado por um sinal mental se estiver a até 1,6 km da área protegida. Esse sinal o acorda se você estiver dormindo."
 },
 {
 "id": "c1_cure_wounds",
@@ -492,8 +492,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The healing increases by 2d8 for each spell slot level above 1.",
-"descricao": "A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting ability modifier."
+"aprimoramento": "A cura aumenta em 2d8 para cada círculo de magia acima deste.",
+"descricao": "Uma criatura que você toca recupera um número de Pontos de Vida igual a 2d8 mais seu modificador de atributo de conjuração."
 },
 {
 "id": "c1_healing_word",
@@ -509,8 +509,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The healing increases by 2d4 for each spell slot level above 1.",
-"descricao": "A creature of your choice that you can see within range regains Hit Points equal to 2d4 plus your spellcasting ability modifier."
+"aprimoramento": "A cura aumenta em 2d4 para cada círculo de magia acima deste.",
+"descricao": "Uma criatura à sua escolha que você possa ver dentro do alcance recupera Pontos de Vida iguais a 2d4 mais seu modificador de atributo de conjuração."
 },
 {
 "id": "c1_mage_armor",
@@ -527,7 +527,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a willing creature who isn't wearing armor. Until the spell ends, the target's base AC becomes 13 plus its Dexterity modifier. The spell ends early if the target dons armor."
+"descricao": "Você toca uma criatura voluntária que não esteja vestindo armadura. Até a magia terminar, a CA base do alvo se torna 13 mais seu modificador de Destreza. A magia termina antes se o alvo vestir uma armadura."
 },
 {
 "id": "c1_protection_from_evil_and_good",
@@ -544,7 +544,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage on attack rolls against the target. The target also can't be possessed by or gain the Charmed or Frightened conditions from them. If the target is already possessed, Charmed, or Frightened by such a creature, the target has Advantage on any new saving throw against the relevant effect."
+"descricao": "Até a magia terminar, uma criatura voluntária que você toca fica protegida contra criaturas que sejam Aberrações, Celestiais, Corruptores, Elementais, Fadas ou Mortos-Vivos. A proteção concede vários benefícios. Criaturas desses tipos têm Desvantagem em jogadas de ataque contra o alvo. O alvo também não pode ser possuído nem adquirir as condições Enfeitiçado ou Apavorado por causa delas. Se o alvo já estiver possuído, Enfeitiçado ou Apavorado por uma dessas criaturas, ele tem Vantagem em qualquer novo teste de resistência contra o efeito relevante."
 },
 {
 "id": "c1_sanctuary",
@@ -561,7 +561,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect. \n\nThe spell ends if the warded creature makes an attack roll, casts a spell, or deals damage."
+"descricao": "Você protege uma criatura dentro do alcance. Até a magia terminar, qualquer criatura que mire o protegido com uma jogada de ataque ou uma magia causadora de dano deve ser bem-sucedida em um teste de resistência de Sabedoria ou escolher um novo alvo, ou perder o ataque ou a magia. Esta magia não protege o alvo de áreas de efeito. \n\nA magia termina se o alvo fizer uma jogada de ataque, lançar uma magia ou causar dano."
 },
 {
 "id": "c1_shield",
@@ -578,7 +578,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile."
+"descricao": "Uma barreira imperceptível de força mágica o protege. Até o início do seu próximo turno, você tem um bônus de +5 na CA, inclusive contra o ataque que disparou a magia, e não sofre dano de Míssil Mágico."
 },
 {
 "id": "c1_shield_of_faith",
@@ -595,7 +595,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration."
+"descricao": "Um campo cintilante envolve uma criatura à sua escolha dentro do alcance, concedendo-lhe um bônus de +2 na CA pela duração."
 },
 {
 "id": "c1_ensnaring_strike",
@@ -611,8 +611,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 1.",
-"descricao": "As you hit the target, grasping vines appear on it, and it makes a Strength saving throw. A Large or larger creature has Advantage on this save. On a failed save, the target has the Restrained condition until the spell ends. On a successful save, the vines shrivel away, and the spell ends.\n\nWhile Restrained, the target takes 1d6 Piercing damage at the start of each of its turns. The target or a creature within reach of it can take an action to make a Strength (Athletics) check against your spell save DC. On a success, the spell ends."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Quando você acerta o alvo, cipós sufocantes aparecem sobre ele, e ele faz um teste de resistência de Força. Uma criatura Grande ou maior tem Vantagem nesse teste. Em uma falha, o alvo tem a condição Imobilizado até a magia terminar. Em um sucesso, os cipós murcham e a magia termina.\n\nEnquanto Imobilizado, o alvo sofre 1d6 de dano Perfurante no início de cada um de seus turnos. O alvo ou uma criatura ao alcance dele pode gastar uma ação para fazer um teste de Força (Atletismo) contra a CD de resistência da sua magia. Em um sucesso, a magia termina."
 },
 {
 "id": "c1_entangle",
@@ -629,7 +629,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Grasping plants sprout from the ground in a 20-foot square within range. For the duration, these plants turn the ground in the area into Difficult Terrain. They disappear when the spell ends. Each creature (other than you) in the area when you cast the spell must succeed on a Strength saving throw or have the Restrained condition until the spell ends. A Restrained creature can take an action to make a Strength (Athletics) check against your spell save DC. On a success, it frees itself from the grasping plants and is no longer Restrained by them."
+"descricao": "Plantas sufocantes brotam do chão em um quadrado de 20 pés dentro do alcance. Pela duração, essas plantas transformam o chão da área em Terreno Difícil. Elas desaparecem quando a magia termina. Cada criatura (exceto você) na área quando você lança a magia deve ser bem-sucedida em um teste de resistência de Força ou ter a condição Imobilizado até a magia terminar. Uma criatura Imobilizada pode gastar uma ação para fazer um teste de Força (Atletismo) contra a CD de resistência da sua magia. Em um sucesso, ela se liberta das plantas e não fica mais Imobilizada por elas."
 },
 {
 "id": "c1_find_familiar",
@@ -646,7 +646,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You gain the service of a familiar, a spirit that takes an animal form you choose: **Bat, Cat, Frog, Hawk, Lizard, Octopus, Owl, Rat, Raven, Spider, Weasel,** or another Beast that has a Challenge Rating of 0. Appearing in an unoccupied space within range, the familiar has the statistics of the chosen form, though it is a Celestial, Fey, or Fiend (your choice) instead of a Beast. Your familiar acts independently of you, but it obeys your commands. Telepathic Connection. While your familiar is within 100 feet of you, you can communicate with it telepathically. Additionally, as a Bonus Action, you can see through the familiar's eyes and hear what it hears until the start of your next turn, gaining the benefits of any special senses it has. \n\nFinally, when you cast a spell with a range of touch, your familiar can deliver the touch. Your familiar must be within 100 feet of you, and it must take a Reaction to deliver the touch when you cast the spell. \n\n**Combat.** The familiar is an ally to you and your allies. It rolls its own Initiative and acts on its own turn. A familiar can't attack, but it can take other actions as normal. Disappearance of the Familiar. When the familiar drops to 0 Hit Points, it disappears. It reappears after you cast this spell again. As a Magic action, you can temporarily dismiss the familiar to a pocket dimension. Alternatively, you can dismiss it forever. As a Magic action while it is temporarily dismissed, you can cause it to reappear in an unoccupied space within 30 feet of you. Whenever the familiar drops to 0 Hit Points or disappears into the pocket dimension, it leaves behind in its space anything it was wearing or carrying. \n\n**One Familiar Only.** You can't have more than one familiar at a time. If you cast this spell while you have a familiar, you instead cause it to adopt a new eligible form."
+"descricao": "Você ganha o serviço de um familiar, um espírito que assume uma forma animal à sua escolha: **Morcego, Gato, Sapo, Falcão, Lagarto, Polvo, Coruja, Rato, Corvo, Aranha, Doninha** ou outra fera com um Índice de Desafio 0. Aparecendo em um espaço desocupado dentro do alcance, o familiar tem as estatísticas da forma escolhida, embora seja um Celestial, uma Fada ou um Corruptor (sua escolha) em vez de uma Fera. Seu familiar age de forma independente, mas obedece aos seus comandos. \n\n**Conexão Telepática.** Enquanto seu familiar estiver a até 30 metros de você, você pode se comunicar com ele telepaticamente. Além disso, como uma Ação Bônus, você pode ver através dos olhos do familiar e ouvir o que ele ouve até o início do seu próximo turno, ganhando os benefícios de quaisquer sentidos especiais que ele possua. \n\nPor fim, quando você lança uma magia com alcance de toque, seu familiar pode entregar o toque. Seu familiar deve estar a até 30 metros de você, e ele deve gastar uma Reação para entregar o toque quando você lança a magia. \n\n**Combate.** O familiar é um aliado seu e de seus aliados. Ele rola sua própria Iniciativa e age no próprio turno. Um familiar não pode atacar, mas pode realizar outras ações normalmente. \n\n**Desaparecimento do Familiar.** Quando o familiar cai a 0 Pontos de Vida, ele desaparece. Ele reaparece depois que você lança esta magia novamente. Como uma Ação Mágica, você pode dispensar temporariamente o familiar para uma dimensão de bolso. Alternativamente, você pode dispensá-lo para sempre. Como uma Ação Mágica enquanto ele está temporariamente dispensado, você pode fazê-lo reaparecer em um espaço desocupado a até 9 metros de você. Sempre que o familiar cair a 0 Pontos de Vida ou desaparecer na dimensão de bolso, ele deixa para trás tudo o que estiver vestindo ou carregando. \n\n**Apenas um familiar.** Você não pode ter mais de um familiar por vez. Se você lançar esta magia enquanto tem um familiar, ele adota uma nova forma elegível."
 },
 {
 "id": "c1_floating_disk",
@@ -663,7 +663,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "This spell creates a circular, horizontal plane of force, 3 feet in diameter and 1 inch thick, that floats 3 feet above the ground in an unoccupied space of your choice that you can see within range. The disk remains for the duration and can hold up to 500 pounds. If more weight is placed on it, the spell ends, and everything on the disk falls to the ground. \n\nThe disk is immobile while you are within 20 feet of it. If you move more than 20 feet away from it, the disk follows you so that it remains within 20 feet of you. It can move across uneven terrain, up or down stairs, slopes and the like, but it can't cross an elevation change of 10 feet or more. For example, the disk can't move across a 1O-foot-deep pit, nor could it leave such a pit if it was created at the bottom. \n\nIf you move more than 100 feet from the disk (typically because it can't move around an obstacle to follow you), the spell ends."
+"descricao": "Esta magia cria um plano de força circular e horizontal, com 3 pés de diâmetro e 2,5 cm de espessura, que flutua a 3 pés acima do chão em um espaço desocupado à sua escolha que você possa ver dentro do alcance. O disco permanece pela duração e pode suportar até 500 libras. Se mais peso for colocado sobre ele, a magia termina e tudo no disco cai no chão. \n\nO disco fica imóvel enquanto você estiver a até 20 pés dele. Se você se afastar mais de 20 pés, o disco o segue para permanecer a até 20 pés de você. Ele pode se mover por terreno irregular, subir ou descer escadas, rampas e afins, mas não pode cruzar uma mudança de elevação de 10 pés ou mais. Por exemplo, o disco não pode atravessar uma cova de 10 pés de profundidade, nem sair dela se tiver sido criado no fundo. \n\nSe você se afastar mais de 100 pés do disco (normalmente porque ele não consegue contornar um obstáculo para segui-lo), a magia termina."
 },
 {
 "id": "c1_fog_cloud",
@@ -679,8 +679,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The fog's radius increases by 20 feet for each spell slot level above 1.",
-"descricao": "You create a 20-foot-radius Sphere of fog centered on a point within range. The Sphere is Heavily Obscured. It lasts for the duration or until a strong wind (such as one created by Gust of Wind) disperses it."
+"aprimoramento": "O raio da névoa aumenta em 20 pés para cada círculo de magia acima deste.",
+"descricao": "Você cria uma Esfera de névoa com raio de 20 pés centrada em um ponto dentro do alcance. A Esfera está Fortemente Obscurecida. Ela dura pela duração ou até um vento forte (como o criado por Rajada de Vento) dispersá-la."
 },
 {
 "id": "c1_goodberry",
@@ -697,7 +697,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Ten berries appear in your hand and are infused with magic for the duration. A creature can take a Bonus Action to eat one berry. Eating a berry restores 1 Hit Point, and the berry provides enough nourishment to sustain a creature for one day. \n\nUneaten berries disappear when the spell ends."
+"descricao": "Dez frutas aparecem na sua mão e ficam imbuídas de magia pela duração. Uma criatura pode gastar uma Ação Bônus para comer uma fruta. Comer uma fruta restaura 1 Ponto de Vida, e a fruta fornece nutrição suficiente para sustentar uma criatura por um dia. \n\nFrutas não consumidas desaparecem quando a magia termina."
 },
 {
 "id": "c1_grease",
@@ -714,7 +714,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Nonflammable grease covers the ground in a 10-foot square centered on a point within range and turns it into Difficult Terrain for the duration. \n\nWhen the grease appears, each creature standing in its area must succeed on a Dexterity saving throw or have the Prone condition. A creature that enters the area or ends its turn there must also succeed on that save or fall Prone."
+"descricao": "Graxa não inflamável cobre o chão em um quadrado de 10 pés centrado em um ponto dentro do alcance e o transforma em Terreno Difícil pela duração. \n\nQuando a graxa aparece, cada criatura em pé na área deve ser bem-sucedida em um teste de resistência de Destreza ou ter a condição Caída. Uma criatura que entra na área ou termina o turno nela também deve ser bem-sucedida nesse teste ou cair Caída."
 },
 {
 "id": "c1_ice_knife",
@@ -730,8 +730,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The Cold damage increases by 1d6 for each spell slot level above 1.",
-"descricao": "You create a shard of ice and fling it at one creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Piercing damage. Hit or miss, the shard then explodes. The target and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 2d6 Cold damage."
+"aprimoramento": "O dano de Frio aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Você cria um estilhaço de gelo e o arremessa em uma criatura dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 1d10 de dano Perfurante. Acertando ou errando, o estilhaço então explode. O alvo e cada criatura a até 5 pés dele devem ser bem-sucedidos em um teste de resistência de Destreza ou sofrer 2d6 de dano de Frio."
 },
 {
 "id": "c1_unseen_servant",
@@ -748,7 +748,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "This spell creates an Invisible, mindless, shapeless, Medium force that performs simple tasks at your command until the spell ends. The servant springs into existence in an unoccupied space on the ground within range. It has AC 10, 1 Hit Point, and a Strength of 2, and it can't attack. If it drops to 0 Hit Points, the spell ends. \n\nOnce on each of your turns as a Bonus Action, you can mentally command the servant to move up to 15 feet and interact with an object. The servant can perform simple tasks that a human could do, such as fetching things, cleaning, mending, folding clothes, lighting fires, serving food, and pouring drinks. Once you give the command, the servant performs the task to the best of its ability until it completes the task, then waits for your next command. \n\nIf you command the servant to perform a task that would move it more than 60 feet away from you, the spell ends."
+"descricao": "Esta magia cria uma força Invisível, sem mente, sem forma e Média, que realiza tarefas simples sob seu comando até a magia terminar. O servente surge em um espaço desocupado no chão dentro do alcance. Ele tem CA 10, 1 Ponto de Vida e Força 2, e não pode atacar. Se ele cair a 0 Pontos de Vida, a magia termina. \n\nUma vez em cada um de seus turnos, como uma Ação Bônus, você pode ordenar mentalmente ao servente que se mova em até 15 pés e interaja com um objeto. O servente pode realizar tarefas simples que um humano faria, como buscar coisas, limpar, costurar, dobrar roupas, acender fogueiras, servir comida e servir bebidas. Uma vez dado o comando, o servente realiza a tarefa o melhor que pode até completá-la, então espera o próximo comando. \n\nSe você ordenar ao servente uma tarefa que o mova a mais de 60 pés de você, a magia termina."
 },
 {
 "id": "c1_comprehend_languages",
@@ -765,7 +765,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "For the duration, you understand the literal meaning of any language that you hear or see signed. You also understand any written language that you see, but you must be touching the surface on which the words are written. It takes about 1 minute to read one page of text. This spell doesn't decode symbols or secret messages."
+"descricao": "Pela duração, você entende o significado literal de qualquer idioma que ouvir ou vir em sinais. Você também entende qualquer idioma escrito que vir, mas deve estar tocando a superfície em que as palavras estão escritas. Leva cerca de 1 minuto para ler uma página de texto. Esta magia não decifra símbolos ou mensagens secretas."
 },
 {
 "id": "c1_detect_evil_and_good",
@@ -782,7 +782,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, you sense the location of any Aberration, Celestial, Elemental, Fey, Fiend, or Undead within 30 feet of yourself. You also sense whether the Hallow spell is active there and, if so, where. \n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead."
+"descricao": "Pela duração, você sente a localização de qualquer Aberração, Celestial, Elemental, Fada, Corruptor ou Morto-Vivo a até 30 pés de você. Você também sente se a magia Consagrar está ativa ali e, se estiver, onde. \n\nA magia é bloqueada por 1 pé de pedra, terra ou madeira; 2,5 cm de metal; ou uma folha fina de chumbo."
 },
 {
 "id": "c1_detect_magic",
@@ -799,7 +799,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "For the duration, you sense the presence of magical effects within 30 feet of yourself. If you sense such effects, you can take the Magic action to see a faint aura around any visible creature or object in the area that bears the magic, and if an effect was created by a spell, you learn the spell's school of magic.\n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead."
+"descricao": "Pela duração, você sente a presença de efeitos mágicos a até 30 pés de você. Se sentir tais efeitos, pode usar a Ação Mágica para ver uma aura fraca ao redor de qualquer criatura ou objeto visível na área que carregue magia, e, se um efeito foi criado por uma magia, você descobre a escola de magia da magia. \n\nA magia é bloqueada por 1 pé de pedra, terra ou madeira; 2,5 cm de metal; ou uma folha fina de chumbo."
 },
 {
 "id": "c1_detect_poison_and_disease",
@@ -816,7 +816,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "For the duration, you sense the location of poisons, poisonous or venomous creatures, and magical contagions within 30 feet of yourself. You sense the kind of poison, creature, or contagion in each case. \n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead."
+"descricao": "Pela duração, você sente a localização de venenos, criaturas venenosas e contágios mágicos a até 30 pés de você. Você sente o tipo de veneno, criatura ou contágio em cada caso. \n\nA magia é bloqueada por 1 pé de pedra, terra ou madeira; 2,5 cm de metal; ou uma folha fina de chumbo."
 },
 {
 "id": "c1_hunter_s_mark",
@@ -832,8 +832,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Your Concentration can last longer with a spell slot of level 3-4 (up to 8 hours) or 5+ (up to 24 hours).",
-"descricao": "You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it. \n\nIf the target drops to 0 Hit Points before this spell ends, you can use a Bonus Action to mark a new creature you can see within range."
+"aprimoramento": "Sua Concentração pode durar mais com um círculo de 3–4 (até 8 horas) ou 5+ (até 24 horas).",
+"descricao": "Você marca magicamente uma criatura que possa ver dentro do alcance como sua presa. Até a magia terminar, você causa 1d6 de dano de Força extra ao alvo sempre que o acertar com uma jogada de ataque. Você também tem Vantagem em qualquer teste de Sabedoria (Percepção ou Sobrevivência) que fizer para encontrá-lo. \n\nSe o alvo cair a 0 Pontos de Vida antes de esta magia terminar, você pode usar uma Ação Bônus para marcar uma nova criatura que possa ver dentro do alcance."
 },
 {
 "id": "c1_identify",
@@ -850,7 +850,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You touch an object throughout the spell's casting. If the object is a magic item or some other magical object, you learn its properties and how to use them, whether it requires Attunement, and how many charges it has, if any. You learn whether any ongoing spells are affecting the item and what they are. If the item was created by a spell, you learn that spell's name. \n\nIf you instead touch a creature throughout the casting, you learn which ongoing spells, if any, are currently affecting it."
+"descricao": "Você toca um objeto durante toda a conjuração da magia. Se o objeto for um item mágico ou outro objeto mágico, você descobre suas propriedades e como usá-las, se ele requer Sintonia e quantas cargas tem, se houver. Você descobre se há magias duradouras afetando o item e quais são. Se o item foi criado por uma magia, você descobre o nome dessa magia. \n\nSe, em vez disso, você tocar uma criatura durante toda a conjuração, descobre quais magias duradouras, se houver, estão atualmente a afetando."
 },
 {
 "id": "c1_speak_with_animals",
@@ -867,7 +867,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "For the duration, you can comprehend and verbally communicate with Beasts, and you can use any of the Influence action's skill options with them. \n\nMost Beasts have little to say about topics that don't pertain to survival or companionship, but at minimum, a Beast can give you information about nearby locations and monsters, including whatever it has perceived within the past day."
+"descricao": "Pela duração, você pode compreender e se comunicar verbalmente com Feras, e pode usar com elas qualquer opção de perícia da ação de Influenciar. \n\nA maioria das Feras tem pouco a dizer sobre temas que não envolvam sobrevivência ou companheirismo, mas, no mínimo, uma Fera pode dar informações sobre locais e monstros próximos, incluindo o que ela percebeu no último dia."
 },
 {
 "id": "c1_animal_friendship",
@@ -883,8 +883,8 @@ const SPELLS_DATA = [
 "duracao": "24 horas",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional Beast for each spell slot level above 1.",
-"descricao": "Target a Beast that you can see within range. The target must succeed on a Wisdom saving throw or have the Charmed condition for the duration. If you or one of your allies deals damage to the target, the spells ends."
+"aprimoramento": "Você pode mirar em uma Fera adicional para cada círculo de magia acima deste.",
+"descricao": "Mire em uma Fera que você possa ver dentro do alcance. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração. Se você ou um de seus aliados causar dano ao alvo, a magia termina."
 },
 {
 "id": "c1_bane",
@@ -900,8 +900,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 1.",
-"descricao": "Up to three creatures of your choice that you can see within range must each make a Charisma saving throw. Whenever a target that fails this save makes an attack roll or a saving throw before the spell ends, the target must subtract 1d4 from the attack roll or save."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Até três criaturas à sua escolha que você possa ver dentro do alcance devem fazer cada uma um teste de resistência de Carisma. Sempre que um alvo que falhou nesse teste fizer uma jogada de ataque ou um teste de resistência antes de a magia terminar, ele deve subtrair 1d4 da jogada de ataque ou do teste."
 },
 {
 "id": "c1_bless",
@@ -917,8 +917,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 1.",
-"descricao": "You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Você abençoa até três criaturas dentro do alcance. Sempre que um alvo fizer uma jogada de ataque ou um teste de resistência antes de a magia terminar, ele soma 1d4 à jogada de ataque ou ao teste."
 },
 {
 "id": "c1_charm_person",
@@ -934,8 +934,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 1.",
-"descricao": "One Humanoid you can see within range makes a Wisdom saving throw. It does so with Advantage if you or your allies are fighting it. On a failed save, the target has the Charmed condition until the spell ends or until you or your allies damage it. The Charmed creature is Friendly to you. When the spell ends, the target knows it was Charmed by you."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Um Humanoide que você possa ver dentro do alcance faz um teste de resistência de Sabedoria. Ele o faz com Vantagem se você ou seus aliados estiverem lutando contra ele. Em uma falha, o alvo tem a condição Enfeitiçado até a magia terminar ou até você ou seus aliados causarem dano a ele. A criatura Enfeitiçada está Amigável com você. Quando a magia termina, o alvo sabe que foi Enfeitiçado por você."
 },
 {
 "id": "c1_command",
@@ -951,8 +951,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can affect one additional creature for each spell slot level above 1.",
-"descricao": "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options: \n\n**Approach.** The target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you. \n\n**Drop.** The target drops whatever it is holding and then ends its turn. \n\n**Flee.** The target spends its turn moving away from you by the fastest available means. \n\nGrovel. The target has the Prone condition and then ends its turn. \n\n**Halt.** On its turn, the target doesn't move and takes no action or Bonus Action."
+"aprimoramento": "Você pode afetar uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Você profere um comando de uma palavra a uma criatura que possa ver dentro do alcance. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou seguir o comando no próximo turno dele. Escolha o comando entre estas opções: \n\n**Aproximar-se.** O alvo se move em sua direção pela rota mais curta e direta, terminando o turno se chegar a 5 pés de você. \n\n**Largar.** O alvo larga o que estiver segurando e então termina o turno. \n\n**Fugir.** O alvo gasta o turno se afastando de você pelos meios mais rápidos disponíveis. \n\n**Prostrar-se.** O alvo fica com a condição Caída e então termina o turno. \n\n**Parar.** No turno dele, o alvo não se move e não toma ação nem Ação Bônus."
 },
 {
 "id": "c1_dissonant_whispers",
@@ -968,8 +968,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 1.",
-"descricao": "One creature of your choice that you can see within range hears a discordant melody in its mind. The target makes a Wisdom saving throw. On a failed save, it takes 3d6 Psychic damage and must immediately use its Reaction, if available, to move as far away from you as it can, using the safest route. On a successful save, the target takes half as much damage only."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Uma criatura à sua escolha que você possa ver dentro do alcance ouve uma melodia dissonante em sua mente. O alvo faz um teste de resistência de Sabedoria. Em uma falha, ele sofre 3d6 de dano Psíquico e deve usar imediatamente sua Reação, se disponível, para se afastar de você o máximo que puder, pela rota mais segura. Em um sucesso, o alvo sofre apenas metade do dano."
 },
 {
 "id": "c1_heroism",
@@ -985,8 +985,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 1.",
-"descricao": "A willing creature you touch is imbued with bravery. Until the spell ends, the creature is immune to the Frightened condition and gains Temporary Hit Points equal to your spellcasting ability modifier at the start of each of its turns."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Uma criatura voluntária que você toca é imbuída de coragem. Até a magia terminar, a criatura é imune à condição Apavorado e ganha Pontos de Vida temporários iguais ao seu modificador de atributo de conjuração no início de cada um de seus turnos."
 },
 {
 "id": "c1_hex",
@@ -1002,8 +1002,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Your Concentration can last longer with a spell slot of level 2 (up to 4 hours), 3-4 (up to 8 hours), or 5+ (up to 24 hours).",
-"descricao": "You place a curse on a creature that you can see within range. Until the spell ends, you deal an extra 1d6 Necrotic damage to the target whenever you hit it with an attack roll. Also, choose one ability when you cast the spell. The target has Disadvantage on ability checks made with the chosen ability. \n\nIf the target drops to 0 Hit Points before this spell ends, you can use a Bonus Action on a later turn to curse a new creature."
+"aprimoramento": "Sua Concentração pode durar mais com um espaço de magia de 2º círculo (até 4 horas), 3–4 (até 8 horas) ou 5+ (até 24 horas).",
+"descricao": "Você lança uma maldição sobre uma criatura que possa ver dentro do alcance. Até a magia terminar, você causa 1d6 de dano Necrótico extra ao alvo sempre que o acertar com uma jogada de ataque. Além disso, escolha um atributo ao lançar a magia. O alvo tem Desvantagem em testes de atributo feitos com o atributo escolhido. \n\nSe o alvo cair a 0 Pontos de Vida antes de esta magia terminar, você pode usar uma Ação Bônus em um turno posterior para amaldiçoar uma nova criatura."
 },
 {
 "id": "c1_hideous_laughter",
@@ -1019,8 +1019,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level about 1.",
-"descricao": "One creature of your choice that you can see within range makes a Wisdom saving throw. On a failed save, it has the Prone and Incapacitated conditions for the duration. During that time, it laughs uncontrollably if it's capable of laughter, and it can't end the Prone condition on it self. \n\nAt the end of each of its turns and each time it takes damage, it makes another Wisdom saving throw. The target has Advantage on the save if the save is triggered by damage. On a successful save, the spell ends."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Uma criatura à sua escolha que você possa ver dentro do alcance faz um teste de resistência de Sabedoria. Em uma falha, ela tem as condições Caída e Incapacitado pela duração. Durante esse tempo, ela ri incontrolavelmente, se for capaz de rir, e não pode encerrar a própria condição Caída. \n\nNo fim de cada um de seus turnos e sempre que sofrer dano, ela faz outro teste de resistência de Sabedoria. O alvo tem Vantagem no teste se ele for disparado por dano. Em um sucesso, a magia termina."
 },
 {
 "id": "c1_sleep",
@@ -1037,7 +1037,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Each creature of your choice in a 5-foot-radius Sphere centered on a point within range must succeed on a Wisdom saving throw or have the Incapacitated condition until the end of its next turn, at which point it must repeat the save. If the target fails the second save, the target has the Unconscious condition for the duration. The spell ends on a target if it takes damage or someone within 5 feet of it takes an action to shake it out of the spell's effect.\n\nCreatures that don't sleep, such as elves, or that have Immunity to the Exhaustion condition automatically succeed on saves against this spell."
+"descricao": "Cada criatura à sua escolha em uma Esfera com raio de 5 pés centrada em um ponto dentro do alcance deve ser bem-sucedida em um teste de resistência de Sabedoria ou ter a condição Incapacitado até o fim do próximo turno dela, ponto no qual deve repetir o teste. Se o alvo falhar no segundo teste, ele tem a condição Inconsciente pela duração. A magia termina em um alvo se ele sofrer dano ou se alguém a até 5 pés dele gastar uma ação para sacudi-lo para fora do efeito. \n\nCriaturas que não dormem, como elfos, ou que têm Imunidade à condição Exaustão fazem sucesso automaticamente nos testes contra esta magia."
 },
 {
 "id": "c1_burning_hands",
@@ -1053,8 +1053,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 1.",
-"descricao": "A thin sheet of flames shoots forth from you. Each creature in a 15- foot Cone makes a Dexterity saving throw, taking 3d6 Fire damage on a failed save or half as much damage on a successful one. Flammable objects in the Cone that aren't being worn or carried start burning."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Uma fina camada de chamas dispara de você. Cada criatura em um Cone de 15 pés faz um teste de resistência de Destreza, sofrendo 3d6 de dano de Fogo em uma falha ou metade do dano em um sucesso. Objetos inflamáveis no Cone que não estejam sendo vestidos ou carregados começam a queimar."
 },
 {
 "id": "c1_chromatic_orb",
@@ -1070,8 +1070,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 1. The orb can leap a maximum number of times equal to the level of the slot expended, and a creature can be targeted only once by each casting of this spell.",
-"descricao": "You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 3d8 damage of the chosen type. If you roll the same number on two or more of the d8s, the orb leaps to a different target of your choice within 30 feet of the target. Make an attack roll against the new target, and make a new damage roll. The orb can't leap again unless you cast the spell with a level 2+ spell slot."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste. O orbe pode saltar um número máximo de vezes igual ao círculo do espaço gasto, e uma criatura só pode ser alvo uma vez por conjuração desta magia.",
+"descricao": "Você arremessa um orbe de energia em um alvo dentro do alcance. Escolha Ácido, Frio, Fogo, Eletricidade, Veneno ou Trovão para o tipo de orbe que cria e, então, faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 3d8 de dano do tipo escolhido. Se você rolar o mesmo número em dois ou mais dos d8, o orbe salta para um alvo diferente à sua escolha a até 30 pés do alvo. Faça uma jogada de ataque contra o novo alvo e uma nova jogada de dano. O orbe só pode saltar novamente se você lançar a magia com um espaço de 2º círculo ou superior."
 },
 {
 "id": "c1_divine_smite",
@@ -1087,8 +1087,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 1.",
-"descricao": "The target takes an extra 2d8 Radiant damage from the attack. The damage increases by 1d8 if the target is a Fiend or an Undead."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "O alvo sofre 2d8 de dano Radiante extra do ataque. O dano aumenta em 1d8 se o alvo for um Corruptor ou um Morto-Vivo."
 },
 {
 "id": "c1_faerie_fire",
@@ -1105,7 +1105,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Objects in a 20-foot Cube within range are outlined in blue, green, or violet light (your choice). Each creature in the Cube is also outlined if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed Dim Light in a 10-foot radius and can't benefit from the Invisible condition. \n\nAttack rolls against an affected creature or object have Advantage if the attacker can see it."
+"descricao": "Objetos em um Cubo de 20 pés dentro do alcance são contornados por luz azul, verde ou violeta (sua escolha). Cada criatura no Cubo também é contornada se falhar em um teste de resistência de Destreza. Pela duração, objetos e criaturas afetadas emitem Luz Diminuta em um raio de 10 pés e não podem se beneficiar da condição Invisível. \n\nJogadas de ataque contra uma criatura ou objeto afetado têm Vantagem se o atacante puder vê-lo."
 },
 {
 "id": "c1_guiding_bolt",
@@ -1121,8 +1121,8 @@ const SPELLS_DATA = [
 "duracao": "1 rodada",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 1.",
-"descricao": "You hurl a bolt of light toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 4d6 Radiant damage, and the next attack roll made against it before the end of your next turn has Advantage."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Você arremessa um raio de luz em direção a uma criatura dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, ele sofre 4d6 de dano Radiante, e a próxima jogada de ataque feita contra ele antes do fim do seu próximo turno tem Vantagem."
 },
 {
 "id": "c1_hellish_rebuke",
@@ -1138,8 +1138,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 1.",
-"descricao": "The creature that damaged you is momentarily surrounded by green flames. It makes a Dexterity saving throw, taking 2d10 Fire damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano aumenta em 1d10 para cada círculo de magia acima deste.",
+"descricao": "A criatura que causou dano a você é momentaneamente envolta por chamas verdes. Ela faz um teste de resistência de Destreza, sofrendo 2d10 de dano de Fogo em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c1_magic_missile",
@@ -1155,8 +1155,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The spell creates one more dart for each spell slot level above 1.",
-"descricao": "You create three glowing darts of magical force. Each dart strikes a creature of your choice that you can see within range. A dart deals 1d4 + 1 Force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several."
+"aprimoramento": "A magia cria um dardo a mais para cada círculo de magia acima deste.",
+"descricao": "Você cria três dardos brilhantes de força mágica. Cada dardo atinge uma criatura à sua escolha que você possa ver dentro do alcance. Um dardo causa 1d4 + 1 de dano de Força em seu alvo. Os dardos atingem todos simultaneamente, e você pode direcioná-los para uma criatura ou várias."
 },
 {
 "id": "c1_searing_smite",
@@ -1172,8 +1172,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "All the damage increases by 1d6 for each spell slot level above 1.",
-"descricao": "As you hit the target, it takes an extra 1d6 Fire damage from the attack. At the start of each of its turns until the spell ends, the target takes 1d6 Fire damage and then makes a Constitution saving throw. On a failed save, the spell continues. On a successful save, the spell ends."
+"aprimoramento": "Todo o dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Quando você acerta o alvo, ele sofre 1d6 de dano de Fogo extra do ataque. No início de cada um de seus turnos até a magia terminar, o alvo sofre 1d6 de dano de Fogo e então faz um teste de resistência de Constituição. Em uma falha, a magia continua. Em um sucesso, a magia termina."
 },
 {
 "id": "c1_thunderwave",
@@ -1189,8 +1189,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 1.",
-"descricao": "You unleash a wave of thunderous energy. Each creature in a 15- foot Cube originating from you makes a Constitution saving throw. On a failed save, a creature takes 2d8 Thunder damage and is pushed 10 feet away from you. On a successful save, a creature takes half as much damage only. \n\nIn addition, unsecured objects that are entirely within the Cube are pushed 10 feet away from you, and a thunderous boom is audible within 300 feet."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "Você libera uma onda de energia trovejante. Cada criatura em um Cubo de 15 pés com origem em você faz um teste de resistência de Constituição. Em uma falha, uma criatura sofre 2d8 de dano de Trovão e é empurrada 10 pés para longe de você. Em um sucesso, uma criatura sofre apenas metade do dano. \n\nAlém disso, objetos não presos que estejam inteiramente dentro do Cubo são empurrados 10 pés para longe de você, e um estrondo trovejante é audível a até 90 metros."
 },
 {
 "id": "c1_color_spray",
@@ -1207,7 +1207,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You launch a dazzling array of flashing, colorful light. Each creature in a 15-foot Cone originating from you must succeed on a Constitution saving throw or have the Blinded condition until the end of your next turn."
+"descricao": "Você lança um deslumbrante leque de luz colorida e cintilante. Cada criatura em um Cone de 15 pés com origem em você deve ser bem-sucedida em um teste de resistência de Constituição ou ter a condição Cego até o fim do seu próximo turno."
 },
 {
 "id": "c1_disguise_self",
@@ -1224,7 +1224,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You make yourself—including your clothing, armor, weapons, and other belongings on your person—look different until the spell ends. You can seem 1 foot shorter or taller and can appear heavier or lighter. You must adopt a form that has the same basic arrangement of limbs as you have. Otherwise, the extent of the illusion is up to you. \n\nThe changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing. \n\nTo discern that you are disguised, a creature must take the Study action to inspect your appearance and succeed on an Intelligence (Investigation) check against your spell save DC."
+"descricao": "Você faz a si mesmo — incluindo roupas, armadura, armas e outros pertences em seu corpo — parecer diferente até a magia terminar. Você pode parecer até 30 cm mais baixo ou mais alto e pode parecer mais largo ou mais leve. Você deve adotar uma forma que tenha o mesmo arranjo básico de membros que você. Fora isso, a extensão da ilusão fica a seu critério. \n\nAs mudanças promovidas por esta magia não resistem à inspeção física. Por exemplo, se você usar esta magia para adicionar um chapéu à sua roupa, objetos atravessam o chapéu, e quem o tocar não sentiria nada. \n\nPara perceber que você está disfarçado, uma criatura deve realizar a ação de Estudar para inspecionar sua aparência e ser bem-sucedida em um teste de Inteligência (Investigação) contra a CD de resistência da sua magia."
 },
 {
 "id": "c1_illusory_script",
@@ -1241,7 +1241,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You write on parchment, paper, or another suitable material and imbue it with an illusion that lasts for the duration. To you and any creatures you designate when you cast the spell, the writing appears normal, seems to be written in your hand, and conveys whatever meaning you intended when you wrote the text. To all others, the writing appears as if it were written in an unknown or magical script that is unintelligible. Alternatively, the illusion can alter the meaning, handwriting, and language of the text, though the language must be one you know. If the spell is dispelled, the original script and the illusion both disappear. \n\nA creature that has Truesight can read the hidden message."
+"descricao": "Você escreve em pergaminho, papel ou outro material adequado e o imbui de uma ilusão que dura pela duração da magia. Para você e quaisquer criaturas que você designar ao lançar a magia, a escrita parece normal, parece ter sido feita na sua caligrafia e transmite o significado que você pretendia ao escrever o texto. Para todos os outros, a escrita parece ter sido feita em uma escrita desconhecida ou mágica, ininteligível. Alternativamente, a ilusão pode alterar o significado, a caligrafia e o idioma do texto, embora o idioma deva ser um que você conheça. Se a magia for dissipada, a escrita original e a ilusão desaparecem. \n\nUma criatura com Visão Real consegue ler a mensagem oculta."
 },
 {
 "id": "c1_silent_image",
@@ -1258,7 +1258,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 15-foot Cube. The image appears at a spot within range and lasts for the duration. The image is purely visual; it isn't accompanied by sound, smell, or other sensory effects. \n\nAs a Magic action, you can cause the image to move to any spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking. \n\nPhysical interaction with the image reveals it to be an illusion, since things can pass through it. A creature that takes a Study action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image."
+"descricao": "Você cria a imagem de um objeto, uma criatura ou algum outro fenômeno visível que não seja maior que um Cubo de 15 pés. A imagem aparece em um ponto dentro do alcance e dura pela duração da magia. A imagem é puramente visual; não é acompanhada de som, cheiro ou outros efeitos sensoriais. \n\nComo uma Ação Mágica, você pode fazer a imagem se mover para qualquer ponto dentro do alcance. Conforme a imagem muda de local, você pode alterar sua aparência para que os movimentos pareçam naturais para a imagem. Por exemplo, se você criar a imagem de uma criatura e movê-la, pode alterar a imagem para que ela pareça estar andando. \n\nA interação física com a imagem revela que ela é uma ilusão, pois coisas podem atravessá-la. Uma criatura que use uma ação de Estudar para examinar a imagem pode determinar que é uma ilusão com um teste de Inteligência (Investigação) bem-sucedido contra a CD de resistência da sua magia. Se uma criatura perceber que a ilusão é o que é, ela consegue ver através da imagem."
 },
 {
 "id": "c1_false_life",
@@ -1274,8 +1274,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You gain 5 additional Temporary Hit Points for each spell slot level above 1.",
-"descricao": "You gain 2d4 + 4 Temporary Hit Points."
+"aprimoramento": "Você ganha 5 Pontos de Vida temporários adicionais para cada círculo de magia acima deste.",
+"descricao": "Você ganha 2d4 + 4 Pontos de Vida temporários."
 },
 {
 "id": "c1_inflict_wounds",
@@ -1291,8 +1291,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 1.",
-"descricao": "A creature you touch makes a Constitution saving throw, taking 2d10 Necrotic damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano aumenta em 1d10 para cada círculo de magia acima deste.",
+"descricao": "Uma criatura que você toca faz um teste de resistência de Constituição, sofrendo 2d10 de dano Necrótico em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c1_ray_of_sickness",
@@ -1308,8 +1308,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 1.",
-"descricao": "You shoot a greenish ray at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d8 Poison damage and has the Poisoned condition until the end of your next turn."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "Você dispara um raio esverdeado em uma criatura dentro do alcance. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 2d8 de dano de Veneno e tem a condição Envenenado até o fim do seu próximo turno."
 },
 {
 "id": "c1_create_or_destroy_water",
@@ -1325,8 +1325,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You create or destroy 10 additional gallons of water, or the size of the Cube increases by 5 feet, for each spell slot level above 1.",
-"descricao": "You do one of the following: Create Water. You create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot Cube within range, extinguishing exposed flames there. Destroy Water. You destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot Cube within range."
+"aprimoramento": "Você cria ou destrói 38 litros adicionais de água, ou o tamanho do Cubo aumenta em 5 pés, para cada círculo de magia acima deste.",
+"descricao": "Você faz uma das seguintes coisas: \n\n**Criar Água.** Você cria até 38 litros de água limpa dentro do alcance em um recipiente aberto. Alternativamente, a água cai como chuva em um Cubo de 30 pés dentro do alcance, extinguindo chamas expostas ali. \n\n**Destruir Água.** Você destrói até 38 litros de água em um recipiente aberto dentro do alcance. Alternativamente, você destrói névoa em um Cubo de 30 pés dentro do alcance."
 },
 {
 "id": "c1_divine_favor",
@@ -1343,7 +1343,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, your attacks with weapons deal an extra 1d4 Radiant damage on a hit."
+"descricao": "Até a magia terminar, seus ataques com armas causam 1d4 de dano Radiante extra em um acerto."
 },
 {
 "id": "c1_expeditious_retreat",
@@ -1360,7 +1360,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You take the Dash action, and until the spell ends, you can take that action again as a Bonus Action."
+"descricao": "Você executa a ação de Correr e, até a magia terminar, pode executá-la novamente como uma Ação Bônus."
 },
 {
 "id": "c1_feather_fall",
@@ -1377,7 +1377,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose up to five falling creatures within range. A falling creature's rate of descent slows to 60 feet per round until the spell ends. If a creature lands before the spell ends, the creature takes no damage from the fall, and the spell ends for that creature."
+"descricao": "Escolha até cinco criaturas em queda dentro do alcance. A velocidade de descida de uma criatura em queda diminui para 60 pés por rodada até a magia terminar. Se uma criatura aterrissar antes de a magia terminar, ela não sofre dano da queda, e a magia termina para essa criatura."
 },
 {
 "id": "c1_jump",
@@ -1393,8 +1393,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 1.",
-"descricao": "You touch a willing creature. Once on each of its turns until the spell ends, that creature can jump up to 30 feet by spending 10 feet of movement."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Você toca uma criatura voluntária. Uma vez em cada um de seus turnos até a magia terminar, essa criatura pode saltar até 9 metros gastando 10 pés de movimento."
 },
 {
 "id": "c1_longstrider",
@@ -1410,8 +1410,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 1.",
-"descricao": "You touch a creature. The target's Speed increases by 10 feet until the spell ends."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Você toca uma criatura. O Deslocamento do alvo aumenta em 10 pés até a magia terminar."
 },
 {
 "id": "c1_purify_food_and_drink",
@@ -1428,7 +1428,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You remove poison and rot from nonmagical food and drink in a 5- foot-radius Sphere centered on a point within range."
+"descricao": "Você remove veneno e podridão de comida e bebida não mágicas em uma Esfera com raio de 5 pés centrada em um ponto dentro do alcance."
 },
 {
 "id": "c2_aid",
@@ -1444,8 +1444,8 @@ const SPELLS_DATA = [
 "duracao": "8 horas",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "Each target's Hit Points increase by 5 for each spell slot level above 2.",
-"descricao": "Choose up to three creatures within range. Each target's Hit Point maximum and current Hit Points increase by 5 for the duration."
+"aprimoramento": "Os Pontos de Vida de cada alvo aumentam em 5 para cada círculo de magia acima deste.",
+"descricao": "Escolha até três criaturas dentro do alcance. O máximo de Pontos de Vida e os Pontos de Vida atuais de cada alvo aumentam em 5 pela duração."
 },
 {
 "id": "c2_arcane_lock",
@@ -1462,7 +1462,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a closed door, window, gate, container, or hatch and magically lock it for the duration. This lock can't be unlocked by any nonmagical means. You and any creatures you designate when you cast the spell can open and close the object despite the lock. You can also set a password that, when spoken within 5 feet of the object, unlocks it for 1 minute."
+"descricao": "Você toca uma porta, janela, portão, recipiente ou alçapão fechado e o tranca magicamente pela duração. Essa tranca não pode ser aberta por nenhum meio não mágico. Você e quaisquer criaturas que designar ao lançar a magia podem abrir e fechar o objeto apesar da tranca. Você também pode definir uma senha que, pronunciada a até 5 pés do objeto, o destranca por 1 minuto."
 },
 {
 "id": "c2_lesser_restoration",
@@ -1479,7 +1479,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature and end one condition on it: Blinded, Deafened, Paralyzed, or Poisoned."
+"descricao": "Você toca uma criatura e encerra uma condição nela: Cego, Surdo, Paralisado ou Envenenado."
 },
 {
 "id": "c2_pass_without_trace",
@@ -1496,7 +1496,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You radiate a concealing aura in a 30-foot Emanation for the duration. While in the aura, you and each creature you choose have a +10 bonus to Dexterity (Stealth) checks and leave no tracks."
+"descricao": "Você irradia uma aura de encobrimento em uma Emanação de 30 pés pela duração. Enquanto estiver na aura, você e cada criatura à sua escolha têm um bônus de +10 em testes de Destreza (Furtividade) e não deixam rastros."
 },
 {
 "id": "c2_prayer_of_healing",
@@ -1512,8 +1512,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The healing increases by 1d8 for each spell slot level above 2.",
-"descricao": "Up to five creatures of your choice who remain within range for the spell's entire casting gain the benefits of a Short Rest and also regain 2d8 Hit Points. A creature can't be affected by this spell again until that creature finishes a Long Rest."
+"aprimoramento": "A cura aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "Até cinco criaturas à sua escolha que permaneçam dentro do alcance durante toda a conjuração da magia ganham os benefícios de um Descanso Curto e recuperam 2d8 Pontos de Vida. Uma criatura não pode ser afetada novamente por esta magia até terminar um Descanso Longo."
 },
 {
 "id": "c2_protection_from_poison",
@@ -1530,7 +1530,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature and end the Poisoned condition on it. For the duration, the target has Advantage on saving throws to avoid or end the Poisoned condition, and it has Resistance to Poison damage."
+"descricao": "Você toca uma criatura e encerra a condição Envenenado nela. Pela duração, o alvo tem Vantagem em testes de resistência para evitar ou encerrar a condição Envenenado e tem Resistência a dano de Veneno."
 },
 {
 "id": "c2_warding_bond",
@@ -1547,7 +1547,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch another creature that is willing and create a mystic connection between you and the target until the spell ends. While the target is within 60 feet of you, it gains a +1 bonus to AC and saving throws, and it has Resistance to all damage. Also, each time it takes damage, you take the same amount of damage. \n\nThe spell ends if you drop to 0 Hit Points or if you and the target become separated by more than 60 feet. It also ends if the spell is cast again on either of the connected creatures."
+"descricao": "Você toca outra criatura voluntária e cria uma conexão mística entre você e o alvo até a magia terminar. Enquanto o alvo estiver a até 60 pés de você, ele ganha um bônus de +1 na CA e em testes de resistência e tem Resistência a todo dano. Além disso, sempre que ele sofrer dano, você sofre a mesma quantidade de dano. \n\nA magia termina se você cair a 0 Pontos de Vida ou se você e o alvo forem separados por mais de 60 pés. Ela também termina se for lançada novamente em qualquer uma das criaturas conectadas."
 },
 {
 "id": "c2_find_steed",
@@ -1563,8 +1563,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "Use the spell slot's level for the spell's level in the stat block.",
-"descricao": "You summon an otherworldly being that appears as a loyal steed in an unoccupied space of your choice within range. This creature uses the **Otherworldly Steed** stat block. If you already have a steed from this spell, the steed is replaced by the new one. The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. Whenever you cast the spell, choose the steed's creature type-Celestial, Fey, or Fiend which determines certain traits in the stat block. \n\n**Combat.** The steed is an ally to you and your allies. In combat, it shares your Initiative count, and it functions as a controlled mount while you ride it (as defined in the rules on mounted combat). If you have the Incapacitated condition, the steed takes its turn immediately after yours and acts independently, focusing on protecting you. \n\n**Disappearance of the Steed.** The steed disappears if it drops to 0 Hit Points or if you die. When it disappears, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the steed that disappeared or a different one."
+"aprimoramento": "Use o círculo do espaço de magia para o nível da magia no bloco de estatísticas.",
+"descricao": "Você invoca um ser de outro mundo que aparece como uma montaria leal em um espaço desocupado à sua escolha dentro do alcance. Essa criatura usa o bloco de estatísticas **Montaria de Outro Mundo**. Se você já tiver uma montaria desta magia, a montaria é substituída pela nova. A montaria se assemelha a um animal Grande e montável à sua escolha, como um cavalo, um camelo, um lobo terrível ou um alce. Sempre que você lançar a magia, escolha o tipo de criatura da montaria — Celestial, Fada ou Corruptor — que determina certos traços no bloco de estatísticas. \n\n**Combate.** A montaria é uma aliada sua e de seus aliados. Em combate, ela compartilha sua contagem de Iniciativa e funciona como uma montaria controlada enquanto você a monta. Se você tiver a condição Incapacitado, a montaria age imediatamente após você e age de forma independente, focando em protegê-lo. \n\n**Desaparecimento da Montaria.** A montaria desaparece se cair a 0 Pontos de Vida ou se você morrer. Quando desaparece, deixa para trás tudo o que estiver vestindo ou carregando. Se você lançar esta magia novamente, decide se invoca a montaria que desapareceu ou uma diferente."
 },
 {
 "id": "c2_flaming_sphere",
@@ -1580,8 +1580,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 2.",
-"descricao": "You create a 5-foot-diameter sphere of fire in an unoccupied space on the ground within range. It lasts for the duration. Any creature that ends its turn within 5 feet of the sphere makes a Dexterity saving throw, taking 2d6 Fire damage on a failed save or half as much damage on a successful one. \n\nAs a Bonus Action, you can move the sphere up to 30 feet, rolling it along the ground. If you move the sphere into a creature's space, that creature makes the save against the sphere, and the sphere stops moving for the turn. \n\nWhen you move the sphere, you can direct it over barriers up to 5 feet tall and jump it across pits up to 10 feet wide. Flammable objects that aren't being worn or carried start burning if touched by the sphere, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Você cria uma esfera de fogo de 5 pés de diâmetro em um espaço desocupado no chão dentro do alcance. Ela dura pela duração da magia. Qualquer criatura que termine o turno a até 5 pés da esfera faz um teste de resistência de Destreza, sofrendo 2d6 de dano de Fogo em uma falha ou metade do dano em um sucesso. \n\nComo uma Ação Bônus, você pode mover a esfera em até 30 pés, fazendo-a rolar pelo chão. Se você mover a esfera para o espaço de uma criatura, essa criatura faz o teste de resistência contra a esfera, e a esfera para de se mover no turno. \n\nAo mover a esfera, você pode direcioná-la sobre barreiras de até 5 pés de altura e fazê-la saltar sobre covas de até 10 pés de largura. Objetos inflamáveis que não estejam sendo vestidos ou carregados começam a queimar se forem tocados pela esfera, e ela emite Luz Intensa em um raio de 20 pés e Luz Diminuta por mais 20 pés."
 },
 {
 "id": "c2_misty_step",
@@ -1598,7 +1598,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space you can see."
+"descricao": "Brevemente envolto por névoa prateada, você se teleporta até 30 pés para um espaço desocupado que possa ver."
 },
 {
 "id": "c2_web",
@@ -1615,7 +1615,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You conjure a mass of sticky webbing at a point within range. The webs fill a 20-foot Cube there for the duration. The webs are Difficult Terrain, and the area within them is Lightly Obscured. If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the web collapses on itself, and the spell ends at the start of your next turn. Webs layered over a flat surface have a depth of 5 feet. \n\nThe first time a creature enters the webs on a turn or starts its turn there, it must succeed on a Dexterity saving throw or have the Restrained condition while in the webs or until it breaks free. A creature Restrained by the webs can take an action to make a Strength (Athletics) check against your spell save DC. If it succeeds, it is no longer Restrained. \n\nThe webs are flammable. Any 5-foot Cube of webs exposed to fire burns away in 1 round, dealing 2d4 Fire damage to any creature that starts its turn in the fire."
+"descricao": "Você conjura uma massa de teias pegajosas em um ponto dentro do alcance. As teias preenchem um Cubo de 20 pés ali pela duração. As teias são Terreno Difícil, e a área dentro delas está Levemente Obscurecida. Se as teias não forem ancoradas entre duas massas sólidas (como paredes ou árvores) ou estendidas sobre um chão, parede ou teto, elas colapsam sobre si mesmas e a magia termina no início do seu próximo turno. Teias estendidas sobre uma superfície plana têm 5 pés de profundidade. \n\nNa primeira vez que uma criatura entra nas teias em um turno ou começa o turno nelas, ela deve ser bem-sucedida em um teste de resistência de Destreza ou ter a condição Imobilizado enquanto estiver nas teias ou até se libertar. Uma criatura Imobilizada pelas teias pode gastar uma ação para fazer um teste de Força (Atletismo) contra a CD de resistência da sua magia. Se for bem-sucedida, não fica mais Imobilizada. \n\nAs teias são inflamáveis. Qualquer Cubo de 5 pés de teias exposto a fogo queima em 1 rodada, causando 2d4 de dano de Fogo a qualquer criatura que comece o turno no fogo."
 },
 {
 "id": "c2_augury",
@@ -1632,7 +1632,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You receive an omen from an otherworldly entity about the results of a course of action that you plan to take within the next 30 minutes. The DM chooses the omen from the Omens table. \n\n| **Omen**     | **For Results That Will Be...** |\n| ------------ | ------------------------------- |\n|              |                                 |\n| Weal         | Good                            |\n| Woe          | Bad                             |\n| Weal and woe | Good and bad                    |\n| Indifference | Neither good nor bad            |\n\nThe spell doesn't account for circumstances, such as other spells, that might change the results. If you cast the spell more than once before finishing a Long Rest, there is a cumulative 25 percent chance for each casting after the first that you get no answer."
+"descricao": "Você recebe um presságio de uma entidade de outro mundo sobre os resultados de um curso de ação que planeja tomar nas próximas 30 minutos. O mestre escolhe o presságio na tabela Presságios. \n\n| **Presságio**        | **Para resultados que serão...** |\n| -------------------- | -------------------------------- |\n| Bem                 | Bons                             |\n| Mal                 | Maus                             |\n| Bem e mal           | Bons e maus                      |\n| Indiferença         | Nem bons nem maus                |\n\nA magia não leva em conta circunstâncias, como outras magias, que possam mudar os resultados. Se você lançar a magia mais de uma vez antes de terminar um Descanso Longo, há uma chance cumulativa de 25% para cada conjuração após a primeira de não receber resposta."
 },
 {
 "id": "c2_detect_thoughts",
@@ -1649,7 +1649,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You activate one of the effects below. Until the spell ends, you can activate either effect as a Magic action on your later turns. \n\n**Sense Thoughts.** You sense the presence of thoughts within 30 feet of yourself that belong to creatures that know languages or are telepathic. You don't read the thoughts, but you know that a thinking creature is present. \n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead. \n\n**Read Thoughts.** Target one creature you can see within 30 feet of yourself or one creature within 30 feet of yourself that you detected with the Sense Thoughts option. You learn what is most on the target's mind right now. If the target doesn't know any languages and isn't telepathic, you learn nothing. \n\nAs a Magic action on your next turn, you can try to probe deeper into the target's mind. If you probe deeper, the target makes a Wisdom saving throw. On a failed save, you discern the target's reasoning, emotions, and something that looms large in its mind (such as a worry, love, or hate). On a successful save, the spell ends. Either way, the target knows that you are probing into its mind, and until you shift your attention away from the target's mind, the target can take an action on its turn to make an Intelligence (Arcana) check against your spell save DC, ending the spell on a success."
+"descricao": "Você ativa um dos efeitos abaixo. Até a magia terminar, você pode ativar qualquer um dos efeitos como uma Ação Mágica nos seus turnos seguintes. \n\n**Sentir Pensamentos.** Você sente a presença de pensamentos a até 30 pés de você que pertençam a criaturas que conheçam idiomas ou sejam telepáticas. Você não lê os pensamentos, mas sabe que uma criatura pensante está presente. \n\nA magia é bloqueada por 1 pé de pedra, terra ou madeira; 2,5 cm de metal; ou uma folha fina de chumbo. \n\n**Ler Pensamentos.** Mire em uma criatura que você possa ver a até 30 pés de você ou em uma criatura a até 30 pés de você que você tenha detectado com a opção Sentir Pensamentos. Você descobre o que está passando mais pela mente do alvo no momento. Se o alvo não souber nenhum idioma e não for telepata, você não descobre nada. \n\nComo uma Ação Mágica no seu próximo turno, você pode tentar sondar mais fundo a mente do alvo. Se sondar mais fundo, o alvo faz um teste de resistência de Sabedoria. Em uma falha, você discerne o raciocínio, as emoções e algo de grande importância na mente do alvo (como uma preocupação, um amor ou um ódio). Em um sucesso, a magia termina. De qualquer forma, o alvo sabe que você está sondando sua mente e, até você desviar a atenção da mente dele, o alvo pode gastar uma ação no turno dele para fazer um teste de Inteligência (Arcanismo) contra a CD de resistência da sua magia, encerrando a magia em um sucesso."
 },
 {
 "id": "c2_find_traps",
@@ -1666,7 +1666,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You sense any trap within range that is within line of sight. A trap, for the purpose of this spell, includes any object or mechanism that was created to cause damage or other danger. Thus, the spell would sense the Alarm or Glyph of Warding spell or a mechanical pit trap, but it wouldn't reveal a natural weakness in the floor, an unstable ceiling, or a hidden sinkhole. \n\nThis spell reveals that a trap is present but not its location. You do learn the general nature of the danger posed by a trap you sense."
+"descricao": "Você sente qualquer armadilha dentro do alcance que esteja na sua linha de visão. Para os fins desta magia, uma armadilha inclui qualquer objeto ou mecanismo criado para causar dano ou outro perigo. Assim, a magia detectaria a Alarme ou o Glifo de Proteção, ou uma cova mecânica, mas não revelaria uma fraqueza natural no chão, um teto instável ou uma dolina oculta. \n\nEsta magia revela que uma armadilha está presente, mas não sua localização. Você descobre a natureza geral do perigo representado por uma armadilha que sentir."
 },
 {
 "id": "c2_locate_animals_or_plants",
@@ -1683,7 +1683,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "Describe or name a specific kind of Beast, Plant creature, or nonmagical plant. You learn the direction and distance to the closest creature or plant of that kind within 5 miles, if any are present."
+"descricao": "Descreva ou nomeie um tipo específico de Fera, de criatura Vegetal ou de planta não mágica. Você descobre a direção e a distância até a criatura ou planta mais próxima desse tipo a 8 km, se alguma estiver presente."
 },
 {
 "id": "c2_locate_object",
@@ -1700,7 +1700,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Describe or name an object that is familiar to you. You sense the direction to the object's location if that object is within 1,000 feet of you. If the object is in motion, you know the direction of its movement. \n\nThe spell can locate a specific object known to you if you have seen it up close—within 30 feet—at least once. Alternatively, the spell can locate the nearest object of a particular kind, such as a certain kind of apparel, jewelry, furniture, tool, or weapon. \n\nThis spell can't locate an object if any thickness of lead blocks a direct path between you and the object."
+"descricao": "Descreva ou nomeie um objeto familiar para você. Você sente a direção da localização do objeto se ele estiver a até 300 metros de você. Se o objeto estiver em movimento, você sabe a direção do movimento. \n\nA magia pode localizar um objeto específico conhecido por você se você o tiver visto de perto — a até 30 pés — pelo menos uma vez. Alternativamente, a magia pode localizar o objeto mais próximo de um tipo específico, como um certo tipo de vestimenta, joia, mobília, ferramenta ou arma. \n\nEsta magia não pode localizar um objeto se qualquer espessura de chumbo bloquear um caminho direto entre você e o objeto."
 },
 {
 "id": "c2_mind_spike",
@@ -1716,8 +1716,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 2.",
-"descricao": "You drive a spike of psionic energy into the mind of one creature you can see within range. The target makes a Wisdom saving throw, taking 3d8 Psychic damage on a failed save or half as much damage on a successful one. On a failed save, you also always know the target's location until the spell ends, but only while the two of you are on the same plane of existence. While you have this knowledge, the target can't become hidden from you, and if it has the Invisible condition, it gains no benefit from that condition against you."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "Você crava uma estaca de energia psíquica na mente de uma criatura que possa ver dentro do alcance. O alvo faz um teste de resistência de Sabedoria, sofrendo 3d8 de dano Psíquico em uma falha ou metade do dano em um sucesso. Em uma falha, você também sempre sabe a localização do alvo até a magia terminar, mas apenas enquanto vocês dois estiverem no mesmo plano de existência. Enquanto você tiver esse conhecimento, o alvo não pode ficar oculto de você e, se tiver a condição Invisível, não ganha benefício dela contra você."
 },
 {
 "id": "c2_see_invisibility",
@@ -1734,7 +1734,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, you see creatures and objects that have the Invisible condition as if they were visible, and you can see into the Ethereal Plane. Creatures and objects there appear ghostly."
+"descricao": "Pela duração, você vê criaturas e objetos com a condição Invisível como se fossem visíveis, e pode ver no Plano Etéreo. Criaturas e objetos lá aparecem espectrais."
 },
 {
 "id": "c2_animal_messenger",
@@ -1750,8 +1750,8 @@ const SPELLS_DATA = [
 "duracao": "24 horas",
 "concentracao": false,
 "ritual": true,
-"aprimoramento": "The spell's duration increases by 48 hours for each spell slot level above 2.",
-"descricao": "A Tiny Beast of your choice that you can see within range must succeed on a Charisma saving throw, or it attempts to deliver a message for you (if the target's Challenge Rating isn't 0, it automatically succeeds). You specify a location you have visited and a recipient who matches a general description, such as \"a person dressed in the uniform of the town guard\" or \"a red-haired dwarf wearing a pointed hat.\" You also communicate a message of up to twenty-five words. The Beast travels for the duration toward the specified location, covering about 25 miles per 24 hours or 50 miles if the Beast can fly. When the Beast arrives, it delivers your message to the creature that you described, mimicking your communication. If the Beast doesn't reach its destination before the spell ends, the message is lost, and the Beast returns to where you cast the spell."
+"aprimoramento": "A duração da magia aumenta em 48 horas para cada círculo de magia acima deste.",
+"descricao": "Uma Fera Minúscula à sua escolha que você possa ver dentro do alcance deve ser bem-sucedida em um teste de resistência de Carisma ou tentará entregar uma mensagem para você (se o Índice de Desafio do alvo não for 0, ela é bem-sucedida automaticamente). Você especifica um local que visitou e um destinatário que corresponda a uma descrição geral, como \"uma pessoa vestindo o uniforme da guarda da cidade\" ou \"um anão ruivo usando um chapéu pontudo\". Você também comunica uma mensagem de até vinte e cinco palavras. A Fera viaja pela duração em direção ao local especificado, percorrendo cerca de 40 km por 24 horas, ou 80 km se a Fera puder voar. Quando a Fera chega, ela entrega sua mensagem à criatura que você descreveu, imitando sua comunicação. Se a Fera não chegar ao destino antes de a magia terminar, a mensagem se perde e a Fera retorna ao local onde você lançou a magia."
 },
 {
 "id": "c2_calm_emotions",
@@ -1768,7 +1768,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Each Humanoid in a 20-foot-radius Sphere centered on a point you choose within range must succeed on a Charisma saving throw or be affected by one of the following effects (choose for each creature): \n\n- The creature has Immunity to the Charmed and Frightened conditions until the spell ends. If the creature was already Charmed or Frightened, those conditions are suppressed for the duration. \n\n- The creature becomes Indifferent about creatures of your choice that it's Hostile toward. This indifference ends if the target takes damage or witnesses its allies taking damage. When the spell ends, the creature's attitude returns to normal."
+"descricao": "Cada Humanoide em uma Esfera com raio de 20 pés centrada em um ponto à sua escolha dentro do alcance deve ser bem-sucedido em um teste de resistência de Carisma ou ser afetado por um dos seguintes efeitos (escolha para cada criatura): \n\n- A criatura tem Imunidade às condições Enfeitiçado e Apavorado até a magia terminar. Se a criatura já estava Enfeitiçada ou Apavorada, essas condições são suprimidas pela duração. \n\n- A criatura fica Indiferente em relação a criaturas à sua escolha contra as quais esteja Hostil. Essa indiferença termina se o alvo sofrer dano ou testemunhar aliados sofrendo dano. Quando a magia termina, a atitude da criatura volta ao normal."
 },
 {
 "id": "c2_enthrall",
@@ -1785,7 +1785,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You weave a distracting string of words, causing creatures of your choice that you can see within range to make a Wisdom saving throw. Any creature you or your companions are fighting automatically succeeds on this save. On a failed save, a target has a −10 penalty to Wisdom (Perception) checks and Passive Perception until the spell ends."
+"descricao": "Você tece uma sequência de palavras perturbadoras, fazendo com que criaturas à sua escolha que você possa ver dentro do alcance façam um teste de resistência de Sabedoria. Qualquer criatura que você ou seus companheiros estejam lutando faz sucesso automaticamente nesse teste. Em uma falha, um alvo tem uma penalidade de −10 em testes de Sabedoria (Percepção) e Percepção Passiva até a magia terminar."
 },
 {
 "id": "c2_hold_person",
@@ -1801,8 +1801,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional Humanoid for each spell slot level above 2.",
-"descricao": "Choose a Humanoid that you can see within range. The target must succeed on a Wisdom saving throw or have the Paralyzed condition for the duration. At the end of each of its turns, the target repeats the save, ending the spell on itself on a success."
+"aprimoramento": "Você pode mirar em um Humanoide adicional para cada círculo de magia acima deste.",
+"descricao": "Escolha um Humanoide que você possa ver dentro do alcance. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Paralisado pela duração. No fim de cada um de seus turnos, o alvo repete o teste, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c2_suggestion",
@@ -1819,7 +1819,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You suggest a course of activity—described in no more than 25 words—to one creature you can see within range that can hear and understand you. The suggestion must sound achievable and not involve anything that would obviously deal damage to the target or its allies. For example, you could say, “Fetch the key to the cult's treasure vault, and give the key to me.” Or you could say, “Stop fighting, leave this library peacefully, and don't return.” \n\nThe target must succeed on a Wisdom saving throw or have the Charmed condition for the duration or until you or your allies deal damage to the target. The Charmed target pursues the suggestion to the best of its ability. The suggested activity can continue for the entire duration, but if the suggested activity can be completed in a shorter time, the spell ends for the target upon completing it."
+"descricao": "Você sugere um curso de atividade — descrito em no máximo 25 palavras — a uma criatura que possa ver dentro do alcance, que possa ouvi-lo e compreendê-lo. A sugestão deve parecer viável e não envolver nada que causaria obviamente dano ao alvo ou aos seus aliados. Por exemplo, você poderia dizer: \"Pegue a chave do cofre do tesouro do culto e me dê a chave.\" Ou poderia dizer: \"Pare de lutar, deixe esta biblioteca em paz e não volte.\" \n\nO alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração ou até você ou seus aliados causarem dano ao alvo. O alvo Enfeitiçado segue a sugestão o melhor que pode. A atividade sugerida pode continuar pela duração inteira, mas se puder ser concluída em menos tempo, a magia termina para o alvo ao concluí-la."
 },
 {
 "id": "c2_zone_of_truth",
@@ -1836,7 +1836,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a magical zone that guards against deception in a 15- foot-radius Sphere centered on a point within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there makes a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether a creature succeeds or fails on this save. An affected creature is aware of the spell and can avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive yet must be truthful."
+"descricao": "Você cria uma zona mágica que protege contra o engano em uma Esfera com raio de 15 pés centrada em um ponto dentro do alcance. Até a magia terminar, uma criatura que entrar na área da magia pela primeira vez em um turno ou começar o turno nela faz um teste de resistência de Carisma. Em uma falha, uma criatura não pode dizer uma mentira deliberada enquanto estiver no raio. Você sabe se uma criatura é bem-sucedida ou falha nesse teste. Uma criatura afetada está ciente da magia e pode evitar responder perguntas às quais normalmente responderia com uma mentira. Tal criatura pode ser evasiva, mas deve ser verdadeira."
 },
 {
 "id": "c2_acid_arrow",
@@ -1852,8 +1852,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage (both initial and later) increases by 1d4 for each spell slot level above 2.",
-"descricao": "A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 Acid damage and 2d4 Acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage only."
+"aprimoramento": "O dano (tanto o inicial quanto o posterior) aumenta em 1d4 para cada círculo de magia acima deste.",
+"descricao": "Uma seta verde cintilante dispara em direção a um alvo dentro do alcance e explode em um jato de ácido. Faça um teste de ataque mágico à distância contra o alvo. Em um acerto, o alvo sofre 4d4 de dano de Ácido e 2d4 de dano de Ácido no fim do próximo turno dele. Em uma falha, a seta respinga ácido no alvo, causando metade do dano inicial."
 },
 {
 "id": "c2_continual_flame",
@@ -1870,7 +1870,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A flame springs from an object that you touch. The effect casts Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. It looks like a regular flame, but it creates no heat and consumes no fuel. The flame can be covered or hidden but not smothered or quenched."
+"descricao": "Uma chama jorra de um objeto que você toca. O efeito emite Luz Intensa em um raio de 20 pés e Luz Diminuta por mais 20 pés. Parece uma chama comum, mas não gera calor nem consome combustível. A chama pode ser coberta ou escondida, mas não abafada ou apagada."
 },
 {
 "id": "c2_darkness",
@@ -1887,7 +1887,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, magical Darkness spreads from a point within range and fills a 15-foot-radius Sphere. Darkvision can't see through it, and nonmagical light can't illuminate it. \n\nAlternatively, you cast the spell on an object that isn't being worn or carried, causing the Darkness to fill a 15-foot Emanation originating from that object. Covering that object with something opaque, such as a bowl or helm, blocks the Darkness.\n\nIf any of this spell's area overlaps with an area of Bright Light or Dim Light created by a spell of level 2 or lower, that other spell is dispelled."
+"descricao": "Pela duração, desse ponto, Escuridão mágica se espalha de um ponto dentro do alcance e preenche uma Esfera com raio de 15 pés. Visão no Escuro não consegue ver através dela, e luz não mágica não pode iluminá-la. \n\nAlternativamente, você lança a magia em um objeto que não esteja sendo vestido ou carregado, fazendo a Escuridão preencher uma Emanação de 15 pés que se origina do objeto. Cobrir o objeto com algo opaco, como uma tigela ou elmo, bloqueia a Escuridão. \n\nSe qualquer área desta magia se sobrepor a uma área de Luz Intensa ou Luz Diminuta criada por uma magia de 2º círculo ou inferior, essa outra magia é dissipada."
 },
 {
 "id": "c2_flame_blade",
@@ -1903,8 +1903,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 2.",
-"descricao": "You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action. \n\nAs a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier. \n\nThe flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Você evoca uma lâmina flamejante na sua mão livre. A lâmina é semelhante em tamanho e forma a um cimitarra e dura pela duração da magia. Se você soltar a lâmina, ela desaparece, mas você pode evocá-la novamente como uma Ação Bônus. \n\nComo uma Ação Mágica, você pode fazer um teste de ataque mágico corpo a corpo com a lâmina flamejante. Em um acerto, o alvo sofre dano de Fogo igual a 3d6 mais seu modificador de atributo de conjuração. \n\nA lâmina flamejante emite Luz Intensa em um raio de 10 pés e Luz Diminuta por mais 10 pés."
 },
 {
 "id": "c2_gust_of_wind",
@@ -1921,7 +1921,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A Line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose for the duration. Each creature in the Line must succeed on a Strength saving throw or be pushed 15 feet away from you in a direction following the Line. A creature that ends its turn in the Line must make the same save. \n\nAny creature in the Line must spend 2 feet of movement for every 1 foot it moves when moving closer to you.\n\nThe gust disperses gas or vapor, and it extinguishes candles and similar unprotected flames in the area. It causes protected flames, such as those of lanterns, to dance wildly and has a 50 percent chance to extinguish them. \n\nAs a Bonus Action on your later turns, you can change the direction in which the Line blasts from you."
+"descricao": "Uma Linha de vento forte com 60 pés de comprimento e 10 pés de largura jorra de você em uma direção à sua escolha pela duração. Cada criatura na Linha deve ser bem-sucedida em um teste de resistência de Força ou ser empurrada 15 pés para longe de você, seguindo a Linha. Uma criatura que terminar o turno na Linha deve fazer o mesmo teste. \n\nQualquer criatura na Linha deve gastar 2 pés de movimento para cada 1 pé que se mover ao se aproximar de você. \n\nA rajada dispersa gás ou vapor e apaga velas e chamas expostas semelhantes na área. Ela faz chamas protegidas, como as de lanternas, dançarem de forma selvagem e tem 50% de chance de apagá-las. \n\nComo uma Ação Bônus em seus turnos seguintes, você pode mudar a direção da qual a Linha jorra de você."
 },
 {
 "id": "c2_moonbeam",
@@ -1937,8 +1937,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 2.",
-"descricao": "A silvery beam of pale light shines down in a 5-foot-radius, 40- foot-high Cylinder centered on a point within range. Until the spell ends, Dim Light fills the Cylinder, and you can take a Magic action on later turns to move the Cylinder up to 60 feet. When the Cylinder appears, each creature in it makes a Constitution saving throw. On a failed save, a creature takes 2d10 Radiant damage, and if the creature is shape-shifted (as a result of the Polymorph spell, for example), it reverts to its true form and can't shape-shift until it leaves the Cylinder. On a successful save, a creature takes half as much damage only. A creature also makes this save when the spell's area moves into its space and when it enters the spell's area or ends its turn there. A creature makes this save only once per turn."
+"aprimoramento": "O dano aumenta em 1d10 para cada círculo de magia acima deste.",
+"descricao": "Um feixe prateado de luz pálida brilha em um Cilindro com raio de 5 pés e 40 pés de altura centrado em um ponto dentro do alcance. Até a magia terminar, Luz Diminuta preenche o Cilindro, e você pode gastar uma Ação Mágica em turnos seguintes para mover o Cilindro em até 60 pés. Quando o Cilindro aparece, cada criatura nele faz um teste de resistência de Constituição. Em uma falha, uma criatura sofre 2d10 de dano Radiante e, se estiver com a forma alterada (em resultado da magia Polimorfia, por exemplo), reverte à sua Forma Verdadeira e não pode mudar de forma até sair do Cilindro. Em um sucesso, uma criatura sofre apenas metade do dano. Uma criatura também faz esse teste quando a área da magia se move para o espaço dela, quando entra na área da magia ou quando termina o turno nela. Uma criatura faz esse teste apenas uma vez por turno."
 },
 {
 "id": "c2_scorching_ray",
@@ -1954,8 +1954,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You create one additional ray for each spell slot level above 2.",
-"descricao": "You hurl three fiery rays. You can hurl them at one target within range or at several. Make a ranged spell attack for each ray. On a hit, the target takes 2d6 Fire damage."
+"aprimoramento": "Você cria um raio adicional para cada círculo de magia acima deste.",
+"descricao": "Você arremessa três raios flamejantes. Pode arremessá-los em um alvo dentro do alcance ou em vários. Faça um teste de ataque mágico à distância para cada raio. Em um acerto, o alvo sofre 2d6 de dano de Fogo."
 },
 {
 "id": "c2_shatter",
@@ -1971,8 +1971,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 2.",
-"descricao": "A loud noise erupts from a point of your choice within range. Each creature in a 10-foot-radius Sphere centered there makes a Constitution saving throw, taking 3d8 Thunder damage on a failed save or half as much damage on a successful one. A Construct has Disadvantage on the save.\n\nA nonmagical object that isn't being worn or carried also takes the damage if it's in the spell's area."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "Um som estrondoso irrompe de um ponto à sua escolha dentro do alcance. Cada criatura em uma Esfera com raio de 10 pés centrada nesse ponto faz um teste de resistência de Constituição, sofrendo 3d8 de dano de Trovão em uma falha ou metade do dano em um sucesso. Um Construto tem Desvantagem no teste. \n\nUm objeto não mágico que não esteja sendo vestido ou carregado também sofre o dano se estiver na área da magia."
 },
 {
 "id": "c2_spiritual_weapon",
@@ -1988,8 +1988,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for every slot level above 2.",
-"descricao": "You create a floating, spectral force that resembles a weapon of your choice and lasts for the duration. \n\nThe force appears within range in a space of your choice, and you can immediately make one melee spell attack against one creature within 5 feet of the force. On a hit, the target takes Force damage equal to 1d8 plus your spellcasting ability modifier. \n\nAs a Bonus Action on your later turns, you can move the force up to 20 feet and repeat the attack against a creature within 5 feet of it."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo acima deste.",
+"descricao": "Você cria uma força espectral flutuante que se assemelha a uma arma à sua escolha e dura pela duração da magia. \n\nA força aparece dentro do alcance em um espaço à sua escolha, e você pode imediatamente fazer um teste de ataque mágico corpo a corpo contra uma criatura a até 5 pés da força. Em um acerto, o alvo sofre dano de Força igual a 1d8 mais seu modificador de atributo de conjuração. \n\nComo uma Ação Bônus em seus turnos seguintes, você pode mover a força em até 20 pés e repetir o ataque contra uma criatura a até 5 pés dela."
 },
 {
 "id": "c2_arcanist_s_magic_aura",
@@ -2006,7 +2006,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "With a touch, you place an illusion on a willing creature or an object that isn't being worn or carried. A creature gains the Mask effect below, and an object gains the False Aura effect below. The effect lasts for the duration. If you cast the spell on the same target every day for 30 days, the illusion lasts until dispelled. \n\n**Mask (Creature).** Choose a creature type other than the target's actual type. Spells and other magical effects treat the target as if it were a creature of the chosen type. \n\n**False Aura (Object).** You change the way the target appears to spells and magical effects that detect magical auras, such as Detect Magic. You can make a nonmagical object appear magical, make a magic item appear nonmagical, or change the object's aura so that it appears to belong to a school of magic you choose."
+"descricao": "Com um toque, você coloca uma ilusão em uma criatura voluntária ou em um objeto que não esteja sendo vestido ou carregado. Uma criatura ganha o efeito de Máscara abaixo, e um objeto ganha o efeito de Falsa Aura abaixo. O efeito dura pela duração da magia. Se você lançar a magia no mesmo alvo todos os dias por 30 dias, a ilusão dura até ser dissipada. \n\n**Máscara (Criatura).** Escolha um tipo de criatura diferente do tipo real do alvo. Magias e outros efeitos mágicos tratam o alvo como se fosse uma criatura do tipo escolhido. \n\n**Falsa Aura (Objeto).** Você muda a forma como o alvo aparece para magias e efeitos mágicos que detectam auras mágicas, como Detectar Magia. Você pode fazer um objeto não mágico parecer mágico, fazer um item mágico parecer não mágico ou mudar a aura do objeto para que pareça pertencer a uma escola de magia à sua escolha."
 },
 {
 "id": "c2_blur",
@@ -2023,7 +2023,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Your body becomes blurred. For the duration, any creature has Disadvantage on attack rolls against you. An attacker is immune to this effect if it perceives you with Blindsight or Truesight."
+"descricao": "Seu corpo fica borrado. Pela duração, qualquer criatura tem Desvantagem em jogadas de ataque contra você. Um atacante é imune a este efeito se perceber você com Visão no Escuro profunda (Blindsight) ou Visão Real."
 },
 {
 "id": "c2_invisibility",
@@ -2039,8 +2039,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 2.",
-"descricao": "A creature you touch has the Invisible condition until the spell ends. The spell ends early immediately after the target makes an attack roll, deals damage, or casts a spell."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Uma criatura que você toca tem a condição Invisível até a magia terminar. A magia termina antes imediatamente depois que o alvo fizer uma jogada de ataque, causar dano ou lançar uma magia."
 },
 {
 "id": "c2_magic_mouth",
@@ -2057,7 +2057,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You implant a message within an object in range—a message that is uttered when a trigger condition is met. Choose an object that you can see and that isn't being worn or carried by another creature. Then speak the message, which must be 25 words or fewer, though it can be delivered over as long as 10 minutes. Finally, determine the circumstance that will trigger the spell to deliver your message. When that trigger occurs, a magical mouth appears on the object and recites the message in your voice and at the same volume you spoke. If the object you chose has a mouth or something that looks like a mouth (for example, the mouth of a statue), the magical mouth appears there, so the words appear to come from the object's mouth. When you cast this spell, you can have the spell end after it delivers its message, or it can remain and repeat its message whenever the trigger occurs. \n\nThe trigger can be as general or as detailed as you like, though it must be based on visual or audible conditions that occur within 30 feet of the object. For example, you could instruct the mouth to speak when any creature moves within 30 feet of the object or when a silver bell rings within 30 feet of it."
+"descricao": "Você implanta uma mensagem em um objeto dentro do alcance — uma mensagem pronunciada quando uma condição de gatilho é cumprida. Escolha um objeto que você possa ver e que não esteja sendo vestido ou carregado por outra criatura. Depois, pronuncie a mensagem, que deve ter 25 palavras ou menos, embora possa ser entregue ao longo de até 10 minutos. Por fim, determine a circunstância que fará a magia entregar sua mensagem. Quando esse gatilho ocorre, uma boca mágica aparece no objeto e recita a mensagem na sua voz e no mesmo volume em que você falou. Se o objeto escolhido tiver uma boca ou algo parecido com uma boca (por exemplo, a boca de uma estátua), a boca mágica aparece lá, de modo que as palavras parecem vir da boca do objeto. Ao lançar esta magia, você pode fazer com que ela termine depois de entregar a mensagem, ou ela pode permanecer e repetir a mensagem sempre que o gatilho ocorrer. \n\nO gatilho pode ser tão geral ou detalhado quanto você quiser, mas deve se basear em condições visuais ou auditivas que ocorram a até 30 pés do objeto. Por exemplo, você pode instruir a boca a falar quando qualquer criatura se mover a até 30 pés do objeto, ou quando um sino de prata tocar a até 30 pés dele."
 },
 {
 "id": "c2_mirror_image",
@@ -2074,7 +2074,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Three illusory duplicates of yourself appear in your space. Until the spell ends, the duplicates move with you and mimic your actions, shifting position so it's impossible to track which image is real. \n\nEach time a creature hits you with an attack roll during the spell's duration, roll a d6 for each of your remaining duplicates. If any of the d6s rolls a 3 or higher, one of the duplicates is hit instead of you, and the duplicate is destroyed. The duplicates otherwise ignore all other damage and effects. The spell ends when all three duplicates are destroyed. \n\nA creature is unaffected by this spell if it has the Blinded condition, Blindsight, or Truesight."
+"descricao": "Três duplicatas ilusórias de você aparecem no seu espaço. Até a magia terminar, as duplicatas se movem com você e imitam suas ações, mudando de posição de modo que é impossível saber qual imagem é a real. \n\nCada vez que uma criatura o acertar com uma jogada de ataque durante a duração da magia, role um d6 para cada uma das suas duplicatas restantes. Se qualquer um dos d6 rolar 3 ou mais, uma das duplicatas é atingida no seu lugar, e a duplicata é destruída. As duplicatas ignoram todo o resto de dano e efeitos. A magia termina quando as três duplicatas forem destruídas. \n\nUma criatura não é afetada por esta magia se tiver a condição Cego, Visão no Escuro profunda (Blindsight) ou Visão Real."
 },
 {
 "id": "c2_phantasmal_force",
@@ -2091,7 +2091,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You attempt to craft an illusion in the mind of a creature you can see within range. The target makes an Intelligence saving throw. On a failed save, you create a phantasmal object, creature, or other phenomenon that is no larger than a 10-foot Cube and that is perceivable only to the target for the duration. The phantasm includes sound, temperature, and other stimuli. \n\nThe target can take a Study action to examine the phantasm with an Intelligence (Investigation) check against your spell save DC. If the check succeeds, the target realizes that the phantasm is an illusion, and the spell ends. \n\nWhile affected by the spell, the target treats the phantasm as if it were real and rationalizes any illogical outcomes from interacting with it. For example, if the target steps through a phantasmal bridge and survives the fall, it believes the bridge exists and something else caused it to fall. \n\nAn affected target can even take damage from the illusion if the phantasm represents a dangerous creature or hazard. On each of your turns, such a phantasm can deal 2d8 Psychic damage to the target if it is in the phantasm's area or within 5 feet of the phantasm. The target perceives the damage as a type appropriate to the illusion."
+"descricao": "Você tenta criar uma ilusão na mente de uma criatura que possa ver dentro do alcance. O alvo faz um teste de resistência de Inteligência. Em uma falha, você cria um objeto, criatura ou outro fenômeno fantasmagórico que não seja maior que um Cubo de 10 pés e que seja perceptível apenas ao alvo pela duração. O fantasma inclui som, temperatura e outros estímulos. \n\nO alvo pode gastar uma ação de Estudar para examinar o fantasma com um teste de Inteligência (Investigação) contra a CD de resistência da sua magia. Se o teste for bem-sucedido, o alvo percebe que o fantasma é uma ilusão e a magia termina. \n\nEnquanto afetado pela magia, o alvo trata o fantasma como se fosse real e racionaliza qualquer resultado ilógico de interagir com ele. Por exemplo, se o alvo pisar em uma ponte fantasmagórica e sobreviver à queda, ele acredita que a ponte existe e que outra coisa o fez cair. \n\nUm alvo afetado pode até sofrer dano da ilusão se o fantasma representar uma criatura ou ameaça perigosa. Em cada um dos seus turnos, tal fantasma pode causar 2d8 de dano Psíquico ao alvo se ele estiver na área do fantasma ou a até 5 pés dele. O alvo percebe o dano como um tipo apropriado para a ilusão."
 },
 {
 "id": "c2_silence",
@@ -2108,7 +2108,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "For the duration, no sound can be created within or pass through a 20-foot-radius Sphere centered on a point you choose within range. Any creature or object entirely inside the Sphere has Immunity to Thunder damage, and creatures have the Deafened condition while entirely inside it. Casting a spell that includes a Verbal component is impossible there."
+"descricao": "Pela duração, nenhum som pode ser criado dentro ou passar através de uma Esfera com raio de 20 pés centrada em um ponto à sua escolha dentro do alcance. Qualquer criatura ou objeto inteiramente dentro da Esfera tem Imunidade a dano de Trovão, e criaturas têm a condição Surdo enquanto estiverem inteiramente dentro dela. Lançar uma magia com componente Verbal é impossível ali."
 },
 {
 "id": "c2_gentle_repose",
@@ -2125,7 +2125,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You touch a corpse or other remains. For the duration, the target is protected from decay and can't become Undead. \n\nThe spell also effectively extends the time limit on raising the target from the dead, since days spent under the influence of this spell don't count against the time limit of spells such as Raise Dead."
+"descricao": "Você toca um cadáver ou outros restos mortais. Pela duração, o alvo é protegido do apodrecimento e não pode se tornar Morto-Vivo. \n\nA magia também estende efetivamente o limite de tempo para erguer o alvo dos mortos, pois os dias passados sob a influência desta magia não contam contra o limite de tempo de magias como Reviver Mortos."
 },
 {
 "id": "c2_ray_of_enfeeblement",
@@ -2142,7 +2142,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A beam of enervating energy shoots from you toward a creature within range. The target must make a Constitution saving throw. On a successful save, the target has Disadvantage on the next attack roll it makes until the start of your next turn. \n\nOn a failed save, the target has Disadvantage on Strength-based D20 Tests for the duration. During that time, it also subtracts 1d8 from all its damage rolls. The target repeats the save at the end of each of its turns, ending the spell on a success."
+"descricao": "Um feixe de energia debilitante dispara de você em direção a uma criatura dentro do alcance. O alvo deve fazer um teste de resistência de Constituição. Em um sucesso, o alvo tem Desvantagem na próxima jogada de ataque que fizer até o início do seu próximo turno. \n\nEm uma falha, o alvo tem Desvantagem em Testes de D20 baseados em Força pela duração. Durante esse tempo, ele também subtrai 1d8 de todas as suas jogadas de dano. O alvo repete o teste no fim de cada um de seus turnos, encerrando a magia em um sucesso."
 },
 {
 "id": "c2_alter_self",
@@ -2159,7 +2159,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You alter your physical form. Choose one of the following options. Its effects last for the duration, during which you can take a Magic action to replace the option you chose with a different one. \n\n**Aquatic Adaptation.** You sprout gills and grow webs between your fingers. You can breathe underwater and gain a Swim Speed equal to your Speed. \n\n**Change Appearance.** You alter your appearance. You decide what you look like, including your height, weight, facial features, sound of your voice, hair length, coloration, and other distinguishing characteristics. You can make yourself appear as a member of another species, though none of your statistics change. You can't appear as a creature of a different size, and your basic shape stays the same; if you're bipedal, you can't use this spell to become quadrupedal, for instance. For the duration, you can take a Magic action to change your appearance in this way again. \n\n**Natural Weapons.** You grow claws (Slashing), fangs (Piercing), horns (Piercing), or hooves (Bludgeoning). When you use your Unarmed Strike to deal damage with that new growth, it deals 1d6 damage of the type in parentheses instead of dealing the normal damage for your Unarmed Strike, and you use your spellcasting ability modifier for the attack and damage rolls rather than using Strength."
+"descricao": "Você altera sua forma física. Escolha uma das seguintes opções. Seus efeitos duram pela duração da magia, durante a qual você pode gastar uma Ação Mágica para substituir a opção escolhida por outra diferente. \n\n**Adaptação Aquática.** Você cresce brânquias e teias entre os dedos. Você pode respirar debaixo d'água e ganha um Deslocamento de Nado igual ao seu Deslocamento. \n\n**Mudar Aparência.** Você altera sua aparência. Você decide como se parece, incluindo altura, peso, feições do rosto, som da voz, comprimento do cabelo, coloração e outras características distintivas. Você pode se fazer parecer um membro de outra espécie, embora nenhuma de suas estatísticas mude. Você não pode parecer uma criatura de tamanho diferente, e sua forma básica permanece a mesma; se você for bípede, não pode usar esta magia para se tornar quadrúpede, por exemplo. Pela duração, você pode gastar uma Ação Mágica para mudar sua aparência dessa maneira novamente. \n\n**Armas Naturais.** Você cresce garras (Cortante), presas (Perfurante), chifres (Perfurante) ou cascos (Impacto). Quando você usa seu Golpe Desarmado para causar dano com esse novo crescimento, ele causa 1d6 de dano do tipo entre parênteses em vez do dano normal do seu Golpe Desarmado, e você usa seu modificador de atributo de conjuração nas jogadas de ataque e dano em vez de Força."
 },
 {
 "id": "c2_barkskin",
@@ -2176,7 +2176,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a willing creature. Until the spell ends, the target's skin assumes a bark-like appearance, and the target has an Armor Class of 17 if its AC is lower than that."
+"descricao": "Você toca uma criatura voluntária. Até a magia terminar, a pele do alvo assume uma aparência semelhante a casca, e o alvo tem Classe de Armadura 17 se a CA dele for menor que isso."
 },
 {
 "id": "c2_blindness_deafness",
@@ -2192,8 +2192,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 2.",
-"descricao": "One creature that you can see within range must succeed on a Constitution saving throw, or it has the Blinded or Deafened condition (your choice) for the duration. At the end of each of its turns, the target repeats the save, ending the spell on itself on a success."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Uma criatura que você possa ver dentro do alcance deve ser bem-sucedida em um teste de resistência de Constituição ou ter a condição Cego ou Surdo (sua escolha) pela duração. No fim de cada um de seus turnos, o alvo repete o teste, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c2_darkvision",
@@ -2210,7 +2210,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, a willing creature you touch has Darkvision with a range of 150 feet."
+"descricao": "Pela duração, uma criatura voluntária que você toca tem Visão no Escuro com alcance de 150 pés."
 },
 {
 "id": "c2_dragon_s_breath",
@@ -2226,8 +2226,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 2.",
-"descricao": "You touch one willing creature, and choose Acid, Cold, Fire, Lightning, or Poison. Until the spell ends, the target can take a Magic action to exhale a 15-foot Cone. Each creature in that area makes a Dexterity saving throw, taking 3d6 damage of the chosen type on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "Você toca uma criatura voluntária e escolhe Ácido, Frio, Fogo, Eletricidade ou Veneno. Até a magia terminar, o alvo pode gastar uma Ação Mágica para exalar um Cone de 15 pés. Cada criatura na área faz um teste de resistência de Destreza, sofrendo 3d6 de dano do tipo escolhido em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c2_enhance_ability",
@@ -2243,8 +2243,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 2. You can choose a different ability for each target.",
-"descricao": "You touch a creature and choose Strength, Dexterity, Intelligence, Wisdom, or Charisma. For the duration, the target has Advantage on ability checks using the chosen ability."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste. Você pode escolher um atributo diferente para cada alvo.",
+"descricao": "Você toca uma criatura e escolhe Força, Destreza, Inteligência, Sabedoria ou Carisma. Pela duração, o alvo tem Vantagem em testes de atributo que usem o atributo escolhido."
 },
 {
 "id": "c2_enlarge_reduce",
@@ -2261,7 +2261,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, the spell enlarges or reduces a creature or an object you can see within range (see the chosen effect below). A targeted object must be neither worn nor carried. If the target is an unwilling creature, it can make a Constitution saving throw. On a successful save, the spell has no effect. \n\nEverything that a targeted creature is wearing and carrying changes size with it. Any item it drops returns to normal size at once. A thrown weapon or piece of ammunition returns to normal size immediately after it hits or misses a target. \n\n**Enlarge.** The target's size increases by one category—from Medium to Large, for example. The target also has Advantage on Strength checks and Strength saving throws. The target's attacks with its enlarged weapons or Unarmed Strikes deal an extra 1d4 damage on a hit. \n\n**Reduce.** The target's size decreases by one category—from Medium to Small, for example. The target also has Disadvantage on Strength checks and Strength saving throws. The target's attacks with its reduced weapons or Unarmed Strikes deal 1d4 less damage on a hit (this can't reduce the damage below 1)."
+"descricao": "Pela duração, a magia aumenta ou reduz uma criatura ou um objeto que você possa ver dentro do alcance (veja o efeito escolhido abaixo). Um objeto alvo não pode estar sendo vestido nem carregado. Se o alvo for uma criatura involuntária, ela pode fazer um teste de resistência de Constituição. Em um sucesso, a magia não tem efeito. \n\nTudo o que a criatura alvo estiver vestindo e carregando muda de tamanho com ela. Qualquer item que ela largar volta ao tamanho normal imediatamente. Uma arma arremessada ou munição volta ao tamanho normal logo depois de acertar ou errar um alvo. \n\n**Aumentar.** O tamanho do alvo aumenta uma categoria — de Médio para Grande, por exemplo. O alvo também tem Vantagem em testes de Força e testes de resistência de Força. Os ataques do alvo com suas armas aumentadas ou Golpes Desarmados causam 1d4 de dano extra em um acerto. \n\n**Reduzir.** O tamanho do alvo diminui uma categoria — de Médio para Pequeno, por exemplo. O alvo também tem Desvantagem em testes de Força e testes de resistência de Força. Os ataques do alvo com suas armas reduzidas ou Golpes Desarmados causam 1d4 de dano a menos em um acerto (isso não pode reduzir o dano abaixo de 1)."
 },
 {
 "id": "c2_heat_metal",
@@ -2277,8 +2277,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 2.",
-"descricao": "Choose a manufactured metal object, such as a metal weapon or a suit of Heavy or Medium metal armor, that you can see within range. You cause the object to glow red-hot. Any creature in physical contact with the object takes 2d8 Fire damage when you cast the spell. Until the spell ends, you can take a Bonus Action on each of your later turns to deal this damage again if the object is within range. \n\nIf a creature is holding or wearing the object and takes the damage from it, the creature must succeed on a Constitution saving throw or drop the object if it can. If it doesn't drop the object, it has Disadvantage on attack rolls and ability checks until the start of your next turn."
+"aprimoramento": "O dano aumenta em 1d8 para cada círculo de magia acima deste.",
+"descricao": "Escolha um objeto de metal fabricado, como uma arma de metal ou uma armadura de metal pesada ou média, que você possa ver dentro do alcance. Você faz o objeto brilhar em vermelho incandescente. Qualquer criatura em contato físico com o objeto sofre 2d8 de dano de Fogo quando você lança a magia. Até a magia terminar, você pode gastar uma Ação Bônus em cada um dos seus turnos seguintes para causar esse dano novamente se o objeto estiver no alcance. \n\nSe uma criatura estiver segurando ou vestindo o objeto e sofrer o dano dele, ela deve ser bem-sucedida em um teste de resistência de Constituição ou largar o objeto, se puder. Se não largar o objeto, ela tem Desvantagem em jogadas de ataque e testes de atributo até o início do seu próximo turno."
 },
 {
 "id": "c2_knock",
@@ -2295,7 +2295,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose an object that you can see within range. The object can be a door, a box, a chest, a set of manacles, a padlock, or another object that contains a mundane or magical means that prevents access. A target that is held shut by a mundane lock or that is stuck or barred becomes unlocked, unstuck, or unbarred. If the object has multiple locks, only one of them is unlocked. \n\nIf the target is held shut by Arcane Lock, that spell is suppressed for 10 minutes, during which time the target can be opened and closed. \n\nWhen you cast the spell, a loud knock, audible up to 300 feet away, emanates from the target."
+"descricao": "Escolha um objeto que você possa ver dentro do alcance. O objeto pode ser uma porta, uma caixa, um baú, um conjunto de algemas, um cadeado ou outro objeto que contenha um meio mundano ou mágico de impedir o acesso. Um alvo mantido fechado por uma tranca mundana, ou que esteja preso ou barrado, fica destrancado, solto ou sem a barra. Se o objeto tiver várias trancas, apenas uma delas é destrancada. \n\nSe o alvo estiver mantido fechado por Fechadura Arcana, essa magia é suprimida por 10 minutos, durante os quais o alvo pode ser aberto e fechado. \n\nQuando você lança a magia, um batida alta, audível a até 300 pés, emana do alvo."
 },
 {
 "id": "c2_levitate",
@@ -2312,7 +2312,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "One creature or loose object of your choice that you can see within range rises vertically up to 20 feet and remains suspended there for the duration. The spell can levitate an object that weighs up to 500 pounds. An unwilling creature that succeeds on a Constitution saving throw is unaffected. \n\nThe target can move only by pushing or pulling against a fixed object or surface within reach (such as a wall or a ceiling), which allows it to move as if it were climbing. You can change the target's altitude by up to 20 feet in either direction on your turn. If you are the target, you can move up or down as part of your move. Otherwise, you can take a Magic action to move the target, which must remain within the spell's range. \n\nWhen the spell ends, the target floats gently to the ground if it is still aloft."
+"descricao": "Uma criatura ou objeto solto à sua escolha que você possa ver dentro do alcance se eleva verticalmente em até 20 pés e permanece suspenso ali pela duração. A magia pode levitar um objeto que pese até 500 libras. Uma criatura involuntária bem-sucedida em um teste de resistência de Constituição não é afetada. \n\nO alvo só pode se mover empurrando ou puxando um objeto ou superfície fixa ao alcance (como uma parede ou um teto), o que lhe permite se mover como se estivesse escalando. Você pode mudar a altitude do alvo em até 20 pés em qualquer direção no seu turno. Se você for o alvo, pode se mover para cima ou para baixo como parte do seu deslocamento. Caso contrário, você pode gastar uma Ação Mágica para mover o alvo, que deve permanecer dentro do alcance da magia. \n\nQuando a magia termina, o alvo flutua suavemente até o chão, se ainda estiver no alto."
 },
 {
 "id": "c2_magic_weapon",
@@ -2328,8 +2328,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The bonus increases to +2 with a level 3–5 spell slot. The bonus increases to +3 with a level 6+ spell slot.",
-"descricao": "You touch a nonmagical weapon. Until the spell ends, that weapon becomes a magic weapon with a +1 bonus to attack rolls and damage rolls. The spell ends early if you cast it again."
+"aprimoramento": "O bônus aumenta para +2 com um espaço de 3º–5º círculo. O bônus aumenta para +3 com um espaço de 6º círculo ou superior.",
+"descricao": "Você toca uma arma não mágica. Até a magia terminar, essa arma se torna uma arma mágica com um bônus de +1 em jogadas de ataque e de dano. A magia termina antes se você a lançar novamente."
 },
 {
 "id": "c2_rope_trick",
@@ -2346,7 +2346,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a rope. One end of it hovers upward until the rope hangs perpendicular to the ground or the rope reaches a ceiling. At the rope's upper end, an Invisible 3-foot-by-5-foot portal opens to an extradimensional space that lasts until the spell ends. That space can be reached by climbing the rope, which can be pulled into or dropped out of it. \n\nThe space can hold up to eight Medium or smaller creatures. Attacks, spells, and other effects can't pass into or out of the space, but creatures inside it can see through the portal. Anything inside the space drops out when the spell ends."
+"descricao": "Você toca uma corda. Uma das extremidades dela flutua para cima até a corda ficar perpendicular ao chão ou até a corda atingir o teto. Na extremidade superior da corda, um portal Invisível de 3 por 5 pés se abre para um espaço extradimensional que dura até a magia terminar. Esse espaço pode ser alcançado subindo pela corda, que pode ser puxada para dentro ou solta de dentro dele. \n\nO espaço pode conter até oito criaturas Médias ou menores. Ataques, magias e outros efeitos não podem entrar ou sair do espaço, mas criaturas dentro dele conseguem ver através do portal. Qualquer coisa dentro do espaço cai para fora quando a magia termina."
 },
 {
 "id": "c2_shining_smite",
@@ -2362,8 +2362,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 2.",
-"descricao": "The target hit by the strike takes an extra 2d6 Radiant damage from the attack. Until the spell ends, the target sheds Bright Light in a 5-foot radius, attack rolls against it have Advantage, and it can't benefit from the Invisible condition."
+"aprimoramento": "O dano aumenta em 1d6 para cada círculo de magia acima deste.",
+"descricao": "O alvo atingido pelo golpe sofre 2d6 de dano Radiante extra do ataque. Até a magia terminar, o alvo emite Luz Intensa em um raio de 5 pés, jogadas de ataque contra ele têm Vantagem, e ele não pode se beneficiar da condição Invisível."
 },
 {
 "id": "c2_spider_climb",
@@ -2379,8 +2379,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level about 2.",
-"descricao": "Until the spell ends, one willing creature you touch gains the ability to move up, down, and across vertical surfaces and along ceilings, while leaving its hands free. The target also gains a Climb Speed equal to its Speed."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada círculo de magia acima deste.",
+"descricao": "Até a magia terminar, uma criatura voluntária que você toca ganha a capacidade de se mover para cima, para baixo e através de superfícies verticais e ao longo de tetos, mantendo as mãos livres. O alvo também ganha um Deslocamento de Escalada igual ao seu Deslocamento."
 },
 {
 "id": "c2_spike_growth",
@@ -2397,7 +2397,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "The ground in a 20-foot-radius Sphere centered on a point within range sprouts hard spikes and thorns. The area becomes Difficult Terrain for the duration. When a creature moves into or within the area, it takes 2d4 Piercing damage for every 5 feet it travels. \n\nThe transformation of the ground is camouflaged to look natural. Any creature that can't see the area when the spell is cast must take a Search action and succeed on a Wisdom (Perception or Survival) check against your spell save DC to recognize the terrain as hazardous before entering it."
+"descricao": "O chão em uma Esfera com raio de 20 pés centrada em um ponto dentro do alcance brota espinhos e ferrões rígidos. A área se torna Terreno Difícil pela duração. Quando uma criatura se move para dentro ou dentro da área, sofre 2d4 de dano Perfurante a cada 5 pés percorridos. \n\nA transformação do chão é camuflada para parecer natural. Qualquer criatura que não puder ver a área quando a magia for lançada deve gastar uma ação de Procurar e ser bem-sucedida em um teste de Sabedoria (Percepção ou Sobrevivência) contra a CD de resistência da sua magia para reconhecer o terreno como perigoso antes de entrar."
 },
 {
 "id": "c3_beacon_of_hope",
@@ -2414,7 +2414,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose any number of creatures within range. For the duration, each target has Advantage on Wisdom saving throws and Death Saving Throws and regains the maximum number of Hit Points possible from any healing."
+"descricao": "Escolha qualquer número de criaturas dentro do alcance. Pela duração, cada alvo tem Vantagem em testes de resistência de Sabedoria e em Testes de Resistência contra a Morte e recupera o número máximo de Pontos de Vida possível de qualquer cura."
 },
 {
 "id": "c3_counterspell",
@@ -2431,7 +2431,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You attempt to interrupt a creature in the process of casting a spell. The creature must make a Constitution saving throw. On a failed save, the spell dissipates with no effect, and the action, Bonus Action, or Reaction used to cast it is wasted. If that spell was cast with a spell slot, the slot isn't expended."
+"descricao": "Você tenta interromper uma criatura no processo de lançar uma magia. A criatura deve ser bem-sucedida em um teste de resistência de Constituição. Em uma falha, a magia se dissipa sem efeito, e a Ação, a Ação Bônus ou a Reação usada para lançá-la é desperdiçada. Se essa magia tiver sido lançada com um espaço de magia, o espaço não é gasto."
 },
 {
 "id": "c3_dispel_magic",
@@ -2447,8 +2447,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You automatically end a spell on the target if the spell's level is equal to or less than the level of the spell slot you use.",
-"descricao": "Choose one creature, object, or magical effect within range. Any ongoing spell of level 3 or lower on the target ends. For each ongoing spell of level 4 or higher on the target, make an ability check using your spellcasting ability (DC 10 plus that spell's level). On a successful check, the spell ends."
+"aprimoramento": "Você termina automaticamente uma magia no alvo se o círculo da magia for igual ou menor que o círculo do espaço de magia que você usar.",
+"descricao": "Escolha uma criatura, um objeto ou um efeito mágico dentro do alcance. Qualquer magia em andamento de 3º círculo ou inferior no alvo termina. Para cada magia em andamento de 4º círculo ou superior no alvo, faça um teste de atributo usando seu atributo de conjuração (CD 10 mais o círculo da magia). Em um teste bem-sucedido, a magia termina."
 },
 {
 "id": "c3_glyph_of_warding",
@@ -2464,8 +2464,8 @@ const SPELLS_DATA = [
 "duracao": "Until dispelled or triggered",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage of an explosive rune increases by 1d8 for each spell slot level above 3. If you create a spell glyph, you can store any spell of up to the same level as the spell slot you use for the Glyph of Warding.",
-"descricao": "You inscribe a glyph that later unleashes a magical effect. You inscribe it either on a surface (such as a table or a section of floor) or within an object that can be closed (such as a book or chest) to conceal the glyph. The glyph can cover an area no larger than 10 feet in diameter. If the surface or object is moved more than 10 feet from where you cast this spell, the glyph is broken, and the spell ends without being triggered. The glyph is nearly imperceptible and requires a successful Wisdom (Perception) check against your spell save DC to notice. When you inscribe the glyph, you set its trigger and choose whether it's an explosive rune or a spell glyph, as explained below. \n\n**Set the Trigger.** You decide what triggers the glyph when you cast the spell. For glyphs inscribed on a surface, common triggers include touching or stepping on the glyph, removing another object covering it, or approaching within a certain distance of it. For glyphs inscribed within an object, common triggers include opening that object or seeing the glyph. Once a glyph is triggered, this spell ends. You can refine the trigger so that only creatures of certain types activate it (for example, the glyph could be set to affect Aberrations). You can also set conditions for creatures that don't trigger the glyph, such as those who say a certain password. \n\n**Explosive Rune.** When triggered, the glyph erupts with magical energy in a 20-foot-radius Sphere centered on the glyph. Each creature in the area makes a Dexterity saving throw. A creature takes 5d8 Acid, Cold, Fire, Lightning, or Thunder damage (your choice when you create the glyph) on a failed save or half as much damage on a successful one. \n\n**Spell Glyph.** You can store a prepared spell of level 3 or lower in the glyph by casting it as part of creating the glyph. The spell must target a single creature or an area. The spell being stored has no immediate effect when cast in this way. When the glyph is triggered, the stored spell takes effect. If the spell has a target, it targets the creature that triggered the glyph. If the spell affects an area, the area is centered on that creature. If the spell summons Hostile creatures or creates harmful objects or traps, they appear as close as possible to the intruder and attack it. If the spell requires Concentration, it lasts until the end of its full duration."
+"aprimoramento": "O dano de uma runa explosiva aumenta em 1d8 para cada nível de espaço de magia acima de 3. Se você criar um glifo de magia, pode armazenar qualquer magia de até o mesmo círculo do espaço de magia que usar para o Glifo de Proteção.",
+"descricao": "Você inscreve um glifo que depois libera um efeito mágico. Você o inscreve em uma superfície (como uma mesa ou uma seção do chão) ou dentro de um objeto que possa ser fechado (como um livro ou baú) para ocultar o glifo. O glifo pode cobrir uma área de no máximo 3 metros de diâmetro. Se a superfície ou o objeto for movido mais de 3 metros de onde você lançou esta magia, o glifo se quebra e a magia termina sem ser disparada. O glifo é quase imperceptível e exige um teste de Sabedoria (Percepção) bem-sucedido contra a CD de resistência da sua magia para ser notado. Ao inscrever o glifo, você define seu gatilho e escolhe se ele é uma runa explosiva ou um glifo de magia, conforme explicado abaixo. \n\n**Definir o Gatilho.** Você decide o que dispara o glifo ao lançar a magia. Para glifos inscritos em uma superfície, gatilhos comuns incluem tocar ou pisar no glifo, remover outro objeto que o cubra ou se aproximar a uma certa distância dele. Para glifos inscritos dentro de um objeto, gatilhos comuns incluem abrir esse objeto ou ver o glifo. Uma vez disparado, esta magia termina. Você pode refinar o gatilho para que apenas criaturas de certos tipos o ativem (por exemplo, o glifo pode ser definido para afetar Aberrações). Você também pode definir condições para que criaturas não disparem o glifo, como aquelas que dizem uma certa senha. \n\n**Runa Explosiva.** Quando disparada, o glifo irrompe com energia mágica em uma Esfera com raio de 6 metros centrada no glifo. Cada criatura na área faz um teste de resistência de Destreza. Uma criatura sofre 5d8 de dano de Ácido, Frio, Fogo, Eletricidade ou Trovão (sua escolha ao criar o glifo) em uma falha ou metade do dano em um sucesso. \n\n**Glifo de Magia.** Você pode armazenar uma magia preparada de 3º círculo ou inferior no glifo, lançando-a como parte da criação do glifo. A magia deve mirar em uma única criatura ou em uma área. A magia armazenada não tem efeito imediato quando lançada dessa forma. Quando o glifo é disparado, a magia armazenada entra em ação. Se a magia mira em um alvo, ela mira na criatura que disparou o glifo. Se a magia afeta uma área, a área é centrada nessa criatura. Se a magia invocar criaturas Hostis ou criar objetos ou armadilhas prejudiciais, eles aparecem o mais próximo possível do intruso e o atacam. Se a magia exigir Concentração, ela dura até o fim de sua duração completa."
 },
 {
 "id": "c3_magic_circle",
@@ -2481,8 +2481,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The duration increases by 1 hour for each spell slot level above 3.",
-"descricao": "You create a 10-foot-radius, 20-foot-tall Cylinder of magical energy centered on a point on the ground that you can see within range. Glowing runes appear wherever the Cylinder intersects with the floor or other surface. \n\nChoose one or more of the following types of creatures: Celestials, Elementals, Fey, Fiends, or Undead. The circle affects a creature of the chosen type in the following ways: \n\n- The creature can't willingly enter the Cylinder by nonmagical means. If the creature tries to use teleportation or interplanar travel to do so, it must first succeed on a Charisma saving throw. \n\n- The creature has Disadvantage on attack rolls against targets within the Cylinder. \n\n- Targets within the Cylinder can't be possessed by or gain the Charmed or Frightened condition from the creature. \n\nEach time you cast this spell, you can cause its magic to operate in the reverse direction, preventing a creature of the specified type from leaving the Cylinder and protecting targets outside it."
+"aprimoramento": "A duração aumenta em 1 hora para cada nível de espaço de magia acima de 3.",
+"descricao": "Você cria um Cilindro de energia mágica com raio de 3 metros e 6 metros de altura centrado em um ponto no chão que você possa ver dentro do alcance. Runas brilhantes aparecem onde o Cilindro intercepta o chão ou outra superfície. \n\nEscolha um ou mais dos seguintes tipos de criaturas: Celestiais, Elementais, Fadas, Corruptores ou Não-Mortos. O círculo afeta uma criatura do tipo escolhido das seguintes formas: \n\n- A criatura não pode entrar voluntariamente no Cilindro por meios não mágicos. Se a criatura tentar usar teleporte ou viagem interplanar para entrar, deve primeiro ser bem-sucedida em um teste de resistência de Carisma. \n\n- A criatura tem Desvantagem em jogadas de ataque contra alvos dentro do Cilindro. \n\n- Alvos dentro do Cilindro não podem ser possuídos por ela nem ganhar as condições Enfeitiçado ou Apavorado causadas por ela. \n\nCada vez que você lança esta magia, pode fazer sua magia operar na direção reversa, impedindo uma criatura do tipo especificado de sair do Cilindro e protegendo os alvos do lado de fora dele."
 },
 {
 "id": "c3_mass_healing_word",
@@ -2498,8 +2498,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The healing increases by 1d4 for each spell slot level above 3.",
-"descricao": "Up to six creatures of your choice that you can see within range regain Hit Points equal to 2d4 plus your spellcasting ability modifier."
+"aprimoramento": "A cura aumenta em 1d4 para cada nível de espaço de magia acima de 3.",
+"descricao": "Até seis criaturas à sua escolha que você possa ver dentro do alcance recuperam Pontos de Vida iguais a 2d4 mais seu modificador de atributo de conjuração."
 },
 {
 "id": "c3_nondetection",
@@ -2516,7 +2516,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, you hide a target that you touch from Divination spells. The target can be a willing creature, or it can be a place or an object no larger than 10 feet in any dimension. The target can't be targeted by any Divination spell or perceived through magical scrying sensors."
+"descricao": "Pela duração, você esconde um alvo que toca de magias de Adivinhação. O alvo pode ser uma criatura voluntária, ou pode ser um local ou um objeto com no máximo 3 metros em qualquer dimensão. O alvo não pode ser alvo de nenhuma magia de Adivinhação nem ser percebido através de sensores mágicos de observação."
 },
 {
 "id": "c3_protection_from_energy",
@@ -2533,7 +2533,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, the willing creature you touch has Resistance to one damage type of your choice: Acid, Cold, Fire, Lightning, or Thunder."
+"descricao": "Pela duração, a criatura voluntária que você toca tem Resistência a um tipo de dano à sua escolha: Ácido, Frio, Fogo, Eletricidade ou Trovão."
 },
 {
 "id": "c3_remove_curse",
@@ -2550,7 +2550,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "At your touch, all curses affecting one creature or object end. If the object is a cursed magic item, its curse remains, but the spell breaks its owner's Attunement to the object so it can be removed or discarded."
+"descricao": "Ao seu toque, todas as maldições que afetam uma criatura ou um objeto terminam. Se o objeto for um item mágico amaldiçoado, sua maldição permanece, mas a magia quebra a Sintonia de seu dono com o objeto, para que ele possa ser removido ou descartado."
 },
 {
 "id": "c3_call_lightning",
@@ -2566,8 +2566,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 3.",
-"descricao": "A storm cloud appears at a point within range that you can see above yourself. It takes the shape of a Cylinder that is 10 feet tall with a 60-foot radius. \n\nWhen you cast the spell, choose a point you can see under the cloud. A lightning bolt shoots from the cloud to that point. Each creature within 5 feet of that point makes a Dexterity saving throw, taking 3d10 Lightning damage on a failed save or half as much damage on a successful one. \n\nUntil the spell ends, you can take a Magic action to call down lightning in that way again, targeting the same point or a different one. If you're outdoors in a storm when you cast this spell, the spell gives you control over that storm instead of creating a new one. Under such conditions, the spell's damage increases by 1d10."
+"aprimoramento": "O dano aumenta em 1d10 para cada nível de espaço de magia acima de 3.",
+"descricao": "Uma nuvem de tempestade aparece em um ponto dentro do alcance que você possa ver acima de si. Ela assume a forma de um Cilindro com 3 metros de altura e um raio de 18 metros. \n\nAo lançar a magia, escolha um ponto que você possa ver sob a nuvem. Um relâmpago dispara da nuvem até esse ponto. Cada criatura a até 1,5 metro desse ponto faz um teste de resistência de Destreza, sofrendo 3d10 de dano de Eletricidade em uma falha ou metade do dano em um sucesso. \n\nAté a magia terminar, você pode gastar uma Ação Mágica para evocar um relâmpago dessa forma novamente, mirando no mesmo ponto ou em outro. Se você estiver ao ar livre em uma tempestade ao lançar esta magia, a magia lhe dá controle sobre essa tempestade em vez de criar uma nova. Sob tais condições, o dano da magia aumenta em 1d10."
 },
 {
 "id": "c3_conjure_animals",
@@ -2583,8 +2583,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 3.",
-"descricao": "You conjure nature spirits that appear as a Large pack of spectral, intangible animals in an unoccupied space you can see within range. The pack lasts for the duration, and you choose the spirits' animal form, such as wolves, serpents, or birds. \n\nYou have Advantage on Strength saving throws while you're within 5 feet of the pack, and when you move on your turn, you can also move the pack up to 30 feet to an unoccupied space you can see. Whenever the pack moves within 10 feet of a creature you can see and whenever a creature you can see enters a space within 10 feet of the pack or ends its turn there, you can force that creature to make a Dexterity saving throw. On a failed save, the creature takes 3d10 Slashing damage. A creature makes this save only once per turn."
+"aprimoramento": "O dano aumenta em 1d10 para cada nível de espaço de magia acima de 3.",
+"descricao": "Você conjura espíritos da natureza que aparecem como uma alcateia Grande de animais espectrais e intangíveis em um espaço desocupado que você possa ver dentro do alcance. A alcateia dura pela duração da magia, e você escolhe a forma animal dos espíritos, como lobos, serpentes ou pássaros. \n\nVocê tem Vantagem em testes de resistência de Força enquanto estiver a até 1,5 metro da alcateia, e quando se move no seu turno, também pode mover a alcateia em até 9 metros até um espaço desocupado que você possa ver. Sempre que a alcateia se move para dentro de 3 metros de uma criatura que você possa ver e sempre que uma criatura que você possa ver entra em um espaço a até 3 metros da alcateia ou termina o turno nele, você pode forçar essa criatura a fazer um teste de resistência de Destreza. Em uma falha, a criatura sofre 3d10 de dano Cortante. Uma criatura faz esse teste apenas uma vez por turno."
 },
 {
 "id": "c3_create_food_and_water",
@@ -2601,7 +2601,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create 45 pounds of food and 30 gallons of fresh water on the ground or in containers within range—both useful in fending off the hazards of malnutrition and dehydration. The food is bland but nourishing and looks like a food of your choice, and the water is clean. The food spoils after 24 hours if uneaten."
+"descricao": "Você cria 20 quilos de comida e 115 litros de água fresca no chão ou em recipientes dentro do alcance — tudo útil para evitar os perigos da desnutrição e da desidratação. A comida é insossa, mas nutritiva e tem a aparência de um alimento de sua escolha, e a água é limpa. A comida estraga após 24 horas se não for consumida."
 },
 {
 "id": "c3_sleet_storm",
@@ -2618,7 +2618,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, sleet falls in a 40-foot-tall, 20-foot-radius Cylinder centered on a point you choose within range. The area is Heavily Obscured, and exposed flames in the area are doused. Ground in the Cylinder is Difficult Terrain. When a creature enters the Cylinder for the first time on a turn or starts its turn there, it must succeed on a Dexterity saving throw or have the Prone condition and lose Concentration."
+"descricao": "Até a magia terminar, neve escorregadia cai em um Cilindro com 12 metros de altura e raio de 6 metros centrado em um ponto à sua escolha dentro do alcance. A área está Fortemente Obscurecida, e chamas expostas na área são apagadas. O chão no Cilindro é Terreno Difícil. Quando uma criatura entra no Cilindro pela primeira vez em um turno ou começa o turno nele, ela deve ser bem-sucedida em um teste de resistência de Destreza ou sofrer a condição Caída e perder a Concentração."
 },
 {
 "id": "c3_spirit_guardians",
@@ -2634,8 +2634,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 3.",
-"descricao": "Protective spirits flit around you in a 15-foot Emanation for the duration. If you are good or neutral, their spectral form appears angelic or fey (your choice). If you are evil, they appear fiendish. When you cast this spell, you can designate creatures to be unaffected by it. Any other creature's Speed is halved in the Emanation, and whenever the Emanation enters a creature's space and whenever a creature enters the Emanation or ends its turn there, the creature must make a Wisdom saving throw. On a failed save, the creature takes 3d8 Radiant damage (if you are good or neutral) or 3d8 Necrotic damage (if you are evil). On a successful save, the creature takes half as much damage. A creature makes this save only once per turn."
+"aprimoramento": "O dano aumenta em 1d8 para cada nível de espaço de magia acima de 3.",
+"descricao": "Espíritos protetores esvoaçam ao seu redor em uma Emanação de 4,5 metros pela duração. Se você for bom ou neutro, sua forma espectral parece angelical ou de fada (sua escolha). Se você for mau, eles parecem abissais. Ao lançar esta magia, você pode designar criaturas para não serem afetadas por ela. O Deslocamento de qualquer outra criatura é reduzido à metade na Emanação, e sempre que a Emanação entra no espaço de uma criatura e sempre que uma criatura entra na Emanação ou termina o turno nela, a criatura deve fazer um teste de resistência de Sabedoria. Em uma falha, a criatura sofre 3d8 de dano Radiante (se você for bom ou neutro) ou 3d8 de dano Necrótico (se você for mau). Em um sucesso, a criatura sofre metade do dano. Uma criatura faz esse teste apenas uma vez por turno."
 },
 {
 "id": "c3_stinking_cloud",
@@ -2652,7 +2652,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a 20-foot-radius Sphere of yellow, nauseating gas centered on a point within range. The cloud is Heavily Obscured. The cloud lingers in the air for the duration or until a strong wind (such as the one created by Gust of Wind) disperses it. \n\nEach creature that starts its turn in the Sphere must succeed on a Constitution saving throw or have the Poisoned condition until the end of the current turn. While Poisoned in this way, the creature can't take an action or a Bonus Action."
+"descricao": "Você cria uma Esfera com raio de 6 metros de gás amarelo e nauseante centrada em um ponto dentro do alcance. A nuvem está Fortemente Obscurecida. A nuvem permanece no ar pela duração ou até que um vento forte (como o criado por Rajada de Vento) a dissipe. \n\nCada criatura que começa o turno na Esfera deve ser bem-sucedida em um teste de resistência de Constituição ou sofrer a condição Envenenado até o fim do turno atual. Enquanto estiver Envenenada dessa forma, a criatura não pode fazer uma Ação nem uma Ação Bônus."
 },
 {
 "id": "c3_clairvoyance",
@@ -2669,7 +2669,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create an Invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The intangible, invulnerable sensor remains in place for the duration. \n\nWhen you cast the spell, choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As a Bonus Action, you can switch between seeing and hearing. \n\nA creature that sees the sensor (such as a creature benefiting from See Invisibility or Truesight) sees a luminous orb about the size of your fist."
+"descricao": "Você cria um sensor Invisível dentro do alcance em um local familiar para você (um lugar que você visitou ou viu antes) ou em um local óbvio que não seja familiar para você (como atrás de uma porta, em uma esquina ou em um bosque de árvores). O sensor intangível e invulnerável permanece no lugar pela duração. \n\nAo lançar a magia, escolha ver ou ouvir. Você pode usar o sentido escolhido através do sensor como se estivesse no espaço dele. Como uma Ação Bônus, você pode alternar entre ver e ouvir. \n\nUma criatura que vê o sensor (como uma criatura beneficiada por Ver Invisibilidade ou Visão Real) vê um orbe luminoso do tamanho do seu punho."
 },
 {
 "id": "c3_sending",
@@ -2686,7 +2686,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You send a short message of 25 words or fewer to a creature you have met or a creature described to you by someone who has met it. The target hears the message in its mind, recognizes you as the sender if it knows you, and can answer in a like manner immediately. The spell enables targets to understand the meaning of your message. \n\nYou can send the message across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the message doesn't arrive. You know if the delivery fails. \n\nUpon receiving your message, a creature can block your ability to reach it again with this spell for 8 hours. If you try to send another message during that time, you learn that you are blocked, and the spell fails."
+"descricao": "Você envia uma mensagem curta de 25 palavras ou menos a uma criatura que você conhece ou a uma criatura descrita a você por alguém que a conhece. O alvo ouve a mensagem em sua mente, reconhece você como o remetente se o conhece e pode responder da mesma forma imediatamente. A magia permite que os alvos compreendam o significado da sua mensagem. \n\nVocê pode enviar a mensagem através de qualquer distância e até para outros planos de existência, mas se o alvo estiver em um plano diferente do seu, há 5 por cento de chance de a mensagem não chegar. Você sabe se a entrega falhou. \n\nAo receber sua mensagem, uma criatura pode bloquear sua capacidade de alcançá-la novamente com esta magia por 8 horas. Se você tentar enviar outra mensagem durante esse período, fica sabendo que está bloqueado e a magia falha."
 },
 {
 "id": "c3_tongues",
@@ -2703,7 +2703,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "This spell grants the creature you touch the ability to understand any spoken or signed language that it hears or sees. Moreover, when the target communicates by speaking or signing, any creature that knows at least one language can understand it if that creature can hear the speech or see the signing."
+"descricao": "Esta magia concede à criatura que você toca a capacidade de entender qualquer idioma falado ou de sinais que ouça ou veja. Além disso, quando o alvo se comunica falando ou sinalizando, qualquer criatura que conheça pelo menos um idioma pode entendê-lo se puder ouvir a fala ou ver a sinalização."
 },
 {
 "id": "c3_daylight",
@@ -2720,7 +2720,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, sunlight spreads from a point within range and fills a 60-foot-radius Sphere. The sunlight's area is Bright Light and sheds Dim Light for an additional 60 feet. \n\nAlternatively, you cast the spell on an object that isn't being worn or carried, causing the sunlight to fill a 60-foot Emanation originating from that object. Covering that object with something opaque, such as a bowl or helm, blocks the sunlight. \n\nIf any of this spell's area overlaps with an area of Darkness created by a spell of level 3 or lower, that other spell is dispelled."
+"descricao": "Pela duração, a luz do sol se espalha de um ponto dentro do alcance e preenche uma Esfera com raio de 18 metros. A área de luz do sol é Luz Intensa e emite Luz Diminuta por mais 18 metros. \n\nAlternativamente, você lança a magia em um objeto que não esteja sendo vestido ou carregado, fazendo a luz do sol preencher uma Emanação de 18 metros originada desse objeto. Cobrir o objeto com algo opaco, como uma tigela ou elmo, bloqueia a luz do sol. \n\nSe qualquer área desta magia se sobrepor a uma área de Escuridão criada por uma magia de 3º círculo ou inferior, essa outra magia é dissipada."
 },
 {
 "id": "c3_fireball",
@@ -2736,8 +2736,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 3.",
-"descricao": "A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion. Each creature in a 20-foot-radius Sphere centered on that point makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save or half as much damage on a successful one. Flammable objects in the area that aren't being worn or carried start burning."
+"aprimoramento": "O dano aumenta em 1d6 para cada nível de espaço de magia acima de 3.",
+"descricao": "Uma trilha brilhante dispara de você até um ponto à sua escolha dentro do alcance e então desabrocha com um rugido baixo em uma explosão flamejante. Cada criatura em uma Esfera com raio de 6 metros centrada nesse ponto faz um teste de resistência de Destreza, sofrendo 8d6 de dano de Fogo em uma falha ou metade do dano em um sucesso. Objetos inflamáveis na área que não estejam sendo vestidos ou carregados começam a queimar."
 },
 {
 "id": "c3_lightning_bolt",
@@ -2753,8 +2753,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 3.",
-"descricao": "A stroke of lightning forming a 100-foot-long, 5-foot-wide Line blasts out from you in a direction you choose. Each creature in the Line makes a Dexterity saving throw, taking 8d6 Lightning damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano aumenta em 1d6 para cada nível de espaço de magia acima de 3.",
+"descricao": "Um raio formando uma Linha de 30 metros de comprimento e 1,5 metro de largura irrompe de você em uma direção à sua escolha. Cada criatura na Linha faz um teste de resistência de Destreza, sofrendo 8d6 de dano de Eletricidade em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c3_tiny_hut",
@@ -2771,7 +2771,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "A 10-foot Emanation springs into existence around you and remains stationary for the duration. The spell fails when you cast it if the Emanation isn't big enough to fully encapsulate all creatures in its area. \n\nCreatures and objects within the Emanation when you cast the spell can move through it freely. All other creatures and objects are barred from passing through it. Spells of level 3 or lower can't be cast through it, and the effects of such spells can't extend into it. The atmosphere inside the Emanation is comfortable and dry, regardless of the weather outside. Until the spell ends, you can command the interior to have Dim Light or Darkness (no action required). The Emanation is opaque from the outside and of any color you choose, but it's transparent from the inside. \n\nThe spell ends early if you leave the Emanation or if you cast it again."
+"descricao": "Uma Emanação de 3 metros surge ao seu redor e permanece estacionária pela duração. A magia falha quando você a lança se a Emanação não for grande o suficiente para encapsular totalmente todas as criaturas em sua área. \n\nCriaturas e objetos dentro da Emanação quando você lança a magia podem se mover através dela livremente. Todas as outras criaturas e objetos são impedidos de atravessá-la. Magias de 3º círculo ou inferior não podem ser lançadas através dela, e os efeitos de tais magias não podem se estender até dentro dela. A atmosfera dentro da Emanação é confortável e seca, independentemente do clima do lado de fora. Até a magia terminar, você pode comandar o interior para ter Luz Diminuta ou Escuridão (nenhuma ação necessária). A Emanação é opaca pelo lado de fora e de qualquer cor que você escolher, mas é transparente pelo lado de dentro. \n\nA magia termina cedo se você sair da Emanação ou se a lançar novamente."
 },
 {
 "id": "c3_wind_wall",
@@ -2788,7 +2788,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A wall of strong wind rises from the ground at a point you choose within range. You can make the wall up to 50 feet long, 15 feet high, and 1 foot thick. You can shape the wall in any way you choose so long as it makes one continuous path along the ground. The wall lasts for the duration. \n\nWhen the wall appears, each creature in its area makes a Strength saving throw, taking 4d8 Bludgeoning damage on a failed save or half as much damage on a successful one. \n\nThe strong wind keeps fog, smoke, and other gases at bay. Small or smaller flying creatures or objects can't pass through the wall. Loose, lightweight materials brought into the wall fly upward. Arrows, bolts, and other ordinary projectiles launched at targets behind the wall are deflected upward and miss automatically. Boulders hurled by Giants or siege engines, and similar projectiles, are unaffected. Creatures in gaseous form can't pass through it."
+"descricao": "Uma muralha de vento forte ergue-se do chão em um ponto à sua escolha dentro do alcance. Você pode fazer a muralha ter até 15 metros de comprimento, 4,5 metros de altura e 30 centímetros de espessura. Você pode moldar a muralha da maneira que quiser, desde que ela forme um caminho contínuo ao longo do chão. A muralha dura pela duração. \n\nQuando a muralha aparece, cada criatura em sua área faz um teste de resistência de Força, sofrendo 4d8 de dano de Impacto em uma falha ou metade do dano em um sucesso. \n\nO vento forte mantém névoa, fumaça e outros gases afastados. Criaturas ou objetos voadores de tamanho Pequeno ou menor não podem atravessar a muralha. Materiais soltos e leves levados até a muralha voam para cima. Flechas, lanças e outros projéteis comuns disparados contra alvos atrás da muralha são desviados para cima e erram automaticamente. Rochas arremessadas por Gigantes ou máquinas de cerco, e projéteis semelhantes, não são afetados. Criaturas em forma gasosa não podem atravessá-la."
 },
 {
 "id": "c3_fear",
@@ -2805,7 +2805,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Each creature in a 30-foot Cone must succeed on a Wisdom saving throw or drop whatever it is holding and have the Frightened condition for the duration. \n\nA Frightened creature takes the Dash action and moves away from you by the safest route on each of its turns unless there is nowhere to move. If the creature ends its turn in a space where it doesn't have line of sight to you, the creature makes a Wisdom saving throw. On a successful save, the spell ends on that creature."
+"descricao": "Cada criatura em um Cone de 9 metros deve ser bem-sucedida em um teste de resistência de Sabedoria ou largar o que estiver segurando e sofrer a condição Apavorado pela duração. \n\nUma criatura Apavorada faz a ação Correr e se afasta de você pela rota mais segura em cada um de seus turnos, a menos que não haja para onde se mover. Se a criatura terminar o turno em um espaço onde não tenha linha de visão até você, ela faz um teste de resistência de Sabedoria. Em um sucesso, a magia termina nessa criatura."
 },
 {
 "id": "c3_hypnotic_pattern",
@@ -2822,7 +2822,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a twisting pattern of colors in a 30-foot Cube within range. The pattern appears for a moment and vanishes. Each creature in the area who can see the pattern must succeed on a Wisdom saving throw or have the Charmed condition for the duration. While Charmed, the creature has the Incapacitated condition and a Speed of 0. \n\nThe spell ends for an affected creature if it takes any damage or if someone else uses an action to shake the creature out of its stupor."
+"descricao": "Você cria um padrão em espiral de cores em um Cubo de 9 metros dentro do alcance. O padrão aparece por um momento e desaparece. Cada criatura na área que possa ver o padrão deve ser bem-sucedida em um teste de resistência de Sabedoria ou sofrer a condição Enfeitiçado pela duração. Enquanto estiver Enfeitiçada, a criatura tem a condição Incapacitado e um Deslocamento de 0. \n\nA magia termina para uma criatura afetada se ela sofrer qualquer dano ou se alguém usar uma ação para sacudir a criatura para fora de seu estupor."
 },
 {
 "id": "c3_major_image",
@@ -2838,8 +2838,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The spell lasts until dispelled, without requiring Concentration, if cast with a level 4+ spell slot.",
-"descricao": "You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 20-foot Cube. The image appears at a spot that you can see within range and lasts for the duration. It seems real, including sounds, smells, and temperature appropriate to the thing depicted, but it can't deal damage or cause conditions. \n\nIf you are within range of the illusion, you can take a Magic action to cause the image to move to any other spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking. Similarly, you can cause the illusion to make different sounds at different times, even making it carry on a conversation, for example. \n\nPhysical interaction with the image reveals it to be an illusion, for things can pass through it. A creature that takes a Study action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and its other sensory qualities become faint to the creature."
+"aprimoramento": "A magia dura até ser dissipada, sem exigir Concentração, se for lançada com um espaço de magia de 4º círculo ou superior.",
+"descricao": "Você cria a imagem de um objeto, de uma criatura ou de algum outro fenômeno visível com no máximo 6 metros de largura. A imagem aparece em um ponto que você possa ver dentro do alcance e dura pela duração da magia. Ela parece real, incluindo sons, cheiros e temperatura apropriados à coisa retratada, mas não pode causar dano nem causar condições. \n\nSe você estiver dentro do alcance da ilusão, pode gastar uma Ação Mágica para fazer a imagem se mover para qualquer outro ponto dentro do alcance. Conforme a imagem muda de local, você pode alterar sua aparência para que seus movimentos pareçam naturais para a imagem. Por exemplo, se você criar uma imagem de uma criatura e movê-la, pode alterar a imagem para que ela pareça estar andando. Da mesma forma, você pode fazer a ilusão produzir sons diferentes em momentos diferentes, até mesmo fazê-la manter uma conversa, por exemplo. \n\nA interação física com a imagem revela que ela é uma ilusão, pois coisas podem atravessá-la. Uma criatura que faça uma ação de Estudar para examinar a imagem pode determinar que ela é uma ilusão com um teste de Inteligência (Investigação) bem-sucedido contra a CD de resistência da sua magia. Se uma criatura discernir a ilusão pelo que ela é, pode ver através da imagem, e suas outras qualidades sensoriais ficam esmaecidas para a criatura."
 },
 {
 "id": "c3_phantom_steed",
@@ -2856,7 +2856,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "A Large, quasi-real, horselike creature appears on the ground in an unoccupied space of your choice within range. You decide the creature's appearance, and it is equipped with a saddle, bit, and bridle. Any of the equipment created by the spell vanishes in a puff of smoke if it is carried more than 10 feet away from the steed. \n\nFor the duration, you or a creature you choose can ride the steed. The steed uses the **Riding Horse** stat block, except it has a Speed of 100 feet and can travel 13 miles in an hour. When the spell ends, the steed gradually fades, giving the rider 1 minute to dismount. The spell ends early if the steed takes any damage."
+"descricao": "Uma criatura Grande, quase real, semelhante a um cavalo aparece no chão em um espaço desocupado à sua escolha dentro do alcance. Você decide a aparência da criatura, e ela vem equipada com sela, freio e rédeas. Qualquer equipamento criado pela magia desaparece em uma baforada de fumaça se for carregado a mais de 3 metros de distância da montaria. \n\nPela duração, você ou uma criatura à sua escolha pode montar a montaria. A montaria usa o bloco de estatísticas **Cavalo de Montaria**, exceto que tem um Deslocamento de 30 metros e pode viajar 21 quilômetros em uma hora. Quando a magia termina, a montaria se desvanece gradualmente, dando ao cavaleiro 1 minuto para desmontar. A magia termina cedo se a montaria sofrer qualquer dano."
 },
 {
 "id": "c3_animate_dead",
@@ -2872,8 +2872,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You animate or reassert control over two additional Undead creatures for each spell slot level above 3. Each of the creatures must come from a different corpse or pile of bones.",
-"descricao": "Choose a pile of bones or a corpse of a Medium or Small Humanoid within range. The target becomes an Undead creature: a Skeleton if you chose bones or a Zombie if you chose a corpse. On each of your turns, you can take a Bonus Action to mentally command any creature you made with this spell if the creature is within 60 feet of you (if you control multiple creatures, you can command any of them at the same time, issuing the same command to each one). You decide what action the creature will take and where it will move on its next turn, or you can issue a general command, such as to guard a chamber or corridor. If you issue no commands, the creature takes the Dodge action and moves only to avoid harm. Once given an order, the creature continues to follow it until its task is complete. \n\nThe creature is under your control for 24 hours, after which it stops obeying any command you've given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature again before the current 24-hour period ends. This use of the spell reasserts your control over up to four creatures you have animated with this spell rather than animating a new creature."
+"aprimoramento": "Você anima ou reafirma o controle sobre duas criaturas Não-Mortas adicionais para cada nível de espaço de magia acima de 3. Cada uma das criaturas deve vir de um cadáver ou pilha de ossos diferente.",
+"descricao": "Escolha uma pilha de ossos ou um cadáver de um Humanoide Médio ou Pequeno dentro do alcance. O alvo se torna uma criatura Não-Morta: um Esqueleto se você escolher ossos ou um Zumbi se você escolher um cadáver. Em cada um dos seus turnos, você pode gastar uma Ação Bônus para comandar mentalmente qualquer criatura que tenha feito com esta magia se a criatura estiver a até 18 metros de você (se você controlar várias criaturas, pode comandá-las ao mesmo tempo, emitindo o mesmo comando para cada uma). Você decide qual ação a criatura tomará e para onde se moverá no próximo turno dela, ou pode emitir um comando geral, como guardar uma câmara ou corredor. Se você não emitir comandos, a criatura faz a ação Esquivar e se move apenas para evitar dano. Uma vez dada uma ordem, a criatura continua a segui-la até que a tarefa seja concluída. \n\nA criatura está sob seu controle por 24 horas, após as quais para de obedecer a qualquer comando que você tenha dado a ela. Para manter o controle da criatura por mais 24 horas, você deve lançar esta magia novamente na criatura antes que o período atual de 24 horas termine. Esse uso da magia reafirma seu controle sobre até quatro criaturas que você tenha animado com esta magia em vez de animar uma nova criatura."
 },
 {
 "id": "c3_bestow_curse",
@@ -2889,8 +2889,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "If you cast this spell using a level 4 spell slot, you can maintain Concentration on it for up to 10 minutes. If you use a level 5+ spell slot, the spell doesn't require Concentration, and the duration becomes 8 hours (level 5-6 slot) or 24 hours (level 7-8 slot). If you use a level 9 spell slot, the spell lasts until dispelled.",
-"descricao": "You touch a creature, which must succeed on a Wisdom saving throw or become cursed for the duration. Until the curse ends, the target suffers one of the following effects of your choice: \n\n- Choose one ability. The target has Disadvantage on ability checks and saving throws made with that ability.\n\n- The target has Disadvantage on attack rolls against you. \n\n- In combat, the target must succeed on a Wisdom saving throw at the start of each of its turns or be forced to take the Dodge action on that turn. \n\n- If you deal damage to the target with an attack roll or a spell, the target takes an extra 1d8 Necrotic damage."
+"aprimoramento": "Se você lançar esta magia usando um espaço de magia de 4º círculo, pode manter Concentração nela por até 10 minutos. Se você usar um espaço de 5º círculo ou superior, a magia não exige Concentração, e a duração se torna 8 horas (espaço de 5º–6º círculo) ou 24 horas (espaço de 7º–8º círculo). Se você usar um espaço de magia de 9º círculo, a magia dura até ser dissipada.",
+"descricao": "Você toca uma criatura, que deve ser bem-sucedida em um teste de resistência de Sabedoria ou ficar amaldiçoada pela duração. Até a maldição terminar, o alvo sofre um dos seguintes efeitos à sua escolha: \n\n- Escolha um atributo. O alvo tem Desvantagem em testes de atributo e testes de resistência feitos com esse atributo. \n\n- O alvo tem Desvantagem em jogadas de ataque contra você. \n\n- Em combate, o alvo deve ser bem-sucedido em um teste de resistência de Sabedoria no início de cada um de seus turnos ou ser forçado a fazer a ação Esquivar nesse turno. \n\n- Se você causar dano ao alvo com uma jogada de ataque ou uma magia, o alvo sofre 1d8 de dano Necrótico extra."
 },
 {
 "id": "c3_revivify",
@@ -2907,7 +2907,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature that has died within the last minute. That creature revives with 1 Hit Point. This spell can't revive a creature that has died of old age, nor does it restore any missing body parts."
+"descricao": "Você toca uma criatura que morreu no último minuto. Essa criatura revive com 1 Ponto de Vida. Esta magia não pode reviver uma criatura que morreu de velhice, nem restaura partes do corpo ausentes."
 },
 {
 "id": "c3_speak_with_dead",
@@ -2924,7 +2924,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You grant the semblance of life to a corpse of your choice within range, allowing it to answer questions you pose. The corpse must have a mouth, and this spell fails if the deceased creature was Undead when it died. The spell also fails if the corpse was the target of this spell within the past 10 days. \n\nUntil the spell ends, you can ask the corpse up to five questions. The corpse knows only what it knew in life, including the languages it knew. Answers are usually brief, cryptic, or repetitive, and the corpse is under no compulsion to offer a truthful answer if you are antagonistic toward it or it recognizes you as an enemy. This spell doesn't return the creature's soul to its body, only its animating spirit. Thus, the corpse can't learn new information, doesn't comprehend anything that has happened since it died, and can't speculate about future events."
+"descricao": "Você concede a aparência de vida a um cadáver à sua escolha dentro do alcance, permitindo que ele responda às perguntas que você fizer. O cadáver deve ter boca, e esta magia falha se a criatura morta fosse Não-Morta quando morreu. A magia também falha se o cadáver foi alvo desta magia nos últimos 10 dias. \n\nAté a magia terminar, você pode fazer até cinco perguntas ao cadáver. O cadáver só sabe o que sabia em vida, incluindo os idiomas que conhecia. As respostas costumam ser breves, enigmáticas ou repetitivas, e o cadáver não é obrigado a dar uma resposta verdadeira se você for hostil em relação a ele ou se ele o reconhecer como inimigo. Esta magia não devolve a alma da criatura ao corpo, apenas seu espírito animador. Assim, o cadáver não pode aprender informações novas, não compreende nada que tenha acontecido desde que morreu e não pode especular sobre eventos futuros."
 },
 {
 "id": "c3_vampiric_touch",
@@ -2940,8 +2940,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each spell slot level above 3.",
-"descricao": "The touch of your shadow-wreathed hand can siphon life force from others to heal your wounds. Make a melee spell attack against one creature within reach. On a hit, the target takes 3d6 Necrotic damage, and you regain Hit Points equal to half the amount of Necrotic damage dealt. \n\nUntil the spell ends, you can make the attack again on each of your turns as a Magic action, targeting the same creature or a different one."
+"aprimoramento": "O dano aumenta em 1d6 para cada nível de espaço de magia acima de 3.",
+"descricao": "O toque de sua mão envolta em sombras pode drenar a força vital de outros para curar suas feridas. Faça um teste de ataque mágico corpo a corpo contra uma criatura ao seu alcance. Em um acerto, o alvo sofre 3d6 de dano Necrótico, e você recupera Pontos de Vida iguais à metade da quantidade de dano Necrótico causado. \n\nAté a magia terminar, você pode fazer o ataque novamente em cada um de seus turnos como uma Ação Mágica, mirando na mesma criatura ou em outra."
 },
 {
 "id": "c3_blink",
@@ -2958,7 +2958,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Roll 1d6 at the end of each of your turns for the duration. On a roll of 4–6, you vanish from your current plane of existence and appear in the Ethereal Plane (the spell ends instantly if you are already on that plane). While on the Ethereal Plane, you can perceive the plane you left, which is cast in shades of gray, but you can't see anything there more than 60 feet away. You can affect and be affected only by other creatures on the Ethereal Plane, and creatures on the other plane can't perceive you unless they have a special ability that lets them perceive things on the Ethereal Plane. You return to the other plane at the start of your next turn and when the spell ends if you are on the Ethereal Plane. You return to an unoccupied space of your choice that you can see within 10 feet of the space you left. If no unoccupied space is available within that range, you appear in the nearest unoccupied space."
+"descricao": "Role 1d6 no fim de cada um de seus turnos pela duração. Em um resultado de 4–6, você desaparece do seu plano de existência atual e aparece no Plano Etéreo (a magia termina instantaneamente se você já estiver nesse plano). Enquanto estiver no Plano Etéreo, você pode perceber o plano que deixou, que está em tons de cinza, mas não pode ver nada além de 18 metros de distância. Você pode afetar e ser afetado apenas por outras criaturas no Plano Etéreo, e criaturas no outro plano não podem percebê-lo, a menos que tenham uma habilidade especial que lhes permita perceber coisas no Plano Etéreo. Você retorna ao outro plano no início do seu próximo turno, e também quando a magia termina se estiver no Plano Etéreo. Você retorna a um espaço desocupado à sua escolha que possa ver a até 3 metros do espaço que deixou. Se nenhum espaço desocupado estiver disponível nesse alcance, você aparece no espaço desocupado mais próximo."
 },
 {
 "id": "c3_fly",
@@ -2974,8 +2974,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 3.",
-"descricao": "You touch a willing creature. For the duration, the target gains a Fly Speed of 60 feet and can hover. When the spell ends, the target falls if it is still aloft unless it can stop the fall."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada nível de espaço de magia acima de 3.",
+"descricao": "Você toca uma criatura voluntária. Pela duração, o alvo ganha um Deslocamento de Voo de 18 metros e pode flutuar no lugar. Quando a magia termina, o alvo cai se ainda estiver no ar, a menos que possa impedir a queda."
 },
 {
 "id": "c3_gaseous_form",
@@ -2991,8 +2991,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 3.",
-"descricao": "A willing creature you touch shape-shifts, along with everything it's wearing and carrying, into a misty cloud for the duration. The spell ends on the target if it drops to 0 Hit Points or if it takes a Magic action to end the spell on itself. \n\nWhile in this form, the target's only method of movement is a Fly Speed of 10 feet, and it can hover. The target can enter and occupy the space of another creature. The target has Resistance to Bludgeoning, Piercing, and Slashing damage; it has Immunity to the Prone condition; and it has Advantage on Strength, Dexterity, and Constitution saving throws. The target can pass through narrow openings, but it treats liquids as though they were solid surfaces. \n\nThe target can't talk or manipulate objects, and any objects it was carrying or holding can't be dropped, used, or otherwise interacted with. Finally, the target can't attack or cast spells."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada nível de espaço de magia acima de 3.",
+"descricao": "Uma criatura voluntária que você toca se transforma, junto com tudo o que está vestindo e carregando, em uma nuvem de névoa pela duração. A magia termina no alvo se ele cair a 0 Pontos de Vida ou se fizer uma Ação Mágica para encerrar a magia em si mesmo. \n\nEnquanto estiver nessa forma, o único método de movimento do alvo é um Deslocamento de Voo de 3 metros, e ele pode flutuar no lugar. O alvo pode entrar e ocupar o espaço de outra criatura. O alvo tem Resistência a dano de Impacto, Perfurante e Cortante; tem Imunidade à condição Caída; e tem Vantagem em testes de resistência de Força, Destreza e Constituição. O alvo pode atravessar aberturas estreitas, mas trata líquidos como se fossem superfícies sólidas. \n\nO alvo não pode falar nem manipular objetos, e quaisquer objetos que carregava ou segurava não podem ser largados, usados ou manuseados de qualquer forma. Por fim, o alvo não pode atacar nem lançar magias."
 },
 {
 "id": "c3_haste",
@@ -3009,7 +3009,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose a willing creature that you can see within range. Until the spell ends, the target's Speed is doubled, it gains a +2 bonus to Armor Class, it has Advantage on Dexterity saving throws, and it gains an additional action on each of its turns. That action can be used to take only the Attack (one attack only), Dash, Disengage, Hide, or Utilize action. \n\nWhen the spell ends, the target is Incapacitated and has a Speed of 0 until the end of its next turn, as a wave of lethargy washes over it."
+"descricao": "Escolha uma criatura voluntária que você possa ver dentro do alcance. Até a magia terminar, o Deslocamento do alvo é duplicado, ele ganha um bônus de +2 na Classe de Armadura, tem Vantagem em testes de resistência de Destreza e ganha uma ação adicional em cada um de seus turnos. Essa ação pode ser usada apenas para as ações Atacar (um único ataque), Correr, Esquivar, Esconder ou Utilizar. \n\nQuando a magia termina, o alvo fica Incapacitado e tem um Deslocamento de 0 até o fim do próximo turno dele, enquanto uma onda de letargia o domina."
 },
 {
 "id": "c3_meld_into_stone",
@@ -3026,7 +3026,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You step into a stone object or surface large enough to fully contain your body, merging yourself and your equipment with the stone for the duration. You must touch the stone to do so. Nothing of your presence remains visible or otherwise detectable by nonmagical senses. \n\nWhile merged with the stone, you can't see what occurs outside it, and any Wisdom (Perception) checks you make to hear sounds outside it are made with Disadvantage. You remain aware of the passage of time and can cast spells on yourself while merged in the stone. You can use 5 feet of movement to leave the stone where you entered it, which ends the spell. You otherwise can't move. \n\nMinor physical damage to the stone doesn't harm you, but its partial destruction or a change in its shape (to the extent that you no longer fit within it) expels you and deals 6d6 Force damage to you. The stone's complete destruction (or transmutation into a different substance) expels you and deals 50 Force damage to you. If expelled, you move into an unoccupied space closest to where you first entered and have the Prone condition."
+"descricao": "Você entra em um objeto de pedra ou em uma superfície grande o suficiente para conter totalmente seu corpo, fundindo-se a você e seu equipamento com a pedra pela duração. Você deve tocar a pedra para isso. Nada de sua presença permanece visível ou detectável de outra forma por sentidos não mágicos. \n\nEnquanto estiver fundido à pedra, você não pode ver o que acontece fora dela, e quaisquer testes de Sabedoria (Percepção) que fizer para ouvir sons do lado de fora são feitos com Desvantagem. Você permanece ciente da passagem do tempo e pode lançar magias em si mesmo enquanto estiver fundido à pedra. Você pode usar 1,5 metro de movimento para sair da pedra por onde entrou, o que encerra a magia. Caso contrário, você não pode se mover. \n\nDano físico menor à pedra não o prejudica, mas sua destruição parcial ou uma mudança em sua forma (a ponto de você não caber mais nela) o expulsa e causa 6d6 de dano de Força a você. A destruição completa da pedra (ou sua transmutação em uma substância diferente) o expulsa e causa 50 de dano de Força a você. Se for expulso, você se move para um espaço desocupado mais próximo do lugar onde entrou pela primeira vez e sofre a condição Caída."
 },
 {
 "id": "c3_plant_growth",
@@ -3043,7 +3043,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "This spell channels vitality into plants. The casting time you use determines whether the spell has the Overgrowth or the Enrichment effect below. \n\n**Overgrowth**. Choose a point within range. All normal plants in a 100-foot-radius Sphere centered on that point become thick and overgrown. A creature moving through that area must spend 4 feet of movement for every 1 foot it moves. You can exclude one or more areas of any size within the spell's area from being affected. \n\n**Enrichment**. All plants in a half-mile radius centered on a point within range become enriched for 365 days. The plants yield twice the normal amount of food when harvested. They can benefit from only one Plant Growth per year."
+"descricao": "Esta magia canaliza vitalidade para as plantas. O tempo de conjuração que você usar determina se a magia tem o efeito de Crescimento Exuberante ou de Enriquecimento abaixo. \n\n**Crescimento Exuberante.** Escolha um ponto dentro do alcance. Todas as plantas normais em uma Esfera com raio de 30 metros centrada nesse ponto ficam espessas e cobertas de vegetação. Uma criatura que se move por essa área deve gastar 4 pés de movimento para cada 1 pé que mova. Você pode excluir uma ou mais áreas de qualquer tamanho dentro da área da magia de serem afetadas. \n\n**Enriquecimento.** Todas as plantas em um raio de 800 metros centrado em um ponto dentro do alcance ficam enriquecidas por 365 dias. As plantas produzem o dobro da quantidade normal de alimento quando colhidas. Elas podem se beneficiar de apenas um Enriquecimento por ano."
 },
 {
 "id": "c3_slow",
@@ -3060,7 +3060,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You alter time around up to six creatures of your choice in a 40- foot Cube within range. Each target must succeed on a Wisdom saving throw or be affected by this spell for the duration. \n\nAn affected target's Speed is halved, it takes a −2 penalty to AC and Dexterity saving throws, and it can't take Reactions. On its turns, it can take either an action or a Bonus Action, not both, and it can make only one attack if it takes the Attack action. If it casts a spell with a Somatic component, there is a 25 percent chance the spell fails as a result of the target making the spell's gestures too slowly. \n\nAn affected target repeats the save at the end of each of its turns, ending the spell on itself on a success."
+"descricao": "Você altera o tempo ao redor de até seis criaturas à sua escolha em um Cubo de 12 metros dentro do alcance. Cada alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ser afetado por esta magia pela duração. \n\nO Deslocamento de um alvo afetado é reduzido à metade, ele sofre uma penalidade de −2 na CA e em testes de resistência de Destreza e não pode usar Reações. Em seus turnos, ele pode fazer uma Ação ou uma Ação Bônus, não ambas, e pode fazer apenas um ataque se fizer a ação Atacar. Se lançar uma magia com um componente Somático, há 25 por cento de chance de a magia falhar, pois o alvo faz os gestos da magia devagar demais. \n\nUm alvo afetado repete o teste no fim de cada um de seus turnos, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c3_speak_with_plants",
@@ -3077,7 +3077,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You imbue plants in an immobile 30-foot Emanation with limited sentience and animation, giving them the ability to communicate with you and follow your simple commands. You can question plants about events in the spell's area within the past day, gaining information about creatures that have passed, weather, and other circumstances. \n\nYou can also turn Difficult Terrain caused by plant growth (such as thickets and undergrowth) into ordinary terrain that lasts for the duration. Or you can turn ordinary terrain where plants are present into Difficult Terrain that lasts for the duration. \n\nThe spell doesn't enable plants to uproot themselves and move about, but they can move their branches, tendrils, and stalks for you. \n\nIf a Plant creature is in the area, you can communicate with it as if you shared a common language."
+"descricao": "Você infunde plantas em uma Emanação imóvel de 9 metros com senciência e animação limitadas, dando a elas a capacidade de se comunicar com você e seguir seus comandos simples. Você pode perguntar às plantas sobre eventos na área da magia no último dia, obtendo informações sobre criaturas que passaram por lá, clima e outras circunstâncias. \n\nVocê também pode transformar Terreno Difícil causado pelo crescimento de plantas (como moitas e vegetação rasteira) em terreno comum que dura pela duração. Ou pode transformar terreno comum onde há plantas presentes em Terreno Difícil que dura pela duração. \n\nA magia não permite que as plantas se desenraizem e se movam, mas elas podem mover seus galhos, gavinhas e caules por você. \n\nSe uma criatura Vegetal estiver na área, você pode se comunicar com ela como se compartilhassem um idioma comum."
 },
 {
 "id": "c3_water_breathing",
@@ -3094,7 +3094,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "This spell grants up to ten willing creatures of your choice within range the ability to breathe underwater until the spell ends. Affected creatures also retain their normal mode of respiration."
+"descricao": "Esta magia concede a até dez criaturas voluntárias à sua escolha dentro do alcance a capacidade de respirar debaixo d'água até a magia terminar. As criaturas afetadas também mantêm seu modo normal de respiração."
 },
 {
 "id": "c3_water_walk",
@@ -3111,7 +3111,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "This spell grants the ability to move across any liquid surface—such as water, acid, mud, snow, quicksand, or lava—as if it were harmless solid ground (creatures crossing molten lava can still take damage from the heat). Up to ten willing creatures of your choice within range gain this ability for the duration. \n\nAn affected target must take a Bonus Action to pass from the liquid's surface into the liquid itself and vice versa, but if the target falls into the liquid, the target passes through the surface into the liquid below."
+"descricao": "Esta magia concede a capacidade de se mover sobre qualquer superfície líquida — como água, ácido, lama, neve, areia movediça ou lava — como se fosse solo sólido inofensivo (criaturas que atravessam lava derretida ainda podem sofrer dano do calor). Até dez criaturas voluntárias à sua escolha dentro do alcance ganham essa capacidade pela duração. \n\nUm alvo afetado deve gastar uma Ação Bônus para passar da superfície do líquido para dentro dele e vice-versa, mas se o alvo cair no líquido, atravessa a superfície e afunda no líquido abaixo."
 },
 {
 "id": "c4_aura_of_life",
@@ -3128,7 +3128,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "An aura radiates from you in a 30-foot Emanation for the duration. While in the aura, you and your allies have Resistance to Necrotic damage, and your Hit Point maximums can't be reduced. If an ally with 0 Hit Points starts its turn in the aura, that ally regains 1 Hit Point."
+"descricao": "Uma aura irradia de você em uma Emanação de 9 metros pela duração. Enquanto estiver na aura, você e seus aliados têm Resistência a dano Necrótico, e seus máximos de Pontos de Vida não podem ser reduzidos. Se um aliado com 0 Pontos de Vida começar o turno na aura, esse aliado recupera 1 Ponto de Vida."
 },
 {
 "id": "c4_banishment",
@@ -3144,8 +3144,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 4.",
-"descricao": "One creature that you can see within range must succeed on a Charisma saving throw or be transported to a harmless demiplane for the duration. While there, the target has the Incapacitated condition. When the spell ends, the target reappears in the space it left or in the nearest unoccupied space if that space is occupied. If the target is an Aberration, a Celestial, an Elemental, a Fey, or a Fiend, the target doesn't return if the spell lasts for 1 minute. The target is instead transported to a random location on a plane (DM's choice) associated with its creature type."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada nível de espaço de magia acima de 4.",
+"descricao": "Uma criatura que você possa ver dentro do alcance deve ser bem-sucedida em um teste de resistência de Carisma ou ser transportada para um semiplano inofensivo pela duração. Enquanto estiver lá, o alvo tem a condição Incapacitado. Quando a magia termina, o alvo reaparece no espaço que deixou ou no espaço desocupado mais próximo se esse espaço estiver ocupado. Se o alvo for uma Aberração, um Celestial, um Elemental, uma Fada ou um Corruptor, o alvo não retorna se a magia durar 1 minuto. Em vez disso, ele é transportado para um local aleatório em um plano (escolha do mestre) associado ao tipo de criatura dele."
 },
 {
 "id": "c4_death_ward",
@@ -3162,7 +3162,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature and grant it a measure of protection from death. The first time the target would drop to 0 Hit Points before the spell ends, the target instead drops to 1 Hit Point, and the spell ends. \n\nIf the spell is still in effect when the target is subjected to an effect that would kill it instantly without dealing damage, that effect is negated against the target, and the spell ends."
+"descricao": "Você toca uma criatura e concede a ela uma medida de proteção contra a morte. A primeira vez que o alvo cairia a 0 Pontos de Vida antes de a magia terminar, em vez disso ele cai a 1 Ponto de Vida, e a magia termina. \n\nSe a magia ainda estiver em efeito quando o alvo for submetido a um efeito que o mataria instantaneamente sem causar dano, esse efeito é anulado contra o alvo, e a magia termina."
 },
 {
 "id": "c4_freedom_of_movement",
@@ -3178,8 +3178,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 4.",
-"descricao": "You touch a willing creature. For the duration, the target's movement is unaffected by Difficult Terrain, and spells and other magical effects can neither reduce the target's Speed nor cause the target to have the Paralyzed or Restrained conditions. The target also has a Swim Speed equal to its Speed. \n\nIn addition, the target can spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature imposing the Grappled condition on it."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada nível de espaço de magia acima de 4.",
+"descricao": "Você toca uma criatura voluntária. Pela duração, o movimento do alvo não é afetado por Terreno Difícil, e magias e outros efeitos mágicos não podem reduzir o Deslocamento do alvo nem causar a ele as condições Paralisado ou Imobilizado. O alvo também tem um Deslocamento de Nado igual ao seu Deslocamento. \n\nAlém disso, o alvo pode gastar 1,5 metro de movimento para escapar automaticamente de contenções não mágicas, como algemas ou uma criatura que imponha a condição Agarrão sobre ele."
 },
 {
 "id": "c4_private_sanctum",
@@ -3195,8 +3195,8 @@ const SPELLS_DATA = [
 "duracao": "24 horas",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can increase the size of the Cube by 100 feet for each spell slot level above 4.",
-"descricao": "You make an area within range magically secure. The area is a Cube that can be as small as 5 feet to as large as 100 feet on each side. The spell lasts for the duration. \n\nWhen you cast the spell, you decide what sort of security the spell provides, choosing any of the following properties: \n\n- Sound can't pass through the barrier at the edge of the warded area. \n\n- The barrier of the warded area appears dark and foggy, preventing vision (including Dark vision) through it. \n\n- Sensors created by Divination spells can't appear inside the protected area or pass through the barrier at its perimeter. \n\n- Creatures in the area can't be targeted by Divination spells. \n\n- Nothing can teleport into or out of the warded area. \n\n- Planar travel is blocked within the warded area. Casting this spell on the same spot every day for 365 days makes the spell last until dispelled."
+"aprimoramento": "Você pode aumentar o lado do Cubo em 30 metros para cada nível de espaço de magia acima de 4.",
+"descricao": "Você torna uma área dentro do alcance magicamente segura. A área é um Cubo que pode ter de 1,5 metro a até 30 metros de lado. A magia dura pela duração. \n\nAo lançar a magia, você decide que tipo de segurança ela oferece, escolhendo qualquer uma das seguintes propriedades: \n\n- O som não pode atravessar a barreira na borda da área protegida. \n\n- A barreira da área protegida parece escura e enevoada, impedindo a visão (incluindo Visão no Escuro) através dela. \n\n- Sensores criados por magias de Adivinhação não podem aparecer dentro da área protegida nem atravessar a barreira em seu perímetro. \n\n- Criaturas na área não podem ser alvo de magias de Adivinhação. \n\n- Nada pode se teleportar para dentro ou para fora da área protegida. \n\n- A viagem planar é bloqueada dentro da área protegida. Lançar esta magia no mesmo ponto todos os dias por 365 dias faz a magia durar até ser dissipada."
 },
 {
 "id": "c4_black_tentacles",
@@ -3213,7 +3213,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Squirming, ebony tentacles fill a 20-foot square on ground that you can see within range. For the duration, these tentacles turn the ground in that area into Difficult Terrain. \n\nEach creature in that area makes a Strength saving throw. On a failed save, it takes 3d6 Bludgeoning damage, and it has the Restrained condition until the spell ends. A creature also makes that save if it enters the area or ends it turn there. A creature makes that save only once per turn. \n\nA Restrained creature can take an action to make a Strength (Athletics) check against your spell save DC, ending the condition on itself on a success."
+"descricao": "Tentáculos negros e retorcidos preenchem uma área quadrada de 6 metros no chão que você possa ver dentro do alcance. Pela duração, esses tentáculos transformam o chão nessa área em Terreno Difícil. \n\nCada criatura na área faz um teste de resistência de Força. Em uma falha, ela sofre 3d6 de dano de Impacto e tem a condição Imobilizado até a magia terminar. Uma criatura também faz esse teste se entrar na área ou terminar o turno nela. Uma criatura faz esse teste apenas uma vez por turno. \n\nUma criatura Imobilizada pode gastar uma ação para fazer um teste de Força (Atletismo) contra a CD de resistência da sua magia, encerrando a condição em si mesma em um sucesso."
 },
 {
 "id": "c4_conjure_minor_elementals",
@@ -3229,8 +3229,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 2d8 for each spell slot level above 4.",
-"descricao": "You conjure spirits from the Elemental Planes that flit around you in a 15-foot Emanation for the duration. Until the spell ends, any attack you make deals an extra 2d8 damage when you hit a creature in the Emanation. This damage is Acid, Cold, Fire, or Lightning (your choice when you make the attack). In addition, the ground in the Emanation is Difficult Terrain for your enemies."
+"aprimoramento": "O dano aumenta em 2d8 para cada nível de espaço de magia acima de 4.",
+"descricao": "Você conjura espíritos dos Planos Elementais que esvoaçam ao seu redor em uma Emanação de 4,5 metros pela duração. Até a magia terminar, qualquer ataque que você fizer causa 2d8 de dano extra ao acertar uma criatura na Emanação. Esse dano é de Ácido, Frio, Fogo ou Eletricidade (sua escolha ao fazer o ataque). Além disso, o chão na Emanação é Terreno Difícil para seus inimigos."
 },
 {
 "id": "c4_conjure_woodland_beings",
@@ -3246,8 +3246,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 5.",
-"descricao": "You conjure nature spirits that flit around you in a 10-foot Emanation for the duration. Whenever the Emanation enters the space of a creature you can see and whenever a creature you can see enters the Emanation or ends its turn there, you can force that creature to make a Wisdom saving throw. The creature takes 5d8 Force damage on a failed save or half as much damage on a successful one. A creature makes this save only once per turn. In addition, you can take the Disengage action as a Bonus Action for the spell's duration."
+"aprimoramento": "O dano aumenta em 1d8 para cada nível de espaço de magia acima de 5.",
+"descricao": "Você conjura espíritos da natureza que esvoaçam ao seu redor em uma Emanação de 3 metros pela duração. Sempre que a Emanação entra no espaço de uma criatura que você possa ver e sempre que uma criatura que você possa ver entra na Emanação ou termina o turno nela, você pode forçar essa criatura a fazer um teste de resistência de Sabedoria. A criatura sofre 5d8 de dano de Força em uma falha ou metade do dano em um sucesso. Uma criatura faz esse teste apenas uma vez por turno. Além disso, você pode fazer a ação Esquivar como uma Ação Bônus pela duração da magia."
 },
 {
 "id": "c4_dimension_door",
@@ -3264,7 +3264,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You teleport to a location within range. You arrive at exactly the spot desired. It can be a place you can see, one you can visualize, or one you can describe by stating distance and direction, such as \"200 feet straight downward\" or \"300 feet upward to the northwest at a 45-degree angle.\" \n\nYou can also teleport one willing creature. The creature must be within 5 feet of you when you teleport, and it teleports to a space within 5 feet of your destination space. \n\nIf you, the other creature, or both would arrive in a space occupied by a creature or completely filled by one or more objects, you and any creature traveling with you each take 4d6 Force damage, and the teleportation fails."
+"descricao": "Você se teleporta para um local dentro do alcance. Chega exatamente ao ponto desejado. Pode ser um lugar que você veja, que possa visualizar ou que possa descrever declarando distância e direção, como \"60 metros diretamente para baixo\" ou \"90 metros para cima, nordeste, em um ângulo de 45 graus\". \n\nVocê também pode teleportar uma criatura voluntária. A criatura deve estar a até 1,5 metro de você quando você se teleportar, e ela se teleporta para um espaço a até 1,5 metro do espaço do seu destino. \n\nSe você, a outra criatura ou ambos chegassem em um espaço ocupado por uma criatura ou completamente preenchido por um ou mais objetos, você e qualquer criatura que viaja com você sofrem cada um 4d6 de dano de Força, e o teleporte falha."
 },
 {
 "id": "c4_faithful_hound",
@@ -3281,7 +3281,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You conjure a phantom watchdog in an unoccupied space that you can see within range. The hound remains for the duration or until the two of you are more than 300 feet apart from each other. \n\nNo one but you can see the hound, and it is intangible and invulnerable. When a Small or larger creature comes within 30 feet of it without first speaking the password that you specify when you cast this spell, the hound starts barking loudly. The hound has Truesight with a range of 30 feet. \n\nAt the start of each of your turns, the hound attempts to bite one enemy within 5 feet of it. That enemy must succeed on a Dexterity saving throw or take 4d8 Force damage.\n\nOn your later turns, you can take a Magic action to move the hound up to 30 feet."
+"descricao": "Você conjura um cão de guarda fantasma em um espaço desocupado que possa ver dentro do alcance. O cão permanece pela duração ou até que os dois estejam a mais de 90 metros um do outro. \n\nNinguém além de você pode ver o cão, e ele é intangível e invulnerável. Quando uma criatura Pequena ou maior se aproxima a 9 metros dele sem antes falar a senha que você especifica ao lançar a magia, o cão começa a latir alto. O cão tem Visão Real com alcance de 9 metros. \n\nNo início de cada um dos seus turnos, o cão tenta morder um inimigo a até 1,5 metro dele. Esse inimigo deve ser bem-sucedido em um teste de resistência de Destreza ou sofrer 4d8 de dano de Força. \n\nNos seus turnos posteriores, você pode gastar uma Ação Mágica para mover o cão em até 9 metros."
 },
 {
 "id": "c4_giant_insect",
@@ -3297,8 +3297,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Use the spell slot's level for the spell's level in the stat block.",
-"descricao": "You summon a giant centipede, spider, or wasp (chosen when you cast the spell). It manifests in an unoccupied space you can see within range and uses the **Giant Insect** stat block. The form you choose determines certain details in its stat block. The creature disappears when it drops to 0 Hit Points or when the spell ends. The creature is an ally to you and your allies. In combat, the creature shares your Initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its movement to avoid danger."
+"aprimoramento": "Use o círculo do espaço de magia para o círculo da magia no bloco de estatísticas.",
+"descricao": "Você invoca uma centopeia, aranha ou vespa gigante (escolhida ao lançar a magia). Ela se manifesta em um espaço desocupado que você possa ver dentro do alcance e usa o bloco de estatísticas **Inseto Gigante**. A forma que você escolher determina certos detalhes no bloco de estatísticas dela. A criatura desaparece ao cair a 0 Pontos de Vida ou quando a magia termina. A criatura é uma aliada sua e de seus aliados. Em combate, a criatura compartilha sua contagem de Iniciativa, mas faz o turno imediatamente após o seu. Ela obedece aos seus comandos verbais (nenhuma ação exigida de você). Se você não emitir nenhum, ela faz a ação Esquivar e usa seu movimento para evitar perigo."
 },
 {
 "id": "c4_guardian_of_faith",
@@ -3315,7 +3315,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A Large spectral guardian appears and hovers for the duration in an unoccupied space that you can see within range. The guardian occupies that space and is invulnerable, and it appears in a form appropriate for your deity or pantheon. \n\nAny enemy that moves to a space within 10 feet of the guardian for the first time on a turn or starts its turn there makes a Dexterity saving throw, taking 20 Radiant damage on a failed save or half as much damage on a successful one. The guardian vanishes when it has dealt a total of 60 damage."
+"descricao": "Um guardião espectral Grande aparece e permanece pairando pela duração em um espaço desocupado que você possa ver dentro do alcance. O guardião ocupa esse espaço e é invulnerável, e aparece em uma forma apropriada para sua divindade ou panteão. \n\nQualquer inimigo que se mover para um espaço a até 3 metros do guardião pela primeira vez em um turno ou começar o turno ali faz um teste de resistência de Destreza, sofrendo 20 de dano Radiante em uma falha ou metade do dano em um sucesso. O guardião desaparece quando tiver causado 60 de dano no total."
 },
 {
 "id": "c4_secret_chest",
@@ -3332,7 +3332,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You hide a chest and all its contents on the Ethereal Plane. You must touch the chest and the miniature replica that serve as Material components for the spell. The chest can contain up to 12 cubic feet of nonliving material (3 feet by 2 feet by 2 feet). \n\nWhile the chest remains on the Ethereal Plane, you can take a Magic action and touch the replica to recall the chest. It appears in an unoccupied space on the ground within 5 feet of you. You can send the chest back to the Ethereal Plane by taking a Magic action to touch the chest and the replica. \n\nAfter 60 days, there is a cumulative 5 percent chance at the end of each day that the spell ends. The spell also ends if you cast this spell again or if the Tiny replica chest is destroyed. If the spell ends and the larger chest is on the Ethereal Plane, the chest remains there for you or someone else to find."
+"descricao": "Você esconde um baú e todo o seu conteúdo no Plano Etéreo. Você deve tocar o baú e a réplica em miniatura que servem como componentes Materiais da magia. O baú pode conter até 0,34 metro cúbico de material não vivo (0,9 m por 0,6 m por 0,6 m). \n\nEnquanto o baú permanecer no Plano Etéreo, você pode gastar uma Ação Mágica e tocar a réplica para evocar o baú. Ele aparece em um espaço desocupado no chão a até 1,5 metro de você. Você pode enviar o baú de volta ao Plano Etéreo gastando uma Ação Mágica para tocar o baú e a réplica. \n\nApós 60 dias, há uma chance cumulativa de 5 por cento ao fim de cada dia de a magia terminar. A magia também termina se você lançá-la novamente ou se o baú-réplica Minúsculo for destruído. Se a magia terminar e o baú maior estiver no Plano Etéreo, o baú permanece lá para você ou outra pessoa encontrar."
 },
 {
 "id": "c4_arcane_eye",
@@ -3349,7 +3349,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create an Invisible, invulnerable eye within range that hovers for the duration. You mentally receive visual information from the eye, which can see in every direction. It also has Darkvision with a range of 30 feet. \n\nAs a Bonus Action, you can move the eye up to 30 feet in any direction. A solid barrier blocks the eye's movement, but the eye can pass through an opening as small as 1 inch in diameter."
+"descricao": "Você cria um olho Invisível e invulnerável dentro do alcance que permanece pairando pela duração. Você recebe mentalmente informações visuais do olho, que pode ver em todas as direções. Ele também tem Visão no Escuro com alcance de 9 metros. \n\nComo uma Ação Bônus, você pode mover o olho em até 9 metros em qualquer direção. Uma barreira sólida bloqueia o movimento do olho, mas ele pode atravessar uma abertura de até 2,5 centímetros de diâmetro."
 },
 {
 "id": "c4_divination",
@@ -3366,7 +3366,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "This spell puts you in contact with a god or a god's servants. You ask one question about a specific goal, event, or activity to occur within 7 days. The DM offers a truthful reply, which might be a short phrase or cryptic rhyme. The spell doesn't account for circumstances that might change the answer, such as the casting of other spells.\n\nIf you cast the spell more than once before finishing a Long Rest, there is a cumulative 25 percent chance for each casting after the first that you get no answer."
+"descricao": "Esta magia coloca você em contato com um deus ou com os servos de um deus. Você faz uma pergunta sobre um objetivo, evento ou atividade específica a ocorrer dentro de 7 dias. O mestre oferece uma resposta verdadeira, que pode ser uma frase curta ou uma rima enigmática. A magia não leva em conta circunstâncias que possam mudar a resposta, como o lançamento de outras magias. \n\nSe você lançar a magia mais de uma vez antes de terminar um Descanso Longo, há uma chance cumulativa de 25 por cento para cada conjuração após a primeira de não obter resposta."
 },
 {
 "id": "c4_locate_creature",
@@ -3383,7 +3383,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Describe or name a creature that is familiar to you. You sense the direction to the creature's location if that creature is within 1,000 feet of you. If the creature is moving, you know the direction of its movement. \n\nThe spell can locate a specific creature known to you or the nearest creature of a specific kind (such as a human or a unicorn) if you have seen such a creature up close—within 30 feet—at least once. If the creature you described or named is in a different form, such as under the effects of a Flesh to Stone or Polymorph spell, this spell doesn't locate the creature. \n\nThis spell can't locate a creature if any thickness of lead blocks a direct path between you and the creature."
+"descricao": "Descreva ou nomeie uma criatura que seja familiar para você. Você sente a direção da localização da criatura se ela estiver a até 305 metros de você. Se a criatura estiver em movimento, você sabe a direção do movimento dela. \n\nA magia pode localizar uma criatura específica conhecida por você ou a criatura mais próxima de um tipo específico (como um humano ou um unicórnio) se você tiver visto tal criatura de perto — a até 9 metros — pelo menos uma vez. Se a criatura que você descreveu ou nomeou estiver em uma forma diferente, como sob os efeitos de uma magia de Pedra em Carne ou Polimorfia, esta magia não a localiza. \n\nEsta magia não pode localizar uma criatura se qualquer espessura de chumbo bloquear um caminho direto entre você e a criatura."
 },
 {
 "id": "c4_charm_monster",
@@ -3399,8 +3399,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 4.",
-"descricao": "One creature you can see within range makes a Wisdom saving throw. It does so with Advantage if you or your allies are fighting it. On a failed save, the target has the Charmed condition until the spell ends or until you or your allies damage it. The Charmed creature is Friendly to you. When the spell ends, the target knows it was Charmed by you."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada nível de espaço de magia acima de 4.",
+"descricao": "Uma criatura que você possa ver dentro do alcance faz um teste de resistência de Sabedoria. Ela o faz com Vantagem se você ou seus aliados estiverem lutando contra ela. Em uma falha, o alvo tem a condição Enfeitiçado até a magia terminar ou até que você ou seus aliados o danifiquem. A criatura Enfeitiçada é Amigável a você. Quando a magia termina, o alvo sabe que foi Enfeitiçado por você."
 },
 {
 "id": "c4_compulsion",
@@ -3417,7 +3417,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Each creature of your choice that you can see within range must succeed on a Wisdom saving throw or have the Charmed condition until the spell ends. \n\nFor the duration, you can take a Bonus Action to designate a direction that is horizontal to you. Each Charmed target must use as much of its movement as possible to move in that direction on its next turn, taking the safest route. After moving in this way, a target repeats the save, ending the spell on itself on a success."
+"descricao": "Cada criatura à sua escolha que você possa ver dentro do alcance deve ser bem-sucedida em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado até a magia terminar. \n\nPela duração, você pode gastar uma Ação Bônus para designar uma direção horizontal a você. Cada alvo Enfeitiçado deve usar o máximo de seu movimento possível para se mover nessa direção no próximo turno dele, pela rota mais segura. Depois de se mover dessa forma, um alvo repete o teste, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c4_confusion",
@@ -3433,8 +3433,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The Sphere's radius increases by 5 feet for each spell slot level above 4.",
-"descricao": "Each creature in a 10-foot-radius Sphere centered on a point you choose within range must succeed on a Wisdom saving throw, or that target can't take Bonus Actions or Reactions and must roll 1d10 at the start of each of its turns to determine its behavior for that turn, consulting the table below. \n\n| **1d10** | **Behavior for the Turn**                                                                                                                                                      |\n| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| 1        | The target doesn't take an action, and it uses all its movement to move. Roll 1d4 for the direction: 1, north; 2, east; 3, south; or 4, west.                                  |\n| 2-6      | The target doesn't move or take actions.                                                                                                                                       |\n| 7-8      | The target doesn't move, and it takes the Attack action to make one melee attack against a random creature within reach. If none are within reach, the target takes no action. |\n| 9-10     | The target chooses its behavior.                                                                                                                                               |\n\nAt the end of each of its turns, an affected target repeats the save, ending the spell on itself on a success."
+"aprimoramento": "O raio da Esfera aumenta em 1,5 metro para cada nível de espaço de magia acima de 4.",
+"descricao": "Cada criatura em uma Esfera com raio de 3 metros centrada em um ponto à sua escolha dentro do alcance deve ser bem-sucedida em um teste de resistência de Sabedoria, ou esse alvo não pode fazer Ações Bônus nem Reações e deve rolar 1d10 no início de cada um de seus turnos para determinar seu comportamento nesse turno, consultando a tabela abaixo. \n\n| **1d10** | **Comportamento no Turno**                                                                                                                                     |\n| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| 1        | O alvo não faz uma ação e usa todo seu movimento para se mover. Role 1d4 para a direção: 1, norte; 2, leste; 3, sul; ou 4, oeste.                               |\n| 2-6      | O alvo não se move nem faz ações.                                                                                                                                 |\n| 7-8      | O alvo não se move e faz a ação Atacar para fazer um ataque corpo a corpo contra uma criatura aleatória ao alcance. Se nenhuma estiver ao alcance, o alvo não faz ação. |\n| 9-10     | O alvo escolhe seu comportamento.                                                                                                                              |\n\nNo fim de cada um de seus turnos, um alvo afetado repete o teste, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c4_dominate_beast",
@@ -3450,8 +3450,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Your Concentration can last longer with a spell slot of level 5 (up to 10 minutes), 6 (up to 1 hour), or 7+ (up to 8 hours).",
-"descricao": "One Beast you can see within range must succeed on a Wisdom saving throw or have the Charmed condition for the duration. The target has Advantage on the save if you or your allies are fighting it. Whenever the target takes damage, it repeats the save, ending the spell on itself on a success. \n\nYou have a telepathic link with the Charmed target while the two of you are on the same plane of existence. On your turn, you can use this link to issue commands to the target (no action required), such as \"Attack that creature,\" \"Move over there,\" or \"Fetch that object.\" The target does its best to obey on its turn. If it completes an order and doesn't receive further direction from you, it acts and moves as it likes, focusing on protecting itself. \n\nYou can command the target to take a Reaction but must take your own Reaction to do so."
+"aprimoramento": "Sua Concentração pode durar mais com um espaço de magia de 5º círculo (até 10 minutos), 6º (até 1 hora) ou 7º+ (até 8 horas).",
+"descricao": "Uma Besta que você possa ver dentro do alcance deve ser bem-sucedida em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração. O alvo tem Vantagem no teste se você ou seus aliados estiverem lutando contra ela. Sempre que o alvo sofrer dano, ele repete o teste, encerrando a magia em si mesmo em um sucesso. \n\nVocê tem um vínculo telepático com o alvo Enfeitiçado enquanto os dois estiverem no mesmo plano de existência. No seu turno, você pode usar esse vínculo para emitir comandos ao alvo (nenhuma ação exigida), como \"Ataque essa criatura\", \"Mova-se até lá\" ou \"Busque esse objeto\". O alvo faz o melhor que pode para obedecer no turno dele. Se ele concluir uma ordem e não receber mais instruções suas, age e se move como preferir, focando em se proteger. \n\nVocê pode ordenar que o alvo faça uma Reação, mas deve gastar sua própria Reação para isso."
 },
 {
 "id": "c4_fire_shield",
@@ -3468,7 +3468,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Wispy flames wreathe your body for the duration, shedding Bright Light in a 10-foot radius and Dim Light for an additional 10 feet. The flames provide you with a warm shield or a chill shield, as you choose. The warm shield grants you Resistance to Cold damage, and the chill shield grants you Resistance to Fire damage. \n\nIn addition, whenever a creature within 5 feet of you hits you with a melee attack roll, the shield erupts with flame. The attacker takes 2d8 Fire damage from a warm shield or 2d8 Cold damage from a chill shield."
+"descricao": "Chamas sutis envolvem seu corpo pela duração, emitindo Luz Intensa em um raio de 3 metros e Luz Diminuta por mais 3 metros. As chamas lhe concedem um escudo quente ou um escudo frio, como você escolher. O escudo quente concede a você Resistência a dano de Frio, e o escudo frio concede Resistência a dano de Fogo. \n\nAlém disso, sempre que uma criatura a até 1,5 metro de você o acertar com uma jogada de ataque corpo a corpo, o escudo irrompe em chamas. O atacante sofre 2d8 de dano de Fogo de um escudo quente ou 2d8 de dano de Frio de um escudo frio."
 },
 {
 "id": "c4_ice_storm",
@@ -3484,8 +3484,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The Bludgeoning damage increases by 1d10 for each spell slot level above 4.",
-"descricao": "Hail falls in a 20-foot-radius, 40-foot-high Cylinder centered on a point within range. Each creature in the Cylinder makes a Dexterity saving throw. A creature takes 2d10 Bludgeoning damage and 4d6 Cold damage on a failed save or half as much damage on a successful one. \n\nHailstones turn ground in the Cylinder into Difficult Terrain until the end of your next turn."
+"aprimoramento": "O dano de Impacto aumenta em 1d10 para cada nível de espaço de magia acima de 4.",
+"descricao": "Granizo cai em um Cilindro com raio de 6 metros e 12 metros de altura centrado em um ponto dentro do alcance. Cada criatura no Cilindro faz um teste de resistência de Destreza. Uma criatura sofre 2d10 de dano de Impacto e 4d6 de dano de Frio em uma falha ou metade do dano em um sucesso. \n\nAs pedras de granizo transformam o chão no Cilindro em Terreno Difícil até o fim do seu próximo turno."
 },
 {
 "id": "c4_resilient_sphere",
@@ -3502,7 +3502,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A shimmering sphere encloses a Large or smaller creature or object within range. An unwilling creature must succeed on a Dexterity saving throw or be enclosed for the duration. Nothing-not physical objects, energy, or other spell effects can pass through the barrier, in or out, though a creature in the sphere can breathe there. The sphere is immune to all damage, and a creature or object inside can't be damaged by attacks or effects originating from outside, nor can a creature inside the sphere damage anything outside it. The sphere is weightless and just large enough to contain the creature or object inside. An enclosed creature can take an action to push against the sphere's walls and thus roll the sphere at up to half the creature's Speed. Similarly, the globe can be picked up and moved by other creatures. A Disintegrate spell targeting the globe destroys it without harming anything inside."
+"descricao": "Uma esfera cintilante encerra uma criatura ou objeto Grande ou menor dentro do alcance. Uma criatura involuntária deve ser bem-sucedida em um teste de resistência de Destreza ou ser encerrada pela duração. Nada — nem objetos físicos, energia ou outros efeitos de magia — pode atravessar a barreira, de dentro para fora ou de fora para dentro, embora uma criatura na esfera possa respirar ali. A esfera é imune a todo dano, e uma criatura ou objeto dentro dela não pode ser danificado por ataques ou efeitos originados do lado de fora, nem uma criatura dentro da esfera pode danificar nada fora dela. A esfera não tem peso e é apenas grande o suficiente para conter a criatura ou o objeto em seu interior. Uma criatura encerrada pode gastar uma ação para empurrar as paredes da esfera e assim fazê-la rolar a até metade do Deslocamento da criatura. Da mesma forma, o globo pode ser erguido e movido por outras criaturas. Uma magia Desintegrar que mire no globo o destrói sem ferir nada dentro dele."
 },
 {
 "id": "c4_vitriolic_sphere",
@@ -3518,8 +3518,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The initial damage increases by 2d4 for each spell slot level above 4.",
-"descricao": "You point at a location within range, and a glowing, 1-foot- diameter ball of acid streaks there and explodes in a 20-foot-radius Sphere. Each creature in that area makes a Dexterity saving throw. On a failed save, a creature takes 10d4 Acid damage and another Sd4 Acid damage at the end of its next turn. On a successful save, a creature takes half the initial damage only."
+"aprimoramento": "O dano inicial aumenta em 2d4 para cada nível de espaço de magia acima de 4.",
+"descricao": "Você aponta para um local dentro do alcance, e uma bola brilhante de ácido com 30 centímetros de diâmetro dispara até lá e explode em uma Esfera com raio de 6 metros. Cada criatura na área faz um teste de resistência de Destreza. Em uma falha, uma criatura sofre 10d4 de dano de Ácido e outros 5d4 de dano de Ácido no fim do próximo turno dela. Em um sucesso, uma criatura sofre apenas metade do dano inicial."
 },
 {
 "id": "c4_wall_of_fire",
@@ -3535,8 +3535,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 4.",
-"descricao": "You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration. \n\nWhen the wall appears, each creature in its area makes a Dexterity saving throw, taking 5d8 Fire damage on a failed save or half as much damage on a successful one. \n\nOne side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage."
+"aprimoramento": "O dano aumenta em 1d8 para cada nível de espaço de magia acima de 4.",
+"descricao": "Você cria uma muralha de fogo em uma superfície sólida dentro do alcance. Você pode fazer a muralha ter até 18 metros de comprimento, 6 metros de altura e 30 centímetros de espessura, ou uma muralha em anel com até 6 metros de diâmetro, 6 metros de altura e 30 centímetros de espessura. A muralha é opaca e dura pela duração. \n\nQuando a muralha aparece, cada criatura em sua área faz um teste de resistência de Destreza, sofrendo 5d8 de dano de Fogo em uma falha ou metade do dano em um sucesso. \n\nUm lado da muralha, selecionado por você ao lançar a magia, causa 5d8 de dano de Fogo a cada criatura que terminar o turno a até 3 metros desse lado ou dentro da muralha. Uma criatura sofre o mesmo dano quando entra na muralha pela primeira vez em um turno ou termina o turno nela. O outro lado da muralha não causa dano."
 },
 {
 "id": "c4_greater_invisibility",
@@ -3553,7 +3553,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A creature you touch has the Invisible condition until the spell ends."
+"descricao": "Uma criatura que você toca tem a condição Invisível até a magia terminar."
 },
 {
 "id": "c4_hallucinatory_terrain",
@@ -3570,7 +3570,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You make natural terrain in a 150-foot Cube in range look, sound, and smell like another sort of natural terrain. Thus, open fields or a road can be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock- strewn gully like a wide and smooth road. Manufactured structures, equipment, and creatures within the area aren't changed. \n\nThe tactile characteristics of the terrain are unchanged, so creatures entering the area are likely to notice the illusion. If the difference isn't obvious by touch, a creature examining the illusion can take the Study action to make an Intelligence (Investigation) check against your spell save DC to disbelieve it. If a creature discerns that the terrain is illusory, the creature sees a vague image superimposed on the real terrain."
+"descricao": "Você faz o terreno natural em um Cubo de 45 metros dentro do alcance parecer, soar e cheirar como outro tipo de terreno natural. Assim, campos abertos ou uma estrada podem ser feitos para se assemelhar a um pântano, colina, ravina ou outro terreno difícil ou intransponível. Uma lagoa pode parecer um prado gramado, um precipício uma encosta suave, ou uma ravina cheia de pedras uma estrada larga e lisa. Estruturas fabricadas, equipamentos e criaturas na área não são alterados. \n\nAs características táteis do terreno não são alteradas, então as criaturas que entram na área provavelmente perceberão a ilusão. Se a diferença não for óbvia ao toque, uma criatura que examine a ilusão pode fazer a ação de Estudar para fazer um teste de Inteligência (Investigação) contra a CD de resistência da sua magia para descrer dela. Se uma criatura discernir que o terreno é ilusório, ela vê uma imagem vaga sobreposta ao terreno real."
 },
 {
 "id": "c4_phantasmal_killer",
@@ -3586,8 +3586,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 4.",
-"descricao": "You tap into the nightmares of a creature you can see within range and create an illusion of its deepest fears, visible only to that creature. The target makes a Wisdom saving throw. On a failed save, the target takes 4d10 Psychic damage and has Disadvantage on ability checks and attack rolls for the duration. On a successful save, the target takes half as much damage, and the spell ends. \n\nFor the duration, the target makes a Wisdom saving throw at the end of each of its turns. On a failed save, it takes the Psychic damage again. On a successful save, the spell ends."
+"aprimoramento": "O dano aumenta em 1d10 para cada nível de espaço de magia acima de 4.",
+"descricao": "Você acessa os pesadelos de uma criatura que possa ver dentro do alcance e cria uma ilusão de seus medos mais profundos, visível apenas para ela. O alvo faz um teste de resistência de Sabedoria. Em uma falha, o alvo sofre 4d10 de dano Psíquico e tem Desvantagem em testes de atributo e jogadas de ataque pela duração. Em um sucesso, o alvo sofre metade do dano, e a magia termina. \n\nPela duração, o alvo faz um teste de resistência de Sabedoria no fim de cada um de seus turnos. Em uma falha, ele sofre o dano Psíquico novamente. Em um sucesso, a magia termina."
 },
 {
 "id": "c4_blight",
@@ -3603,8 +3603,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 4.",
-"descricao": "A creature that you can see within range makes a Constitution saving throw, taking 8d8 Necrotic damage on a failed save or half as much damage on a successful one. A Plant creature automatically fails the save. \n\nAlternatively, target a nonmagical plant that isn't a creature, such as a tree or shrub. It doesn't make a save; it simply withers and dies."
+"aprimoramento": "O dano aumenta em 1d8 para cada nível de espaço de magia acima de 4.",
+"descricao": "Uma criatura que você possa ver dentro do alcance faz um teste de resistência de Constituição, sofrendo 8d8 de dano Necrótico em uma falha ou metade do dano em um sucesso. Uma criatura Vegetal falha automaticamente no teste. \n\nAlternativamente, mire em uma planta não mágica que não seja uma criatura, como uma árvore ou um arbusto. Ela não faz teste; simplesmente murcha e morre."
 },
 {
 "id": "c4_control_water",
@@ -3621,7 +3621,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, you control any water inside an area you choose that is a Cube up to 100 feet on a side, using one of the following effects. As a Magic action on your later turns, you can repeat the same effect or choose a different one. \n\n**Flood.** You cause the water level of all standing water in the area to rise by as much as 20 feet. If you choose an area in a large body of water, you instead create a 20-foot tall wave that travels from one side of the area to the other and then crashes. Any Huge or smaller vehicles in the wave's path are carried with it to the other side. Any Huge or smaller vehicles struck by the wave have a 25 percent chance of capsizing. The water level remains elevated until the spell ends or you choose a different effect. If this effect produced a wave, the wave repeats on the start of your next turn while the flood effect lasts. \n\n**Part Water.** You part water in the area and create a trench. The trench extends across the spell's area, and the separated water forms a wall to either side. The trench remains until the spell ends or you choose a different effect. The water then slowly fills in the trench over the course of the next round until the normal water level is restored. \n\n**Redirect Flow.** You cause flowing water in the area to move in a direction you choose, even if the water has to flow over obstacles, up walls, or in other unlikely directions. The water in the area moves as you direct it, but once it moves beyond the spell's area, it resumes its flow based on the terrain. The water continues to move in the direction you chose until the spell ends or you choose a different effect. \n\n**Whirlpool.** You cause a whirlpool to form in the center of the area, which must be at least 50 feet square and 25 feet deep. The whirlpool lasts until you choose a different effect or the spell ends. The whirlpool is 5 feet wide at the base, up to 50 feet wide at the top, and 25 feet tall. Any creature in the water and within 25 feet of the whirlpool is pulled 10 feet toward it. When a creature enters the whirlpool for the first time on a turn or ends its turn there, it makes a Strength saving throw. On a failed save, the creature takes 2d8 Bludgeoning damage. On a successful save, the creature takes half as much damage. A creature can swim away from the whirlpool only if it first takes an action to pull away and succeeds on a Strength (Athletics) check against your spell save DC."
+"descricao": "Até a magia terminar, você controla qualquer água dentro de uma área à sua escolha que seja um Cubo de até 30 metros de lado, usando um dos seguintes efeitos. Como uma Ação Mágica nos seus turnos posteriores, você pode repetir o mesmo efeito ou escolher um diferente. \n\n**Inundação.** Você faz o nível da água parada na área se elevar em até 6 metros. Se você escolher uma área em um grande corpo d'água, em vez disso cria uma onda de 6 metros de altura que viaja de um lado da área ao outro e então despenca. Quaisquer veículos Enormes ou menores no caminho da onda são carregados para o outro lado. Quaisquer veículos Enormes ou menores atingidos pela onda têm 25 por cento de chance de virar. O nível da água permanece elevado até a magia terminar ou você escolher outro efeito. Se esse efeito produziu uma onda, a onda se repete no início do seu próximo turno enquanto o efeito de inundação durar. \n\n**Partir Água.** Você parte a água na área e cria uma trincheira. A trincheira se estende por toda a área da magia, e a água separada forma uma muralha de cada lado. A trincheira permanece até a magia terminar ou você escolher outro efeito. A água então preenche lentamente a trincheira ao longo da próxima rodada até o nível normal da água ser restaurado. \n\n**Redirecionar Fluxo.** Você faz a água corrente na área se mover em uma direção à sua escolha, mesmo que a água tenha de fluir sobre obstáculos, subir paredes ou em outras direções improváveis. A água na área se move conforme você a direciona, mas uma vez que se move para além da área da magia, retoma seu fluxo com base no terreno. A água continua se movendo na direção escolhida até a magia terminar ou você escolher outro efeito. \n\n**Redemoinho.** Você faz um redemoinho se formar no centro da área, que deve ter pelo menos 15 metros de lado e 7,5 metros de profundidade. O redemoinho dura até você escolher outro efeito ou a magia terminar. O redemoinho tem 1,5 metro de largura na base, até 15 metros de largura no topo e 7,5 metros de altura. Qualquer criatura na água e a até 7,5 metros do redemoinho é puxada 3 metros em direção a ele. Quando uma criatura entra no redemoinho pela primeira vez em um turno ou termina o turno nele, ela faz um teste de resistência de Força. Em uma falha, a criatura sofre 2d8 de dano de Impacto. Em um sucesso, a criatura sofre metade do dano. Uma criatura só pode nadar para longe do redemoinho se primeiro gastar uma ação para se afastar e for bem-sucedida em um teste de Força (Atletismo) contra a CD de resistência da sua magia."
 },
 {
 "id": "c4_fabricate",
@@ -3638,7 +3638,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You convert raw materials into products of the same material. For example, you can fabricate a wooden bridge from a clump of trees, a rope from a patch of hemp, or clothes from flax or wool. Choose raw materials that you can see within range. You can fabricate a Large or smaller object (contained within a 10-foot Cube or eight connected 5-foot Cubes) given a sufficient quantity of material. If you're working with metal, stone, or another mineral substance, however, the fabricated object can be no larger than Medium (contained within a 5-foot Cube). The quality of any fabricated objects is based on the quality of the raw materials. \n\nCreatures and magic items can't be created by this spell. You also can't use it to create items that require a high degree of skill—such as weapons and armor—unless you have proficiency with the type of Artisan's Tools used to craft such objects."
+"descricao": "Você converte matéria-prima em produtos do mesmo material. Por exemplo, você pode fabricar uma ponte de madeira a partir de um aglomerado de árvores, uma corda a partir de um campo de cânhamo, ou roupas a partir de linho ou lã. Escolha matérias-primas que você possa ver dentro do alcance. Você pode fabricar um objeto Grande ou menor (contido em um Cubo de 3 metros ou em oito Cubos de 1,5 metro conectados), desde que haja quantidade suficiente de material. Se você estiver trabalhando com metal, pedra ou outra substância mineral, no entanto, o objeto fabricado não pode ser maior que Médio (contido em um Cubo de 1,5 metro). A qualidade de qualquer objeto fabricado é baseada na qualidade das matérias-primas. \n\nCriaturas e itens mágicos não podem ser criados por esta magia. Você também não pode usá-la para criar itens que exijam um alto grau de habilidade — como armas e armaduras — a menos que tenha proficiência com o tipo de Ferramentas de Artesão usadas para criar tais objetos."
 },
 {
 "id": "c4_polymorph",
@@ -3655,7 +3655,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You attempt to transform a creature that you can see within range into a Beast. The target must succeed on a Wisdom saving throw or shape-shift into Beast form for the duration. That form can be any Beast you choose that has a Challenge Rating equal to or less than the target's (or the target's level if it doesn't have a Challenge Rating). The target's game statistics are replaced by the stat block of the chosen Beast, but the target retains its alignment, personality, creature type, Hit Points, and Hit Point Dice. \n\nThe target gains a number of Temporary Hit Points equal to the Hit Points of the Beast form. The spell ends early on the target if it has no Temporary Hit Points left. \n\nThe target is limited in the actions it can perform by the anatomy of its new form, and it can't speak or cast spells. \n\nThe target's gear melds into the new form. The creature can't use or otherwise benefit from any of that equipment."
+"descricao": "Você tenta transformar uma criatura que possa ver dentro do alcance em uma Besta. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou se transformar em forma de Besta pela duração. Essa forma pode ser qualquer Besta à sua escolha que tenha um Índice de Desafio igual ou menor que o do alvo (ou o nível do alvo, se ele não tiver Índice de Desafio). As estatísticas de jogo do alvo são substituídas pelo bloco de estatísticas da Besta escolhida, mas o alvo mantém seu alinhamento, personalidade, tipo de criatura, Pontos de Vida e Dados de Pontos de Vida. \n\nO alvo ganha um número de Pontos de Vida Temporários igual aos Pontos de Vida da forma de Besta. A magia termina cedo no alvo se ele não tiver mais Pontos de Vida Temporários. \n\nO alvo é limitado nas ações que pode realizar pela anatomia de sua nova forma, e não pode falar nem lançar magias. \n\nO equipamento do alvo se funde com a nova forma. A criatura não pode usar nem se beneficiar de qualquer parte desse equipamento."
 },
 {
 "id": "c4_stone_shape",
@@ -3672,7 +3672,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a stone object of Medium size or smaller or a section of stone no more than 5 feet in any dimension and form it into any shape you like. For example, you could shape a large rock into a weapon, statue, or coffer, or you could make a small passage through a wall that is 5 feet thick. You could also shape a stone door or its frame to seal the door shut. The object you create can have up to two hinges and a latch, but finer mechanical detail isn't possible."
+"descricao": "Você toca um objeto de pedra de tamanho Médio ou menor ou uma seção de pedra de no máximo 1,5 metro em qualquer dimensão e a molda em qualquer forma que quiser. Por exemplo, você pode moldar uma pedra grande em uma arma, estátua ou cofre, ou fazer uma pequena passagem através de uma parede de 1,5 metro de espessura. Você também pode moldar uma porta de pedra ou seu batente para selar a porta. O objeto que você criar pode ter até duas dobradiças e um trinco, mas detalhe mecânico mais fino não é possível."
 },
 {
 "id": "c4_stoneskin",
@@ -3689,7 +3689,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, one willing creature you touch has Resistance to Bludgeoning, Piercing, and Slashing damage."
+"descricao": "Até a magia terminar, uma criatura voluntária que você toca tem Resistência a dano de Impacto, Perfurante e Cortante."
 },
 {
 "id": "c5_antilife_shell",
@@ -3706,7 +3706,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "An aura extends from you in a 10-foot Emanation for the duration. The aura prevents creatures other than Constructs and Undead from passing or reaching through it. An affected creature can cast spells or make attacks with Ranged or Reach weapons through the barrier.\n\nIf you move so that an affected creature is forced to pass through the barrier, the spell ends."
+"descricao": "Uma aura se estende de você em uma Emanação de 3 metros pela duração. A aura impede que criaturas além de Construtos e Não-Mortos atravessem ou alcancem através dela. Uma criatura afetada pode lançar magias ou fazer ataques com armas de Alcance ou de arremesso através da barreira. \n\nSe você se mover de modo que uma criatura afetada seja forçada a atravessar a barreira, a magia termina."
 },
 {
 "id": "c5_dispel_evil_and_good",
@@ -3723,7 +3723,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, Celestials, Elementals, Fey, Fiends, and Undead have Disadvantage on attack rolls against you. You can end the spell early by using either of the following special functions. \n\n**Break Enchantment.** As a Magic action, you touch a creature that is possessed by or has the Charmed or Frightened condition from one or more creatures of the types above. The target is no longer possessed, Charmed, or Frightened by such creatures. \n\n**Dismissal.** As a Magic action, you target one creature you can see within 5 feet of you that has one of the creature types above. The target must succeed on a Charisma saving throw or be sent back to its home plane if it isn't there already. If they aren't on their home plane, Undead are sent to the Shadowfell, and Fey are sent to the Feywild."
+"descricao": "Pela duração, Celestiais, Elementais, Fadas, Corruptores e Não-Mortos têm Desvantagem em jogadas de ataque contra você. Você pode encerrar a magia cedo usando uma das seguintes funções especiais. \n\n**Quebrar Encantamento.** Como uma Ação Mágica, você toca uma criatura que esteja possuída ou que tenha as condições Enfeitiçado ou Apavorado de uma ou mais criaturas dos tipos acima. O alvo não é mais possuído, Enfeitiçado ou Apavorado por tais criaturas. \n\n**Expulsão.** Como uma Ação Mágica, você mira em uma criatura que possa ver a até 1,5 metro de você e que tenha um dos tipos de criatura acima. O alvo deve ser bem-sucedido em um teste de resistência de Carisma ou ser enviado de volta ao seu plano natal, se ainda não estiver lá. Se não estiverem em seu plano natal, os Não-Mortos são enviados para o Plano das Sombras (Shadowfell), e as Fadas para o Plano das Fadas (Feywild)."
 },
 {
 "id": "c5_greater_restoration",
@@ -3740,7 +3740,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature and magically remove one of the following effects from it: \n\n- 1 Exhaustion level \n\n- The Charmed or Petrified condition \n\n- A curse, including the target's Attunement to a cursed magic item \n\n- Any reduction to one of the target's ability scores \n\n- Any reduction to the target's Hit Point maximum."
+"descricao": "Você toca uma criatura e remove magicamente um dos seguintes efeitos dela: \n\n- 1 nível de Exaustão \n\n- A condição Enfeitiçado ou Petrificado \n\n- Uma maldição, incluindo a Sintonia do alvo com um item mágico amaldiçoado \n\n- Qualquer redução em um dos escores de atributo do alvo \n\n- Qualquer redução no máximo de Pontos de Vida do alvo."
 },
 {
 "id": "c5_hallow",
@@ -3757,7 +3757,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a point and infuse an area around it with holy or unholy power. The area can have a radius up to 60 feet, and the spell fails if the radius includes an area already under the effect of Hallow. The affected area has the following effects. \n\n**Hallowed Ward.** Choose any of these creature types: Aberration, Celestial, Elemental, Fey, Fiend, or Undead. Creatures of the chosen types can't willingly enter the area, and any creature that is possessed by or that has the Charmed or Frightened condition from such creatures isn't possessed, Charmed, or Frightened by them while in the area. \n\n**Extra Effect.** You bind an extra effect to the area from the list below:\n\n**Courage.** Creatures of any types you choose can't gain the Frightened condition while in the area. \n\n**Darkness.** Darkness fills the area. Normal light, as well as magical light created by spells of a level lower than this spell, can't illuminate the area. \n\n**Daylight.** Bright light fills the area. Magical Darkness created by spells of a level lower than this spell can't extinguish the light. \n\n**Peaceful Rest.** Dead bodies interred in the area can't be turned into Undead. \n\n**Extradimensional Interference.** Creatures of any types you choose can't enter or exit the area using teleportation or interplanar travel. \n\n**Fear.** Creatures of any types you choose have the Frightened condition while in the area. \n\n**Resistance.** Creatures of any types you choose have Resistance to one damage type of your choice while in the area. \n\n**Silence.** No sound can emanate from within the area, and no sound can reach into it. \n\n**Tongues.** Creatures of any types you choose can communicate with any other creature in the area even if they don't share a common language. \n\n**Vulnerability.** Creatures of any types you choose have Vulnerability to one damage type of your choice while in the area."
+"descricao": "Você toca um ponto e infunde uma área ao redor dele com poder sagrado ou profano. A área pode ter um raio de até 18 metros, e a magia falha se o raio incluir uma área já sob o efeito de Consagrar. A área afetada tem os seguintes efeitos. \n\n**Recinto Consagrado.** Escolha qualquer um destes tipos de criatura: Aberração, Celestial, Elemental, Fada, Corruptor ou Não-Morto. Criaturas dos tipos escolhidos não podem entrar voluntariamente na área, e qualquer criatura que esteja possuída ou que tenha as condições Enfeitiçado ou Apavorado de tais criaturas não é possuída, Enfeitiçada ou Apavorada por elas enquanto estiver na área. \n\n**Efeito Extra.** Você vincula um efeito extra à área da lista abaixo: \n\n**Coragem.** Criaturas de quaisquer tipos à sua escolha não podem sofrer a condição Apavorado enquanto estiverem na área. \n\n**Escuridão.** A Escuridão preenche a área. Luz normal, bem como luz mágica criada por magias de círculo menor que esta, não podem iluminar a área. \n\n**Luz do Dia.** Luz intensa preenche a área. Escuridão mágica criada por magias de círculo menor que esta não pode extinguir a luz. \n\n**Descanso Pacífico.** Corpos mortos enterrados na área não podem ser transformados em Não-Mortos. \n\n**Interferência Extradimensional.** Criaturas de quaisquer tipos à sua escolha não podem entrar ou sair da área usando teleporte ou viagem interplanar. \n\n**Medo.** Criaturas de quaisquer tipos à sua escolha têm a condição Apavorado enquanto estiverem na área. \n\n**Resistência.** Criaturas de quaisquer tipos à sua escolha têm Resistência a um tipo de dano de sua escolha enquanto estiverem na área. \n\n**Silêncio.** Nenhum som pode emanar de dentro da área, e nenhum som pode chegar até ela. \n\n**Idiomas.** Criaturas de quaisquer tipos à sua escolha podem se comunicar com qualquer outra criatura na área mesmo que não compartilhem um idioma comum. \n\n**Vulnerabilidade.** Criaturas de quaisquer tipos à sua escolha têm Vulnerabilidade a um tipo de dano de sua escolha enquanto estiverem na área."
 },
 {
 "id": "c5_mass_cure_wounds",
@@ -3773,8 +3773,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The healing increases by 1d8 for each spell slot level above 5.",
-"descricao": "A wave of healing energy washes out from a point you can see within range. Choose up to six creatures in a 30-foot-radius Sphere centered on that point. Each target regains Hit Points equal to 5d8 plus your spellcasting ability modifier."
+"aprimoramento": "A cura aumenta em 1d8 para cada nível de espaço de magia acima de 5.",
+"descricao": "Uma onda de energia de cura lava um ponto que você possa ver dentro do alcance. Escolha até seis criaturas em uma Esfera com raio de 9 metros centrada nesse ponto. Cada alvo recupera Pontos de Vida iguais a 5d8 mais seu modificador de atributo de conjuração."
 },
 {
 "id": "c5_planar_binding",
@@ -3790,8 +3790,8 @@ const SPELLS_DATA = [
 "duracao": "24 horas",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The duration increases with a spell slot of level 6 (10 days), 7 (30 days), 8 (180 days), and 9 (366 days).",
-"descricao": "You attempt to bind a Celestial, an Elemental, a Fey, or a Fiend to your service. The creature must be within range for the entire casting of the spell. (Typically, the creature is first summoned into the center of the inverted version of the Magic Circle spell to trap it while this spell is cast.) At the completion of the casting, the target must succeed on a Charisma saving throw or be bound to serve you for the duration. If the creature was summoned or created by another spell, that spell's duration is extended to match the duration of this spell. \n\nA bound creature must follow your commands to the best of its ability. You might command the creature to accompany you on an adventure, to guard a location, or to deliver a message. If the creature is Hostile, it strives to twist your commands to achieve its own objectives. If the creature carries out your commands completely before the spell ends, it travels to you to report this fact if you are on the same plane of existence. If you are on a different plane, it returns to the place where you bound it and remains there until the spell ends."
+"aprimoramento": "A duração aumenta com um espaço de magia de 6º círculo (10 dias), 7º (30 dias), 8º (180 dias) e 9º (366 dias).",
+"descricao": "Você tenta vincular um Celestial, um Elemental, uma Fada ou um Corruptor ao seu serviço. A criatura deve estar dentro do alcance durante toda a conjuração da magia. (Normalmente, a criatura é primeiro invocada no centro da versão invertida da magia Círculo Mágico para prendê-la enquanto esta magia é lançada.) Ao concluir a conjuração, o alvo deve ser bem-sucedido em um teste de resistência de Carisma ou ficar vinculado a servi-lo pela duração. Se a criatura foi invocada ou criada por outra magia, a duração dessa magia é estendida para corresponder à duração desta. \n\nUma criatura vinculada deve seguir seus comandos o melhor que puder. Você pode ordenar que a criatura o acompanhe em uma aventura, guarde um local ou entregue uma mensagem. Se a criatura for Hostil, ela se esforça para distorcer seus comandos para alcançar seus próprios objetivos. Se a criatura cumprir seus comandos por completo antes de a magia terminar, ela viaja até você para relatar esse fato, se você estiver no mesmo plano de existência. Se você estiver em um plano diferente, ela retorna ao lugar onde você a vinculou e permanece lá até a magia terminar."
 },
 {
 "id": "c5_cloudkill",
@@ -3807,8 +3807,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 5.",
-"descricao": "You create a 20-foot-radius Sphere of yellow-green fog centered on a point within range. The fog lasts for the duration or until strong wind (such as the one created by Gust of Wind) disperses it, ending the spell. Its area is Heavily Obscured. \n\nEach creature in the Sphere makes a Constitution saving throw, taking 5d8 Poison damage on a failed save or half as much damage on a successful one. A creature must also make this save when the Sphere moves into its space and when it enters the Sphere or ends its turn there. A creature makes this save only once per turn. \n\nThe Sphere moves 10 feet away from you at the start of each of your turns."
+"aprimoramento": "O dano aumenta em 1d8 para cada nível de espaço de magia acima de 5.",
+"descricao": "Você cria uma Esfera com raio de 6 metros de névoa amarelo-esverdeada centrada em um ponto dentro do alcance. A névoa dura pela duração ou até que um vento forte (como o criado por Rajada de Vento) a dissipe, encerrando a magia. Sua área está Fortemente Obscurecida. \n\nCada criatura na Esfera faz um teste de resistência de Constituição, sofrendo 5d8 de dano de Veneno em uma falha ou metade do dano em um sucesso. Uma criatura também deve fazer esse teste quando a Esfera se move para o espaço dela e quando entra na Esfera ou termina o turno nela. Uma criatura faz esse teste apenas uma vez por turno. \n\nA Esfera se move 3 metros para longe de você no início de cada um dos seus turnos."
 },
 {
 "id": "c5_conjure_elemental",
@@ -3824,8 +3824,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 2d8 for each spell slot level above 5.",
-"descricao": "You conjure a Large, intangible spirit from the Elemental Planes that appears in an unoccupied space within range. Choose the spirit's element, which determines its damage type: air (Lightning), earth (Thunder), fire (Fire), or water (Cold). The spirit lasts for the duration. \n\nWhenever a creature you can see enters the spirit's space or starts its turn within 5 feet of the spirit, you can force that creature to make a Dexterity saving throw if the spirit has no creature Restrained. On failed save, the target takes 8d8 damage of the spirit's type, and the target has the Restrained condition until the spell ends. At the start of each of its turns, the Restrained target repeats the save. On a failed save, the target takes 4d8 damage of the spirit's type. On a successful save, the target isn't Restrained by the spirit."
+"aprimoramento": "O dano aumenta em 2d8 para cada nível de espaço de magia acima de 5.",
+"descricao": "Você conjura um espírito Grande e intangível dos Planos Elementais que aparece em um espaço desocupado dentro do alcance. Escolha o elemento do espírito, que determina seu tipo de dano: ar (Eletricidade), terra (Trovão), fogo (Fogo) ou água (Frio). O espírito dura pela duração. \n\nSempre que uma criatura que você possa ver entrar no espaço do espírito ou começar o turno a até 1,5 metro dele, você pode forçar essa criatura a fazer um teste de resistência de Destreza se o espírito não tiver nenhuma criatura Imobilizada. Em uma falha, o alvo sofre 8d8 de dano do tipo do espírito e tem a condição Imobilizado até a magia terminar. No início de cada um de seus turnos, o alvo Imobilizado repete o teste. Em uma falha, o alvo sofre 4d8 de dano do tipo do espírito. Em um sucesso, o alvo não é mais Imobilizado pelo espírito."
 },
 {
 "id": "c5_insect_plague",
@@ -3841,8 +3841,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d10 for each spell slot level above 5.",
-"descricao": "Swarming locusts fill a 20-foot-radius Sphere centered on a point you choose within range. The Sphere remains for the duration, and its area is Lightly Obscured and Difficult Terrain. \n\nWhen the swarm appears, each creature in it makes a Constitution saving throw, taking 4d10 Piercing damage on a failed save or half as much damage on a successful one. A creature also makes this save when it enters the spell's area for the first time on a turn or ends its turn there. A creature makes this save only once per turn."
+"aprimoramento": "O dano aumenta em 1d10 para cada nível de espaço de magia acima de 5.",
+"descricao": "Gafanhotos em enxame preenchem uma Esfera com raio de 6 metros centrada em um ponto à sua escolha dentro do alcance. A Esfera permanece pela duração, e sua área está Levemente Obscurecida e é Terreno Difícil. \n\nQuando o enxame aparece, cada criatura nele faz um teste de resistência de Constituição, sofrendo 4d10 de dano Perfurante em uma falha ou metade do dano em um sucesso. Uma criatura também faz esse teste quando entra na área da magia pela primeira vez em um turno ou termina o turno nela. Uma criatura faz esse teste apenas uma vez por turno."
 },
 {
 "id": "c5_summon_dragon",
@@ -3858,8 +3858,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Use the spell slot's level for the spell's level in the stat block.",
-"descricao": "You call forth a Dragon spirit. It manifests in an unoccupied space that you can see within range and uses the Draconic Spirit stat block. The creature disappears when it drops to 0 Hit Points or when the spell ends. \n\nThe creature is an ally to you and your allies. In combat, the creature shares your Initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its movement to avoid danger."
+"aprimoramento": "Use o círculo do espaço de magia para o círculo da magia no bloco de estatísticas.",
+"descricao": "Você invoca um espírito de Dragão. Ele se manifesta em um espaço desocupado que você possa ver dentro do alcance e usa o bloco de estatísticas **Espírito Dracônico**. A criatura desaparece ao cair a 0 Pontos de Vida ou quando a magia termina. \n\nA criatura é uma aliada sua e de seus aliados. Em combate, a criatura compartilha sua contagem de Iniciativa, mas faz o turno imediatamente após o seu. Ela obedece aos seus comandos verbais (nenhuma ação exigida de você). Se você não emitir nenhum, ela faz a ação Esquivar e usa seu movimento para evitar perigo."
 },
 {
 "id": "c5_teleportation_circle",
@@ -3876,7 +3876,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "As you cast the spell, you draw a 5-foot-radius circle on the ground inscribed with sigils that link your location to a permanent teleportation circle of your choice whose sigil sequence you know and that is on the same plane of existence as you. A shimmering portal opens within the circle you drew and remains open until the end of your next turn. Any creature that enters the portal instantly appears within 5 feet of the destination circle or in the nearest unoccupied space if that space is occupied.\n\nMany major temples, guildhalls, and other important places have permanent teleportation circles. Each circle includes a unique sigil sequence—a string of runes arranged in a particular pattern. When you first gain the ability to cast this spell, you learn the sigil sequences for two destinations on the Material Plane, determined by the DM. You might learn additional sigil sequences during your adventures. You can commit a new sigil sequence to memory after studying it for 1 minute. \n\nYou can create a permanent teleportation circle by casting this spell in the same location every day for 365 days."
+"descricao": "Ao lançar a magia, você desenha um círculo com raio de 1,5 metro no chão inscrito com sigilos que vinculam seu local a um círculo de teleporte permanente de sua escolha, cuja sequência de sigilos você conhece e que está no mesmo plano de existência que você. Um portal cintilante se abre dentro do círculo que você desenhou e permanece aberto até o fim do seu próximo turno. Qualquer criatura que entrar no portal aparece instantaneamente a até 1,5 metro do círculo de destino ou no espaço desocupado mais próximo se esse espaço estiver ocupado. \n\nMuitos templos importantes, salões de guildas e outros lugares importantes têm círculos de teleporte permanentes. Cada círculo inclui uma sequência de sigilos única — uma sequência de runas dispostas em um padrão particular. Quando você ganha a capacidade de lançar esta magia pela primeira vez, você aprende as sequências de sigilos de dois destinos no Plano Material, determinados pelo mestre. Você pode aprender mais sequências de sigilos durante suas aventuras. Você pode gravar uma nova sequência de sigilos na memória depois de estudá-la por 1 minuto. \n\nVocê pode criar um círculo de teleporte permanente lançando esta magia no mesmo local todos os dias por 365 dias."
 },
 {
 "id": "c5_tree_stride",
@@ -3893,7 +3893,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You gain the ability to enter a tree and move from inside it to inside another tree of the same kind within 500 feet. Both trees must be living and at least the same size as you. You must use 5 feet of movement to enter a tree. You instantly know the location of all other trees of the same kind within 500 feet and, as part of the move used to enter the tree, can either pass into one of those trees or step out of the tree you're in. You appear in a spot of your choice within 5 feet of the destination tree, using another 5 feet of movement. If you have no movement left, you appear within 5 feet of the tree you entered. \n\nYou can use this transportation ability only once on each of your turns. You must end each turn outside a tree."
+"descricao": "Você ganha a capacidade de entrar em uma árvore e se mover de dentro dela para dentro de outra árvore do mesmo tipo dentro de 150 metros. Ambas as árvores devem estar vivas e ter pelo menos o mesmo tamanho que você. Você deve usar 1,5 metro de movimento para entrar em uma árvore. Você instantaneamente sabe a localização de todas as outras árvores do mesmo tipo dentro de 150 metros e, como parte do movimento usado para entrar na árvore, pode passar para uma dessas árvores ou sair da árvore em que está. Você aparece em um ponto à sua escolha a até 1,5 metro da árvore de destino, usando outros 1,5 metro de movimento. Se não tiver mais movimento, você aparece a até 1,5 metro da árvore em que entrou. \n\nVocê pode usar essa capacidade de transporte apenas uma vez em cada um dos seus turnos. Você deve terminar cada turno fora de uma árvore."
 },
 {
 "id": "c5_commune",
@@ -3910,7 +3910,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You contact a deity or a divine proxy and ask up to three questions that can be answered with yes or no. You must ask your questions before the spell ends. You receive a correct answer for each question. \n\nDivine beings aren't necessarily omniscient, so you might receive \"unclear\" as an answer if a question pertains to information that lies beyond the deity's knowledge. In a case where a one-word answer could be misleading or contrary to the deity's interests, the DM might offer a short phrase as an answer instead. \n\nIf you cast the spell more than once before finishing a Long Rest, there is a cumulative 25 percent chance for each casting after the first that you get no answer."
+"descricao": "Você contata uma divindade ou um representante divino e faz até três perguntas que podem ser respondidas com sim ou não. Você deve fazer suas perguntas antes de a magia terminar. Você recebe uma resposta correta para cada pergunta. \n\nSeres divinos não são necessariamente oniscientes, então você pode receber \"não claro\" como resposta se uma pergunta disser respeito a informações que estejam além do conhecimento da divindade. Em um caso em que uma resposta de uma palavra possa ser enganosa ou contrária aos interesses da divindade, o mestre pode oferecer uma frase curta como resposta. \n\nSe você lançar a magia mais de uma vez antes de terminar um Descanso Longo, há uma chance cumulativa de 25 por cento para cada conjuração após a primeira de não obter resposta."
 },
 {
 "id": "c5_commune_with_nature",
@@ -3927,7 +3927,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You commune with nature spirits and gain knowledge of the surrounding area. In the outdoors, the spell gives you knowledge of the area within 3 miles of you. In caves and other natural underground settings, the radius is limited to 300 feet. The spell doesn't function where nature has been replaced by construction, such as in castles and settlements. \n\nChoose three of the following facts; you learn those facts as they pertain to the spell's area: \n\n- Locations of settlements \n\n- Locations of portals to other planes of existence \n\n- Location of one Challenge Rating 10+ creature (DM's choice) that is a Celestial, an Elemental, a Fey, a Fiend, or an Undead \n\n- The most prevalent kind of plant, mineral, or Beast (you choose which to learn) \n\n- Locations of bodies of water \n\nFor example, you could determine the location of a powerful monster in the area, the locations of bodies of water, and the locations of any towns."
+"descricao": "Você comunga com os espíritos da natureza e obtém conhecimento da área ao redor. Ao ar livre, a magia lhe dá conhecimento da área a até 4,8 quilômetros de você. Em cavernas e outros ambientes naturais subterrâneos, o raio é limitado a 90 metros. A magia não funciona onde a natureza foi substituída por construções, como em castelos e assentamentos. \n\nEscolha três das seguintes informações; você aprende essas informações conforme se referem à área da magia: \n\n- Locais de assentamentos \n\n- Locais de portais para outros planos de existência \n\n- A localização de uma criatura de Índice de Desafio 10+ (escolha do mestre) que seja um Celestial, um Elemental, uma Fada, um Corruptor ou um Não-Morto \n\n- O tipo mais prevalente de planta, mineral ou Besta (você escolhe qual aprender) \n\n- Locais de corpos d'água \n\nPor exemplo, você pode determinar a localização de um monstro poderoso na área, os locais de corpos d'água e as localizações de quaisquer cidades."
 },
 {
 "id": "c5_contact_other_plane",
@@ -3944,7 +3944,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You mentally contact a demigod, the spirit of a long-dead sage, or some other knowledgeable entity from another plane. Contacting this otherworldly intelligence can break your mind. When you cast this spell, make a DC 15 Intelligence saving throw. On a successful save, you can ask the entity up to five questions. You must ask your questions before the spell ends. The DM answers each question with one word, such as \"yes,\" \"no,\" \"maybe,\" \"never,\" \"irrelevant,\" or \"unclear\" (if the entity doesn't know the answer to the question). If a one-word answer would be misleading, the DM might instead offer a short phrase as an answer. On a failed save, you take 6d6 Psychic damage and have the Incapacitated condition until you finish a Long Rest. A Greater Restoration spell cast on you ends this effect."
+"descricao": "Você contata mentalmente um semideus, o espírito de um sábio morto há muito tempo ou alguma outra entidade erudita de outro plano. Contatar essa inteligência de outro mundo pode partir sua mente. Ao lançar a magia, faça um teste de resistência de Inteligência CD 15. Em um sucesso, você pode fazer até cinco perguntas à entidade. Você deve fazer suas perguntas antes de a magia terminar. O mestre responde a cada pergunta com uma palavra, como \"sim\", \"não\", \"talvez\", \"nunca\", \"irrelevante\" ou \"não claro\" (se a entidade não souber responder). Se uma resposta de uma palavra for enganosa, o mestre pode oferecer uma frase curta como resposta. Em uma falha, você sofre 6d6 de dano Psíquico e tem a condição Incapacitado até terminar um Descanso Longo. Uma magia Restauração Superior lançada em você encerra esse efeito."
 },
 {
 "id": "c5_legend_lore",
@@ -3961,7 +3961,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Name or describe a famous person, place, or object. The spell brings to your mind a brief summary of the significant lore about that famous thing, as described by the DM. \n\nThe lore might consist of important details, amusing revelations, or even secret lore that has never been widely known. The more information you already know about the thing, the more precise and detailed the information you receive is. That information is accurate but might be couched in figurative language or poetry, as determined by the DM. \n\nIf the famous thing you chose isn't actually famous, you hear sad musical notes played on a trombone, and the spell fails."
+"descricao": "Nomeie ou descreva uma pessoa, lugar ou objeto famoso. A magia traz à sua mente um breve resumo da tradição significativa sobre essa coisa famosa, conforme descrito pelo mestre. \n\nA tradição pode consistir em detalhes importantes, revelações divertidas ou até mesmo tradição secreta que nunca foi amplamente conhecida. Quanto mais informação você já tiver sobre a coisa, mais precisa e detalhada será a informação que você recebe. Essa informação é precisa, mas pode ser expressa em linguagem figurada ou poesia, conforme determinado pelo mestre. \n\nSe a coisa famosa que você escolheu não for realmente famosa, você ouve notas musicais tristes tocadas em um trombone, e a magia falha."
 },
 {
 "id": "c5_scrying",
@@ -3978,7 +3978,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You can see and hear a creature you choose that is on the same plane of existence as you. The target makes a Wisdom saving throw, which is modified (see the tables below) by how well you know the target and the sort of physical connection you have to it. The target doesn’t know what it is making the save against, only that it feels uneasy. \n\n| Your Knowledge of the Target Is... | Save Modifier |\n| ---------------------------------- | ------------- |\n| Secondhand (heard of the target)   | +5            |\n| Firsthand (met the target)         | +0            |\n| Extensive (know the target well)   | -5            |\n| You Have the Target’s...                | Save Modifier |\n| --------------------------------------- | ------------- |\n| Picture or other likeness               | -2            |\n| Garment or other possession             | -4            |\n| Body part, lock of hair, or bit of nail | -10           |\n\nOn a successful save, the target isn’t affected, and you can’t use this spell on it again for 24 hours. \n\nOn a failed save, the spell creates an Invisible, intangible sensor within 10 feet of the target. You can see and hear through the sensor as if you were there. The sensor moves with the target, remaining within 10 feet of it for the duration. If something can see the sensor, it appears as a luminous orb about the size of your fist. Instead of targeting a creature, you can target a location you have seen. When you do so, the sensor appears at that location and doesn’t move."
+"descricao": "Você pode ver e ouvir uma criatura à sua escolha que esteja no mesmo plano de existência que você. O alvo faz um teste de resistência de Sabedoria, que é modificado (veja as tabelas abaixo) por quão bem você conhece o alvo e pelo tipo de conexão física que você tem com ele. O alvo não sabe contra o que está fazendo o teste, apenas que se sente inquieto. \n\n| Seu Conhecimento do Alvo é... | Modificador no Teste |\n| ---------------------------- | -------------------- |\n| De segunda mão (ouviu falar do alvo) | +5 |\n| De primeira mão (conheceu o alvo)  | +0 |\n| Extenso (conhece bem o alvo)    | −5 |\n| Você Tem o(a)...                     | Modificador no Teste |\n| ------------------------------------ | -------------------- |\n| Foto ou outra semelhança             | −2                   |\n| Peça de roupa ou outro pertencente   | −4                   |\n| Parte do corpo, mecha de cabelo ou pedaço de unha | −10    |\n\nEm um sucesso, o alvo não é afetado, e você não pode usar esta magia nele novamente por 24 horas. \n\nEm uma falha, a magia cria um sensor Invisível e intangível a até 3 metros do alvo. Você pode ver e ouvir através do sensor como se estivesse lá. O sensor se move com o alvo, permanecendo a até 3 metros dele pela duração. Se algo puder ver o sensor, ele aparece como um orbe luminoso do tamanho do seu punho. Em vez de mirar em uma criatura, você pode mirar em um local que tenha visto. Ao fazer isso, o sensor aparece nesse local e não se move."
 },
 {
 "id": "c5_telepathic_bond",
@@ -3995,7 +3995,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You forge a telepathic link among up to eight willing creatures of your choice within range, psychically linking each creature to all the others for the duration. Creatures that can’t communicate in any languages aren’t affected by this spell.\n\nUntil the spell ends, the targets can communicate telepathically through the bond whether or not they share a language. The communication is possible over any distance, though it cannot extend to other planes of existence."
+"descricao": "Você forja um vínculo telepático entre até oito criaturas voluntárias à sua escolha dentro do alcance, vinculando psicicamente cada criatura a todas as outras pela duração. Criaturas que não se comunicam em nenhum idioma não são afetadas por esta magia. \n\nAté a magia terminar, os alvos podem se comunicar telepaticamente através do vínculo, mesmo que não compartilhem um idioma. A comunicação é possível a qualquer distância, embora não possa se estender a outros planos de existência."
 },
 {
 "id": "c5_dominate_person",
@@ -4011,8 +4011,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Your Concentration can last longer with a spell slot of level 6 (up to 10 minutes), 7 (up to 1 hour), or 8+ (up to 8 hours).",
-"descricao": "One Humanoid you can see within range must succeed on a Wisdom saving throw or have the Charmed condition for the duration. The target has Advantage on the save if you or your allies are fighting it. Whenever the target takes damage, it repeats the save, ending the spell on itself on a success. \n\nYou have a telepathic link with the Charmed target while the two of you are on the same plane of existence. On your turn, you can use this link to issue commands to the target (no action required), such as \"Attack that creature,\" \"Move over there,\" or \"Fetch that object.\" The target does its best to obey on its turn. If it completes an order and doesn't receive further direction from you, it acts and moves as it likes, focusing on protecting itself. \n\nYou can command the target to take a Reaction but must take your own Reaction to do so."
+"aprimoramento": "Sua Concentração pode durar mais com um espaço de magia de 6º círculo (até 10 minutos), 7º (até 1 hora) ou 8º+ (até 8 horas).",
+"descricao": "Um Humanoide que você possa ver dentro do alcance deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração. O alvo tem Vantagem no teste se você ou seus aliados estiverem lutando contra ele. Sempre que o alvo sofrer dano, ele repete o teste, encerrando a magia em si mesmo em um sucesso. \n\nVocê tem um vínculo telepático com o alvo Enfeitiçado enquanto os dois estiverem no mesmo plano de existência. No seu turno, você pode usar esse vínculo para emitir comandos ao alvo (nenhuma ação exigida), como \"Ataque essa criatura\", \"Mova-se até lá\" ou \"Busque esse objeto\". O alvo faz o melhor que pode para obedecer no turno dele. Se ele concluir uma ordem e não receber mais instruções suas, age e se move como preferir, focando em se proteger. \n\nVocê pode ordenar que o alvo faça uma Reação, mas deve gastar sua própria Reação para isso."
 },
 {
 "id": "c5_geas",
@@ -4028,8 +4028,8 @@ const SPELLS_DATA = [
 "duracao": "30 dias",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "If you use a level 7 or 8 spell slot, the duration is 365 days. If you use a level 9 spell slot, the spell lasts until it is ended by one of the spells mentioned above.",
-"descricao": "You give a verbal command to a creature that you can see within range, ordering it to carry out some service or refrain from an action or a course of activity as you decide. The target must succeed on a Wisdom saving throw or have the Charmed condition for the duration. The target automatically succeeds if it can't understand your command. \n\nWhile Charmed, the creature takes 5d10 Psychic damage if it acts in a manner directly counter to your command. It takes this damage no more than once each day. \n\nYou can issue any command you choose, short of an activity that would result in certain death. Should you issue a suicidal command, the spell ends. \n\nA *Remove Curse, Greater Restoration,* or *Wish* spell ends this spell."
+"aprimoramento": "Se você usar um espaço de magia de 7º ou 8º círculo, a duração é de 365 dias. Se você usar um espaço de magia de 9º círculo, a magia dura até ser encerrada por uma das magias mencionadas acima.",
+"descricao": "Você dá um comando verbal a uma criatura que possa ver dentro do alcance, ordenando que ela execute algum serviço ou se abstenha de uma ação ou curso de atividade, como decidir. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração. O alvo obtém sucesso automaticamente se não conseguir entender seu comando. \n\nEnquanto estiver Enfeitiçada, a criatura sofre 5d10 de dano Psíquico se agir de maneira diretamente contrária ao seu comando. Ela sofre esse dano no máximo uma vez por dia. \n\nVocê pode emitir qualquer comando que escolher, exceto uma atividade que resultaria em morte certa. Se você emitir um comando suicida, a magia termina. \n\nUma magia *Remover Maldição, Restauração Superior* ou *Desejo* encerra esta magia."
 },
 {
 "id": "c5_hold_monster",
@@ -4045,8 +4045,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can target one additional creature for each spell slot level above 5.",
-"descricao": "Choose a creature that you can see within range. The target must succeed on a Wisdom saving throw or have the Paralyzed condition for the duration. At the end of each of its turns, the target repeats the save, ending the spell on itself on a success."
+"aprimoramento": "Você pode mirar em uma criatura adicional para cada nível de espaço de magia acima de 5.",
+"descricao": "Escolha uma criatura que você possa ver dentro do alcance. O alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Paralisado pela duração. No fim de cada um de seus turnos, o alvo repete o teste, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c5_modify_memory",
@@ -4062,8 +4062,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "You can alter the target's memories of an event that took place up to 7 days ago (level 6 spell slot), 30 days ago (level 7 spell slot), 365 days ago (level 8 spell slot), or any time in the creature's past (level 9 spell slot).",
-"descricao": "You attempt to reshape another creature's memories. One creature that you can see within range makes a Wisdom saving throw. If you are fighting the creature, it has Advantage on the save. On a failed save, the target has the Charmed condition for the duration. While Charmed in this way, the target also has the Incapacitated condition and is unaware of its surroundings, though it can hear you. If it takes any damage or is targeted by another spell, this spell ends, and no memories are modified. \n\nWhile this charm lasts, you can affect the target's memory of an event that it experienced within the last 24 hours and that lasted no more than 10 minutes. You can permanently eliminate all memory of the event, allow the target to recall the event with perfect clarity, change its memory of the event's details, or create a memory of some other event. \n\nYou must speak to the target to describe how its memories are affected, and it must be able to understand your language for the modified memories to take root. Its mind fills in any gaps in the details of your description. If the spell ends before you finish describing the modified memories, the creature's memory isn't altered. Otherwise, the modified memories take hold when the spell ends. \n\nA modified memory doesn't necessarily affect how a creature behaves, particularly if the memory contradicts the creature's natural inclinations, alignment, or beliefs. An illogical modified memory, such as a false memory of how much the creature enjoyed swimming in acid, is dismissed as a bad dream. The DM might deem a modified memory too nonsensical to affect a creature. A Remove Curse or Greater Restoration spell cast on the target restores the creature's true memory."
+"aprimoramento": "Você pode alterar as memórias do alvo de um evento que ocorreu há até 7 dias (espaço de 6º círculo), 30 dias (espaço de 7º círculo), 365 dias (espaço de 8º círculo) ou em qualquer momento do passado da criatura (espaço de 9º círculo).",
+"descricao": "Você tenta remodelar as memórias de outra criatura. Uma criatura que você possa ver dentro do alcance faz um teste de resistência de Sabedoria. Se você estiver lutando contra a criatura, ela tem Vantagem no teste. Em uma falha, o alvo tem a condição Enfeitiçado pela duração. Enquanto estiver Enfeitiçado dessa forma, o alvo também tem a condição Incapacitado e não está ciente do que o cerca, embora possa ouvi-lo. Se ele sofrer qualquer dano ou for alvo de outra magia, esta magia termina, e nenhuma memória é modificada. \n\nEnquanto esse encantamento durar, você pode afetar a memória do alvo de um evento que ele tenha vivenciado nas últimas 24 horas e que tenha durado no máximo 10 minutos. Você pode eliminar permanentemente toda a memória do evento, permitir que o alvo se lembre do evento com perfeita clareza, mudar a memória que ele tem dos detalhes do evento ou criar uma memória de algum outro evento. \n\nVocê deve falar com o alvo para descrever como as memórias dele são afetadas, e ele deve ser capaz de entender seu idioma para que as memórias modificadas se enraízem. A mente dele preenche quaisquer lacunas nos detalhes da sua descrição. Se a magia terminar antes de você terminar de descrever as memórias modificadas, a memória da criatura não é alterada. Caso contrário, as memórias modificadas se estabelecem quando a magia termina. \n\nUma memória modificada não afeta necessariamente o comportamento de uma criatura, principalmente se a memória contradizer as inclinações, o alinhamento ou as crenças naturais da criatura. Uma memória modificada ilógica, como uma memória Falsa de quanto a criatura gostou de nadar em ácido, é descartada como um sonho ruim. O mestre pode considerar uma memória modificada absurda demais para afetar uma criatura. Uma magia Remover Maldição ou Restauração Superior lançada no alvo restaura a memória Verdadeira da criatura."
 },
 {
 "id": "c5_arcane_hand",
@@ -4079,8 +4079,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage of the Clenched Fist increases by 2d8 and the damage of the Grasping Hand increases by 2d6 for each spell slot level above 5.",
-"descricao": "You create a Large hand of shimmering magical energy in an unoccupied space that you can see within range. The hand lasts for the duration, and it moves at your command, mimicking the movements of your own hand. The hand is an object that has AC 20 and Hit Points equal to your Hit Point maximum. If it drops to 0 Hit Points, the spell ends. The hand doesn't occupy its space. When you cast the spell and as a Bonus Action on your later turns, you can move the hand up to 60 feet and then cause one of the following effects: \n\n**Clenched Fist.** The hand strikes a target within 5 feet of it. Make a melee spell attack. On a hit, the target takes 5d8 Force damage. Forceful Hand. The hand attempts to push a Huge or smaller creature within 5 feet of it. The target must succeed on a Strength saving throw, or the hand pushes the target up to 5 feet plus a number of feet equal to five times your spellcasting ability modifier. The hand moves with the target, remaining within 5 feet of it. \n\n**Grasping Hand.** The hand attempts to grapple a Huge or smaller creature within 5 feet of it. The target must succeed on a Dexterity saving throw, or the target has the Grappled condition, with an escape DC equal to your spell save DC. While the hand grapples the target, you can take a Bonus Action to cause the hand to crush it, dealing Bludgeoning damage to the target equal to 4d6 plus your spellcasting ability modifier. \n\n**Interposing Hand.** The hand grants you Half Cover against attacks and other effects that originate from its space or that pass through it. In addition, its space counts as Difficult Terrain for your enemies."
+"aprimoramento": "O dano do Punho Cerrado aumenta em 2d8, e o dano da Mão Agarradora aumenta em 2d6 para cada nível de espaço de magia acima de 5.",
+"descricao": "Você cria uma Mão Grande de energia mágica cintilante em um espaço desocupado que você possa ver dentro do alcance. A mão dura pela duração e se move ao seu comando, imitando os movimentos da sua própria mão. A mão é um objeto que tem CA 20 e Pontos de Vida iguais ao seu máximo de Pontos de Vida. Se cair a 0 Pontos de Vida, a magia termina. A mão não ocupa seu espaço. Ao lançar a magia e como uma Ação Bônus nos seus turnos posteriores, você pode mover a mão em até 18 metros e então causar um dos seguintes efeitos: \n\n**Punho Cerrado.** A mão golpeia um alvo a até 1,5 metro dela. Faça um teste de ataque mágico corpo a corpo. Em um acerto, o alvo sofre 5d8 de dano de Força. \n\n**Mão Forçosa.** A mão tenta empurrar uma criatura Enorme ou menor a até 1,5 metro dela. O alvo deve ser bem-sucedido em um teste de resistência de Força, ou a mão o empurra em até 1,5 metro mais um número de metros igual a cinco vezes seu modificador de atributo de conjuração. A mão se move com o alvo, permanecendo a até 1,5 metro dele. \n\n**Mão Agarradora.** A mão tenta agarrar uma criatura Enorme ou menor a até 1,5 metro dela. O alvo deve ser bem-sucedido em um teste de resistência de Destreza, ou tem a condição Agarrão, com uma CD de fuga igual à CD de resistência da sua magia. Enquanto a mão agarra o alvo, você pode gastar uma Ação Bônus para fazê-la esmagá-lo, causando dano de Impacto ao alvo igual a 4d6 mais seu modificador de atributo de conjuração. \n\n**Mão Interposta.** A mão concede a você Cobertura Parcial contra ataques e outros efeitos que se originem de seu espaço ou que passem através dele. Além disso, o espaço dela conta como Terreno Difícil para seus inimigos."
 },
 {
 "id": "c5_cone_of_cold",
@@ -4096,8 +4096,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d8 for each spell slot level above 5.",
-"descricao": "You unleash a blast of cold air. Each creature in a 60-foot Cone originating from you makes a Constitution saving throw, taking 8d8 Cold damage on a failed save or half as much damage on a successful one. A creature killed by this spell becomes a frozen statue until it thaws."
+"aprimoramento": "O dano aumenta em 1d8 para cada nível de espaço de magia acima de 5.",
+"descricao": "Você desencadeia uma explosão de ar frio. Cada criatura em um Cone de 18 metros originado de você faz um teste de resistência de Constituição, sofrendo 8d8 de dano de Frio em uma falha ou metade do dano em um sucesso. Uma criatura morta por esta magia se torna uma estátua congelada até descongelar."
 },
 {
 "id": "c5_flame_strike",
@@ -4113,8 +4113,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The Fire damage and the Radiant damage increase by 1d6 for each spell slot level above 5.",
-"descricao": "A vertical column of brilliant fire roars down from above. Each creature in a 10-foot-radius, 40-foot-high Cylinder centered on a point within range makes a Dexterity saving throw, taking 5d6 Fire damage and 5d6 Radiant damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano de Fogo e o dano Radiante aumentam em 1d6 para cada nível de espaço de magia acima de 5.",
+"descricao": "Uma coluna vertical de fogo brilhante troveja de cima. Cada criatura em um Cilindro com raio de 3 metros e 12 metros de altura centrado em um ponto dentro do alcance faz um teste de resistência de Destreza, sofrendo 5d6 de dano de Fogo e 5d6 de dano Radiante em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c5_wall_of_force",
@@ -4131,7 +4131,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "An Invisible wall of force springs into existence at a point you choose within range. The wall appears in any orientation you choose, as a horizontal or vertical barrier or at an angle. It can be free floating or resting on a solid surface. You can form it into a hemispherical dome or a globe with a radius of up to 10 feet, or you can shape a flat surface made up of ten 10-foot-by-10-foot panels. Each panel must be contiguous with another panel. In any form, the wall is 1/4 inch thick and lasts for the duration. If the wall cuts through a creature's space when it appears, the creature is pushed to one side of the wall (you choose which side). \n\nNothing can physically pass through the wall. It is immune to all damage and can't be dispelled by Dispel Magic. A Disintegrate spell destroys the wall instantly, however. The wall also extends into the Ethereal Plane and blocks ethereal travel through the wall."
+"descricao": "Uma muralha Invisível de força surge em um ponto à sua escolha dentro do alcance. A muralha aparece em qualquer orientação que você escolher, como uma barreira horizontal, vertical ou em ângulo. Ela pode flutuar livremente ou repousar sobre uma superfície sólida. Você pode formá-la em uma cúpula hemisférica ou em um globo com raio de até 3 metros, ou moldar uma superfície plana composta de dez painéis de 3 metros por 3 metros. Cada painel deve ser contíguo a outro painel. Em qualquer forma, a muralha tem 0,6 centímetro de espessura e dura pela duração. Se a muralha cortar o espaço de uma criatura quando aparecer, a criatura é empurrada para um lado da muralha (você escolhe qual lado). \n\nNada pode atravessar fisicamente a muralha. Ela é imune a todo dano e não pode ser dissipada por Dissipar Magia. Uma magia Desintegrar destrói a muralha instantaneamente, no entanto. A muralha também se estende ao Plano Etéreo e bloqueia a viagem etérea através dela."
 },
 {
 "id": "c5_wall_of_stone",
@@ -4148,7 +4148,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A nonmagical wall of solid stone springs into existence at a point you choose within range. The wall is 6 inches thick and is composed of ten 10-foot-by-10-foot panels. Each panel must be contiguous with another panel. Alternatively, you can create 10- foot-by-20-foot panels that are only 3 inches thick. \n\nIf the wall cuts through a creature's space when it appears, the creature is pushed to one side of the wall (you choose which side). If a creature would be surrounded on all sides by the wall (or the wall and another solid surface), that creature can make a Dexterity saving throw. On a success, it can use its Reaction to move up to its Speed so that it is no longer enclosed by the wall.\n\nThe wall can have any shape you desire, though it can't occupy the same space as a creature or object. The wall doesn't need to be vertical or rest on a firm foundation. It must, however, merge with and be solidly supported by existing stone. Thus, you can use this spell to bridge a chasm or create a ramp. \n\nIf you create a span greater than 20 feet in length, you must halve the size of each panel to create supports. You can crudely shape the wall to create battlements and the like. \n\nThe wall is an object made of stone that can be damaged and thus breached. Each panel has AC 15 and 30 Hit Points per inch of thickness, and it has Immunity to Poison and Psychic damage. Reducing a panel to 0 Hit Points destroys it and might cause connected panels to collapse at the DM's discretion. \n\nIf you maintain your Concentration on this spell for its full duration, the wall becomes permanent and can't be dispelled. Otherwise, the wall disappears when the spell ends."
+"descricao": "Uma muralha não mágica de pedra sólida surge em um ponto à sua escolha dentro do alcance. A muralha tem 15 centímetros de espessura e é composta de dez painéis de 3 metros por 3 metros. Cada painel deve ser contíguo a outro painel. Alternativamente, você pode criar painéis de 3 metros por 6 metros com apenas 7,5 centímetros de espessura. \n\nSe a muralha cortar o espaço de uma criatura quando aparecer, a criatura é empurrada para um lado da muralha (você escolhe qual lado). Se uma criatura fosse cercada por todos os lados pela muralha (ou pela muralha e outra superfície sólida), ela pode fazer um teste de resistência de Destreza. Em um sucesso, pode usar sua Reação para se mover até seu Deslocamento para não ficar mais encerrada pela muralha. \n\nA muralha pode ter qualquer forma que desejar, embora não possa ocupar o mesmo espaço de uma criatura ou objeto. A muralha não precisa ser vertical nem repousar sobre uma fundação firme. Ela deve, no entanto, se fundir com pedra existente e ser solidamente apoiada por ela. Assim, você pode usar esta magia para transpor um abismo ou criar uma rampa. \n\nSe você criar um vão com mais de 6 metros de comprimento, deve reduzir pela metade o tamanho de cada painel para criar suportes. Você pode moldar grosseiramente a muralha para criar ameias e coisas do tipo. \n\nA muralha é um objeto feito de pedra que pode ser danificado e, portanto, rompido. Cada painel tem CA 15 e 30 Pontos de Vida por 2,5 centímetros de espessura, e tem Imunidade a dano de Veneno e Psíquico. Reduzir um painel a 0 Pontos de Vida o destrói e pode fazer painéis conectados desabarem, a critério do mestre. \n\nSe você mantiver sua Concentração nesta magia por toda a duração, a muralha se torna permanente e não pode ser dissipada. Caso contrário, a muralha desaparece quando a magia termina."
 },
 {
 "id": "c5_creation",
@@ -4164,8 +4164,8 @@ const SPELLS_DATA = [
 "duracao": "Especial",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The Cube increases by 5 feet for each spell slot level above 5.",
-"descricao": "You pull wisps of shadow material from the Shadowfell to create an object within range. It is either an object of vegetable matter (soft goods, rope, wood, and the like) or mineral matter (stone, crystal, metal, and the like). The object must be no larger than a 5-foot Cube, and the object must be of a form and material that you have seen. \n\nThe spell's duration depends on the object's material, as shown in the Materials table. If the object is composed of multiple materials, use the shortest duration. Using any object created by this spell as another spell's Material component causes the other spell to fail.\n\n| Material              | Duration   |\n|-----------------------|------------|\n| Vegetable matter | 24 hours |\n| Stone or crystal | 12 hours |\n| Precious metals | 1 hour |\n| Gems | 10 minutes |\n| Adamantine or mithral | 1 minute. |\n|                       |            |"
+"aprimoramento": "O Cubo aumenta em 1,5 metro para cada nível de espaço de magia acima de 5.",
+"descricao": "Você puxa filamentos de matéria de sombras do Plano das Sombras (Shadowfell) para criar um objeto dentro do alcance. Ele é um objeto de matéria vegetal (bens macios, corda, madeira e coisas do tipo) ou de matéria mineral (pedra, cristal, metal e coisas do tipo). O objeto não pode ser maior que um Cubo de 1,5 metro, e deve ter uma forma e um material que você já tenha visto. \n\nA duração da magia depende do material do objeto, conforme mostrado na tabela Materiais. Se o objeto for composto de vários materiais, use a duração mais curta. Usar qualquer objeto criado por esta magia como componente Material de outra magia faz a outra magia falhar. \n\n| Material              | Duração   |\n|-----------------------|------------|\n| Matéria vegetal       | 24 horas   |\n| Pedra ou cristal      | 12 horas   |\n| Metais preciosos      | 1 hora     |\n| Gemas                 | 10 minutos |\n| Adamantine ou Mithral | 1 minuto   |"
 },
 {
 "id": "c5_dream",
@@ -4182,7 +4182,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You target a creature you know on the same plane of existence. You or a willing creature you touch enters a trance state to act as a dream messenger. While in the trance, the messenger is Incapacitated and has a Speed of 0. \n\nIf the target is asleep, the messenger appears in the target's dreams and can converse with the target as long as it remains asleep, through the spell's duration. The messenger can also shape the dream's environment, creating landscapes, objects, and other images. The messenger can emerge from the trance at any time, ending the spell. The target recalls the dream perfectly upon waking. \n\nIf the target is awake when you cast the spell, the messenger knows it and can either end the trance (and the spell) or wait for the target to sleep, at which point the messenger enters its dreams. You can make the messenger terrifying to the target. If you do so, the messenger can deliver a message of no more than ten words, and then the target makes a Wisdom saving throw. On a failed save, the target gains no benefit from its rest, and it takes 3d6 Psychic damage when it wakes up."
+"descricao": "Você mira em uma criatura que conhece no mesmo plano de existência. Você ou uma criatura voluntária que toca entra em um estado de transe para agir como mensageiro de sonho. Enquanto estiver no transe, o mensageiro fica Incapacitado e tem um Deslocamento de 0. \n\nSe o alvo estiver dormindo, o mensageiro aparece nos sonhos do alvo e pode conversar com ele enquanto ele permanecer dormindo, durante a duração da magia. O mensageiro também pode moldar o ambiente do sonho, criando paisagens, objetos e outras imagens. O mensageiro pode sair do transe a qualquer momento, encerrando a magia. O alvo se lembra do sonho perfeitamente ao acordar. \n\nSe o alvo estiver acordado quando você lançar a magia, o mensageiro o percebe e pode encerrar o transe (e a magia) ou esperar o alvo dormir, quando então o mensageiro entra em seus sonhos. Você pode tornar o mensageiro aterrorizante para o alvo. Se fizer isso, o mensageiro pode entregar uma mensagem de no máximo dez palavras, e então o alvo faz um teste de resistência de Sabedoria. Em uma falha, o alvo não obtém benefício de seu descanso e sofre 3d6 de dano Psíquico ao acordar."
 },
 {
 "id": "c5_mislead",
@@ -4199,7 +4199,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You gain the Invisible condition at the same time that an illusory double of you appears where you are standing. The double lasts for the duration, but the invisibility ends immediately after you make an attack roll, deal damage, or cast a spell. \n\nAs a Magic action, you can move the illusory double up to twice your Speed and make it gesture, speak, and behave in whatever way you choose. It is intangible and invulnerable. \n\nYou can see through its eyes and hear through its ears as if you were located where it is."
+"descricao": "Você ganha a condição Invisível ao mesmo tempo em que um duplo ilusório seu aparece onde você está. O duplo dura pela duração, mas a invisibilidade termina imediatamente depois de você fazer uma jogada de ataque, causar dano ou lançar uma magia. \n\nComo uma Ação Mágica, você pode mover o duplo ilusório até o dobro do seu Deslocamento e fazê-lo gesticular, falar e se comportar da maneira que escolher. Ele é intangível e invulnerável. \n\nVocê pode ver pelos olhos dele e ouvir pelos ouvidos dele como se estivesse localizado onde ele está."
 },
 {
 "id": "c5_seeming",
@@ -4216,7 +4216,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You give an illusory appearance to each creature of your choice that you can see within range. An unwilling target can make a Charisma saving throw, and if it succeeds, it is unaffected by this spell. \n\nYou can give the same appearance or different ones to the targets. The spell can change the appearance of the targets' bodies and equipment. You can make each creature seem 1 foot shorter or taller and appear heavier or lighter. A target's new appearance must have the same basic arrangement of limbs as the target, but the extent of the illusion is otherwise up to you. The spell lasts for the duration. \n\nThe changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to a creature's outfit, objects pass through the hat. \n\nA creature that takes the Study action to examine a target can make an Intelligence (Investigation) check against your spell save DC. If it succeeds, it becomes aware that the target is disguised."
+"descricao": "Você dá uma aparência ilusória a cada criatura à sua escolha que possa ver dentro do alcance. Um alvo involuntário pode fazer um teste de resistência de Carisma, e se for bem-sucedido, não é afetado por esta magia. \n\nVocê pode dar a mesma aparência ou aparências diferentes aos alvos. A magia pode mudar a aparência dos corpos e equipamentos dos alvos. Você pode fazer cada criatura parecer 30 centímetros mais baixa ou mais alta e parecer mais pesada ou mais leve. A nova aparência de um alvo deve ter a mesma disposição básica de membros que o alvo, mas a extensão da ilusão é, de resto, com você. A magia dura pela duração. \n\nAs mudanças provocadas por esta magia não resistem à inspeção física. Por exemplo, se você usar esta magia para adicionar um chapéu ao traje de uma criatura, objetos passam através do chapéu. \n\nUma criatura que faça a ação de Estudar para examinar um alvo pode fazer um teste de Inteligência (Investigação) contra a CD de resistência da sua magia. Se for bem-sucedida, torna-se ciente de que o alvo está disfarçado."
 },
 {
 "id": "c5_contagion",
@@ -4233,7 +4233,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Your touch inflicts a magical contagion. The target must succeed on a Constitution saving throw or take 11d8 Necrotic damage and have the Poisoned condition. Also, choose one ability when you cast the spell. While Poisoned, the target has Disadvantage on saving throws made with the chosen ability. The target must repeat the saving throw at the end of each of its turns until it gets three successes or failures. If the target succeeds on three of these saves, the spell ends on the target. If the target fails three of the saves, the spell lasts for 7 days on it. Whenever the Poisoned target receives an effect that would end the Poisoned condition, the target must succeed on a Constitution saving throw, or the Poisoned condition doesn't end on it."
+"descricao": "Seu toque inflige um contágio mágico. O alvo deve ser bem-sucedido em um teste de resistência de Constituição ou sofrer 11d8 de dano Necrótico e ter a condição Envenenado. Além disso, escolha um atributo ao lançar a magia. Enquanto estiver Envenenado, o alvo tem Desvantagem em testes de resistência feitos com o atributo escolhido. O alvo deve repetir o teste de resistência no fim de cada um de seus turnos até obter três sucessos ou três falhas. Se o alvo for bem-sucedido em três desses testes, a magia termina nele. Se o alvo falhar em três dos testes, a magia dura 7 dias nele. Sempre que o alvo Envenenado receber um efeito que encerraria a condição Envenenado, ele deve ser bem-sucedido em um teste de resistência de Constituição, ou a condição Envenenado não termina nele."
 },
 {
 "id": "c5_raise_dead",
@@ -4250,7 +4250,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "With a touch, you revive a dead creature if it has been dead no longer than 10 days and it wasn't Undead when it died. The creature returns to life with 1 Hit Point. This spell also neutralizes any poisons that affected the creature at the time of death. \n\nThis spell closes all mortal wounds, but it doesn't restore missing body parts. If the creature is lacking body parts or organs integral for its survival—its head, for instance—the spell automatically fails. Coming back from the dead is an ordeal. The target takes a −4 penalty to D20 Tests. Every time the target finishes a Long Rest, the penalty is reduced by 1 until it becomes 0."
+"descricao": "Com um toque, você revive uma criatura morta se ela estiver morta há não mais de 10 dias e não fosse Não-Morta quando morreu. A criatura volta à vida com 1 Ponto de Vida. Esta magia também neutraliza quaisquer venenos que afetavam a criatura no momento da morte. \n\nEsta magia fecha todos os ferimentos mortais, mas não restaura partes corporais ausentes. Se a criatura estiver sem partes ou órgãos essenciais para sua sobrevivência — a cabeça, por exemplo — a magia falha automaticamente. Voltar dos mortos é uma provação. O alvo sofre uma penalidade de −4 em Testes de D20. Toda vez que o alvo terminar um Descanso Longo, a penalidade é reduzida em 1 até se tornar 0."
 },
 {
 "id": "c5_reincarnate",
@@ -4267,7 +4267,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a dead Humanoid or a piece of one. If the creature has been dead no longer than 10 days, the spell forms a new body for it and calls the soul to enter that body. Roll 1d10 and consult the table below to determine the body’s species, or the DM chooses another playable species. \n\n| 1d10 | Species    |\n| ---- | ---------- |\n| 1    | Aasimar    |\n| 2    | Dragonborn |\n| 3    | Dwarf      |\n| 4    | Elf        |\n| 5    | Gnome      |\n| 6    | Goliath    |\n| 7    | Halfling   |\n| 8    | Human      |\n| 9    | Orc        |\n| 10   | Tiefling   |\n\n  The reincarnated creature makes any choices that a species’ description offers, and the creature recalls its former life. It retains the capabilities it had in its original form, except it loses the traits of its previous species and gains the traits of its new one."
+"descricao": "Você toca um Humanoide morto ou um pedaço de um. Se a criatura estiver morta há não mais de 10 dias, a magia forma um novo corpo para ela e chama a alma para entrar nesse corpo. Role 1d10 e consulte a tabela abaixo para determinar a espécie do corpo, ou o mestre escolhe outra espécie jogável. \n\n| 1d10 | Espécie    |\n| ---- | ---------- |\n| 1    | Aasimar    |\n| 2    | Dragonborn |\n| 3    | Anão       |\n| 4    | Elfo       |\n| 5    | Gnomo      |\n| 6    | Golias     |\n| 7    | Halfling   |\n| 8    | Humano     |\n| 9    | Orc        |\n| 10   | Tiefling   |\n\nA criatura reencarnada faz quaisquer escolhas que a descrição da espécie oferece, e a criatura se lembra de sua vida anterior. Ela mantém as capacidades que tinha em sua forma original, exceto que perde os traços de sua espécie anterior e ganha os traços da nova."
 },
 {
 "id": "c5_animate_objects",
@@ -4283,8 +4283,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The creature's Slam damage increases by 1d4 (Medium or smaller), 1d6 (Large), or 1d12 (Huge) for each spell slot level above 5.",
-"descricao": "Objects animate at your command. Choose a number of nonmagical objects within range that aren't being worn or carried, aren't fixed to a surface, and aren't Gargantuan. The maximum number of objects is equal to your spellcasting ability modifier; for this number, a Medium or smaller target counts as one object, a Large target counts as two, and a Huge target counts as three. Each target animates, sprouts legs, and becomes a Construct that uses the Animated Object stat block; this creature is under your control until the spell ends or until it is reduced to 0 Hit Points. Each creature you make with this spell is an ally to you and your allies. In combat, it shares your Initiative count and takes its turn immediately after yours. \n\nUntil the spell ends, you can take a Bonus Action to mentally command any creature you made with this spell if the creature is within 500 feet of you (if you control multiple creatures, you can command any of them at the same time, issuing the same command to each one). If you issue no commands, the creature takes the Dodge action and moves only to avoid harm. When the creature drops to 0 Hit Points, it reverts to its object form, and any remaining damage carries over to that form."
+"aprimoramento": "O dano de Pancada da criatura aumenta em 1d4 (Médio ou menor), 1d6 (Grande) ou 1d12 (Enorme) para cada nível de espaço de magia acima de 5.",
+"descricao": "Objetos se animam ao seu comando. Escolha um número de objetos não mágicos dentro do alcance que não estejam sendo vestidos nem carregados, não estejam fixados a uma superfície e não sejam Colossais. O número máximo de objetos é igual ao seu modificador de atributo de conjuração; para esse número, um alvo Médio ou menor conta como um objeto, um alvo Grande conta como dois, e um alvo Enorme conta como três. Cada alvo se anima, ganha pernas e se torna um Construto que usa o bloco de estatísticas Objeto Animado; essa criatura está sob seu controle até a magia terminar ou ser reduzida a 0 Pontos de Vida. Cada criatura que você fizer com esta magia é uma aliada sua e de seus aliados. Em combate, ela compartilha sua contagem de Iniciativa e faz o turno imediatamente após o seu. \n\nAté a magia terminar, você pode gastar uma Ação Bônus para comandar mentalmente qualquer criatura que tenha feito com esta magia, se a criatura estiver a até 150 metros de você (se você controlar várias criaturas, pode comandá-las ao mesmo tempo, emitindo o mesmo comando para cada uma). Se você não emitir comandos, a criatura faz a ação Esquivar e se move apenas para evitar dano. Quando a criatura cai a 0 Pontos de Vida, ela reverte à sua forma de objeto, e qualquer dano remanescente é transferido para essa forma."
 },
 {
 "id": "c5_awaken",
@@ -4301,7 +4301,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You spend the casting time tracing magical pathways within a precious gemstone, and then touch the target. The target must be either a Beast or Plant creature with an Intelligence of 3 or less or a natural plant that isn't a creature. The target gains an Intelligence of 10 and the ability to speak one language you know. If the target is a natural plant, it becomes a Plant creature and gains the ability to move its limbs, roots, vines, creepers, and so forth, and it gains senses similar to a human's. The DM chooses statistics appropriate for the awakened Plant, such as the statistics for the Awakened Shrub or Awakened Tree in the Monster Manual. \n\nThe awakened target has the Charmed condition for 30 days or until you or your allies deal damage to it. When that condition ends, the awakened creature chooses its attitude toward you."
+"descricao": "Você gasta o tempo de conjuração traçando caminhos mágicos dentro de uma gema preciosa e então toca o alvo. O alvo deve ser uma criatura Besta ou Vegetal com Inteligência 3 ou menor, ou uma planta natural que não seja uma criatura. O alvo ganha Inteligência 10 e a capacidade de falar um idioma que você conhece. Se o alvo for uma planta natural, ele se torna uma criatura Vegetal e ganha a capacidade de mover seus galhos, raízes, vinhas, trepadeiras e assim por diante, e ganha sentidos semelhantes aos de um humano. O mestre escolhe estatísticas apropriadas para a planta despertada, como as estatísticas do Arbusto Despertado ou da Árvore Despertada no Livro dos Monstros. \n\nO alvo despertado tem a condição Enfeitiçado por 30 dias ou até que você ou seus aliados causem dano a ele. Quando essa condição termina, a criatura despertada escolhe sua atitude em relação a você."
 },
 {
 "id": "c5_passwall",
@@ -4318,7 +4318,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A passage appears at a point that you can see on a wooden, plaster, or stone surface (such as a wall, ceiling, or floor) within range and lasts for the duration. You choose the opening's dimensions: up to 5 feet wide, 8 feet tall, and 20 feet deep. The passage creates no instability in a structure surrounding it. \n\nWhen the opening disappears, any creatures or objects still in the passage created by the spell are safely ejected to an unoccupied space nearest to the surface on which you cast the spell."
+"descricao": "Uma passagem aparece em um ponto que você possa ver em uma superfície de madeira, gesso ou pedra (como uma parede, teto ou chão) dentro do alcance e dura pela duração. Você escolhe as dimensões da abertura: até 1,5 metro de largura, 2,4 metros de altura e 6 metros de profundidade. A passagem não cria instabilidade em uma estrutura ao redor. \n\nQuando a abertura desaparece, quaisquer criaturas ou objetos ainda na passagem criada pela magia são ejetados em segurança para um espaço desocupado mais próximo da superfície em que você lançou a magia."
 },
 {
 "id": "c5_telekinesis",
@@ -4335,7 +4335,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You gain the ability to move or manipulate creatures or objects by thought. When you cast the spell and as a Magic action on your later turns before the spell ends, you can exert your will on one creature or object that you can see within range, causing the appropriate effect below. You can affect the same target round after round or choose a new one at any time. If you switch targets, the prior target is no longer affected by the spell. \n\n**Creature**. You can try to move a Huge or smaller creature. The target must succeed on a Strength saving throw, or you move it up to 30 feet in any direction within the spell's range. Until the end of your next turn, the creature has the Restrained condition, and if you lift it into the air, it is suspended there. It falls at the end of your next turn unless you use this option on it again and it fails the save. \n\n**Object**. You can try to move a Huge or smaller object. If the object isn't being worn or carried, you automatically move it up to 30 feet in any direction within the spell's range. \n\nIf the object is worn or carried by a creature, that creature must succeed on a Strength saving throw, or you pull the object away and move it up to 30 feet in any direction within the spell's range. You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial."
+"descricao": "Você ganha a capacidade de mover ou manipular criaturas ou objetos pelo pensamento. Ao lançar a magia e como uma Ação Mágica nos seus turnos posteriores, antes de a magia terminar, você pode exercer sua vontade sobre uma criatura ou objeto que possa ver dentro do alcance, causando o efeito apropriado abaixo. Você pode afetar o mesmo alvo rodada após rodada ou escolher um novo a qualquer momento. Se você trocar de alvo, o alvo anterior não é mais afetado pela magia. \n\n**Criatura.** Você pode tentar mover uma criatura Enorme ou menor. O alvo deve ser bem-sucedido em um teste de resistência de Força, ou você o move até 9 metros em qualquer direção dentro do alcance da magia. Até o fim do seu próximo turno, a criatura tem a condição Imobilizado, e se você a erguer no ar, ela fica suspensa lá. Ela cai no fim do seu próximo turno, a menos que você use esta opção novamente nela e ela falhe no teste. \n\n**Objeto.** Você pode tentar mover um objeto Enorme ou menor. Se o objeto não estiver sendo vestido nem carregado, você o move automaticamente em até 9 metros em qualquer direção dentro do alcance da magia. \n\nSe o objeto estiver vestido ou carregado por uma criatura, essa criatura deve ser bem-sucedida em um teste de resistência de Força, ou você puxa o objeto e o move em até 9 metros em qualquer direção dentro do alcance da magia. Você pode exercer controle fino sobre objetos com sua pegada telecinética, como manipular uma ferramenta simples, abrir uma porta ou um recipiente, guardar ou retirar um item de um recipiente aberto ou despejar o conteúdo de um frasco."
 },
 {
 "id": "c6_contingency",
@@ -4352,7 +4352,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose a spell of level 5 or lower that you can cast, that has a casting time of an action, and that can target you. You cast that spell—called the contingent spell—as part of casting Contingency, expending spell slots for both, but the contingent spell doesn't come into effect. Instead, it takes effect when a certain trigger occurs. You describe that trigger when you cast the two spells. For example, a Contingency cast with Water Breathing might stipulate that Water Breathing comes into effect when you are engulfed in water or a similar liquid. \n\nThe contingent spell takes effect immediately after the trigger occurs for the first time, whether or not you want it to, and then Contingency ends. \n\nThe contingent spell takes effect only on you, even if it can normally target others. You can use only one Contingency spell at a time. If you cast this spell again, the effect of another Contingency spell on you ends. Also, Contingency ends on you if its material component is ever not on your person."
+"descricao": "Escolha uma magia de 5º círculo ou inferior que você possa lançar, que tenha tempo de conjuração de uma ação e que possa mirar em você. Você lança essa magia — chamada de magia contingente — como parte do lançamento de Contingência, gastando espaços de magia para ambas, mas a magia contingente não entra em vigor. Em vez disso, ela entra em vigor quando um certo gatilho ocorre. Você descreve esse gatilho ao lançar as duas magias. Por exemplo, uma Contingência lançada com Respirar na Água pode estipular que Respirar na Água entra em vigor quando você estiver submerso em água ou outro líquido semelhante. \n\nA magia contingente entra em vigor imediatamente depois que o gatilho ocorre pela primeira vez, independentemente de você querer, e então Contingência termina. \n\nA magia contingente tem efeito apenas em você, mesmo que normalmente possa mirar em outros. Você pode usar apenas uma magia Contingência por vez. Se você lançar esta magia novamente, o efeito de outra magia Contingência em você termina. Além disso, Contingência termina em você se seu componente material algum dia não estiver em sua pessoa."
 },
 {
 "id": "c6_forbiddance",
@@ -4369,7 +4369,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You create a ward against magical travel that protects up to 40,000 square feet of floor space to a height of 30 feet above the floor. For the duration, creatures can't teleport into the area or use portals, such as those created by the Gate spell, to enter the area. The spell proofs the area against planar travel, and therefore prevents creatures from accessing the area by way of the Astral Plane, the Ethereal Plane, the Feywild, the Shadowfell, or the Plane Shift spell.\n\nIn addition, the spell damages types of creatures that you choose when you cast it. Choose one or more of the following: Aberrations, Celestials, Elementals, Fey, Fiends, and Undead. When a creature of a chosen type enters the spell's area for the first time on a turn or ends its turn there, the creature takes 5d10 Radiant or Necrotic damage (your choice when you cast this spell).\n\nYou can designate a password when you cast the spell. A creature that speaks the password as it enters the area takes no damage from the spell. \n\nThe spell's area can't overlap with the area of another Forbiddance spell. If you cast Forbiddance every day for 30 days in the same location, the spell lasts until it is dispelled, and the Material components are consumed on the last casting."
+"descricao": "Você cria uma proteção contra viagem mágica que salvaguarda até 3.716 metros quadrados de área de piso até 9 metros de altura acima do chão. Pela duração, criaturas não podem se teleportar para a área nem usar portais, como os criados pela magia Portal, para entrar na área. A magia prova a área contra viagem planar e, portanto, impede que criaturas acessem a área pelo Plano Astral, pelo Plano Etéreo, pelo Plano das Fadas (Feywild), pelo Plano das Sombras (Shadowfell) ou pela magia Mudança de Plano. \n\nAlém disso, a magia causa dano aos tipos de criatura que você escolher ao lançá-la. Escolha um ou mais dos seguintes: Aberrações, Celestiais, Elementais, Fadas, Corruptores e Não-Mortos. Quando uma criatura de um tipo escolhido entra na área da magia pela primeira vez em um turno ou termina o turno nela, a criatura sofre 5d10 de dano Radiante ou Necrótico (sua escolha ao lançar esta magia). \n\nVocê pode designar uma senha ao lançar a magia. Uma criatura que pronuncie a senha ao entrar na área não sofre dano da magia. \n\nA área da magia não pode se sobrepor à área de outra magia Interdição. Se você lançar Interdição todos os dias por 30 dias no mesmo local, a magia dura até ser dissipada, e os componentes Materiais são consumidos na última conjuração."
 },
 {
 "id": "c6_globe_of_invulnerability",
@@ -4385,8 +4385,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The barrier blocks spells of 1 level higher for each spell slot level above 6.",
-"descricao": "An immobile, shimmering barrier appears in a 10-foot Emanation around you and remains for the duration.\n\nAny spell of level 5 or lower cast from outside the barrier can't affect anything within it. Such a spell can target creatures and objects within the barrier, but the spell has no effect on them. Similarly, the area within the barrier is excluded from areas of effect created by such spells."
+"aprimoramento": "A barreira bloqueia magias de 1 círculo maior para cada nível de espaço de magia acima de 6.",
+"descricao": "Uma barreira imóvel e cintilante aparece em uma Emanação de 3 metros ao seu redor e permanece pela duração. \n\nQualquer magia de 5º círculo ou inferior lançada de fora da barreira não pode afetar nada dentro dela. Tal magia pode mirar em criaturas e objetos dentro da barreira, mas não tem efeito sobre eles. Da mesma forma, a área dentro da barreira é excluída das áreas de efeito criadas por tais magias."
 },
 {
 "id": "c6_guards_and_wards",
@@ -4403,7 +4403,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a ward that protects up to 2,500 square feet of floor space. The warded area can be up to 20 feet tall, and you shape it as one 50-foot square, one hundred 5-foot squares that are contiguous, or twenty-five 10-foot squares that are contiguous. When you cast this spell, you can specify individuals that are unaffected by the spell's effects. You can also specify a password that, when spoken aloud within 5 feet of the warded area, makes the speaker immune to its effects. The spell creates the effects below within the warded area. Dispel Magic has no effect on Guards and Wards itself, but each of the following effects can be dispelled. If all four are dispelled, Guards and Wards ends. If you cast the spell every day for 365 days on the same area, the spell thereafter lasts until all its effects are dispelled. \n\n**Corridors.** Fog fills all the warded corridors, making them Heavily Obscured. In addition, at each intersection or branching passage offering a choice of direction, there is a 50 percent chance that a creature other than you believes it is going in the opposite direction from the one it chooses. \n\n**Doors.** All doors in the warded area are magically locked, as if sealed by the Arcane Lock spell. In addition, you can cover up to ten doors with an illusion to make them appear as plain sections of wall. Stairs. Webs fill all stairs in the warded area from top to bottom, as in the Web spell. These strands regrow in 10 minutes if they are destroyed while Guards and Wards lasts. \n\n**Other Spell Effect.** Place one of the following magical effects within the warded area: \n\n- Dancing Lights in four corridors, with a simple program that the lights repeat as long as Guards and Wards lasts \n\n- Magic Mouth in two locations \n\n- Stinking Cloud in two locations (the vapors return within 10 minutes if dispersed while Guards and Wards lasts) \n\n- Gust of Wind in one corridor or room (the wind blows continuously while the spell lasts) \n\n- Suggestion in one 5-foot square; any creature that enters that square receives the suggestion mentally."
+"descricao": "Você cria uma proteção que salvaguarda até 232 metros quadrados de área de piso. A área protegida pode ter até 6 metros de altura, e você a molda como um quadrado de 15 metros, cem quadrados de 1,5 metro contíguos ou vinte e cinco quadrados de 3 metros contíguos. Ao lançar esta magia, você pode especificar indivíduos que não são afetados pelos efeitos da magia. Você também pode especificar uma senha que, quando falada em voz alta a até 1,5 metro da área protegida, torna o falante imune aos seus efeitos. A magia cria os efeitos abaixo dentro da área protegida. Dissipar Magia não tem efeito sobre Guardas e Salas em si, mas cada um dos seguintes efeitos pode ser dissipado. Se todos os quatro forem dissipados, Guardas e Salas termina. Se você lançar a magia todos os dias por 365 dias na mesma área, a magia passa a durar até que todos os seus efeitos sejam dissipados. \n\n**Corredores.** Névoa preenche todos os corredores protegidos, tornando-os Fortemente Obscurecidos. Além disso, em cada cruzamento ou passagem ramificada que ofereça escolha de direção, há 50 por cento de chance de uma criatura que não seja você acreditar que está indo na direção oposta à que escolhe. \n\n**Portas.** Todas as portas na área protegida são magicamente trancadas, como se seladas pela magia Fechadura Arcana. Além disso, você pode cobrir até dez portas com uma ilusão para fazê-las parecer seções comuns de parede. \n\n**Escadas.** Teias preenchem todas as escadas na área protegida de cima a baixo, como na magia Teias. Esses fios voltam a crescer em 10 minutos se forem destruídos enquanto Guardas e Salas durar. \n\n**Outro Efeito de Magia.** Coloque um dos seguintes efeitos mágicos dentro da área protegida: \n\n- Luzes Dançantes em quatro corredores, com um programa simples que as luzes repetem enquanto Guardas e Salas durar \n\n- Boca Mágica em dois locais \n\n- Nuvem Fétida em dois locais (os vapores retornam em 10 minutos se forem dispersos enquanto Guardas e Salas durar) \n\n- Rajada de Vento em um corredor ou sala (o vento sopra continuamente enquanto a magia durar) \n\n- Sugestão em um quadrado de 1,5 metro; qualquer criatura que entrar nesse quadrado recebe a sugestão mentalmente."
 },
 {
 "id": "c6_heal",
@@ -4419,8 +4419,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The healing increases by 10 for each spell slot level above 6.",
-"descricao": "Choose a creature that you can see within range. Positive energy washes through the target, restoring 70 Hit Points. This spell also ends the Blinded, Deafened, and Poisoned conditions on the target."
+"aprimoramento": "A cura aumenta em 10 para cada nível de espaço de magia acima de 6.",
+"descricao": "Escolha uma criatura que você possa ver dentro do alcance. Energia positiva atravessa o alvo, restaurando 70 Pontos de Vida. Esta magia também encerra as condições Cego, Surdo e Envenenado no alvo."
 },
 {
 "id": "c6_conjure_fey",
@@ -4436,8 +4436,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage increases by 2d12 for each spell slot level above 6.",
-"descricao": "You conjure a Medium spirit from the Feywild in an unoccupied space you can see within range. The spirit lasts for the duration, and it looks like a Fey creature of your choice. When the spirit appears, you can make one melee spell attack against a creature within 5 feet of it. On a hit, the target takes Psychic damage equal to 3d12 plus your spellcasting ability modifier, and the target has the Frightened condition until the start of your next turn, with both you and the spirit as the source of the fear. \n\nAs a Bonus Action on your later turns, you can teleport the spirit to an unoccupied space you can see within 30 feet of the space it left and make the attack against a creature within 5 feet of it."
+"aprimoramento": "O dano aumenta em 2d12 para cada nível de espaço de magia acima de 6.",
+"descricao": "Você conjura um espírito Médio do Plano das Fadas (Feywild) em um espaço desocupado que possa ver dentro do alcance. O espírito dura pela duração e parece uma criatura Fada de sua escolha. Quando o espírito aparece, você pode fazer um teste de ataque mágico corpo a corpo contra uma criatura a até 1,5 metro dele. Em um acerto, o alvo sofre dano Psíquico igual a 3d12 mais seu modificador de atributo de conjuração, e tem a condição Apavorado até o início do seu próximo turno, com você e o espírito como fontes do medo. \n\nComo uma Ação Bônus nos seus turnos posteriores, você pode teleportar o espírito para um espaço desocupado que possa ver a até 9 metros do espaço que ele deixou e fazer o ataque contra uma criatura a até 1,5 metro dele."
 },
 {
 "id": "c6_heroes_feast",
@@ -4454,7 +4454,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You conjure a feast that appears on a surface in an unoccupied 10- foot Cube next to you. The feast takes 1 hour to consume and disappears at the end of that time, and the beneficial effects don't set in until this hour is over. Up to twelve creatures can partake of the feast. \n\nA creature that partakes gains several benefits, which last for 24 hours. The creature has Resistance to Poison damage, and it has Immunity to the Frightened and Poisoned conditions. Its Hit Point maximum also increases by 2d10, and it gains the same number of Hit Points."
+"descricao": "Você conjura um banquete que aparece em uma superfície em um Cubo desocupado de 3 metros ao seu lado. O banquete leva 1 hora para ser consumido e desaparece ao fim desse tempo, e os efeitos benéficos não entram em vigor até essa hora terminar. Até doze criaturas podem participar do banquete. \n\nUma criatura que participa ganha vários benefícios, que duram 24 horas. A criatura tem Resistência a dano de Veneno e Imunidade às condições Apavorado e Envenenado. Seu máximo de Pontos de Vida também aumenta em 2d10, e ela ganha o mesmo número de Pontos de Vida."
 },
 {
 "id": "c6_instant_summons",
@@ -4471,7 +4471,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": true,
 "aprimoramento": null,
-"descricao": "You touch the sapphire used in the casting and an object weighing 10 pounds or less whose longest dimension is 6 feet or less. The spell leaves an Invisible mark on that object and invisibly inscribes the object’s name on the sapphire. Each time you cast this spell, you must use a different sapphire.\n\nThereafter, you can take a Magic action to speak the object’s name and crush the sapphire. The object instantly appears in your hand regardless of physical or planar distances, and the spell ends.\n\nIf another creature is holding or carrying the object, crushing the sapphire doesn’t transport it, but instead you learn who that creature is and where that creature is currently located."
+"descricao": "Você toca a safira usada na conjuração e um objeto pesando 4,5 quilos ou menos, cuja dimensão mais longa seja de 1,8 metro ou menos. A magia deixa uma marca Invisível nesse objeto e inscreve invisivelmente o nome do objeto na safira. Cada vez que você lança esta magia, deve usar uma safira diferente. \n\nA partir de então, você pode gastar uma Ação Mágica para pronunciar o nome do objeto e esmagar a safira. O objeto aparece instantaneamente em sua mão, independentemente de distâncias físicas ou planares, e a magia termina. \n\nSe outra criatura estiver segurando ou carregando o objeto, esmagar a safira não o transporta, mas em vez disso você descobre quem é essa criatura e onde ela está atualmente."
 },
 {
 "id": "c6_planar_ally",
@@ -4488,7 +4488,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You beseech an otherworldly entity for aid. The being must be known to you: a god, a demon prince, or some other being of cosmic power. That entity sends a Celestial, an Elemental, or a Fiend loyal to it to aid you, making the creature appear in an unoccupied space within range. If you know a specific creature's name, you can speak that name when you cast this spell to request that creature, though you might get a different creature anyway (DM's choice).\n\nWhen the creature appears, it is under no compulsion to behave a particular way. You can ask it to perform a service in exchange for payment, but it isn't obliged to do so. The requested task could range from simple (fly us across the chasm, or help us fight a battle) to complex (spy on our enemies, or protect us during our foray into the dungeon). You must be able to communicate with the creature to bargain for its services. \n\nPayment can take a variety of forms. A Celestial might require a sizable donation of gold or magic items to an allied temple, while a Fiend might demand a living sacrifice or a gift of treasure. Some creatures might exchange their service for a quest undertaken by you. \n\nA task that can be measured in minutes requires a payment worth 100 GP per minute. A task measured in hours requires 1,000 GP per hour. And a task measured in days (up to 10 days) requires 10,000 GP per day. The DM can adjust these payments based on the circumstances under which you cast the spell. If the task is aligned with the creature's ethos, the payment might be halved or even waived. Nonhazardous tasks typically require only half the suggested payment, while especially dangerous tasks might require a greater gift. Creatures rarely accept tasks that seem suicidal. \n\nAfter the creature completes the task, or when the agreed-upon duration of service expires, the creature returns to its home plane after reporting back to you if possible. If you are unable to agree on a price for the creature's service, the creature immediately returns to its home plane."
+"descricao": "Você implora a uma entidade de outro mundo por auxílio. O ser deve ser conhecido por você: um deus, um príncipe demônio ou algum outro ser de poder cósmico. Essa entidade envia um Celestial, um Elemental ou um Corruptor leal a ela para auxiliá-lo, fazendo a criatura aparecer em um espaço desocupado dentro do alcance. Se você souber o nome de uma criatura específica, pode pronunciar esse nome ao lançar a magia para pedir essa criatura, embora você possa receber uma criatura diferente de qualquer forma (escolha do mestre). \n\nQuando a criatura aparece, ela não está sob nenhuma compulsão de se comportar de uma maneira específica. Você pode pedir que ela execute um serviço em troca de pagamento, mas ela não é obrigada a aceitar. A tarefa pedida pode variar de simples (nos levar voando através do abismo ou ajudar a lutar em uma batalha) a complexa (espionar nossos inimigos ou nos proteger durante nossa incursão na masmorra). Você deve ser capaz de se comunicar com a criatura para negociar seus serviços. \n\nO pagamento pode assumir várias formas. Um Celestial pode exigir uma doação considerável de ouro ou itens mágicos a um templo aliado, enquanto um Corruptor pode exigir um sacrifício vivo ou um presente de tesouro. Algumas criaturas podem trocar seus serviços por uma missão que você execute. \n\nUma tarefa que pode ser medida em minutos exige um pagamento no valor de 100 PO por minuto. Uma tarefa medida em horas exige 1.000 PO por hora. E uma tarefa medida em dias (até 10 dias) exige 10.000 PO por dia. O mestre pode ajustar esses pagamentos com base nas circunstâncias em que você lança a magia. Se a tarefa estiver alinhada com o caráter da criatura, o pagamento pode ser reduzido à metade ou até dispensado. Tarefas sem risco normalmente exigem apenas metade do pagamento sugerido, enquanto tarefas especialmente perigosas podem exigir um presente maior. Criaturas raramente aceitam tarefas que pareçam suicidas. \n\nDepois que a criatura completa a tarefa ou quando a duração acordada do serviço expira, a criatura retorna ao seu plano natal após se reportar a você, se possível. Se você não conseguir chegar a um acordo sobre o preço do serviço da criatura, ela retorna imediatamente ao seu plano natal."
 },
 {
 "id": "c6_transport_via_plants",
@@ -4505,7 +4505,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "This spell creates a magical link between a Large or larger inanimate plant within range and another plant, at any distance, on the same plane of existence. You must have seen or touched the destination plant at least once before. For the duration, any creature can step into the target plant and exit from the destination plant by using 5 feet of movement."
+"descricao": "Esta magia cria um vínculo mágico entre uma planta inanimada Grande ou maior dentro do alcance e outra planta, a qualquer distância, no mesmo plano de existência. Você deve ter visto ou tocado a planta de destino pelo menos uma vez antes. Pela duração, qualquer criatura pode pisar na planta alvo e sair pela planta de destino usando 1,5 metro de movimento."
 },
 {
 "id": "c6_wall_of_thorns",
@@ -4521,8 +4521,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Both types of damage increase by 1d8 for each spell slot level above 6.",
-"descricao": "You create a wall of tangled brush bristling with needle-sharp thorns. The wall appears within range on a solid surface and lasts for the duration. You choose to make the wall up to 60 feet long, 10 feet high, and 5 feet thick or a circle that has a 20-foot diameter and is up to 20 feet high and 5 feet thick. The wall blocks line of sight. \n\nWhen the wall appears, each creature in its area makes a Dexterity saving throw, taking 7d8 Piercing damage on a failed save or half as much damage on a successful one. \n\nA creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature moves through the wall, it must spend 4 feet of movement. Furthermore, the first time a creature enters a space in the wall on a turn or ends its turn there, the creature makes a Dexterity saving throw, taking 7d8 Slashing damage on a failed save or half as much damage on a successful one. A creature makes this save only once per turn."
+"aprimoramento": "Os dois tipos de dano aumentam em 1d8 para cada nível de espaço de magia acima de 6.",
+"descricao": "Você cria uma muralha de arbustos emaranhados eriçados de espinhos afiados como agulhas. A muralha aparece dentro do alcance sobre uma superfície sólida e dura pela duração. Você escolhe fazer a muralha com até 18 metros de comprimento, 3 metros de altura e 1,5 metro de espessura, ou um círculo com 6 metros de diâmetro e até 6 metros de altura e 1,5 metro de espessura. A muralha bloqueia a linha de visão. \n\nQuando a muralha aparece, cada criatura em sua área faz um teste de resistência de Destreza, sofrendo 7d8 de dano Perfurante em uma falha ou metade do dano em um sucesso. \n\nUma criatura pode se mover através da muralha, embora devagar e com dor. Para cada 1 pé que uma criatura se move através da muralha, ela deve gastar 4 pés de movimento. Além disso, a primeira vez que uma criatura entra em um espaço na muralha em um turno ou termina o turno nele, ela faz um teste de resistência de Destreza, sofrendo 7d8 de dano Cortante em uma falha ou metade do dano em um sucesso. Uma criatura faz esse teste apenas uma vez por turno."
 },
 {
 "id": "c6_word_of_recall",
@@ -4539,7 +4539,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You and up to five willing creatures within 5 feet of you instantly teleport to a previously designated sanctuary. You and any creatures that teleport with you appear in the nearest unoccupied space to the spot you designated when you prepared your sanctuary (see below). If you cast this spell without first preparing a sanctuary, the spell has no effect. \n\nYou must designate a location, such as a temple, as a sanctuary by casting this spell there."
+"descricao": "Você e até cinco criaturas voluntárias a até 1,5 metro de você se teleportam instantaneamente para um santuário previamente designado. Você e quaisquer criaturas que se teleportarem com você aparecem no espaço desocupado mais próximo do ponto que você designou ao preparar seu santuário (veja abaixo). Se você lançar esta magia sem antes preparar um santuário, a magia não tem efeito. \n\nVocê deve designar um local, como um templo, como um santuário lançando esta magia lá."
 },
 {
 "id": "c6_find_the_path",
@@ -4556,7 +4556,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You magically sense the most direct physical route to a location you name. You must be familiar with the location, and the spell fails if you name a destination on another plane of existence, a moving destination (such as a mobile fortress), or an unspecific destination (such as “a green dragon's lair”). \n\nFor the duration, as long as you are on the same plane of existence as the destination, you know how far it is and in what direction it lies. Whenever you face a choice of paths along the way there, you know which path is the most direct."
+"descricao": "Você sente magicamente a rota física mais direta até um local que você nomeia. Você deve estar familiarizado com o local, e a magia falha se você nomear um destino em outro plano de existência, um destino em movimento (como uma fortaleza móvel) ou um destino vago (como \"o covil de um dragão verde\"). \n\nPela duração, desde que você esteja no mesmo plano de existência do destino, você sabe a que distância ele está e em que direção se encontra. Sempre que você se deparar com uma escolha de caminhos ao longo do caminho, saberá qual é o mais direto."
 },
 {
 "id": "c6_true_seeing",
@@ -4573,7 +4573,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, the willing creature you touch has Truesight with a range of 120 feet."
+"descricao": "Pela duração, a criatura voluntária que você toca tem Visão Real com alcance de 36 metros."
 },
 {
 "id": "c6_irresistible_dance",
@@ -4590,7 +4590,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "One creature that you can see within range must make a Wisdom saving throw. On a successful save, the target dances comically until the end of its next turn, during which it must spend all its movement to dance in place.\n\nOn a failed save, the target has the Charmed condition for the duration. While Charmed, the target dances comically, must use all its movement to dance in place, and has Disadvantage on Dexterity saving throws and attack rolls, and other creatures have Advantage on attack rolls against it. On each of its turns, the target can take an action to collect itself and repeat the save, ending the spell on itself on a success."
+"descricao": "Uma criatura que você possa ver dentro do alcance deve fazer um teste de resistência de Sabedoria. Em um sucesso, o alvo dança comicamente até o fim do próximo turno dele, durante o qual deve gastar todo o seu movimento para dançar no lugar. \n\nEm uma falha, o alvo tem a condição Enfeitiçado pela duração. Enquanto estiver Enfeitiçado, o alvo dança comicamente, deve usar todo o seu movimento para dançar no lugar, tem Desvantagem em testes de resistência de Destreza e jogadas de ataque, e outras criaturas têm Vantagem em jogadas de ataque contra ele. Em cada um de seus turnos, o alvo pode gastar uma ação para se recompor e repetir o teste, encerrando a magia em si mesmo em um sucesso."
 },
 {
 "id": "c6_mass_suggestion",
@@ -4606,8 +4606,8 @@ const SPELLS_DATA = [
 "duracao": "24 horas",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The duration is longer with a spell slot of level 7 (10 days), 8 (30 days), or 9 (366 days).",
-"descricao": "You suggest a course of activity—described in no more than 25 words—to twelve or fewer creatures you can see within range that can hear and understand you. The suggestion must sound achievable and not involve anything that would obviously deal damage to any of the targets or their allies. For example, you could say, “Walk to the village down that road, and help the villagers there harvest crops until sunset.” Or you could say, “Now is not the time for violence. Drop your weapons, and dance! Stop in an hour.” Each target must succeed on a Wisdom saving throw or have the Charmed condition for the duration or until you or your allies deal damage to the target. Each Charmed target pursues the suggestion to the best of its ability. The suggested activity can continue for the entire duration, but if the suggested activity can be completed in a shorter time, the spell ends for a target upon completing it."
+"aprimoramento": "A duração é maior com um espaço de magia de 7º círculo (10 dias), 8º (30 dias) ou 9º (366 dias).",
+"descricao": "Você sugere um curso de atividade — descrito em no máximo 25 palavras — a doze ou menos criaturas que possa ver dentro do alcance e que possam ouvi-lo e compreendê-lo. A sugestão deve parecer viável e não envolver nada que causaria obviamente dano a qualquer um dos alvos ou aos seus aliados. Por exemplo, você poderia dizer: \"Caminhem até a vila por aquela estrada e ajudem os aldeões de lá a colher as plantações até o pôr do sol.\" Ou poderia dizer: \"Agora não é hora de violência. Larguem as armas e dancem! Parem em uma hora.\" Cada alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração ou até que você ou seus aliados causem dano ao alvo. Cada alvo Enfeitiçado persegue a sugestão o melhor que pode. A atividade sugerida pode continuar pela duração inteira, mas se a atividade sugerida puder ser concluída em menos tempo, a magia termina para um alvo ao concluí-la."
 },
 {
 "id": "c6_blade_barrier",
@@ -4624,7 +4624,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a wall of whirling blades made of magical energy. The wall appears within range and lasts for the duration. You make a straight wall up to 100 feet long, 20 feet high, and 5 feet thick, or a ringed wall up to 60 feet in diameter, 20 feet high, and 5 feet thick. The wall provides Three-Quarters Cover, and its space is Difficult Terrain. Any creature in the wall's space makes a Dexterity saving throw, taking 6d10 Force damage on a failed save or half as much damage on a successful one. A creature also makes that save if it enters the wall's space or ends it turn there. A creature makes that save only once per turn."
+"descricao": "Você cria uma muralha de lâminas giratórias feitas de energia mágica. A muralha aparece dentro do alcance e dura pela duração. Você faz uma muralha reta de até 30 metros de comprimento, 6 metros de altura e 1,5 metro de espessura, ou uma muralha em anel de até 18 metros de diâmetro, 6 metros de altura e 1,5 metro de espessura. A muralha concede Cobertura de Três Quartos, e seu espaço é Terreno Difícil. Qualquer criatura no espaço da muralha faz um teste de resistência de Destreza, sofrendo 6d10 de dano de Força em uma falha ou metade do dano em um sucesso. Uma criatura também faz esse teste se entrar no espaço da muralha ou terminar o turno nele. Uma criatura faz esse teste apenas uma vez por turno."
 },
 {
 "id": "c6_chain_lightning",
@@ -4640,8 +4640,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "One additional bolt leaps from the first target to another target for each spell slot level above 6.",
-"descricao": "You launch a lightning bolt toward a target you can see within range. Three bolts then leap from that target to as many as three other targets of your choice, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts. Each target makes a Dexterity saving throw, taking 10d8 Lightning damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "Um raio adicional salta do primeiro alvo para outro alvo para cada nível de espaço de magia acima de 6.",
+"descricao": "Você lança um raio em direção a um alvo que possa ver dentro do alcance. Três raios então saltam desse alvo para até três outros alvos à sua escolha, cada um dos quais deve estar a até 9 metros do primeiro alvo. Um alvo pode ser uma criatura ou um objeto e só pode ser alvo de um dos raios. Cada alvo faz um teste de resistência de Destreza, sofrendo 10d8 de dano de Eletricidade em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c6_freezing_sphere",
@@ -4657,8 +4657,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 1d6 for each slot level above 6.",
-"descricao": "A frigid globe streaks from you to a point of your choice within range, where it explodes in a 60-foot-radius Sphere. Each creature in that area makes a Constitution saving throw, taking 10d6 Cold damage on failed save or half as much damage on a successful one.\n\nIf the globe strikes a body of water, it freezes the water to a depth of 6 inches over an area 30 feet square. This ice lasts for 1 minute. Creatures that were swimming on the surface of frozen water are trapped in the ice and have the Restrained condition. A trapped creature can take an action to make a Strength (Athletics) check against your spell save DC to break free.\n\nYou can refrain from firing the globe after completing the spell’s casting. If you do so, a globe about the size of a sling bullet, cool to the touch, appears in your hand. At any time, you or a creature you give the globe to can throw the globe (to a range of 40 feet) or hurl it with a sling (to the sling’s normal range). It shatters on impact, with the same effect as a normal casting of the spell. You can also set the globe down without shattering it. After 1 minute, if the globe hasn’t already shattered, it explodes."
+"aprimoramento": "O dano aumenta em 1d6 para cada nível acima de 6.",
+"descricao": "Um globo glacial dispara de você até um ponto à sua escolha dentro do alcance, onde explode em uma Esfera com raio de 18 metros. Cada criatura na área faz um teste de resistência de Constituição, sofrendo 10d6 de dano de Frio em uma falha ou metade do dano em um sucesso. \n\nSe o globo atingir um corpo d'água, ele congela a água até uma profundidade de 15 centímetros sobre uma área de 9 metros quadrados. Esse gelo dura 1 minuto. Criaturas que nadavam na superfície da água congelada ficam presas no gelo e têm a condição Imobilizado. Uma criatura presa pode gastar uma ação para fazer um teste de Força (Atletismo) contra a CD de resistência da sua magia para se libertar. \n\nVocê pode se abster de disparar o globo após completar a conjuração da magia. Se fizer isso, um globo do tamanho de uma bala de funda, frio ao toque, aparece em sua mão. A qualquer momento, você ou uma criatura a quem você der o globo pode arremessá-lo (a um alcance de 12 metros) ou lançá-lo com uma funda (ao alcance normal da funda). Ele se estilhaça no impacto, com o mesmo efeito de uma conjuração normal da magia. Você também pode depositar o globo no chão sem estilhaçá-lo. Após 1 minuto, se o globo ainda não tiver se estilhaçado, ele explode."
 },
 {
 "id": "c6_sunbeam",
@@ -4675,7 +4675,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You launch a sunbeam in a 5-foot-wide, 60-foot-long Line. Each creature in the Line makes a Constitution saving throw. On a failed save, a creature takes 6d8 Radiant damage and has the Blinded condition until the start of your next turn. On a successful save, it takes half as much damage only. \n\nUntil the spell ends, you can take a Magic action to create a new Line of radiance. \n\nFor the duration, a mote of brilliant radiance shines above you. It sheds Bright Light in a 30-foot radius and Dim Light for an additional 30 feet. This light is sunlight."
+"descricao": "Você lança um raio solar em uma Linha de 1,5 metro de largura e 18 metros de comprimento. Cada criatura na Linha faz um teste de resistência de Constituição. Em uma falha, uma criatura sofre 6d8 de dano Radiante e tem a condição Cego até o início do seu próximo turno. Em um sucesso, ela sofre apenas metade do dano. \n\nAté a magia terminar, você pode gastar uma Ação Mágica para criar uma nova Linha de radiação. \n\nPela duração, uma partícula de radiação brilhante brilha acima de você. Ela emite Luz Intensa em um raio de 9 metros e Luz Diminuta por mais 9 metros. Essa luz é luz do sol."
 },
 {
 "id": "c6_wall_of_ice",
@@ -4691,8 +4691,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The damage the wall deals when it appears increases by 2d6 and the damage from passing through the sheet of frigid air increases by 1d6 for each spell slot level above 6.",
-"descricao": "You create a wall of ice on a solid surface within range. You can form it into a hemispherical dome or a globe with a radius of up to 10 feet, or you can shape a flat surface made up of ten 10-foot- square panels. Each panel must be contiguous with another panel. In any form, the wall is 1 foot thick and lasts for the duration. \n\nIf the wall cuts through a creature's space when it appears, the creature is pushed to one side of the wall (you choose which side) and makes a Dexterity saving throw, taking 10d6 Cold damage on a failed save or half as much damage on a successful one. \n\nThe wall is an object that can be damaged and thus breached. It has AC 12 and 30 Hit Points per 10-foot section, and it has Immunity to Cold, Poison, and Psychic damage and Vulnerability to Fire damage. Reducing a 10-foot section of wall to 0 Hit Points destroys it and leaves behind a sheet of frigid air in the space the wall occupied. \n\nA creature moving through the sheet of frigid air for the first time on a turn makes a Constitution saving throw, taking 5d6 Cold damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano que a muralha causa ao aparecer aumenta em 2d6, e o dano de atravessar a lâmina de ar glacial aumenta em 1d6 para cada nível de espaço de magia acima de 6.",
+"descricao": "Você cria uma muralha de gelo em uma superfície sólida dentro do alcance. Você pode formá-la em uma cúpula hemisférica ou em um globo com raio de até 3 metros, ou moldar uma superfície plana composta de dez painéis quadrados de 3 metros. Cada painel deve ser contíguo a outro painel. Em qualquer forma, a muralha tem 30 centímetros de espessura e dura pela duração. \n\nSe a muralha cortar o espaço de uma criatura quando aparecer, a criatura é empurrada para um lado da muralha (você escolhe qual lado) e faz um teste de resistência de Destreza, sofrendo 10d6 de dano de Frio em uma falha ou metade do dano em um sucesso. \n\nA muralha é um objeto que pode ser danificado e, portanto, rompido. Ela tem CA 12 e 30 Pontos de Vida por seção de 3 metros, e tem Imunidade a dano de Frio, Veneno e Psíquico, e Vulnerabilidade a dano de Fogo. Reduzir uma seção de 3 metros da muralha a 0 Pontos de Vida a destrói e deixa para trás uma lâmina de ar glacial no espaço que a muralha ocupava. \n\nUma criatura que se move através da lâmina de ar glacial pela primeira vez em um turno faz um teste de resistência de Constituição, sofrendo 5d6 de dano de Frio em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c6_programmed_illusion",
@@ -4709,7 +4709,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create an illusion of an object, a creature, or some other visible phenomenon within range that activates when a specific trigger occurs. The illusion is imperceptible until then. It must be no larger than a 30-foot Cube, and you decide when you cast the spell how the illusion behaves and what sounds it makes. This scripted performance can last up to 5 minutes.\n\nWhen the trigger you specify occurs, the illusion springs into existence and performs in the manner you described. Once the illusion finishes performing, it disappears and remains dormant for 10 minutes, after which the illusion can be activated again. The trigger can be as general or as detailed as you like, though it must be based on visual or audible phenomena that occur within 30 feet of the area. For example, you could create an illusion of yourself to appear and warn off others who attempt to open a trapped door.\n\nPhysical interaction with the image reveals it to be illusory, since things can pass through it. A creature that takes the Study action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
+"descricao": "Você cria uma ilusão de um objeto, uma criatura ou algum outro fenômeno visível dentro do alcance que ativa quando um gatilho específico ocorre. A ilusão é imperceptível até então. Ela não pode ser maior que um Cubo de 9 metros, e você decide ao lançar a magia como a ilusão se comporta e quais sons produz. Essa performance roteirizada pode durar até 5 minutos. \n\nQuando o gatilho que você especifica ocorre, a ilusão surge e performa da maneira que você descreveu. Quando a ilusão termina de performar, ela desaparece e permanece inativa por 10 minutos, após o que pode ser ativada novamente. O gatilho pode ser tão geral ou detalhado quanto você quiser, embora deva se basear em fenômenos visuais ou auditivos que ocorram a até 9 metros da área. Por exemplo, você pode criar uma ilusão de si mesmo para aparecer e afastar outros que tentem abrir uma porta armadilhada. \n\nA interação física com a imagem revela que ela é ilusória, pois coisas podem atravessá-la. Uma criatura que faça a ação de Estudar para examinar a imagem pode determinar que ela é uma ilusão com um teste de Inteligência (Investigação) bem-sucedido contra a CD de resistência da sua magia. Se uma criatura discernir a ilusão pelo que ela é, pode ver através da imagem, e qualquer ruído que ela faça soa oco para a criatura."
 },
 {
 "id": "c6_circle_of_death",
@@ -4725,8 +4725,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 2d8 for each spell slot level above 6.",
-"descricao": "Negative energy ripples out in a 60-foot-radius Sphere from a point you choose within range. Each creature in that area makes a Constitution saving throw, taking 8d8 Necrotic damage on a failed save or half as much damage on a successful one."
+"aprimoramento": "O dano aumenta em 2d8 para cada nível de espaço de magia acima de 6.",
+"descricao": "Energia negativa ondula em uma Esfera com raio de 18 metros a partir de um ponto à sua escolha dentro do alcance. Cada criatura nessa área faz um teste de resistência de Constituição, sofrendo 8d8 de dano Necrótico em uma falha ou metade do dano em um sucesso."
 },
 {
 "id": "c6_create_undead",
@@ -4742,8 +4742,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "If you use a level 7 spell slot, you can animate or reassert control over four Ghouls. If you use a level 8 spell slot, you can animate or reassert control over five Ghouls or two Ghasts or Wights. If you use a level 9 spell slot, you can animate or reassert contro.",
-"descricao": "You can cast this spell only at night. Choose up to three corpses of Medium or Small Humanoids within range. Each one becomes a Ghoul under your control. As a Bonus Action on each of your turns, you can mentally command any creature you animated with this spell if the creature is within 120 feet of you (if you control multiple creatures, you can command any of them at the same time, issuing the same command to them). You decide what action the creature will take and where it will move on its next turn, or you can issue a general command, such as to guard a particular place. If you issue no commands, the creature takes the Dodge action and moves only to avoid harm. Once given an order, the creature continues to follow the order until its task is complete. \n\nThe creature is under your control for 24 hours, after which it stops obeying any command you've given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature before the current 24-hour period ends. This use of the spell reasserts your control over up to three creatures you have animated with this spell rather than animating new ones."
+"aprimoramento": "Se você usar um espaço de magia de 7º círculo, pode animar ou reafirmar o controle sobre quatro Ghouls. Se usar um espaço de 8º círculo, pode animar ou reafirmar o controle sobre cinco Ghouls ou dois Ghasts ou Wights. Se usar um espaço de 9º círculo, pode animar ou reafirmar o controle sobre seis Ghouls, três Ghasts ou Wights, ou dois Múmias.",
+"descricao": "Você só pode lançar esta magia à noite. Escolha até três cadáveres de Humanoides Médios ou Pequenos dentro do alcance. Cada um se torna um Ghoul sob seu controle. Como uma Ação Bônus em cada um dos seus turnos, você pode comandar mentalmente qualquer criatura que tenha animado com esta magia, se a criatura estiver a até 36 metros de você (se você controlar várias criaturas, pode comandá-las ao mesmo tempo, emitindo o mesmo comando para elas). Você decide qual ação a criatura tomará e para onde se moverá no próximo turno dela, ou pode emitir um comando geral, como guardar um lugar específico. Se você não emitir comandos, a criatura faz a ação Esquivar e se move apenas para evitar dano. Uma vez dada uma ordem, a criatura continua a seguir a ordem até a tarefa ser concluída. \n\nA criatura está sob seu controle por 24 horas, após as quais para de obedecer a qualquer comando que você tenha dado a ela. Para manter o controle da criatura por mais 24 horas, você deve lançar esta magia na criatura antes que o período atual de 24 horas termine. Esse uso da magia reafirma seu controle sobre até três criaturas que tenha animado com esta magia, em vez de animar novas."
 },
 {
 "id": "c6_eyebite",
@@ -4760,7 +4760,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, your eyes become an inky void. One creature of your choice within 60 feet of you that you can see must succeed on a Wisdom saving throw or be affected by one of the following effects of your choice for the duration. \n\nOn each of your turns until the spell ends, you can take a Magic action to target another creature but can't target a creature again if it has succeeded on a save against this casting of the spell. \n\n**Asleep.** The target has the Unconscious condition. It wakes up if it takes any damage or if another creature takes an action to shake it awake. \n\n**Panicked.** The target has the Frightened condition. On each of its turns, the Frightened target must take the Dash action and move away from you by the safest and shortest route available. If the target moves to a space at least 60 feet away from you where it can't see you, this effect ends. \n\n**Sickened.** The target has the Poisoned condition."
+"descricao": "Pela duração, seus olhos se tornam um vazio negro como tinta. Uma criatura à sua escolha a até 18 metros de você que você possa ver deve ser bem-sucedida em um teste de resistência de Sabedoria ou ser afetada por um dos seguintes efeitos de sua escolha pela duração. \n\nEm cada um dos seus turnos até a magia terminar, você pode gastar uma Ação Mágica para mirar em outra criatura, mas não pode mirar em uma criatura novamente se ela já tiver sido bem-sucedida em um teste contra esta conjuração da magia. \n\n**Adormecida.** O alvo tem a condição Inconsciente. Ele acorda se sofrer qualquer dano ou se outra criatura gastar uma ação para sacudi-lo até acordar. \n\n**Amedrontada.** O alvo tem a condição Apavorado. Em cada um de seus turnos, o alvo Apavorado deve fazer a ação Correr e se afastar de você pela rota mais segura e curta disponível. Se o alvo se mover para um espaço a pelo menos 18 metros de você onde não possa vê-lo, esse efeito termina. \n\n**Enjoada.** O alvo tem a condição Envenenado."
 },
 {
 "id": "c6_harm",
@@ -4777,7 +4777,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You unleash virulent magic on a creature you can see within range. The target makes a Constitution saving throw. On a failed save, it takes 14d6 Necrotic damage, and its Hit Point maximum is reduced by an amount equal to the Necrotic damage it took. On a successful save, it takes half as much damage only. This spell can't reduce a target's Hit Point maximum below 1."
+"descricao": "Você desencadeia magia virulenta em uma criatura que possa ver dentro do alcance. O alvo faz um teste de resistência de Constituição. Em uma falha, ele sofre 14d6 de dano Necrótico, e seu máximo de Pontos de Vida é reduzido em uma quantidade igual ao dano Necrótico sofrido. Em um sucesso, ele sofre apenas metade do dano. Esta magia não pode reduzir o máximo de Pontos de Vida de um alvo abaixo de 1."
 },
 {
 "id": "c6_magic_jar",
@@ -4794,7 +4794,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Your body falls into a catatonic state as your soul leaves it and enters the container you used for the spell's Material component. While your soul inhabits the container, you are aware of your surroundings as if you were in the container's space. You can't move or take Reactions. The only action you can take is to project your soul up to 100 feet out of the container, either returning to your living body (and ending the spell) or attempting to possess a Humanoid's body. \n\nYou can attempt to possess any Humanoid within 100 feet of you that you can see (creatures warded by a Protection from Evil and Good or Magic Circle spell can't be possessed). The target makes a Charisma saving throw. On a failed save, your soul enters the target's body, and the target's soul becomes trapped in the container. On a successful save, the target resists your efforts to possess it, and you can't attempt to possess it again for 24 hours. Once you possess a creature's body, you control it. Your Hit Points, Hit Point Dice, Strength, Dexterity, Constitution, Speed, and senses are replaced by the creature's. You otherwise keep your game statistics. \n\nMeanwhile, the possessed creature's soul can perceive from the container using its own senses, but it can't move and it is Incapacitated. \n\nWhile possessing a body, you can take a Magic action to return from the host body to the container if it is within 100 feet of you, returning the host creature's soul to its body. If the host body dies while you're in it, the creature dies, and you make a Charisma saving throw against your own spellcasting DC. On a success, you return to the container if it is within 100 feet of you. Otherwise, you die. \n\nIf the container is destroyed or the spell ends, your soul returns to your body. If your body is more than 100 feet away from you or if your body is dead, you die. If another creature's soul is in the container when it is destroyed, the creature's soul returns to its body if the body is alive and within 100 feet. Otherwise, that creature dies.\n\nWhen the spell ends, the container is destroyed."
+"descricao": "Seu corpo cai em um estado catatônico enquanto sua alma o deixa e entra no recipiente usado como componente Material da magia. Enquanto sua alma habitar o recipiente, você está ciente do que o cerca como se estivesse no espaço do recipiente. Você não pode se mover nem usar Reações. A única ação que você pode fazer é projetar sua alma até 30 metros para fora do recipiente, seja voltando ao seu corpo vivo (e encerrando a magia) seja tentando possuir o corpo de um Humanoide. \n\nVocê pode tentar possuir qualquer Humanoide a até 30 metros de você que possa ver (criaturas protegidas por uma magia Proteção contra o Bem e o Mal ou Círculo Mágico não podem ser possuídas). O alvo faz um teste de resistência de Carisma. Em uma falha, sua alma entra no corpo do alvo, e a alma do alvo fica presa no recipiente. Em um sucesso, o alvo resiste aos seus esforços de possuí-lo, e você não pode tentar possuí-lo novamente por 24 horas. Uma vez que você possui o corpo de uma criatura, você o controla. Seus Pontos de Vida, Dados de Pontos de Vida, Força, Destreza, Constituição, Deslocamento e sentidos são substituídos pelos da criatura. Você mantém, de resto, suas estatísticas de jogo. \n\nEnquanto isso, a alma da criatura possuída pode perceber a partir do recipiente usando seus próprios sentidos, mas não pode se mover e está Incapacitada. \n\nEnquanto possui um corpo, você pode gastar uma Ação Mágica para voltar do corpo hospedeiro ao recipiente, se ele estiver a até 30 metros de você, devolvendo a alma da criatura hospedeira ao seu corpo. Se o corpo hospedeiro morrer enquanto você estiver nele, a criatura morre, e você faz um teste de resistência de Carisma contra sua própria CD de conjuração. Em um sucesso, você retorna ao recipiente, se ele estiver a até 30 metros de você. Caso contrário, você morre. \n\nSe o recipiente for destruído ou a magia terminar, sua alma retorna ao seu corpo. Se seu corpo estiver a mais de 30 metros de você ou se seu corpo estiver morto, você morre. Se a alma de outra criatura estiver no recipiente quando ele for destruído, a alma da criatura retorna ao corpo dela se o corpo estiver vivo e a até 30 metros. Caso contrário, essa criatura morre. \n\nQuando a magia termina, o recipiente é destruído."
 },
 {
 "id": "c6_disintegrate",
@@ -4810,8 +4810,8 @@ const SPELLS_DATA = [
 "duracao": "Instantânea",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "The damage increases by 3d6 for each spell slot level above 6.",
-"descricao": "You launch a green ray at a target you can see within range. The target can be a creature, a nonmagical object, or a creation of magical force, such as the wall created by Wall of Force. \n\nA creature targeted by this spell makes a Dexterity saving throw. On a failed save, the target takes 10d6 + 40 Force damage. If this damage reduces it to 0 Hit Points, it and everything nonmagical it is wearing and carrying are disintegrated into gray dust. The target can be revived only by a True Resurrection or a Wish spell. \n\nThis spell automatically disintegrates a Large or smaller nonmagical object or a creation of magical force. If such a target is Huge or larger, this spell disintegrates a 10-foot-Cube portion of it."
+"aprimoramento": "O dano aumenta em 3d6 para cada nível de espaço de magia acima de 6.",
+"descricao": "Você lança um raio verde em um alvo que possa ver dentro do alcance. O alvo pode ser uma criatura, um objeto não mágico ou uma criação de força mágica, como a muralha criada pela Muralha de Força. \n\nUma criatura alvo desta magia faz um teste de resistência de Destreza. Em uma falha, o alvo sofre 10d6 + 40 de dano de Força. Se esse dano o reduzir a 0 Pontos de Vida, ele e tudo o que não for mágico que esteja vestindo e carregando são desintegrados em poeira cinzenta. O alvo só pode ser revivido por uma Ressurreição Verdadeira ou uma magia Desejo. \n\nEsta magia desintegra automaticamente um objeto não mágico Grande ou menor ou uma criação de força mágica. Se tal alvo for Enorme ou maior, esta magia desintegra uma parte dele do tamanho de um Cubo de 3 metros."
 },
 {
 "id": "c6_flesh_to_stone",
@@ -4828,7 +4828,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You attempt to turn one creature that you can see within range into stone. The target makes a Constitution saving throw. On a failed save, it has the Restrained condition for the duration. On a successful save, its Speed is 0 until the start of your next turn. Constructs automatically succeed on the save. \n\nA Restrained target makes another Constitution saving throw at the end of each of its turns. If it successfully saves against this spell three times, the spell ends. If it fails its saves three times, it is turned to stone and has the Petrified condition for the duration. The successes and failures needn't be consecutive; keep track of both until the target collects three of a kind. \n\nIf you maintain your Concentration on this spell for the entire possible duration, the target is Petrified until the condition is ended by Greater Restoration or similar magic."
+"descricao": "Você tenta transformar em pedra uma criatura que possa ver dentro do alcance. O alvo faz um teste de resistência de Constituição. Em uma falha, ele tem a condição Imobilizado pela duração. Em um sucesso, seu Deslocamento é 0 até o início do seu próximo turno. Construtos obtêm sucesso automaticamente no teste. \n\nUm alvo Imobilizado faz outro teste de resistência de Constituição no fim de cada um de seus turnos. Se obtiver sucesso nesta magia três vezes, a magia termina. Se falhar três vezes, ele é transformado em pedra e tem a condição Petrificado pela duração. Os sucessos e falhas não precisam ser consecutivos; acompanhe ambos até que o alvo acumule três de um tipo. \n\nSe você mantiver sua Concentração nesta magia por toda a duração possível, o alvo fica Petrificado até a condição ser encerrada por Restauração Superior ou magia semelhante."
 },
 {
 "id": "c6_move_earth",
@@ -4845,7 +4845,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose an area of terrain no larger than 40 feet on a side within range. You can reshape dirt, sand, or clay in the area in any manner you choose for the duration. You can raise or lower the area's elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can't exceed half the area's largest dimension. For example, if you affect a 40-foot square, you can create a pillar up to 20 feet high, raise or lower the square's elevation by up to 20 feet, dig a trench up to 20 feet deep, and so on. It takes 10 minutes for these changes to complete. Because the terrain's transformation occurs slowly, creatures in the area can't usually be trapped or injured by the ground's movement. At the end of every 10 minutes you spend concentrating on the spell, you can choose a new area of terrain to affect within range. This spell can't manipulate natural stone or stone construction. Rocks and structures shift to accommodate the new terrain. If the way you shape the terrain would make a structure unstable, it might collapse. \n\nSimilarly, this spell doesn't directly affect plant growth. The moved earth carries any plants along with it."
+"descricao": "Escolha uma área de terreno de no máximo 12 metros de lado dentro do alcance. Você pode remodelar terra, areia ou argila na área da maneira que escolher pela duração. Você pode elevar ou abaixar a elevação da área, criar ou preencher uma trincheira, erguer ou achatar uma muralha, ou formar um pilar. A extensão de tais mudanças não pode exceder metade da maior dimensão da área. Por exemplo, se você afetar um quadrado de 12 metros, pode criar um pilar de até 6 metros de altura, elevar ou abaixar a elevação do quadrado em até 6 metros, cavar uma trincheira de até 6 metros de profundidade e assim por diante. Essas mudanças levam 10 minutos para serem concluídas. Como a transformação do terreno ocorre lentamente, as criaturas na área geralmente não podem ser presas ou feridas pelo movimento do solo. No fim de cada 10 minutos que você gastar concentrando-se na magia, pode escolher uma nova área de terreno para afetar dentro do alcance. Esta magia não pode manipular pedra natural ou construção de pedra. Rochas e estruturas se deslocam para acomodar o novo terreno. Se a maneira como você molda o terreno tornasse uma estrutura instável, ela pode desabar. \n\nDa mesma forma, esta magia não afeta diretamente o crescimento de plantas. A terra movida carrega quaisquer plantas junto com ela."
 },
 {
 "id": "c6_wind_walk",
@@ -4862,7 +4862,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You and up to ten willing creatures of your choice within range assume gaseous forms for the duration, appearing as wisps of cloud. While in this cloud form, a target has a Fly Speed of 300 feet and can hover; it has Immunity to the Prone condition; and it has Resistance to Bludgeoning, Piercing, and Slashing damage. The only actions a target can take in this form are the Dash action or a Magic action to begin reverting to its normal form. Reverting takes 1 minute, during which the target has the Stunned condition. Until the spell ends, the target can revert to cloud form, which also requires a Magic action followed by a 1-minute transformation. \n\nIf a target is in cloud form and flying when the effect ends, the target descends 60 feet per round for 1 minute until it lands, which it does safely. If it can't land after 1 minute, it falls the remaining distance."
+"descricao": "Você e até dez criaturas voluntárias à sua escolha dentro do alcance assumem formas gasosas pela duração, aparecendo como filamentos de nuvem. Enquanto estiver nessa forma de nuvem, um alvo tem um Deslocamento de Voo de 90 metros e pode flutuar no lugar; tem Imunidade à condição Caída; e tem Resistência a dano de Impacto, Perfurante e Cortante. As únicas ações que um alvo pode fazer nessa forma são a ação Correr ou uma Ação Mágica para começar a reverter à sua forma normal. Reverter leva 1 minuto, durante o qual o alvo tem a condição Atordoado. Até a magia terminar, o alvo pode reverter à forma de nuvem, o que também exige uma Ação Mágica seguida de uma transformação de 1 minuto. \n\nSe um alvo estiver em forma de nuvem e voando quando o efeito terminar, o alvo desce 18 metros por rodada por 1 minuto até pousar, o que faz em segurança. Se não puder pousar após 1 minuto, ele cai a distância restante."
 },
 {
 "id": "c7_symbol",
@@ -4879,7 +4879,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You inscribe a harmful glyph either on a surface (such as a section of floor or wall) or within an object that can be closed (such as a book or chest). The glyph can cover an area no larger than 10 feet in diameter. If you choose an object, it must remain in place; if it is moved more than 10 feet from where you cast this spell, the glyph is broken, and the spell ends without being triggered. The glyph is nearly imperceptible and requires a successful Wisdom (Perception) check against your spell save DC to notice. When you inscribe the glyph, you set its trigger and choose which effect the symbol bears: Death, Discord, Fear, Pain, Sleep, or Stunning. Each one is explained below. \n\n**Set the Trigger**. You decide what triggers the glyph when you cast the spell. For glyphs inscribed on a surface, common triggers include touching or stepping on the glyph, removing another object covering it, or approaching within a certain distance of it. For glyphs inscribed within an object, common triggers include opening that object or seeing the glyph. \n\nYou can refine the trigger so that only creatures of certain types activate it (for example, the glyph could be set to affect Aberrations). You can also set conditions for creatures that don't trigger the glyph, such as those who say a certain password.\n\nOnce triggered, the glyph glows, filling a 60-foot-radius Sphere with Dim Light for 10 minutes, after which time the spell ends. Each creature in the Sphere when the glyph activates is targeted by its effect, as is a creature that enters the Sphere for the first time on a turn or ends its turn there. A creature is targeted only once per turn. \n\n**Death**. Each target makes a Constitution saving throw, taking 10d10 Necrotic damage on a failed save or half as much damage on a successful save. \n\n**Discord**. Each target makes a Wisdom saving throw. On a failed save, a target argues with other creatures for 1 minute. During this time, it is incapable of meaningful communication and has Disadvantage on attack rolls and ability checks.\n\n**Fear**. Each target must succeed on a Wisdom saving throw or have the Frightened condition for 1 minute. While Frightened, the target must move at least 30 feet away from the glyph on each of its turns, if able. \n\n**Pain**. Each target must succeed on a Constitution saving throw or have the Incapacitated condition for 1 minute. \n\n**Sleep**. Each target must succeed on a Wisdom saving throw or have the Unconscious condition for 10 minutes. A creature awakens if it takes damage or if someone takes an action to shake it awake. \n\n**Stunning**. Each target must succeed on a Wisdom saving throw or have the Stunned condition for 1 minute."
+"descricao": "Você inscreve um glifo prejudicial em uma superfície (como uma seção do chão ou da parede) ou dentro de um objeto que possa ser fechado (como um livro ou baú). O glifo pode cobrir uma área de no máximo 3 metros de diâmetro. Se você escolher um objeto, ele deve permanecer no lugar; se for movido a mais de 3 metros de onde você lançou esta magia, o glifo se quebra e a magia termina sem ser disparada. O glifo é quase imperceptível e exige um teste de Sabedoria (Percepção) bem-sucedido contra a CD de resistência da sua magia para ser notado. Ao inscrever o glifo, você define seu gatilho e escolhe qual efeito o símbolo carrega: Morte, Discórdia, Medo, Dor, Sono ou Atordoamento. Cada um é explicado abaixo. \n\n**Definir o Gatilho.** Você decide o que dispara o glifo ao lançar a magia. Para glifos inscritos em uma superfície, gatilhos comuns incluem tocar ou pisar no glifo, remover outro objeto que o cubra ou se aproximar a uma certa distância dele. Para glifos inscritos dentro de um objeto, gatilhos comuns incluem abrir esse objeto ou ver o glifo. \n\nVocê pode refinar o gatilho para que apenas criaturas de certos tipos o ativem (por exemplo, o glifo pode ser definido para afetar Aberrações). Você também pode definir condições para que criaturas não disparem o glifo, como aquelas que dizem uma certa senha. \n\nUma vez disparado, o glifo brilha, enchendo uma Esfera com raio de 18 metros de Luz Diminuta por 10 minutos, após os quais a magia termina. Cada criatura na Esfera quando o glifo ativa é alvo de seu efeito, bem como uma criatura que entra na Esfera pela primeira vez em um turno ou termina o turno nela. Uma criatura é alvo apenas uma vez por turno. \n\n**Morte.** Cada alvo faz um teste de resistência de Constituição, sofrendo 10d10 de dano Necrótico em uma falha ou metade do dano em um sucesso. \n\n**Discórdia.** Cada alvo faz um teste de resistência de Sabedoria. Em uma falha, um alvo discute com outras criaturas por 1 minuto. Durante esse tempo, é incapaz de comunicação significativa e tem Desvantagem em jogadas de ataque e testes de atributo. \n\n**Medo.** Cada alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Apavorado por 1 minuto. Enquanto estiver Apavorado, o alvo deve se mover pelo menos 9 metros para longe do glifo em cada um de seus turnos, se puder. \n\n**Dor.** Cada alvo deve ser bem-sucedido em um teste de resistência de Constituição ou ter a condição Incapacitado por 1 minuto. \n\n**Sono.** Cada alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Inconsciente por 10 minutos. Uma criatura acorda se sofrer dano ou se alguém gastar uma ação para sacudi-la até acordar. \n\n**Atordoamento.** Cada alvo deve ser bem-sucedido em um teste de resistência de Sabedoria ou ter a condição Atordoado por 1 minuto."
 },
 {
 "id": "c7_conjure_celestial",
@@ -4895,8 +4895,8 @@ const SPELLS_DATA = [
 "duracao": "10 minutos",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The healing and damage increase by 1d12 for each spell slot level above 7.",
-"descricao": "You conjure a spirit from the Upper Planes, which manifests as a pillar of light in a 10-foot-radius, 40-foot-high Cylinder centered on a point within range. For each creature you can see in the Cylinder, choose which of these lights shines on it: \n\n**Healing Light.** The target regains Hit Points equal to 4d12 plus your spellcasting ability modifier.\n\n**Searing Light.** The target makes a Dexterity saving throw, taking 6d12 Radiant damage on a failed save or half as much damage on a successful one. \n\nUntil the spell ends, Bright Light fills the Cylinder, and when you move on your turn, you can also move the Cylinder up to 30 feet.\n\nWhenever the Cylinder moves into the space of a creature you can see and whenever a creature you can see enters the Cylinder or ends its turn there, you can bathe it in one of the lights. A creature can be affected by this spell only once per turn."
+"aprimoramento": "A cura e o dano aumentam em 1d12 para cada nível de espaço de magia acima de 7.",
+"descricao": "Você conjura um espírito dos Planos Superiores, que se manifesta como um pilar de luz em um Cilindro com raio de 3 metros e 12 metros de altura centrado em um ponto dentro do alcance. Para cada criatura que você possa ver no Cilindro, escolha qual destas luzes brilha sobre ela: \n\n**Luz Curativa.** O alvo recupera Pontos de Vida iguais a 4d12 mais seu modificador de atributo de conjuração. \n\n**Luz Cauterizante.** O alvo faz um teste de resistência de Destreza, sofrendo 6d12 de dano Radiante em uma falha ou metade do dano em um sucesso. \n\nAté a magia terminar, Luz Intensa preenche o Cilindro, e quando você se move no seu turno, também pode mover o Cilindro em até 9 metros. \n\nSempre que o Cilindro se move para o espaço de uma criatura que você possa ver e sempre que uma criatura que você possa ver entra no Cilindro ou termina o turno nele, você pode banhá-la em uma das luzes. Uma criatura pode ser afetada por esta magia apenas uma vez por turno."
 },
 {
 "id": "c7_etherealness",
@@ -4912,8 +4912,8 @@ const SPELLS_DATA = [
 "duracao": "Up to 8 hours",
 "concentracao": false,
 "ritual": false,
-"aprimoramento": "You can target up to three willing creatures (including yourself) for each spell slot level above 7. The creatures must be within 10 feet of you when you cast the spell.",
-"descricao": "You step into the border regions of the Ethereal Plane, where it overlaps with your current plane. You remain in the Border Ethereal for the duration. During this time, you can move in any direction. If you move up or down, every foot of movement costs an extra foot. You can perceive the plane you left, which looks gray, and you can't see anything there more than 60 feet away. While on the Ethereal Plane, you can affect and be affected only by creatures, objects, and effects on that plane. Creatures that aren't on the Ethereal Plane can't perceive or interact with you unless a feature gives them the ability to do so. \n\nWhen the spell ends, you return to the plane you left in the spot that corresponds to your space in the Border Ethereal. If you appear in an occupied space, you are shunted to the nearest unoccupied space and take Force damage equal to twice the number of feet you are moved. \n\nThis spell ends instantly if you cast it while you are on the Ethereal Plane or a plane that doesn't border it, such as one of the Outer Planes."
+"aprimoramento": "Você pode mirar em até três criaturas voluntárias (incluindo você) para cada nível de espaço de magia acima de 7. As criaturas devem estar a até 3 metros de você ao lançar a magia.",
+"descricao": "Você entra nas regiões fronteiriças do Plano Etéreo, onde ele se sobrepõe ao seu plano atual. Você permanece no Etéreo Limítrofe pela duração. Durante esse tempo, você pode se mover em qualquer direção. Se você se mover para cima ou para baixo, cada pé de movimento custa um pé extra. Você pode perceber o plano que deixou, que parece cinzento, e não pode ver nada a mais de 18 metros de distância. Enquanto estiver no Plano Etéreo, você pode afetar e ser afetado apenas por criaturas, objetos e efeitos nesse plano. Criaturas que não estão no Plano Etéreo não podem percebê-lo nem interagir com você, a menos que um recurso lhes dê essa capacidade. \n\nQuando a magia termina, você retorna ao plano que deixou no ponto que corresponde ao seu espaço no Etéreo Limítrofe. Se você aparecer em um espaço ocupado, é empurrado para o espaço desocupado mais próximo e sofre dano de Força igual ao dobro do número de metros pelos quais for movido. \n\nEsta magia termina instantaneamente se você a lançar enquanto estiver no Plano Etéreo ou em um plano que não faça fronteira com ele, como um dos Planos Exteriores."
 },
 {
 "id": "c7_magnificent_mansion",
@@ -4930,7 +4930,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You conjure a shimmering door in range that lasts for the duration. The door leads to an extradimensional dwelling and is 5 feet wide and 10 feet tall. You and any creature you designate when you cast the spell can enter the extradimensional dwelling as long as the door remains open. You can open or close it (no action required) if you are within 30 feet of it. While closed, the door is imperceptible.\n\nBeyond the door is a magnificent foyer with numerous chambers beyond. The dwelling’s atmosphere is clean, fresh, and warm.\n\nYou can create any floor plan you like for the dwelling, but it can’t exceed 50 contiguous 10-foot Cubes. The place is furnished and decorated as you choose. It contains sufficient food to serve a nine course banquet for up to 100 people. Furnishings and other objects created by this spell dissipate into smoke if removed from it.\n\nA staff of 100 near-transparent servants attends all who enter. You determine the appearance of these servants and their attire. They are invulnerable and obey your commands. Each servant can perform tasks that a human could perform, but they can’t attack or take any action that would directly harm another creature. Thus the servants can fetch things, clean, mend, fold clothes, light fires, serve food, pour wine, and so on. The servants can’t leave the dwelling.\n\nWhen the spell ends, any creatures or objects left inside the extradimensional space are expelled into the unoccupied spaces nearest to the entrance."
+"descricao": "Você conjura uma porta cintilante dentro do alcance que dura pela duração. A porta leva a uma morada extradimensional e tem 1,5 metro de largura e 3 metros de altura. Você e qualquer criatura que você designar ao lançar a magia podem entrar na morada extradimensional enquanto a porta permanecer aberta. Você pode abri-la ou fechá-la (nenhuma ação exigida) se estiver a até 9 metros dela. Enquanto fechada, a porta é imperceptível. \n\nAlém da porta há um magnífico vestíbulo com numerosas câmaras adiante. A atmosfera da morada é limpa, fresca e quente. \n\nVocê pode criar qualquer planta arquitetônica que desejar para a morada, mas ela não pode exceder 50 Cubos de 3 metros contíguos. O lugar é mobiliado e decorado como você escolher. Contém comida suficiente para servir um banquete de nove pratos para até 100 pessoas. Móveis e outros objetos criados por esta magia se dissipam em fumaça se forem removidos dela. \n\nUma equipe de 100 servos quase transparentes atende a todos os que entrarem. Você determina a aparência desses servos e de suas vestes. Eles são invulneráveis e obedecem aos seus comandos. Cada servo pode executar tarefas que um humano poderia executar, mas não podem atacar nem fazer qualquer ação que causaria dano direto a outra criatura. Assim, os servos podem buscar coisas, limpar, consertar, dobrar roupas, acender fogueiras, servir comida, servir vinho e assim por diante. Os servos não podem deixar a morada. \n\nQuando a magia termina, quaisquer criaturas ou objetos deixados dentro do espaço extradimensional são expulsos para os espaços desocupados mais próximos da entrada."
 },
 {
 "id": "c7_plane_shift",
@@ -4947,7 +4947,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You and up to eight willing creatures who link hands in a circle are transported to a different plane of existence. You can specify a target destination in general terms, such as the City of Brass on the Elemental Plane of Fire or the palace of Dispater on the second level of the Nine Hells, and you appear in or near that destination, as determined by the DM. \n\nAlternatively, if you know the sigil sequence of a teleportation circle on another plane of existence, this spell can take you to that circle. If the teleportation circle is too small to hold all the creatures you transported, they appear in the closest unoccupied spaces next to the circle."
+"descricao": "Você e até oito criaturas voluntárias que se deem as mãos em círculo são transportados para um plano de existência diferente. Você pode especificar um destino de forma geral, como a Cidade de Bronze no Plano Elemental do Fogo ou o palácio de Dispater no segundo nível dos Nove Infernos, e você aparece nesse destino ou perto dele, conforme determinado pelo mestre. \n\nAlternativamente, se você conhecer a sequência de sigilos de um círculo de teleporte em outro plano de existência, esta magia pode levá-lo a esse círculo. Se o círculo de teleporte for pequeno demais para conter todas as criaturas que você transportou, elas aparecem nos espaços desocupados mais próximos ao lado do círculo."
 },
 {
 "id": "c7_teleport",
@@ -4964,7 +4964,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "This spell instantly transports you and up to eight willing creatures that you can see within range, or a single object that you can see within range, to a destination you select. If you target an object, it must be Large or smaller, and it can’t be held or carried by an unwilling creature. The destination you choose must be known to you, and it must be on the same plane of existence as you. Your familiarity with the destination determines whether you arrive there successfully. The DM rolls 1d100 and consults the Teleportation Outcome table and the explanations after it. \n\n| Familiarity              | Mishap | Similar Area | Off Target | On Target |\n| ------------------------ | ------ | ------------ | ---------- | --------- |\n| Permanent circle         | -      | -            | -          | 01-00     |\n| Linked object            | -      | -            | -          | 01–00     |\n| Very familiar            | 01-05  | 06-13        | 14-24      | 25-00     |\n| Seen casually            | 01-33  | 34-43        | 44-53      | 54-00     |\n| Viewed once or described | 01-43  | 44-53        | 54-73      | 74-00     |\n| False destination        | 01-50  | 51-00        | -          | -         |\n\n  **Familiarity**. Here are the meanings of the terms in the table’s Familiarity column: \n\n  - “Permanent circle” means a permanent teleportation circle whose sigil sequence you know. \n\n  - “Linked object” means you possess an object taken from the desired destination within the last six months, such as a book from a wizard’s library. \n\n  - “Very familiar” is a place you have visited often, a place you have carefully studied, or a place you can see when you cast the spell. \n\n  - “Seen casually” is a place you have seen more than once but with which you aren’t very familiar. \n\n  - “Viewed once or described” is a place you have seen once, possibly using magic, or a place you know through someone else’s description, perhaps from a map. \n\n  - “False destination” is a place that doesn’t exist. Perhaps you tried to scry an enemy’s sanctum but instead viewed an illusion, or you are attempting to teleport to a location that no longer exists.\n\n  **Mishap**. The spell’s unpredictable magic results in a difficult journey. Each teleporting creature (or the target object) takes 3d10 Force damage, and the DM rerolls on the table to see where you wind up (multiple mishaps can occur, dealing damage each time). \n\n  **Similar Area**. You and your group (or the target object) appear in a different area that’s visually or thematically similar to the target area. You appear in the closest similar place. If you are heading for your home laboratory, for example, you might appear in another person’s laboratory in the same city. \n\n  **Off Target**. You and your group (or the target object) appear 2d12 miles away from the destination in a random direction. Roll 1d8 for the direction: 1, east; 2, southeast; 3, south; 4, southwest; 5, west; 6, northwest; 7, north; or 8, northeast. \n\n  **On Target**. You and your group (or the target object) appear where you intended."
+"descricao": "Esta magia transporta instantaneamente você e até oito criaturas voluntárias que você possa ver dentro do alcance, ou um único objeto que você possa ver dentro do alcance, para um destino à sua escolha. Se você mirar em um objeto, ele deve ser Grande ou menor e não pode ser segurado nem carregado por uma criatura involuntária. O destino que você escolher deve ser conhecido por você e deve estar no mesmo plano de existência que você. Sua familiaridade com o destino determina se você chega lá com sucesso. O mestre rola 1d100 e consulta a tabela Resultado do Teleporte e as explicações a seguir. \n\n| Familiaridade         | Percalço | Área Semelhante | Fora do Alvo | No Alvo |\n| --------------------- | -------- | --------------- | ------------ | ------- |\n| Círculo permanente    | -        | -               | -            | 01-00   |\n| Objeto vinculado      | -        | -               | -            | 01–00   |\n| Muito familiar        | 01-05    | 06-13           | 14-24        | 25-00   |\n| Visto casualmente     | 01-33    | 34-43           | 44-53        | 54-00   |\n| Visto uma vez ou descrito | 01-43 | 44-53           | 54-73        | 74-00   |\n| Destino falso         | 01-50    | 51-00           | -            | -       |\n\n**Familiaridade.** Aqui estão os significados dos termos na coluna Familiaridade da tabela: \n\n- \"Círculo permanente\" significa um círculo de teleporte permanente cuja sequência de sigilos você conhece. \n\n- \"Objeto vinculado\" significa que você possui um objeto tirado do destino desejado nos últimos seis meses, como um livro da biblioteca de um mago. \n\n- \"Muito familiar\" é um lugar que você visitou com frequência, um lugar que você estudou cuidadosamente ou um lugar que você pode ver ao lançar a magia. \n\n- \"Visto casualmente\" é um lugar que você viu mais de uma vez, mas com o qual não é muito familiar. \n\n- \"Visto uma vez ou descrito\" é um lugar que você viu uma vez, possivelmente usando magia, ou um lugar que conhece pela descrição de outra pessoa, talvez de um mapa. \n\n- \"Destino falso\" é um lugar que não existe. Talvez você tenha tentado observar o santuário de um inimigo, mas viu uma ilusão, ou esteja tentando se teleportar para um local que não existe mais. \n\n**Percalço.** A magia imprevisível do teleporte resulta em uma jornada difícil. Cada criatura que se teleporta (ou o objeto alvo) sofre 3d10 de dano de Força, e o mestre rola novamente na tabela para ver onde você acaba (percalços múltiplos podem ocorrer, causando dano a cada vez). \n\n**Área Semelhante.** Você e seu grupo (ou o objeto alvo) aparecem em uma área diferente que é visual ou tematicamente semelhante à área alvo. Você aparece no lugar semelhante mais próximo. Se você estiver indo para seu laboratório doméstico, por exemplo, pode aparecer no laboratório de outra pessoa na mesma cidade. \n\n**Fora do Alvo.** Você e seu grupo (ou o objeto alvo) aparecem a 2d12 quilômetros de distância do destino em uma direção aleatória. Role 1d8 para a direção: 1, leste; 2, sudeste; 3, sul; 4, sudoeste; 5, oeste; 6, noroeste; 7, norte; ou 8, nordeste. \n\n**No Alvo.** Você e seu grupo (ou o objeto alvo) aparecem onde pretendia."
 },
 {
 "id": "c7_arcane_sword",
@@ -4981,7 +4981,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a spectral sword that hovers within range. It lasts for the duration. \n\nWhen the sword appears, you make a melee spell attack against a target within 5 feet of the sword. On a hit, the target takes Force damage equal to 4d12 plus your spellcasting ability modifier.\n\nOn your later turns, you can take a Bonus Action to move the sword up to 30 feet to a spot you can see and repeat the attack against the same target or a different one."
+"descricao": "Você cria uma espada espectral que permanece pairando dentro do alcance. Ela dura pela duração. \n\nQuando a espada aparece, você faz um teste de ataque mágico corpo a corpo contra um alvo a até 1,5 metro da espada. Em um acerto, o alvo sofre dano de Força igual a 4d12 mais seu modificador de atributo de conjuração. \n\nNos seus turnos posteriores, você pode gastar uma Ação Bônus para mover a espada em até 9 metros até um ponto que possa ver e repetir o ataque contra o mesmo alvo ou outro."
 },
 {
 "id": "c7_delayed_blast_fireball",
@@ -4997,8 +4997,8 @@ const SPELLS_DATA = [
 "duracao": "1 minuto",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "The base damage increases by 1d6 for each spell slot level above 7.",
-"descricao": "A beam of yellow light flashes from you, then condenses at a chosen point within range as a glowing bead for the duration. When the spell ends, the bead explodes, and each creature in a 20- foot-radius Sphere centered on that point makes a Dexterity saving throw. A creature takes Fire damage equal to the total accumulated damage on a failed save or half as much damage on a successful one. \n\nThe spell's base damage is 12d6, and the damage increases by 1d6 whenever your turn ends and the spell hasn't ended. If a creature touches the glowing bead before the spell ends, that creature makes a Dexterity saving throw. On a failed save, the spell ends, causing the bead to explode. \n\nOn a successful save, the creature can throw the bead up to 40 feet. If the thrown bead enters a creature's space or collides with a solid object, the spell ends, and the bead explodes. \n\nWhen the bead explodes, flammable objects in the explosion that aren't being worn or carried start burning."
+"aprimoramento": "O dano base aumenta em 1d6 para cada nível de espaço de magia acima de 7.",
+"descricao": "Um feixe de luz amarela dispara de você e então se condensa em um ponto escolhido dentro do alcance como uma esfera brilhante pela duração. Quando a magia termina, a esfera explode, e cada criatura em uma Esfera com raio de 6 metros centrada nesse ponto faz um teste de resistência de Destreza. Uma criatura sofre dano de Fogo igual ao dano total acumulado em uma falha ou metade do dano em um sucesso. \n\nO dano base da magia é 12d6, e o dano aumenta em 1d6 sempre que seu turno termina e a magia não terminou. Se uma criatura tocar a esfera brilhante antes de a magia terminar, essa criatura faz um teste de resistência de Destreza. Em uma falha, a magia termina, fazendo a esfera explodir. \n\nEm um sucesso, a criatura pode arremessar a esfera em até 12 metros. Se a esfera arremessada entrar no espaço de uma criatura ou colidir com um objeto sólido, a magia termina e a esfera explode. \n\nQuando a esfera explode, objetos inflamáveis na explosão que não estejam sendo vestidos ou carregados começam a queimar."
 },
 {
 "id": "c7_divine_word",
@@ -5015,7 +5015,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You utter a word imbued with power from the Upper Planes. Each creature of your choice in range makes a Charisma saving throw. On a failed save, a target that has 50 Hit Points or fewer suffers an effect based on its current Hit Points, as shown in the Divine Word Effects table. Regardless of its Hit Points, a Celestial, an Elemental, a Fey, or a Fiend target that fails its save is forced back to its plane of origin (if it isn't there already) and can't return to the current plane for 24 hours by any means short of a Wish spell. \n\n| Hit Points | Effect                                                                   |\n| ---------- | ------------------------------------------------------------------------ |\n|            |                                                                          |\n| 0–20       | The target dies.                                                         |\n| 21–30      | The target has the Blinded, Deafened, and Stunned conditions for 1 hour. |\n| 31–40      | The target has the Blinded and Deafened conditions for 10 minutes.       |\n| 41–50      | The target has the Deafened condition for 1 minute                       |."
+"descricao": "Você profere uma palavra imbuída de poder dos Planos Superiores. Cada criatura à sua escolha no alcance faz um teste de resistência de Carisma. Em uma falha, um alvo que tenha 50 Pontos de Vida ou menos sofre um efeito baseado em seus Pontos de Vida atuais, conforme mostrado na tabela Efeitos da Palavra Divina. Independentemente de seus Pontos de Vida, um alvo Celestial, Elemental, Fada ou Corruptor que falhe no teste é forçado a voltar ao seu plano de origem (se ainda não estiver lá) e não pode retornar ao plano atual por 24 horas por nenhum meio, a não ser uma magia Desejo. \n\n| Pontos de Vida | Efeito                                                                   |\n| -------------- | ------------------------------------------------------------------------ |\n| 0–20           | O alvo morre.                                                            |\n| 21–30          | O alvo tem as condições Cego, Surdo e Atordoado por 1 hora.              |\n| 31–40          | O alvo tem as condições Cego e Surdo por 10 minutos.                     |\n| 41–50          | O alvo tem a condição Surdo por 1 minuto.                                |"
 },
 {
 "id": "c7_fire_storm",
@@ -5032,7 +5032,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A storm of fire appears within range. The area of the storm consists of up to ten 10-foot Cubes, which you arrange as you like. Each Cube must be contiguous with at least one other Cube. Each creature in the area makes a Dexterity saving throw, taking 7d10 Fire damage on a failed save or half as much damage on a successful one. \n\nFlammable objects in the area that aren't being worn or carried start burning."
+"descricao": "Uma tempestade de fogo aparece dentro do alcance. A área da tempestade consiste em até dez Cubos de 3 metros, que você organiza como preferir. Cada Cubo deve ser contíguo a pelo menos um outro Cubo. Cada criatura na área faz um teste de resistência de Destreza, sofrendo 7d10 de dano de Fogo em uma falha ou metade do dano em um sucesso. \n\nObjetos inflamáveis na área que não estejam sendo vestidos ou carregados começam a queimar."
 },
 {
 "id": "c7_forcecage",
@@ -5049,7 +5049,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "An immobile, Invisible, Cube-shaped prison composed of magical force springs into existence around an area you choose within range. The prison can be a cage or a solid box, as you choose. A prison in the shape of a cage can be up to 20 feet on a side and is made from 1/2-inch diameter bars spaced 1/2 inch apart. A prison in the shape of a box can be up to 10 feet on a side, creating a solid barrier that prevents any matter from passing through it and blocking any spells cast into or out from the area. \n\nWhen you cast the spell, any creature that is completely inside the cage's area is trapped. Creatures only partially within the area, or those too large to fit inside it, are pushed away from the center of the area until they are completely outside it. \n\nA creature inside the cage can't leave it by nonmagical means. If the creature tries to use teleportation or interplanar travel to leave, it must first make a Charisma saving throw. On a successful save, the creature can use that magic to exit the cage. On a failed save, the creature doesn't exit the cage and wastes the spell or effect. The cage also extends into the Ethereal Plane, blocking ethereal travel. This spell can't be dispelled by Dispel Magic."
+"descricao": "Uma prisão imóvel, Invisível e em forma de Cubo, composta de força mágica, surge ao redor de uma área à sua escolha dentro do alcance. A prisão pode ser uma gaiola ou uma caixa sólida, como você escolher. Uma prisão em forma de gaiola pode ter até 6 metros de lado e é feita de barras de 1,3 centímetro de diâmetro espaçadas 1,3 centímetro uma da outra. Uma prisão em forma de caixa pode ter até 3 metros de lado, criando uma barreira sólida que impede qualquer matéria de atravessá-la e bloqueia quaisquer magias lançadas para dentro ou para fora da área. \n\nAo lançar a magia, qualquer criatura que esteja completamente dentro da área da gaiola fica presa. Criaturas apenas parcialmente dentro da área, ou grandes demais para caber nela, são empurradas para longe do centro da área até ficarem completamente fora dela. \n\nUma criatura dentro da gaiola não pode sair por meios não mágicos. Se a criatura tentar usar teleporte ou viagem interplanar para sair, deve primeiro fazer um teste de resistência de Carisma. Em um sucesso, a criatura pode usar essa magia para sair da gaiola. Em uma falha, a criatura não sai da gaiola e desperdiça a magia ou o efeito. A gaiola também se estende ao Plano Etéreo, bloqueando a viagem etérea. Esta magia não pode ser dissipada por Dissipar Magia."
 },
 {
 "id": "c7_prismatic_spray",
@@ -5066,7 +5066,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Eight rays of light flash from you in a 60-foot Cone. Each creature in the Cone makes a Dexterity saving throw. For each target, roll 1d8 to determine which color ray affects it, consulting the Prismatic Rays table.\n\n1d8 Ray \n\n1     Red. Failed Save: 12d6 Fire damage. Successful Save: Half as much damage. \n\n2     Orange. Failed Save: 12d6 Acid damage. Successful Save: Half as much damage. \n\n3 Yellow. Failed Save: 12d6 Lightning damage. Successful Save: Half as much damage. \n\n4    Green. Failed Save: 12d6 Poison damage. Successful Save: Half as much damage. \n\n5    Blue. Failed Save: 12d6 Cold damage. Successful Save: Half as much damage. \n\n6    Indigo. Failed Save: The target has the Restrained condition and makes a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the condition ends. If it fails three times, it has the Petrified condition until it is freed by an effect like the Greater Restoration spell. The successes and failures needn't be consecutive; keep track of both until the target collects three of a kind. \n\n7    Violet. Failed Save: The target has the Blinded condition and makes a Wisdom saving throw at the start of your next turn. On a Successful Save, the condition ends. On a Failed Save, the condition ends, and the creature teleports to another plane of existence (DM's choice). \n\n8    Special. The target is struck by two rays. Roll twice, rerolling any 8."
+"descricao": "Oito raios de luz disparam de você em um Cone de 18 metros. Cada criatura no Cone faz um teste de resistência de Destreza. Para cada alvo, role 1d8 para determinar qual raio colorido o afeta, consultando a tabela Raios Prismáticos. \n\n| 1d8 | Raio    | Efeito                                                                                                                          |\n| --- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |\n| 1   | Vermelho | Falha: 12d6 de dano de Fogo. Sucesso: metade do dano.                                                                           |\n| 2   | Laranja  | Falha: 12d6 de dano de Ácido. Sucesso: metade do dano.                                                                          |\n| 3   | Amarelo  | Falha: 12d6 de dano de Eletricidade. Sucesso: metade do dano.                                                                   |\n| 4   | Verde    | Falha: 12d6 de dano de Veneno. Sucesso: metade do dano.                                                                         |\n| 5   | Azul     | Falha: 12d6 de dano de Frio. Sucesso: metade do dano.                                                                           |\n| 6   | Índigo   | Falha: o alvo tem a condição Imobilizado e faz um teste de resistência de Constituição no fim de cada um de seus turnos. Se obtiver sucesso três vezes, a condição termina. Se falhar três vezes, tem a condição Petrificado até ser libertado por um efeito como a magia Restauração Superior. Os sucessos e falhas não precisam ser consecutivos; acompanhe ambos até que o alvo acumule três de um tipo. |\n| 7   | Violeta  | Falha: o alvo tem a condição Cego e faz um teste de resistência de Sabedoria no início do seu próximo turno. Em um sucesso, a condição termina. Em uma falha, a condição termina e a criatura se teleporta para outro plano de existência (escolha do mestre). |\n| 8   | Especial | O alvo é atingido por dois raios. Role duas vezes, rolando novamente qualquer 8.                                              |"
 },
 {
 "id": "c7_mirage_arcane",
@@ -5083,7 +5083,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You make terrain in an area up to 1 mile square look, sound, smell, and even feel like some other sort of terrain. Open fields or a road could be made to resemble a swamp, hill, crevasse, or some other rough or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road. \n\nSimilarly, you can alter the appearance of structures or add them where none are present. The spell doesn't disguise, conceal, or add creatures. \n\nThe illusion includes audible, visual, tactile, and olfactory elements, so it can turn clear ground into Difficult Terrain (or vice versa) or otherwise impede movement through the area. Any piece of the illusory terrain (such as a rock or stick) that is removed from the spell's area disappears immediately. \n\nCreatures with Truesight can see through the illusion to the terrain's true form; however, all other elements of the illusion remain, so while the creature is aware of the illusion's presence, the creature can still physically interact with the illusion."
+"descricao": "Você faz o terreno em uma área de até 1,6 quilômetro quadrado parecer, soar, cheirar e até sentir como outro tipo de terreno. Campos abertos ou uma estrada podem ser feitos para se assemelhar a um pântano, colina, ravina ou outro terreno acidentado ou intransponível. Uma lagoa pode ser feita para parecer um prado gramado, um precipício uma encosta suave, ou uma ravina cheia de pedras uma estrada larga e lisa. \n\nDa mesma forma, você pode alterar a aparência de estruturas ou adicioná-las onde nenhuma está presente. A magia não disfarça, oculta nem adiciona criaturas. \n\nA ilusão inclui elementos auditivos, visuais, táteis e olfativos, então pode transformar terreno limpo em Terreno Difícil (ou vice-versa) ou de outra forma impedir o movimento pela área. Qualquer pedaço do terreno ilusório (como uma rocha ou um graveto) que seja removido da área da magia desaparece imediatamente. \n\nCriaturas com Visão Real podem ver através da ilusão até a forma Verdadeira do terreno; no entanto, todos os outros elementos da ilusão permanecem, então, embora a criatura esteja ciente da presença da ilusão, ela ainda pode interagir fisicamente com a ilusão."
 },
 {
 "id": "c7_project_image",
@@ -5100,7 +5100,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create an illusory copy of yourself that lasts for the duration. The copy can appear at any location within range that you have seen before, regardless of intervening obstacles. The illusion looks and sounds like you, but it is intangible. If the illusion takes any damage, it disappears, and the spell ends. \n\nYou can see through the illusion's eyes and hear through its ears as if you were in its space. As a Magic action, you can move it up to 60 feet and make it gesture, speak, and behave in whatever way you choose. It mimics your mannerisms perfectly. \n\nPhysical interaction with the image reveals it to be illusory, since things can pass through it. A creature that takes the Study action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
+"descricao": "Você cria uma cópia ilusória de si mesmo que dura pela duração. A cópia pode aparecer em qualquer local dentro do alcance que você já tenha visto, independentemente de obstáculos intermediários. A ilusão parece e soa como você, mas é intangível. Se a ilusão sofrer qualquer dano, ela desaparece e a magia termina. \n\nVocê pode ver pelos olhos da ilusão e ouvir pelos ouvidos dela como se estivesse no espaço dela. Como uma Ação Mágica, você pode movê-la em até 18 metros e fazê-la gesticular, falar e se comportar da maneira que escolher. Ela imita seus maneirismos perfeitamente. \n\nA interação física com a imagem revela que ela é ilusória, pois coisas podem atravessá-la. Uma criatura que faça a ação de Estudar para examinar a imagem pode determinar que ela é uma ilusão com um teste de Inteligência (Investigação) bem-sucedido contra a CD de resistência da sua magia. Se uma criatura discernir a ilusão pelo que ela é, pode ver através da imagem, e qualquer ruído que ela faça soa oco para a criatura."
 },
 {
 "id": "c7_simulacrum",
@@ -5117,7 +5117,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a simulacrum of one Beast or Humanoid that is within 10 feet of you for the entire casting of the spell. You finish the casting by touching both the creature and a pile of ice or snow that is the same size as that creature, and the pile turns into the simulacrum, which is a creature. It uses the game statistics of the original creature at the time of casting, except it is a Construct, its Hit Point maximum is half as much, and it can't cast this spell.\n\nThe simulacrum is Friendly to you and creatures you designate. It obeys your commands and acts on your turn in combat. The simulacrum can't gain levels, and it can't take Short or Long Rests. If the simulacrum takes damage, the only way to restore its Hit Points is to repair it as you take a Long Rest, during which you expend components worth 100 GP per Hit Point restored. The simulacrum must stay within 5 feet of you for the repair.\n\nThe simulacrum lasts until it drops to 0 Hit Points, at which point it reverts to snow and melts away. If you cast this spell again, any simulacrum you created with this spell is instantly destroyed."
+"descricao": "Você cria um simulacro de uma Besta ou Humanoide que esteja a até 3 metros de você durante toda a conjuração da magia. Você termina a conjuração tocando tanto a criatura quanto uma pilha de gelo ou neve do mesmo tamanho que essa criatura, e a pilha se transforma no simulacro, que é uma criatura. Ele usa as estatísticas de jogo da criatura original no momento da conjuração, exceto que é um Construto, seu máximo de Pontos de Vida é reduzido à metade e não pode lançar esta magia. \n\nO simulacro é Amigável a você e às criaturas que você designar. Ele obedece aos seus comandos e age no seu turno em combate. O simulacro não pode ganhar níveis e não pode fazer Descansos Curtos ou Longos. Se o simulacro sofrer dano, a única maneira de restaurar seus Pontos de Vida é repará-lo enquanto você faz um Descanso Longo, durante o qual gasta componentes no valor de 100 PO por Ponto de Vida restaurado. O simulacro deve permanecer a até 1,5 metro de você para o reparo. \n\nO simulacro dura até cair a 0 Pontos de Vida, momento em que reverte a neve e derrete. Se você lançar esta magia novamente, qualquer simulacro criado com ela é instantaneamente destruído."
 },
 {
 "id": "c7_finger_of_death",
@@ -5134,7 +5134,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You unleash negative energy toward a creature you can see within range. The target makes a Constitution saving throw, taking 7d8 + 30 Necrotic damage on a failed save or half as much damage on a successful one. \n\nA Humanoid killed by this spell rises at the start of your next turn as a Zombie that follows your verbal orders."
+"descricao": "Você desencadeia energia negativa em direção a uma criatura que possa ver dentro do alcance. O alvo faz um teste de resistência de Constituição, sofrendo 7d8 + 30 de dano Necrótico em uma falha ou metade do dano em um sucesso. \n\nUm Humanoide morto por esta magia ergue-se no início do seu próximo turno como um Zumbi que segue suas ordens verbais."
 },
 {
 "id": "c7_resurrection",
@@ -5151,7 +5151,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "With a touch, you revive a dead creature that has been dead for no more than a century, didn't die of old age, and wasn't Undead when it died. \n\nThe creature returns to life with all its Hit Points. This spell also neutralizes any poisons that affected the creature at the time of death. This spell closes all mortal wounds and restores any missing body parts. \n\nComing back from the dead is an ordeal. The target takes a −4 penalty to D20 Tests. Every time the target finishes a Long Rest, the penalty is reduced by 1 until it becomes 0. \n\nCasting this spell to revive a creature that has been dead for 365 days or longer taxes you. Until you finish a Long Rest, you can't cast spells again, and you have Disadvantage on D20 Tests."
+"descricao": "Com um toque, você revive uma criatura morta que esteja morta há não mais de um século, que não tenha morrido de velhice e que não fosse Não-Morta quando morreu. \n\nA criatura volta à vida com todos os seus Pontos de Vida. Esta magia também neutraliza quaisquer venenos que afetavam a criatura no momento da morte. Esta magia fecha todos os ferimentos mortais e restaura quaisquer partes corporais ausentes. \n\nVoltar dos mortos é uma provação. O alvo sofre uma penalidade de −4 em Testes de D20. Toda vez que o alvo terminar um Descanso Longo, a penalidade é reduzida em 1 até se tornar 0. \n\nLançar esta magia para reviver uma criatura morta há 365 dias ou mais o desgasta. Até você terminar um Descanso Longo, você não pode lançar magias novamente e tem Desvantagem em Testes de D20."
 },
 {
 "id": "c7_regenerate",
@@ -5168,7 +5168,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A creature you touch regains 4d8 + 15 Hit Points. For the duration, the target regains 1 Hit Point at the start of each of its turns, and any severed body parts regrow after 2 minutes."
+"descricao": "Uma criatura que você toca recupera 4d8 + 15 Pontos de Vida. Pela duração, o alvo recupera 1 Ponto de Vida no início de cada um de seus turnos, e quaisquer partes corporais decepadas voltam a crescer após 2 minutos."
 },
 {
 "id": "c7_reverse_gravity",
@@ -5185,7 +5185,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "This spell reverses gravity in a 50-foot-radius, 100-foot high Cylinder centered on a point within range. All creatures and objects in that area that aren't anchored to the ground fall upward and reach the top of the Cylinder. A creature can make a Dexterity saving throw to grab a fixed object it can reach, thus avoiding the fall upward. \n\nIf a ceiling or an anchored object is encountered in this upward fall, creatures and objects strike it just as they would during a downward fall. If an affected creature or object reaches the Cylinder's top without striking anything, it hovers there for the duration. When the spell ends, affected objects and creatures fall downward."
+"descricao": "Esta magia inverte a gravidade em um Cilindro com raio de 15 metros e 30 metros de altura centrado em um ponto dentro do alcance. Todas as criaturas e objetos nessa área que não estiverem ancorados ao chão caem para cima e chegam ao topo do Cilindro. Uma criatura pode fazer um teste de resistência de Destreza para agarrar um objeto fixo que possa alcançar, evitando assim a queda para cima. \n\nSe um teto ou um objeto ancorado for encontrado nessa queda para cima, criaturas e objetos colidem com ele como fariam durante uma queda para baixo. Se uma criatura ou objeto afetado chegar ao topo do Cilindro sem colidir com nada, ele permanece pairando lá pela duração. Quando a magia termina, objetos e criaturas afetados caem para baixo."
 },
 {
 "id": "c7_sequester",
@@ -5202,7 +5202,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "With a touch, you magically sequester an object or a willing creature. For the duration, the target has the Invisible condition and can't be targeted by Divination spells, detected by magic, or viewed remotely with magic. \n\nIf the target is a creature, it enters a state of suspended animation; it has the Unconscious condition, doesn't age, and doesn't need food, water, or air. \n\nYou can set a condition for the spell to end early. The condition can be anything you choose, but it must occur or be visible within 1 mile of the target. Examples include “after 1,000 years” or “when the tarrasque awakens.” This spell also ends if the target takes any damage."
+"descricao": "Com um toque, você isola magicamente um objeto ou uma criatura voluntária. Pela duração, o alvo tem a condição Invisível, não pode ser alvo de magias de Adivinhação, não pode ser detectado por magia nem ser observado remotamente com magia. \n\nSe o alvo for uma criatura, ela entra em um estado de animação suspensa; tem a condição Inconsciente, não envelhece e não precisa de comida, água ou ar. \n\nVocê pode definir uma condição para a magia terminar cedo. A condição pode ser qualquer coisa que você escolher, mas deve ocorrer ou ser visível a até 1,6 quilômetro do alvo. Exemplos incluem \"após 1.000 anos\" ou \"quando o tarasca acordar\". Esta magia também termina se o alvo sofrer qualquer dano."
 },
 {
 "id": "c8_antimagic_field",
@@ -5219,7 +5219,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "An aura of antimagic surrounds you in 10-foot Emanation. No one can cast spells, take Magic actions, or create other magical effects inside the aura, and those things can't target or otherwise affect anything inside it. \n\nMagical properties of magic items don't work inside the aura or on anything inside it. Areas of effect created by spells or other magic can't extend into the aura, and no one can teleport into or out of it or use planar travel there. Portals close temporarily while in the aura. \n\nOngoing spells, except those cast by an Artifact or a deity, are suppressed in the area. While an effect is suppressed, it doesn't function, but the time it spends suppressed counts against its duration. \n\nDispel Magic has no effect on the aura, and the auras created by different Antimagic Field spells don't nullify each other."
+"descricao": "Uma aura de antimagia o cerca em uma Emanação de 3 metros. Ninguém pode lançar magias, realizar Ações Mágicas ou criar outros efeitos mágicos dentro da aura, e essas coisas não podem mirar nem de outra forma afetar qualquer coisa dentro dela. \n\nPropriedades mágicas de itens mágicos não funcionam dentro da aura nem em qualquer coisa dentro dela. Áreas de efeito criadas por magias ou outra magia não podem se estender para dentro da aura, e ninguém pode se teleportar para dentro ou para fora dela nem usar viagem planar ali. Portais se fecham temporariamente enquanto estão na aura. \n\nMagias contínuas, exceto aquelas lançadas por um Artefato ou uma divindade, são suprimidas na área. Enquanto um efeito está suprimido, ele não funciona, mas o tempo que passa suprimido conta para a duração dele. \n\nDissipar Magia não tem efeito sobre a aura, e as auras criadas por diferentes magias Campo Antimagia não se anulam entre si."
 },
 {
 "id": "c8_holy_aura",
@@ -5236,7 +5236,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "For the duration, you emit an aura in a 30-foot Emanation. While in the aura, creatures of your choice have Advantage on all saving throws, and other creatures have Disadvantage on attack rolls against them. In addition, when a Fiend or an Undead hits an affected creature with a melee attack roll, the attacker must succeed on a Constitution saving throw or have the Blinded condition until the end of its next turn."
+"descricao": "Pela duração, você emite uma aura em uma Emanação de 9 metros. Enquanto estiverem na aura, criaturas à sua escolha têm Vantagem em todos os testes de resistência, e outras criaturas têm Desvantagem em jogadas de ataque contra elas. Além disso, quando um Corruptor ou uma Não-Morta atinge uma criatura afetada com uma jogada de ataque corpo a corpo, o atacante deve ser bem-sucedido em um teste de resistência de Constituição ou ter a condição Cego até o fim do próximo turno dele."
 },
 {
 "id": "c8_mind_blank",
@@ -5253,7 +5253,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, one willing creature you touch has Immunity to Psychic damage and the Charmed condition. The target is also unaffected by anything that would sense its emotions or alignment, read its thoughts, or magically detect its location, and no spell—not even Wish—can gather information about the target, observe it remotely, or control its mind."
+"descricao": "Até a magia terminar, uma criatura voluntária que você tocar tem Imunidade a dano Psíquico e à condição Enfeitiçado. O alvo também não é afetado por nada que perceba suas emoções ou seu alinhamento, leia seus pensamentos ou detecte magicamente sua localização, e nenhuma magia — nem mesmo Desejo — pode obter informações sobre o alvo, observá-lo remotamente ou controlar sua mente."
 },
 {
 "id": "c8_demiplane",
@@ -5270,7 +5270,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a shadowy Medium door on a flat solid surface that you can see within range. This door can be opened and closed, and it leads to a demiplane that is an empty room 30 feet in each dimension, made of wood or stone (your choice). \n\nWhen the spell ends, the door vanishes, and any objects inside the demiplane remain there. Any creatures inside also remain unless they opt to be shunted through the door as it vanishes, landing with the Prone condition in the unoccupied spaces closest to the door's former space. \n\nEach time you cast this spell, you can create a new demiplane or connect the shadowy door to a demiplane you created with a previous casting of this spell. Additionally, if you know the nature and contents of a demiplane created by a casting of this spell by another creature, you can connect the shadowy door to that demiplane instead."
+"descricao": "Você cria uma porta Média e sombria em uma superfície sólida e plana que possa ver dentro do alcance. Esta porta pode ser aberta e fechada, e leva a um semiplano que é uma sala vazia com 9 metros em cada dimensão, feita de madeira ou pedra (à sua escolha). \n\nQuando a magia termina, a porta desaparece, e quaisquer objetos dentro do semiplano permanecem lá. Quaisquer criaturas dentro também permanecem, a menos que optem por ser lançadas através da porta enquanto ela desaparece, caindo com a condição Caída nos espaços desocupados mais próximos do antigo espaço da porta. \n\nCada vez que você lançar esta magia, você pode criar um novo semiplano ou conectar a porta sombria a um semiplano que você criou com um lançamento anterior desta magia. Além disso, se você conhecer a natureza e o conteúdo de um semiplano criado por um lançamento desta magia por outra criatura, você pode conectar a porta sombria a esse semiplano em vez disso."
 },
 {
 "id": "c8_incendiary_cloud",
@@ -5287,7 +5287,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A swirling cloud of embers and smoke fills a 20-foot-radius Sphere centered on a point within range. The cloud's area is Heavily Obscured. It lasts for the duration or until a strong wind (like that created by Gust of Wind) disperses it. \n\nWhen the cloud appears, each creature in it makes a Dexterity saving throw, taking 10d8 Fire damage on a failed save or half as much damage on a successful one. A creature must also make this save when the Sphere moves into its space and when it enters the Sphere or ends its turn there. A creature makes this save only once per turn. \n\nThe cloud moves 10 feet away from you in a direction you choose at the start of each of your turns."
+"descricao": "Uma nuvem de brasas e fumaça em turbilhão preenche uma Esfera com raio de 6 metros centrada em um ponto dentro do alcance. A área da nuvem é Oculta. Ela dura pela duração ou até que um vento forte (como o criado por Rajada de Vento) a dissipe. \n\nQuando a nuvem aparece, cada criatura nela faz um teste de resistência de Destreza, sofrendo 10d8 de dano de Fogo em uma falha ou metade do dano em um sucesso. Uma criatura também deve fazer esse teste quando a Esfera se move para o espaço dela e quando ela entra na Esfera ou termina o turno nela. Uma criatura faz esse teste apenas uma vez por turno. \n\nA nuvem se move 3 metros para longe de você em uma direção que você escolher no início de cada um de seus turnos."
 },
 {
 "id": "c8_maze",
@@ -5304,7 +5304,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You banish a creature that you can see within range into a labyrinthine demiplane. The target remains there for the duration or until it escapes the maze. \n\nThe target can take a Study action to try to escape. When it does so, it makes a DC 20 Intelligence (Investigation) check. If it succeeds, it escapes, and the spell ends. \n\nWhen the spell ends, the target reappears in the space it left or, if that space is occupied, in the nearest unoccupied space."
+"descricao": "Você bane uma criatura que possa ver dentro do alcance para um semiplano labiríntico. O alvo permanece lá pela duração ou até escapar do labirinto. \n\nO alvo pode realizar a ação Estudar para tentar escapar. Quando o faz, faz um teste de Inteligência (Investigação) com CD 20. Se for bem-sucedido, escapa e a magia termina. \n\nQuando a magia termina, o alvo reaparece no espaço que deixou ou, se esse espaço estiver ocupado, no espaço desocupado mais próximo."
 },
 {
 "id": "c8_tsunami",
@@ -5321,7 +5321,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A wall of water springs into existence at a point you choose within range. You can make the wall up to 300 feet long, 300 feet high, and 50 feet thick. The wall lasts for the duration. When the wall appears, each creature in its area makes a Strength saving throw, taking 6d10 Bludgeoning damage on a failed save or half as much damage on a successful one. \n\nAt the start of each of your turns after the wall appears, the wall, along with any creatures in it, moves 50 feet away from you. Any Huge or smaller creature inside the wall or whose space the wall enters when it moves must succeed on a Strength saving throw or take 5d10 Bludgeoning damage. A creature can take this damage only once per round. At the end of the turn, the wall's height is reduced by 50 feet, and the damage the wall deals on later rounds is reduced by 1d10. When the wall reaches O feet in height, the spell ends. \n\nA creature caught in the wall can move by swimming. Because of the wave's force, though, the creature must succeed on a Strength (Athletics) check against your spell save DC to move at all. If it fails the check, it can't move. A creature that moves out of the wall falls to the ground."
+"descricao": "Uma parede de água surge em um ponto que você escolher dentro do alcance. Você pode fazer a parede com até 90 metros de comprimento, 90 metros de altura e 15 metros de espessura. A parede dura pela duração. Quando a parede aparece, cada criatura em sua área faz um teste de resistência de Força, sofrendo 6d10 de dano de Impacto em uma falha ou metade do dano em um sucesso. \n\nNo início de cada um de seus turnos após a parede aparecer, a parede, junto com quaisquer criaturas nela, move-se 15 metros para longe de você. Qualquer criatura Enorme ou menor dentro da parede ou cujo espaço a parede entre ao se mover deve ser bem-sucedida em um teste de resistência de Força ou sofrer 5d10 de dano de Impacto. Uma criatura pode sofrer esse dano apenas uma vez por rodada. No fim do turno, a altura da parede é reduzida em 15 metros, e o dano que a parede causa em rodadas posteriores é reduzido em 1d10. Quando a parede atinge 0 metros de altura, a magia termina. \n\nUma criatura apanhada na parede pode se mover nadando. Por causa da força da onda, porém, a criatura deve ser bem-sucedida em um teste de Força (Atletismo) contra a CD de resistência da sua magia para se mover de qualquer forma. Se falhar no teste, não pode se mover. Uma criatura que sai da parede cai no chão."
 },
 {
 "id": "c8_antipathy_sympathy",
@@ -5338,7 +5338,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "As you cast the spell, choose whether it creates antipathy or sympathy, and target one creature or object that is Huge or smaller. Then specify a kind of creature, such as red dragons, goblins, or vampires. A creature of the chosen kind makes a Wisdom saving throw when it comes within 120 feet of the target. Your choice of antipathy or sympathy determines what happens to a creature when it fails that save: \n\n**Antipathy.** The creature has the Frightened condition. The Frightened creature must use its movement on its turns to get as far away as possible from the target, moving by the safest route. \n\n**Sympathy.** The creature has the Charmed condition. The Charmed creature must use its movement on its turns to get as close as possible to the target, moving by the safest route. If the creature is within 5 feet of the target, the creature can't willingly move away. If the target damages the Charmed creature, that creature can make a Wisdom saving throw to end the effect, as described below. \n\n**Ending the Effect.** If the Frightened or Charmed creature ends its turn more than 120 feet away from the target, the creature makes a Wisdom saving throw. On a successful save, the creature is no longer affected by the target. A creature that successfully saves against this effect is immune to it for 1 minute, after which it can be affected again."
+"descricao": "Ao lançar a magia, escolha se ela cria antipatia ou simpatia e mire em uma criatura ou objeto que seja Enorme ou menor. Depois, especifique um tipo de criatura, como dragões vermelhos, goblins ou vampiros. Uma criatura do tipo escolhido faz um teste de resistência de Sabedoria quando chega a até 36 metros do alvo. Sua escolha de antipatia ou simpatia determina o que acontece com uma criatura quando ela falha nesse teste: \n\n**Antipatia.** A criatura tem a condição Apavorado. A criatura Apavorada deve usar seu deslocamento em seus turnos para se afastar o máximo possível do alvo, movendo-se pela rota mais segura. \n\n**Simpatia.** A criatura tem a condição Enfeitiçado. A criatura Enfeitiçada deve usar seu deslocamento em seus turnos para chegar o mais perto possível do alvo, movendo-se pela rota mais segura. Se a criatura estiver a até 1,5 metro do alvo, ela não pode se afastar voluntariamente. Se o alvo causar dano à criatura Enfeitiçada, essa criatura pode fazer um teste de resistência de Sabedoria para encerrar o efeito, como descrito abaixo. \n\n**Encerrar o Efeito.** Se a criatura Apavorada ou Enfeitiçada terminar o turno a mais de 36 metros do alvo, ela faz um teste de resistência de Sabedoria. Em um sucesso, a criatura não é mais afetada pelo alvo. Uma criatura que seja bem-sucedida neste teste contra esse efeito fica imune a ele por 1 minuto, após o qual pode ser afetada novamente."
 },
 {
 "id": "c8_befuddlement",
@@ -5355,7 +5355,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You blast the mind of a creature that you can see within range. The target makes an Intelligence saving throw.\n\nOn a failed save, the target takes 10d12 Psychic damage and can’t cast spells or take the Magic action. At the end of every 30 days, the target repeats the save, ending the effect on a success. The effect can also be ended by the Greater Restoration, Heal, or Wish spell. On a successful save, the target takes half as much damage only."
+"descricao": "Você atinge a mente de uma criatura que possa ver dentro do alcance. O alvo faz um teste de resistência de Inteligência. \n\nEm uma falha, o alvo sofre 10d12 de dano Psíquico e não pode lançar magias nem realizar a Ação Mágica. No fim de cada período de 30 dias, o alvo repete o teste, encerrando o efeito em um sucesso. O efeito também pode ser encerrado pelas magias Restauração Superior, Curar ou Desejo. Em um sucesso, o alvo sofre apenas metade do dano."
 },
 {
 "id": "c8_dominate_monster",
@@ -5371,8 +5371,8 @@ const SPELLS_DATA = [
 "duracao": "1 hora",
 "concentracao": true,
 "ritual": false,
-"aprimoramento": "Your Concentration can last longer with a level 9 spell slot (up to 8 hours).",
-"descricao": "One creature you can see within range must succeed on a Wisdom saving throw or have the Charmed condition for the duration. The target has Advantage on the save if you or your allies are fighting it. Whenever the target takes damage, it repeats the save, ending the spell on itself on a success. \n\nYou have a telepathic link with the Charmed target while the two of you are on the same plane of existence. On your turn, you can use this link to issue commands to the target (no action required), such as \"Attack that creature,\" \"Move over there,\" or \"Fetch that object.\" The target does its best to obey on its turn. If it completes an order and doesn't receive further direction from you, it acts and moves as it likes, focusing on protecting itself. \n\nYou can command the target to take a Reaction but must take your own Reaction to do so."
+"aprimoramento": "Sua Concentração pode durar mais tempo com um espaço de magia de 9º nível (até 8 horas).",
+"descricao": "Uma criatura que você possa ver dentro do alcance deve ser bem-sucedida em um teste de resistência de Sabedoria ou ter a condição Enfeitiçado pela duração. O alvo tem Vantagem no teste se você ou seus aliados estiverem lutando contra ele. Sempre que o alvo sofrer dano, ele repete o teste, encerrando a magia sobre si mesmo em um sucesso. \n\nVocê tem um vínculo telepático com o alvo Enfeitiçado enquanto os dois estiverem no mesmo plano de existência. No seu turno, você pode usar esse vínculo para dar comandos ao alvo (nenhuma ação exigida), como \"Ataque essa criatura\", \"Mova-se até lá\" ou \"Pegue esse objeto\". O alvo faz o melhor que pode para obedecer no turno dele. Se completar uma ordem e não receber mais direções suas, age e se move como quiser, focando em se proteger. \n\nVocê pode ordenar que o alvo realize uma Reação, mas deve gastar sua própria Reação para fazer isso."
 },
 {
 "id": "c8_glibness",
@@ -5389,7 +5389,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Until the spell ends, when you make a Charisma check, you can replace the number you roll with a 15. Additionally, no matter what you say, magic that would determine if you are telling the truth indicates that you are being truthful."
+"descricao": "Até a magia terminar, quando você fizer um teste de Carisma, pode substituir o número obtido no dado por 15. Além disso, não importa o que você diga, magia que determinaria se você está falando a verdade indica que você está sendo verdadeiro."
 },
 {
 "id": "c8_power_word_stun",
@@ -5406,7 +5406,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You overwhelm the mind of one creature you can see within range. If the target has 150 Hit Points or fewer, it has the Stunned condition. Otherwise, its Speed is 0 until the start of your next turn. \n\nThe Stunned target makes a Constitution saving throw at the end of each of its turns, ending the condition on itself on a success."
+"descricao": "Você sobrecarrega a mente de uma criatura que possa ver dentro do alcance. Se o alvo tiver 150 Pontos de Vida ou menos, ele tem a condição Atordoado. Caso contrário, seu Deslocamento é 0 até o início do seu próximo turno. \n\nO alvo Atordoado faz um teste de resistência de Constituição no fim de cada um de seus turnos, encerrando a condição sobre si mesmo em um sucesso."
 },
 {
 "id": "c8_sunburst",
@@ -5423,7 +5423,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Brilliant sunlight flashes in a 60-foot-radius Sphere centered on a point you choose within range. Each creature in the Sphere makes a Constitution saving throw. On a failed save, a creature takes 12d6 Radiant damage and has the Blinded condition for 1 minute. On a successful save, it takes half as much damage only.\n\nA creature Blinded by this spell makes another Constitution saving throw at the end of each of its turns, ending the effect on itself on a success. \n\nThis spell dispels Darkness in its area that was created by any spell."
+"descricao": "Luz solar brilhante cintila em uma Esfera com raio de 18 metros centrada em um ponto que você escolher dentro do alcance. Cada criatura na Esfera faz um teste de resistência de Constituição. Em uma falha, uma criatura sofre 12d6 de dano Radiante e tem a condição Cego por 1 minuto. Em um sucesso, ela sofre apenas metade do dano. \n\nUma criatura com a condição Cego por efeito desta magia faz outro teste de resistência de Constituição no fim de cada um de seus turnos, encerrando o efeito sobre si mesma em um sucesso. \n\nEsta magia dissipa a Escuridão em sua área que tenha sido criada por qualquer magia."
 },
 {
 "id": "c8_clone",
@@ -5440,7 +5440,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature or at least 1 cubic inch of its flesh. An inert duplicate of that creature forms inside the vessel used in the spell's casting and finishes growing after 120 days; you choose whether the finished clone is the same age as the creature or younger. The clone remains inert and endures indefinitely while its vessel remains undisturbed. \n\nIf the original creature dies after the clone finishes forming, the creature's soul transfers to the clone if the soul is free and willing to return. The clone is physically identical to the original and has the same personality, memories, and abilities, but none of the original's equipment. The creature's original remains, if any, become inert and can't be revived, since the creature's soul is elsewhere."
+"descricao": "Você toca uma criatura ou pelo menos 2,5 centímetros cúbicos de sua carne. Uma duplicata inerte dessa criatura se forma dentro do recipiente usado no lançamento da magia e termina de crescer após 120 dias; você escolhe se o clone concluído tem a mesma idade da criatura ou é mais jovem. O clone permanece inerte e subsiste indefinidamente enquanto seu recipiente permanecer intocado. \n\nSe a criatura original morrer depois que o clone terminar de se formar, a alma da criatura se transfere para o clone se a alma estiver livre e disposta a retornar. O clone é fisicamente idêntico ao original e tem a mesma personalidade, memórias e habilidades, mas nenhum dos pertences do original. Os restos mortais originais da criatura, se houver, tornam-se inertes e não podem ser revividos, já que a alma da criatura está em outro lugar."
 },
 {
 "id": "c8_animal_shapes",
@@ -5457,7 +5457,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose any number of willing creatures that you can see within range. Each target shape-shifts into a Large or smaller Beast of your choice that has a Challenge Rating of 4 or lower. You can choose a different form for each target. On later turns, you can take a Magic action to transform the targets again. A target's game statistics are replaced by the chosen Beast's statistics, but the target retains its creature type; Hit Points; Hit Point Dice; alignment; ability to communicate; and Intelligence, Wisdom, and Charisma scores. The target's actions are limited by the Beast form's anatomy, and it can't cast spells. The target's equipment melds into the new form, and the target can't use any of that equipment while in that form. \n\nThe target gains a number of Temporary Hit Points equal to the Beast form's Hit Points. The transformation lasts for the duration for each target, until the target has no Temporary Hit Points, or until the target leaves the form as a Bonus Action."
+"descricao": "Escolha qualquer número de criaturas voluntárias que possa ver dentro do alcance. Cada alvo muda de forma para uma Besta Grande ou menor de sua escolha que tenha um Índice de Desafio de 4 ou menor. Você pode escolher uma forma diferente para cada alvo. Em turnos posteriores, você pode realizar uma Ação Mágica para transformar os alvos novamente. As estatísticas de jogo de um alvo são substituídas pelas estatísticas da Besta escolhida, mas o alvo mantém seu tipo de criatura; Pontos de Vida; Dados de Pontos de Vida; alinhamento; capacidade de se comunicar; e valores de Inteligência, Sabedoria e Carisma. As ações do alvo são limitadas pela anatomia da forma de Besta, e ele não pode lançar magias. Os equipamentos do alvo se fundem à nova forma, e ele não pode usar nenhum desses equipamentos enquanto estiver nessa forma. \n\nO alvo ganha um número de Pontos de Vida Temporários igual aos Pontos de Vida da forma de Besta. A transformação dura pela duração para cada alvo, até que o alvo não tenha Pontos de Vida Temporários ou até que o alvo deixe a forma como uma Ação Bônus."
 },
 {
 "id": "c8_control_weather",
@@ -5474,7 +5474,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell, and it ends early if you go indoors. When you cast the spell, you change the current weather conditions, which are determined by the DM. You can change precipitation, temperature, and wind. It takes 1d4 × 10 minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal. When you change the weather conditions, find a current condition on the following tables and change its stage by one, up or down. When changing the wind, you can change its direction. \n\n**Precipitation** \n\nStage Condition \n\n1 Clear \n\n2 Light clouds \n\n3 Overcast or ground fog \n\n4 Rain, hail, or snow \n\n5 Torrential rain, driving hail, or blizzard \n\n**Temperature** \n\nStage Condition \n\n1 Heat wave \n\n2 Hot \n\n3 Warm \n\n4 Cool \n\n5 Cold \n\n6 Freezing \n\n**Wind** \n\nStage Condition \n\n1 Calm \n\n2 Moderate wind \n\n3 Strong wind \n\n4 Gale \n\n5 Storm."
+"descricao": "Você assume o controle do clima a até 8 quilômetros de você pela duração. Você deve estar ao ar livre para lançar esta magia, e ela termina cedo se você entrar em um local coberto. Ao lançar a magia, você muda as condições climáticas atuais, determinadas pelo mestre. Você pode mudar precipitação, temperatura e vento. Leva 1d4 × 10 minutos para as novas condições entrarem em vigor. Uma vez que isso acontece, você pode mudar as condições novamente. Quando a magia termina, o clima gradualmente volta ao normal. Quando você muda as condições climáticas, encontre uma condição atual nas tabelas a seguir e mude seu estágio em um, para cima ou para baixo. Ao mudar o vento, você pode mudar sua direção. \n\n**Precipitação** \n\nEstágio Condição \n\n1 Limpo \n\n2 Nuvens leves \n\n3 Encoberto ou nevoeiro baixo \n\n4 Chuva, granizo ou neve \n\n5 Chuva torrencial, granizo forte ou nevasca \n\n**Temperatura** \n\nEstágio Condição \n\n1 Onda de calor \n\n2 Quente \n\n3 Ameno \n\n4 Fresco \n\n5 Frio \n\n6 Geada \n\n**Vento** \n\nEstágio Condição \n\n1 Calmo \n\n2 Vento moderado \n\n3 Vento forte \n\n4 Vendaval \n\n5 Tempestade."
 },
 {
 "id": "c8_earthquake",
@@ -5491,7 +5491,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose a point on the ground that you can see within range. For the duration, an intense tremor rips through the ground in a 100- foot-radius circle centered on that point. The ground there is Difficult Terrain. \n\nWhen you cast this spell and at the end of each of your turns for the duration, each creature on the ground in the area makes a Dexterity saving throw. On a failed save, a creature has the Prone condition, and its Concentration is broken. You can also cause the effects below. \n\n**Fissures.** A total of 1d6 fissures open in the spell's area at the end of the turn you cast it. You choose the fissures' locations, which can't be under structures. Each fissure is 1d10 x 10 feet deep and 10 feet wide, and it extends from one edge of the spell's area to another edge. A creature in the same space as a fissure must succeed on a Dexterity saving throw or fall in. A creature that successfully saves moves with the fissure's edge as it opens. \n\n**Structures.** The tremor deals 50 Bludgeoning damage to any structure in contact with the ground in the area when you cast the spell and at the end of each of your turns until the spell ends. If a structure drops to 0 Hit Points, it collapses. \n\nA creature within a distance from a collapsing structure equal to half the structure's height makes a Dexterity saving throw. On a failed save, the creature takes 12d6 Bludgeoning damage, has the Prone condition, and is buried in the rubble, requiring a DC 20 Strength (Athletics) check as an action to escape. On a successful save, the creature takes half as much damage only."
+"descricao": "Escolha um ponto no chão que possa ver dentro do alcance. Pela duração, um tremor intenso rasga o chão em um círculo de 30 metros de raio centrado nesse ponto. O chão ali é Terreno Difícil. \n\nQuando você lança esta magia e no fim de cada um de seus turnos pela duração, cada criatura no chão na área faz um teste de resistência de Destreza. Em uma falha, uma criatura tem a condição Caída e sua Concentração é quebrada. Você também pode causar os efeitos abaixo. \n\n**Fissuras.** Um total de 1d6 fissuras se abre na área da magia no fim do turno em que você a lança. Você escolhe as localizações das fissuras, que não podem ficar sob estruturas. Cada fissura tem 1d10 × 3 metros de profundidade e 3 metros de largura, e se estende de uma extremidade da área da magia a outra extremidade. Uma criatura no mesmo espaço de uma fissura deve ser bem-sucedida em um teste de resistência de Destreza ou cair nela. Uma criatura que seja bem-sucedida se move com a borda da fissura enquanto ela se abre. \n\n**Estruturas.** O tremor causa 50 de dano de Impacto a qualquer estrutura em contato com o chão na área quando você lança a magia e no fim de cada um de seus turnos até a magia terminar. Se uma estrutura cair para 0 Pontos de Vida, ela desmorona. \n\nUma criatura a uma distância de uma estrutura que desmorona igual à metade da altura da estrutura faz um teste de resistência de Destreza. Em uma falha, a criatura sofre 12d6 de dano de Impacto, tem a condição Caída e fica soterrada nos escombros, exigindo um teste de Força (Atletismo) com CD 20 como uma ação para escapar. Em um sucesso, a criatura sofre apenas metade do dano."
 },
 {
 "id": "c9_imprisonment",
@@ -5508,7 +5508,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You create a magical restraint to hold a creature that you can see within range. The target must make a Wisdom saving throw. On a successful save, the target is unaffected, and it is immune to this spell for the next 24 hours. On a failed save, the target is imprisoned. While imprisoned, the target doesn't need to breathe, eat, or drink, and it doesn't age. Divination spells can't locate or perceive the imprisoned target, and the target can't teleport. Until the spell ends, the target is also affected by one of the following effects of your choice: \n\n**Burial.** The target is entombed beneath the earth in a hollow globe of magical force that is just large enough to contain the target. Nothing can pass into or out of the globe. \n\n**Chaining.** Chains firmly rooted in the ground hold the target in place. The target has the Restrained condition and can't be moved by any means. \n\n**Hedged Prison.** The target is trapped in a demiplane that is warded against teleportation and planar travel. The demiplane is your choice of a labyrinth, a cage, a tower, or the like. \n\n**Minimus Containment.** The target becomes 1 inch tall and is trapped inside an indestructible gemstone or a similar object. Light can pass through the gemstone (allowing the target to see out and other creatures to see in), but nothing else can pass through by any means. \n\n**Slumber.** The target has the Unconscious condition and can't be awoken. \n\n**Ending the Spell.** When you cast the spell, specify a trigger that will end it. The trigger can be as simple or as elaborate as you choose, but the DM must agree that it has a high likelihood of happening within the next decade. The trigger must be an observable action, such as someone making a particular offering at the temple of your god, saving your true love, or defeating a specific monster. \n\nA Dispel Magic spell can end the spell only if it is cast with a level 9 spell slot, targeting either the prison or the component used to create it."
+"descricao": "Você cria uma contenção mágica para prender uma criatura que possa ver dentro do alcance. O alvo deve fazer um teste de resistência de Sabedoria. Em um sucesso, o alvo não é afetado e fica imune a esta magia pelas próximas 24 horas. Em uma falha, o alvo é aprisionado. Enquanto estiver aprisionado, o alvo não precisa respirar, comer nem beber, e não envelhece. Magias de Adivinhação não podem localizar nem perceber o alvo aprisionado, e o alvo não pode se teleportar. Até a magia terminar, o alvo também é afetado por um dos seguintes efeitos, à sua escolha: \n\n**Sepultamento.** O alvo é sepultado sob a terra em um globo oco de força mágica grande o bastante apenas para conter o alvo. Nada pode passar para dentro ou para fora do globo. \n\n**Acorrentamento.** Correntes firmemente enraizadas no chão prendem o alvo no lugar. O alvo tem a condição Imobilizado e não pode ser movido por nenhum meio. \n\n**Prisão Murada.** O alvo fica preso em um semiplano protegido contra teleporte e viagem planar. O semiplano é sua escolha de labirinto, jaula, torre ou algo semelhante. \n\n**Contenção Mínima.** O alvo fica com 2,5 centímetros de altura e é aprisionado dentro de uma gema indestrutível ou um objeto semelhante. A luz pode passar pela gema (permitindo que o alvo veja para fora e outras criaturas vejam para dentro), mas nada mais pode atravessá-la por nenhum meio. \n\n**Sono.** O alvo tem a condição Inconsciente e não pode ser acordado. \n\n**Encerrar a Magia.** Quando você lança a magia, especifique um gatilho que a encerrará. O gatilho pode ser tão simples ou elaborado quanto você escolher, mas o mestre deve concordar que ele tem alta probabilidade de acontecer na próxima década. O gatilho deve ser uma ação observável, como alguém fazer uma oferenda específica no templo do seu deus, salvar seu verdadeiro amor ou derrotar um monstro específico. \n\nUma magia Dissipar Magia pode encerrar a magia apenas se for lançada com um espaço de magia de 9º nível, mirando na prisão ou no componente usado para criá-la."
 },
 {
 "id": "c9_mass_heal",
@@ -5525,7 +5525,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A flood of healing energy flows from you into creatures around you. You restore up to 700 Hit Points, divided as you choose among any number of creatures that you can see within range. Creatures healed by this spell also have the Blinded, Deafened, and Poisoned conditions removed from them."
+"descricao": "Uma onda de energia de cura flui de você para as criaturas ao seu redor. Você restaura até 700 Pontos de Vida, divididos conforme escolher entre qualquer número de criaturas que possa ver dentro do alcance. Criaturas curadas por esta magia também têm as condições Cego, Surdo e Envenenado removidas delas."
 },
 {
 "id": "c9_prismatic_wall",
@@ -5542,7 +5542,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A shimmering, multicolored plane of light forms a vertical opaque wall—up to 90 feet long, 30 feet high, and 1 inch thick—centered on a point within range. Alternatively, you shape the wall into a globe up to 30 feet in diameter centered on a point within range. The wall lasts for the duration. If you position the wall in a space occupied by a creature, the spell ends instantly without effect. The wall sheds Bright Light within 100 feet and Dim Light for an additional 100 feet. You and creatures you designate when you cast the spell can pass through and be near the wall without harm. If another creature that can see the wall moves within 20 feet of it or starts its turn there, the creature must succeed on a Constitution saving throw or have the Blinded condition for 1 minute. \n\nThe wall consists of seven layers, each with a different color. When a creature reaches into or passes through the wall, it does so one layer at a time through all the layers. Each layer forces the creature to make a Dexterity saving throw or be affected by that layer's properties as described in the Prismatic Layers table. \n\nThe wall, which has AC 10, can be destroyed one layer at a time, in order from red to violet, by means specific to each layer. If a layer is destroyed, it is gone for the duration. Antimagic Field has no effect on the wall, and Dispel Magic can affect only the violet layer. \n\n| Order | Effects                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |\n| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| 1     | **Red.** Failed Save: 12d6 Fire damage. Successful Save: Half as much damage. Additional Effects: Nonmagical ranged attacks can't pass through this layer, which is destroyed if it takes at least 25 Cold damage.                                                                                                                                                                                                                                                                                                                                                        |\n| 2     | **Orange**. Failed Save: 12d6 Acid damage. Successful Save: Half as much damage. Additional Effects: Magical ranged attacks can't pass through this layer, which is destroyed by a strong wind (such as the one created by Gust of Wind).                                                                                                                                                                                                                                                                                                                                 |\n| 3     | **Yellow**. Failed Save: 12d6 Lightning damage. Successful Save: Half as much damage. Additional Effects: The layer is destroyed if it takes at least 60 Force damage.                                                                                                                                                                                                                                                                                                                                                                                                    |\n| 4     | **Green**. Failed Save: 12d6 Poison damage. Successful Save: Half as much damage. Additional Effects: A Passwall spell, or another spell of equal or greater level that can open a portal on a solid surface, destroys this layer.                                                                                                                                                                                                                                                                                                                                        |\n| 5     | **Blue**. Failed Save: 12d6 Cold damage. Successful Save: Half as much damage. Additional Effects: The layer is destroyed if it takes at least 25 Fire damage.                                                                                                                                                                                                                                                                                                                                                                                                            |\n| 6     | **Indigo**. Failed Save: The target has the Restrained condition and makes a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the condition ends. If it fails three times, it has the Petrified condition until it is freed by an effect like the Greater Restoration spell. The successes and failures needn't be consecutive; keep track of both until the target collects three of a kind. Additional Effects: Spells can't be cast through this layer, which is destroyed by Bright Light shed by the Daylight spell. |\n| 7     | **Violet**. Failed Save: The target has the Blinded condition and makes a Wisdom saving throw at the start of your next turn. On a Successful Save, the condition ends. On a Failed Save, the condition ends, and the creature teleports to another plane of existence (DM's choice). Additional Effects: This layer is destroyed by Dispel Magic.                                                                                                                                                                                                                        |."
+"descricao": "Um plano cintilante de luz multicolorida forma uma parede vertical e opaca — com até 27 metros de comprimento, 9 metros de altura e 2,5 centímetros de espessura — centrado em um ponto dentro do alcance. Alternativamente, você molda a parede em forma de globo com até 9 metros de diâmetro centrado em um ponto dentro do alcance. A parede dura pela duração. Se você posicionar a parede em um espaço ocupado por uma criatura, a magia termina instantaneamente sem efeito. A parede emana Luz Intensa a 30 metros e Luz Diminuta por mais 30 metros. Você e criaturas que designar ao lançar a magia podem atravessar a parede e ficar perto dela sem dano. Se outra criatura que pode ver a parede se mover a até 6 metros dela ou começar o turno ali, a criatura deve ser bem-sucedida em um teste de resistência de Constituição ou ter a condição Cego por 1 minuto. \n\nA parede consiste em sete camadas, cada uma com uma cor diferente. Quando uma criatura alcança ou atravessa a parede, o faz uma camada por vez, atravessando todas as camadas. Cada camada força a criatura a fazer um teste de resistência de Destreza ou ser afetada pelas propriedades dessa camada, como descrito na tabela Camadas Prismáticas. \n\nA parede, que tem CA 10, pode ser destruída uma camada por vez, em ordem do vermelho ao violeta, por meios específicos de cada camada. Se uma camada for destruída, ela se vai pela duração. Campo Antimagia não tem efeito sobre a parede, e Dissipar Magia pode afetar apenas a camada violeta. \n\n| Ordem | Efeitos                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |\n| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| 1     | **Vermelha.** Falha: 12d6 de dano de Fogo. Sucesso: metade do dano. Efeitos adicionais: ataques à distância não mágicos não podem atravessar esta camada, que é destruída se sofrer pelo menos 25 de dano de Frio.                                                                                                                                                                                                                                                                                     |\n| 2     | **Laranja.** Falha: 12d6 de dano de Ácido. Sucesso: metade do dano. Efeitos adicionais: ataques à distância mágicos não podem atravessar esta camada, destruída por um vento forte (como o criado por Rajada de Vento).                                                                                                                                                                                                                                                                             |\n| 3     | **Amarela.** Falha: 12d6 de dano de Eletricidade. Sucesso: metade do dano. Efeitos adicionais: a camada é destruída se sofrer pelo menos 60 de dano de Força.                                                                                                                                                                                                                                                                                                                                        |\n| 4     | **Verde.** Falha: 12d6 de dano de Veneno. Sucesso: metade do dano. Efeitos adicionais: uma magia Passagem, ou outra magia de círculo igual ou maior que possa abrir um portal em uma superfície sólida, destrói esta camada.                                                                                                                                                                                                                                                                           |\n| 5     | **Azul.** Falha: 12d6 de dano de Frio. Sucesso: metade do dano. Efeitos adicionais: a camada é destruída se sofrer pelo menos 25 de dano de Fogo.                                                                                                                                                                                                                                                                                                                                                    |\n| 6     | **Índigo.** Falha: o alvo tem a condição Imobilizado e faz um teste de resistência de Constituição no fim de cada um de seus turnos. Se obtiver sucesso três vezes, a condição termina. Se falhar três vezes, tem a condição Petrificado até ser libertado por um efeito como a magia Restauração Superior. Os sucessos e falhas não precisam ser consecutivos; acompanhe ambos até que o alvo acumule três de um tipo. Efeitos adicionais: magias não podem ser lançadas através desta camada, que é destruída por Luz Intensa emitida pela magia Luz do Dia. |\n| 7     | **Violeta.** Falha: o alvo tem a condição Cego e faz um teste de resistência de Sabedoria no início do seu próximo turno. Em um sucesso, a condição termina. Em uma falha, a condição termina e a criatura se teleporta para outro plano de existência (escolha do mestre). Efeitos adicionais: esta camada é destruída por Dissipar Magia.                                                                |"
 },
 {
 "id": "c9_gate",
@@ -5559,7 +5559,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You conjure a portal linking an unoccupied space you can see within range to a precise location on a different plane of existence. The portal is a circular opening, which you can make 5 to 20 feet in diameter. You can orient the portal in any direction you choose. The portal lasts for the duration, and the portal's destination is visible through it. \n\nThe portal has a front and a back on each plane where it appears. Travel through the portal is possible only by moving through its front. Anything that does so is instantly transported to the other plane, appearing in the unoccupied space nearest to the portal. Deities and other planar rulers can prevent portals created by this spell from opening in their presence or anywhere within their domains. \n\nWhen you cast this spell, you can speak the name of a specific creature (a pseudonym, title, or nickname doesn't work). If that creature is on a plane other than the one you are on, the portal opens next to the named creature and transports it to the nearest unoccupied space on your side of the portal. You gain no special power over the creature, and it is free to act as the DM deems appropriate. It might leave, attack you, or help you."
+"descricao": "Você conjura um portal que liga um espaço desocupado que possa ver dentro do alcance a um local preciso em um plano de existência diferente. O portal é uma abertura circular, que você pode fazer com 1,5 a 6 metros de diâmetro. Você pode orientar o portal em qualquer direção que escolher. O portal dura pela duração, e o destino do portal é visível através dele. \n\nO portal tem uma frente e um verso em cada plano onde aparece. Atravessar o portal é possível apenas movendo-se pela frente dele. Qualquer coisa que o faça é instantaneamente transportada para o outro plano, aparecendo no espaço desocupado mais próximo do portal. Divindades e outros governantes planares podem impedir que portais criados por esta magia se abram em sua presença ou em qualquer lugar dentro de seus domínios. \n\nQuando você lança esta magia, pode falar o nome de uma criatura específica (um pseudônimo, título ou apelido não funciona). Se essa criatura estiver em um plano diferente do seu, o portal se abre ao lado da criatura nomeada e a transporta para o espaço desocupado mais próximo do seu lado do portal. Você não ganha nenhum poder especial sobre a criatura, e ela está livre para agir como o mestre considerar apropriado. Ela pode sair, atacá-lo ou ajudá-lo."
 },
 {
 "id": "c9_storm_of_vengeance",
@@ -5576,7 +5576,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A churning storm cloud forms for the duration, centered on a point within range and spreading to a radius of 300 feet. Each creature under the cloud when it appears must succeed on a Constitution saving throw or take 2d6 Thunder damage and have the Deafened condition for the duration. \n\nAt the start of each of your later turns, the storm produces different effects, as detailed below. \n\n**Turn 2**. Acidic rain falls. Each creature and object under the cloud takes 4d6 Acid damage. \n\n**Turn 3**. You call six bolts of lightning from the cloud to strike six different creatures or objects beneath it. Each target makes a Dexterity saving throw, taking 10d6 Lightning damage on a failed save or half as much damage on a successful one. \n\n**Turn 4**. Hailstones rain down. Each creature under the cloud takes 2d6 Bludgeoning damage. \n\n**Turns 5-10**. Gusts and freezing rain assail the area under the cloud. Each creature there takes 1d6 Cold damage. Until the spell ends, the area is Difficult Terrain and Heavily Obscured, ranged attacks with weapons are impossible there, and strong wind blows through the area."
+"descricao": "Uma nuvem de tempestade turbulenta se forma pela duração, centrada em um ponto dentro do alcance e se espalhando em um raio de 90 metros. Cada criatura sob a nuvem quando ela aparece deve ser bem-sucedida em um teste de resistência de Constituição ou sofrer 2d6 de dano de Trovão e ter a condição Surdo pela duração. \n\nNo início de cada um de seus turnos posteriores, a tempestade produz efeitos diferentes, conforme detalhado abaixo. \n\n**Turno 2.** Chuva ácida cai. Cada criatura e objeto sob a nuvem sofre 4d6 de dano de Ácido. \n\n**Turno 3.** Você convoca seis raios da nuvem para atingir seis criaturas ou objetos diferentes sob ela. Cada alvo faz um teste de resistência de Destreza, sofrendo 10d6 de dano de Eletricidade em uma falha ou metade do dano em um sucesso. \n\n**Turno 4.** Granizo cai. Cada criatura sob a nuvem sofre 2d6 de dano de Impacto. \n\n**Turnos 5-10.** Rajadas e chuva congelante assolam a área sob a nuvem. Cada criatura ali sofre 1d6 de dano de Frio. Até a magia terminar, a área é Terreno Difícil e Oculta, ataques à distância com armas são impossíveis ali e um vento forte sopra pela área."
 },
 {
 "id": "c9_wish",
@@ -5593,7 +5593,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Wish is the mightiest spell a mortal can cast. By simply speaking aloud, you can alter reality itself. The basic use of this spell is to duplicate any other spell of level 8 or lower. If you use it this way, you don't need to meet any requirements to cast that spell, including costly components. The spell simply takes effect. Alternatively, you can create one of the following effects of your choice: \n\n**Object Creation**. You create one object of up to 25,000 GP in value that isn't a magic item. The object can be no more than 300 feet in any dimension, and it appears in an unoccupied space that you can see on the ground. \n\n**Instant Health**. You allow yourself and up to twenty creatures that you can see to regain all Hit Points, and you end all effects on them listed in the Greater Restoration spell. \n\n**Resistance**. You grant up to ten creatures that you can see Resistance to one damage type that you choose. This Resistance is permanent. \n\n**Spell Immunity**. You grant up to ten creatures you can see immunity to a single spell or other magical effect for 8 hours. \n\n**Sudden Learning**. You replace one of your feats with another feat for which you are eligible. You lose all the benefits of the old feat and gain the benefits of the new one. You can't replace a feat that is a prerequisite for any of your other feats or features. \n\n**Roll Redo**. You undo a single recent event by forcing a reroll of any die roll made within the last round (including your last turn). Reality reshapes itself to accommodate the new result. For example, a Wish spell could undo an ally's failed saving throw or a foe's Critical Hit. You can force the reroll to be made with Advantage or Disadvantage, and you choose whether to use the reroll or the original roll. \n\n**Reshape Reality**. You may wish for something not included in any of the other effects. To do so, state your wish to the DM as precisely as possible. The DM has great latitude in ruling what occurs in such an instance; the greater the wish, the greater the likelihood that something goes wrong. This spell might simply fail, the effect you desire might be achieved only in part, or you might suffer an unforeseen consequence as a result of how you worded the wish. For example, wishing that a villain were dead might propel you forward in time to a period when that villain is no longer alive, effectively removing you from the game. Similarly, wishing for a Legendary magic item or an Artifact might instantly transport you to the presence of the item's current owner. If your wish is granted and its effects have consequences for a whole community, region, or world, you are likely to attract powerful foes. If your wish would affect a god, the god's divine servants might instantly intervene to prevent it or to encourage you to craft the wish in a particular way. If your wish would undo the multiverse itself, threaten the City of Sigil, or affect the Lady of Pain in any way, you see an image of her in your mind for a moment; she shakes her head, and your wish fails. The stress of casting Wish to produce any effect other than duplicating another spell weakens you. After enduring that stress, each time you cast a spell until you finish a Long Rest, you take 1d10 Necrotic damage per level of that spell. This damage can't be reduced or prevented in any way. In addition, your Strength score becomes 3 for 2d4 days. For each of those days that you spend resting and doing nothing more than light activity, your remaining recovery time decreases by 2 days. Finally, there is a 33 percent chance that you are unable to cast Wish ever again if you suffer this stress."
+"descricao": "Desejo é a magia mais poderosa que um mortal pode lançar. Ao simplesmente falar em voz alta, você pode alterar a própria realidade. O uso básico desta magia é duplicar qualquer outra magia de 8º círculo ou inferior. Se você a usar dessa forma, não precisa cumprir nenhum requisito para lançar aquela magia, incluindo componentes caros. A magia simplesmente entra em vigor. Alternativamente, você pode criar um dos seguintes efeitos, à sua escolha: \n\n**Criação de Objeto.** Você cria um objeto com valor de até 25.000 PO que não seja um item mágico. O objeto pode ter no máximo 90 metros em qualquer dimensão, e aparece em um espaço desocupado que você possa ver no chão. \n\n**Cura Instantânea.** Você permite que você e até vinte criaturas que possa ver recuperem todos os Pontos de Vida, e encerra todos os efeitos sobre elas listados na magia Restauração Superior. \n\n**Resistência.** Você concede a até dez criaturas que possa ver Resistência a um tipo de dano de sua escolha. Esta Resistência é permanente. \n\n**Imunidade a Magia.** Você concede a até dez criaturas que possa ver imunidade a uma única magia ou outro efeito mágico por 8 horas. \n\n**Aprendizado Repentino.** Você substitui um de seus talentos por outro talento para o qual seja elegível. Você perde todos os benefícios do talento antigo e ganha os benefícios do novo. Você não pode substituir um talento que seja pré-requisito para qualquer um de seus outros talentos ou características. \n\n**Repetição de Dados.** Você desfaz um único evento recente forçando uma nova rolagem de qualquer rolagem de dados feita na última rodada (incluindo seu último turno). A realidade se remodela para acomodar o novo resultado. Por exemplo, uma magia Desejo poderia desfazer um teste de resistência fracassado de um aliado ou um Acerto Crítico de um inimigo. Você pode forçar a nova rolagem a ser feita com Vantagem ou Desvantagem, e escolhe se usa a nova rolagem ou a rolagem original. \n\n**Remodelar a Realidade.** Você pode desejar algo que não esteja incluído em nenhum dos outros efeitos. Para fazer isso, declare seu desejo ao mestre com o máximo de precisão possível. O mestre tem grande latitude para decidir o que ocorre em tal caso; quanto maior o desejo, maior a probabilidade de algo dar errado. Esta magia pode simplesmente falhar, o efeito desejado pode ser alcançado apenas em parte, ou você pode sofrer uma consequência imprevista como resultado de como expressou o desejo. Por exemplo, desejar que um vilão morra pode propulsioná-lo no tempo até um período em que esse vilão não esteja mais vivo, efetivamente removendo você do jogo. Da mesma forma, desejar um item mágico Lendário ou um Artefato pode instantaneamente transportá-lo para a presença do dono atual do item. Se seu desejo for concedido e seus efeitos tiverem consequências para uma comunidade, região ou mundo inteiro, você provavelmente atrairá inimigos poderosos. Se seu desejo afetar um deus, os servos divinos do deus podem intervir instantaneamente para impedi-lo ou para encorajá-lo a formular o desejo de uma maneira particular. Se seu desejo desfizer o próprio multiverso, ameaçar a Cidade de Sigil ou afetar a Dama da Dor de qualquer forma, você vê uma imagem dela em sua mente por um momento; ela balança a cabeça, e seu desejo falha. O estresse de lançar Desejo para produzir qualquer efeito que não seja duplicar outra magia o enfraquece. Após sofrer esse estresse, cada vez que você lançar uma magia até terminar um Descanso Longo, você sofre 1d10 de dano Necrótico por círculo da magia. Esse dano não pode ser reduzido nem prevenido de nenhuma forma. Além disso, seu valor de Força torna-se 3 por 2d4 dias. Para cada um desses dias em que você passar descansando e fazendo nada além de atividade leve, seu tempo restante de recuperação diminui em 2 dias. Finalmente, há 33% de chance de você nunca mais conseguir lançar Desejo se sofrer esse estresse."
 },
 {
 "id": "c9_foresight",
@@ -5610,7 +5610,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a willing creature and bestow a limited ability to see into the immediate future. For the duration, the target has Advantage on D20 Tests, and other creatures have Disadvantage on attack rolls against it. The spell ends early if you cast it again."
+"descricao": "Você toca uma criatura voluntária e confere a ela uma capacidade limitada de ver o futuro imediato. Pela duração, o alvo tem Vantagem em Testes de D20, e outras criaturas têm Desvantagem em jogadas de ataque contra ele. A magia termina cedo se você a lançar novamente."
 },
 {
 "id": "c9_power_word_heal",
@@ -5627,7 +5627,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "A wave of healing energy washes over one creature you can see within range. The target regains all its Hit Points. If the creature has the Charmed, Frightened, Paralyzed, Poisoned, or Stunned condition, the condition ends. If the creature has the Prone condition, it can use its Reaction to stand up."
+"descricao": "Uma onda de energia de cura banha uma criatura que você possa ver dentro do alcance. O alvo recupera todos os seus Pontos de Vida. Se a criatura tiver as condições Enfeitiçado, Apavorado, Paralisado, Envenenado ou Atordoado, a condição termina. Se a criatura tiver a condição Caída, ela pode usar sua Reação para se levantar."
 },
 {
 "id": "c9_power_word_kill",
@@ -5644,7 +5644,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You compel one creature you can see within range to die. If the target has 100 Hit Points or fewer, it dies. Otherwise, it takes 12d12 Psychic damage."
+"descricao": "Você obriga uma criatura que possa ver dentro do alcance a morrer. Se o alvo tiver 100 Pontos de Vida ou menos, ele morre. Caso contrário, sofre 12d12 de dano Psíquico."
 },
 {
 "id": "c9_meteor_swarm",
@@ -5661,7 +5661,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Blazing orbs of fire plummet to the ground at four different points you can see within range. Each creature in a 40-foot-radius Sphere centered on each of those points makes a Dexterity saving throw. A creature takes 20d6 Fire damage and 20d6 Bludgeoning damage on a failed save or half as much damage on a successful one. A creature in the area of more than one fiery Sphere is affected only once. \n\nA nonmagical object that isn't being worn or carried also takes the damage if it's in the spell's area, and the object starts burning if it's flammable."
+"descricao": "Orbes flamejantes de fogo despencam ao chão em quatro pontos diferentes que você possa ver dentro do alcance. Cada criatura em uma Esfera com raio de 12 metros centrada em cada um desses pontos faz um teste de resistência de Destreza. Uma criatura sofre 20d6 de dano de Fogo e 20d6 de dano de Impacto em uma falha ou metade do dano em um sucesso. Uma criatura na área de mais de uma Esfera flamejante é afetada apenas uma vez. \n\nUm objeto não mágico que não esteja sendo vestido ou carregado também sofre o dano se estiver na área da magia, e o objeto começa a queimar se for inflamável."
 },
 {
 "id": "c9_weird",
@@ -5678,7 +5678,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You try to create illusory terrors in others' minds. Each creature of your choice in a 30-foot-radius Sphere centered on a point within range makes a Wisdom saving throw. On a failed save, a target takes 10d10 Psychic damage and has the Frightened condition for the duration. On a successful save, a target takes half as much damage only. \n\nA Frightened target makes a Wisdom saving throw at the end of each of its turns. On a failed save, it takes 5d10 Psychic damage. On a successful save, the spell ends on that target."
+"descricao": "Você tenta criar terrores ilusórios nas mentes de outras criaturas. Cada criatura de sua escolha em uma Esfera com raio de 9 metros centrada em um ponto dentro do alcance faz um teste de resistência de Sabedoria. Em uma falha, um alvo sofre 10d10 de dano Psíquico e tem a condição Apavorado pela duração. Em um sucesso, um alvo sofre apenas metade do dano. \n\nUm alvo Apavorado faz um teste de resistência de Sabedoria no fim de cada um de seus turnos. Em uma falha, sofre 5d10 de dano Psíquico. Em um sucesso, a magia termina sobre esse alvo."
 },
 {
 "id": "c9_astral_projection",
@@ -5695,7 +5695,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You and up to eight willing creatures within range project your astral bodies into the Astral Plane (the spell ends instantly if you are already on that plane). Each target's body is left behind in a state of suspended animation; it has the Unconscious condition, doesn't need food or air, and doesn't age. \n\nA target's astral form resembles its body in almost every way, replicating its game statistics and possessions. The principal difference is the addition of a silvery cord that trails from between the shoulder blades of the astral form. The cord fades from view after 1 foot. If the cord is cut—which happens only when an effect states that it does so—the target's body and astral form both die. A target's astral form can travel through the Astral Plane. The moment an astral form leaves that plane, the target's body and possessions travel along the silver cord, causing the target to re- enter its body on the new plane. \n\nAny damage or other effects that apply to an astral form have no effect on the target's body and vice versa. If a target's body or astral form drops to 0 Hit Points, the spell ends for that target. The spell ends for all the targets if you take a Magic action to dismiss it. When the spell ends for a target who isn't dead, the target reappears in its body and exits the state of suspended animation."
+"descricao": "Você e até oito criaturas voluntárias dentro do alcance projetam seus corpos astrais para o Plano Astral (a magia termina instantaneamente se você já estiver nesse plano). O corpo de cada alvo é deixado para trás em estado de animação suspensa; ele tem a condição Inconsciente, não precisa de comida nem ar e não envelhece. \n\nA forma astral de um alvo se assemelha ao seu corpo em quase todos os aspectos, replicando suas estatísticas de jogo e posses. A principal diferença é o acréscimo de um cordão prateado que se arrasta entre as omoplatas da forma astral. O cordão desaparece de vista após 30 centímetros. Se o cordão for cortado — o que acontece apenas quando um efeito afirma que o faz — o corpo e a forma astral do alvo morrem. A forma astral de um alvo pode viajar pelo Plano Astral. No momento em que uma forma astral deixa esse plano, o corpo e as posses do alvo viajam pelo cordão prateado, fazendo o alvo reentrar em seu corpo no novo plano. \n\nQualquer dano ou outros efeitos aplicados a uma forma astral não têm efeito sobre o corpo do alvo, e vice-versa. Se o corpo ou a forma astral de um alvo cair para 0 Pontos de Vida, a magia termina para esse alvo. A magia termina para todos os alvos se você realizar uma Ação Mágica para dispensá-la. Quando a magia termina para um alvo que não está morto, o alvo reaparece em seu corpo e sai do estado de animação suspensa."
 },
 {
 "id": "c9_true_resurrection",
@@ -5712,7 +5712,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You touch a creature that has been dead for no longer than 200 years and that died for any reason except old age. The creature is revived with all its Hit Points. \n\nThis spell closes all wounds, neutralizes any poison, cures all magical contagions, and lifts any curses affecting the creature when it died. The spell replaces damaged or missing organs and limbs. If the creature was Undead, it is restored to its non-Undead form. \n\nThe spell can provide a new body if the original no longer exists, in which case you must speak the creature's name. The creature then appears in an unoccupied space you choose within 10 feet of you."
+"descricao": "Você toca uma criatura que esteja morta há não mais de 200 anos e que tenha morrido por qualquer motivo, exceto velhice. A criatura é revivida com todos os seus Pontos de Vida. \n\nEsta magia fecha todos os ferimentos, neutraliza qualquer veneno, cura todas as contaminações mágicas e remove quaisquer maldições que afetassem a criatura quando ela morreu. A magia substitui órgãos e membros danificados ou ausentes. Se a criatura fosse Não-Morta, ela é restaurada à sua forma não-Não-Morta. \n\nA magia pode fornecer um novo corpo se o original não existir mais; nesse caso, você deve falar o nome da criatura. A criatura então aparece em um espaço desocupado à sua escolha dentro de 3 metros de você."
 },
 {
 "id": "c9_shapechange",
@@ -5729,7 +5729,7 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You shape-shift into another creature for the duration or until you take a Magic action to shape-shift into a different eligible form. The new form must be of a creature that has a Challenge Rating no higher than your level or Challenge Rating. You must have seen the sort of creature before, and it can't be a Construct or an Undead. When you shape-shift, you gain a number of Temporary Hit Points equal to the Hit Points of the form. The spell ends early if you have no Temporary Hit Points left. \n\nYour game statistics are replaced by the stat block of the chosen form, but you retain your creature type; alignment; personality; Intelligence, Wisdom, and Charisma scores; Hit Points; Hit Point Dice; proficiencies; and ability to communicate. If you have the Spellcasting feature, you retain it too. \n\nUpon shape-shifting, you determine whether your equipment drops to the ground or changes in size and shape to fit the new form while you're in it."
+"descricao": "Você muda de forma para outra criatura pela duração ou até realizar uma Ação Mágica para mudar de forma para outra forma elegível. A nova forma deve ser de uma criatura que tenha um Índice de Desafio não maior que seu nível ou seu Índice de Desafio. Você deve ter visto esse tipo de criatura antes, e ela não pode ser um Construto nem uma Não-Morta. Quando você muda de forma, ganha um número de Pontos de Vida Temporários igual aos Pontos de Vida da forma. A magia termina cedo se você não tiver mais Pontos de Vida Temporários. \n\nSuas estatísticas de jogo são substituídas pelo bloco de estatísticas da forma escolhida, mas você mantém seu tipo de criatura; alinhamento; personalidade; valores de Inteligência, Sabedoria e Carisma; Pontos de Vida; Dados de Pontos de Vida; perícias; e capacidade de se comunicar. Se você tiver a característica Conjuração, mantém essa característica também. \n\nAo mudar de forma, você determina se seus equipamentos caem no chão ou mudam de tamanho e forma para se adaptar à nova forma enquanto você estiver nela."
 },
 {
 "id": "c9_time_stop",
@@ -5746,7 +5746,7 @@ const SPELLS_DATA = [
 "concentracao": false,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4 + 1 turns in a row, during which you can use actions and move as normal. \n\nThis spell ends if one of the actions you use during this period, or any effects that you create during it, affects a creature other than you or an object being worn or carried by someone other than you. In addition, the spell ends if you move to a place more than 1,000 feet from the location where you cast it."
+"descricao": "Você interrompe brevemente o fluxo do tempo para todos, exceto você. Nenhum tempo passa para outras criaturas, enquanto você faz 1d4 + 1 turnos seguidos, durante os quais pode usar ações e se mover normalmente. \n\nEsta magia termina se uma das ações que você usar durante esse período, ou qualquer efeito que criar durante ele, afetar uma criatura que não seja você ou um objeto que esteja sendo vestido ou carregado por alguém que não seja você. Além disso, a magia termina se você se mover para um ponto a mais de 300 metros do local onde a lançou."
 },
 {
 "id": "c9_true_polymorph",
@@ -5763,6 +5763,8 @@ const SPELLS_DATA = [
 "concentracao": true,
 "ritual": false,
 "aprimoramento": null,
-"descricao": "Choose one creature or nonmagical object that you can see within range. The creature shape-shifts into a different creature or a nonmagical object, or the object shape-shifts into a creature (the object must be neither worn nor carried). The transformation lasts for the duration or until the target dies or is destroyed, but if you maintain Concentration on this spell for the full duration, the spell lasts until dispelled. \n\nAn unwilling creature can make a Wisdom saving throw, and if it succeeds, it isn't affected by this spell. \n\n**Creature into Creature**. If you turn a creature into another kind of creature, the new form can be any kind you choose that has a Challenge Rating equal to or less than the target's Challenge Rating or level. The target's game statistics are replaced by the stat block of the new form, but it retains its Hit Points, Hit Point Dice, alignment, and personality. \n\nThe target gains a number of Temporary Hit Points equal to the Hit Points of the new form. The spell ends early on the target if it has no Temporary Hit Points left. \n\nThe target is limited in the actions it can perform by the anatomy of its new form, and it can't speak or cast spells. \n\nThe target's gear melds into the new form. The creature can't use or otherwise benefit from any of that equipment. \n\n**Object into Creature**. You can turn an object into any kind of creature, as long as the creature's size is no larger than the object's size and the creature has a Challenge Rating of 9 or lower. The creature is Friendly to you and your allies. In combat, it takes its turns immediately after yours, and it obeys your commands. If the spell lasts more than an hour, you no longer control the creature. It might remain Friendly to you, depending on how you have treated it. \n\n**Creature into Object**. If you turn a creature into an object, it transforms along with whatever it is wearing and carrying into that form, as long as the object's size is no larger than the creature's size. The creature's statistics become those of the object, and the creature has no memory of time spent in this form after the spell ends and it returns to normal."
+"descricao": "Escolha uma criatura ou objeto não mágico que possa ver dentro do alcance. A criatura muda de forma para uma criatura diferente ou um objeto não mágico, ou o objeto muda de forma para uma criatura (o objeto não pode estar sendo vestido nem carregado). A transformação dura pela duração ou até o alvo morrer ou ser destruído, mas se você mantiver a Concentração nesta magia pela duração completa, a magia dura até ser dissipada. \n\nUma criatura involuntária pode fazer um teste de resistência de Sabedoria e, se for bem-sucedida, não é afetada por esta magia. \n\n**Criatura em Criatura.** Se você transformar uma criatura em outro tipo de criatura, a nova forma pode ser de qualquer tipo que você escolher que tenha um Índice de Desafio igual ou menor que o Índice de Desafio ou nível do alvo. As estatísticas de jogo do alvo são substituídas pelo bloco de estatísticas da nova forma, mas ele mantém seus Pontos de Vida, Dados de Pontos de Vida, alinhamento e personalidade. \n\nO alvo ganha um número de Pontos de Vida Temporários igual aos Pontos de Vida da nova forma. A magia termina cedo sobre o alvo se ele não tiver mais Pontos de Vida Temporários. \n\nO alvo é limitado nas ações que pode realizar pela anatomia de sua nova forma, e não pode falar nem lançar magias. \n\nOs equipamentos do alvo se fundem à nova forma. A criatura não pode usar nem de outra forma se beneficiar de nenhum desses equipamentos. \n\n**Objeto em Criatura.** Você pode transformar um objeto em qualquer tipo de criatura, desde que o tamanho da criatura não seja maior que o tamanho do objeto e a criatura tenha um Índice de Desafio de 9 ou menor. A criatura é Amigável a você e seus aliados. Em combate, ela faz seus turnos imediatamente após o seu e obedece aos seus comandos. Se a magia durar mais de uma hora, você não controla mais a criatura. Ela pode permanecer Amigável a você, dependendo de como você a tratou. \n\n**Criatura em Objeto.** Se você transformar uma criatura em um objeto, ela se transforma, junto com tudo o que estiver vestindo e carregando, nessa forma, desde que o tamanho do objeto não seja maior que o tamanho da criatura. As estatísticas da criatura tornam-se as do objeto, e a criatura não tem memória do tempo passado nessa forma após a magia terminar e ela voltar ao normal."
 }
 ];
+
+
