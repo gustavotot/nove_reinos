@@ -199,8 +199,8 @@ function showSpell(id){
     <div class="src">${s.nome_en||''}</div>
     <tags>${(s.circulo===0?'Truque':s.circulo+'º círculo')+', '+(s.mana+' Mana')+', '+s.calor+' de calor'}</tags>
     <div class="fields">${fieldsHTML(s)}</div>
-    ${s.aprimoramento?'<section class="modal-sec"><h4>Em círculos superiores</h4><div class="desc"><p>'+md(s.aprimoramento).join(' ')+'</p></div></section>':''}
-    <section class="modal-sec"><h4>Descrição</h4><div class="desc">'+descHTML(s)+'</div></section>
+    ${s.aprimoramento?'<section class="modal-sec"><h4>Em círculos superiores</h4><div class="desc">'+md(s.aprimoramento)+'</div></section>':''}
+    <section class="modal-sec"><h4>Descrição</h4><div class="desc">${descHTML(s)}</div></section>
     <button class="btn" onclick="closeModal()">Fechar</button>
   </div>`;
 }
